@@ -19,6 +19,7 @@ Imports:
     janitor,
     kableExtra,
     knitr,
+    postcards,
     remotes,
     rmarkdown,
     roxygen2,
