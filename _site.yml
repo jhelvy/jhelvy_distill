@@ -9,7 +9,7 @@ twitter:
 repository_url: https://github.com/jhelvy/jhelvy.github.io
 creative_commons: CC BY-SA
 navbar:
-  search: true
+  search: false
   right:
     - icon: fa-home
       href: index.html

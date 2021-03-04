@@ -19,7 +19,7 @@ knitr::include_graphics("images/john_china_duck.jpg")
 
 I began studying Chinese during my second year as an undergraduate engineering student at Virginia Tech in the fall of 2006. The next spring, I received the Horton Scholarship, which provided a unique opportunity to travel to China and complete an educational project of my own design. I traveled to Dalian in the summer of 2008 to study language and culture at Liaoning Normal University, then I moved to Shanghai in the fall to gain international engineering experience as an intern in General Electric's Advanced Wind Turbine Operations division. The project opened my eyes to the many forces that shape the adoption of emerging technologies, in particular the importance of policy and economics. After returning to the U.S., I was awarded a [Critical Language Scholarship](http://clscholarship.org/) by the U.S. Department of State to study Chinese in Harbin, China during the summer of 2009, and I have since returned to China numerous times for work or research, including an internship at the [Innovation Center for Energy and Transportation (iCET)](http://icet.org.cn/english/index.asp) and as a 2014 [East Asia Pacific Summer Institutes (EAPSI)](http://www.nsf.gov/eapsi) Fellow supported by the U.S. National Science Foundation. Today, I continue to use my language skills and experience in China while conducting interdisciplinary research in China.
 
-# Swing Dancing 
+# Swing Dancing
 
 ```{r fig.cap="John swing dancing in Beijing", out.extra="class=external", out.width="70%"}
 knitr::include_graphics("images/john_dancing.jpg")
@@ -27,7 +27,7 @@ knitr::include_graphics("images/john_dancing.jpg")
 
 Many of my closest friend know me first and foremost as a dancer. In the fall of 2006, I attended my first swing dance hosted by the Virginia Tech Swing Club [Soley Swing](https://gobblerconnect.vt.edu/organization/solelyswing), and swing dancing quickly became a major part of my life. I dance Lindy Hop, Balboa, Blues, and Charleston, and my dancing adventures have brought me to cities all over the world, including New York, Montreal, Boston, Washington D.C., Hong Kong, Beijing, Shanghai, Seoul, Pusan, Osaka, Taipei, and even on the [Great Wall of China](http://www.greatwallswingout.com/). Sharing the joy of swing dancing with friends and strangers all over the world is one of my greatest passions. I have competed internationally as a dancer, and my most accomplished achievement is winning 1st place in the Open Strictly Lindy Hop competition with my good friend Annabel Truesdell Quisao at the 2011 [International Lindy Hop Championship](http://www.ilhc.com/index.php) in Washington, D.C. You can see more on my [page about dancing](dance.html).
 
-# Music 
+# Music
 
 ```{r fig.cap="John with his partner and violin after a concert at CMU", out.extra="class=external", out.width="70%"}
 knitr::include_graphics("images/john_violin.jpg")

@@ -5,8 +5,7 @@
   --font-body:   inter,-apple-system,BlinkMacSystemFont,roboto,segoe ui,Helvetica,Arial,sans-serif;
   --font-header: "Fira Sans Condensed",Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-  
-  --color-white:      #FFFFFF;
+
   --color-red:        #E74A2F;
   --color-orange:     #fa7b3c;
   --color-yellow:     #EFB73E;
@@ -22,10 +21,11 @@
   --color-gray:       #696969;
   --color-tan:        #d9d9d9;
 
-  --color-background: #EAE9EA;  
-  --color-primary:    #81b29a;  
-  --color-secondary:  #e07a5f;  
-  --color-text:       #172a3a;  
+  --color-background: #EAE9EA;
+  --color-primary:    #81b29a;
+  --color-secondary:  #e07a5f;
+  --color-text:       #172a3a;
+  --color-white:      #FFFFFF;
 }
 
 /* base variables */
@@ -48,7 +48,7 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #000000;
+  --title-color:     var(--color-text);
   --header-color:    rgba(0, 0, 0, 0.8);
   --body-color:      rgba(0, 0, 0, 0.8);
   --aside-color:     rgba(0, 0, 0, 0.6);
@@ -115,4 +115,20 @@ a {
 a:hover, a:focus {
     color: var(--color-primary);
     font-weight:        500;
+}
+
+d-article a {
+    color: var(--color-primary);
+    border-bottom: 0px;
+    text-decoration: none;
+}
+
+d-article a:hover, a:focus {
+    color: var(--color-primary);
+    font-weight:        500;
+    border-color: var(--color-primary);
+}
+
+.btn-outline-dark {
+    background-color: var(--color-white);
 }
