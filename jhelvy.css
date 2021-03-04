@@ -6,24 +6,10 @@
   --font-header: "Fira Sans Condensed",Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
 
-  --color-red:        #E74A2F;
-  --color-orange:     #fa7b3c;
-  --color-yellow:     #EFB73E;
-  --color-gold:       #e5bf00;
-  --color-green:      #38B44A;
-  --color-darkgreen:  #2c8475;
-  --color-blue:       #007bff;
-  --color-lightblue:  #cce5ff;
-  --color-dodgerblue: #1E90FF;
-  --color-darkblue:   #003087;
-  --color-purple:     #772953;
-  --color-black:      #121212;
-  --color-gray:       #696969;
-  --color-tan:        #d9d9d9;
-
   --color-background: #EAE9EA;
-  --color-primary:    #81b29a;
-  --color-secondary:  #e07a5f;
+  --color-primary:    #74a08a;
+  --color-secondary:  #8a74a0;
+  --color-tertiary:  #a08a74;
   --color-text:       #172a3a;
   --color-white:      #FFFFFF;
 }
