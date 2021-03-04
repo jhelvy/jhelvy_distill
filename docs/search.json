@@ -2,17 +2,10 @@
   "articles": [
     {
       "path": "about.html",
-      "title": "About",
-      "description": "A brief bio.\n",
-      "author": [
-        {
-          "name": "John Paul Helveston",
-          "url": "https://www.jhelvy.com/about"
-        }
-      ],
-      "date": "`r Sys.Date()`",
-      "contents": "\nThis is my about me page\nEducation\nPh.D. Engineering & Public Policy | Carnegie Mellon University, 2016 M.S. Engineering & Public Policy | Carnegie Mellon University, 2015 B.S. Engineering Science & Mechanics | Carnegie Mellon University, 2010\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:27-05:00"
+      "title": "About me",
+      "author": [],
+      "contents": "\nWelcome to my personal website! I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering.\nI study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. My research centers around how consumer preferences, market dynamics, and policy affect the emergence of critical technologies, such as electric vehicles and solar energy. I also study the critical relationship between the US and China in developing and mass producing low-carbon energy technologies. I apply a variety of methods, including discrete choice modeling, conjoint analysis, exploratory analysis, and interview-based case studies. I speak fluent Mandarin Chinese and have conducted extensive fieldwork in China, collaborating with colleagues at Tsinghua University, Beijing Normal University, and the State Information Center on past projects. Below is a short description of some of my other passions and hobbies.\nChina & 中文\n\n\n\nFigure 1: John standing next to a duck mascot in Beijing\n\n\n\nI began studying Chinese during my second year as an undergraduate engineering student at Virginia Tech in the fall of 2006. The next spring, I received the Horton Scholarship, which provided a unique opportunity to travel to China and complete an educational project of my own design. I traveled to Dalian in the summer of 2008 to study language and culture at Liaoning Normal University, then I moved to Shanghai in the fall to gain international engineering experience as an intern in General Electric’s Advanced Wind Turbine Operations division. The project opened my eyes to the many forces that shape the adoption of emerging technologies, in particular the importance of policy and economics. After returning to the U.S., I was awarded a Critical Language Scholarship by the U.S. Department of State to study Chinese in Harbin, China during the summer of 2009, and I have since returned to China numerous times for work or research, including an internship at the Innovation Center for Energy and Transportation (iCET) and as a 2014 East Asia Pacific Summer Institutes (EAPSI) Fellow supported by the U.S. National Science Foundation. Today, I continue to use my language skills and experience in China while conducting interdisciplinary research in China.\nSwing Dancing\n\n\n\nFigure 2: John swing dancing in Beijing\n\n\n\nMany of my closest friend know me first and foremost as a dancer. In the fall of 2006, I attended my first swing dance hosted by the Virginia Tech Swing Club Soley Swing, and swing dancing quickly became a major part of my life. I dance Lindy Hop, Balboa, Blues, and Charleston, and my dancing adventures have brought me to cities all over the world, including New York, Montreal, Boston, Washington D.C., Hong Kong, Beijing, Shanghai, Seoul, Pusan, Osaka, Taipei, and even on the Great Wall of China. Sharing the joy of swing dancing with friends and strangers all over the world is one of my greatest passions. I have competed internationally as a dancer, and my most accomplished achievement is winning 1st place in the Open Strictly Lindy Hop competition with my good friend Annabel Truesdell Quisao at the 2011 International Lindy Hop Championship in Washington, D.C. You can see more on my page about dancing.\nMusic\n\n\n\nFigure 3: John with his partner and violin after a concert at CMU\n\n\n\nBesides studying engineering and Chinese, I am also an accomplished amateur violinist. Having played since the age of 10, I have studied with the legendary Dora Marshall Mullins of Virginia Beach, VA, and I have played in multiple ensembles, including the Virginia Beach Symphony Orchestra (now “Symphonicity”), the New River Valley Symphony at Virginia Tech, the National Taiwan Normal University Symphony, and the All University Orchestra at Carnegie Mellon University. I am also a self-taught mandolinist and guitarist and enjoy playing jazz and bluegrass. I have fortunately had many opportunities to play with some wonderful jazz friends, including the Muddy Basin Ramblers (a New Orleans-style jazz band in Taipei) and the Hot Club of Beijing (a gypsy swing band based in China’s capital).\nThanks for visiting my site, and I am grateful for any feedback you may have!\nCheers, John (章乐汉)\n\n\n\n",
+      "last_modified": "2021-03-04T15:07:34-05:00"
     },
     {
       "path": "dance.html",
@@ -26,7 +19,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my dance page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:27-05:00"
+      "last_modified": "2021-03-04T14:55:15-05:00"
     },
     {
       "path": "good-eats.html",
@@ -40,14 +33,14 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my good eats page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:28-05:00"
+      "last_modified": "2021-03-04T14:55:16-05:00"
     },
     {
       "path": "index.html",
       "title": "John Paul Helveston",
       "author": [],
-      "contents": "\n\n          \n          \n          John Paul Helveston\n          \n          \n          \n          \n          \n          About\n          \n          \n          Research\n           \n          ▾\n          \n          \n          Highlights\n          Publications\n          Lab\n          \n          \n          Teaching\n          Blog\n          \n          \n          Misc\n           \n          ▾\n          \n          \n          Dance\n          Good Eats\n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        ORCID iD\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            Welcome to my personal website! I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Twitter\n                    \n                  \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      ORCID iD\n                    \n                  \n                                  \n              \n            \n            \n              Welcome to my personal website! I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n            \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2021-03-04T11:34:28-05:00"
+      "contents": "\n\n          \n          \n          John Paul Helveston\n          \n          \n          \n          \n          \n          About\n          \n          \n          Research\n           \n          ▾\n          \n          \n          Highlights\n          Publications\n          Lab\n          \n          \n          Teaching\n          Blog\n          \n          \n          Misc\n           \n          ▾\n          \n          \n          Dance\n          Good Eats\n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        ORCID iD\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            \n            Welcome to my personal website!\n            I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n            \n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Twitter\n                    \n                  \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      ORCID iD\n                    \n                  \n                                  \n              \n            \n            \n              \n              Welcome to my personal website!\n              I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n              \n            \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-03-04T14:55:16-05:00"
     },
     {
       "path": "lab.html",
@@ -61,7 +54,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my lab page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:28-05:00"
+      "last_modified": "2021-03-04T14:55:16-05:00"
     },
     {
       "path": "publications.html",
@@ -75,7 +68,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my publications page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:29-05:00"
+      "last_modified": "2021-03-04T14:55:17-05:00"
     },
     {
       "path": "research-highlights.html",
@@ -89,7 +82,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my research highlights page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:30-05:00"
+      "last_modified": "2021-03-04T14:55:17-05:00"
     },
     {
       "path": "teaching.html",
@@ -103,7 +96,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\nThis is my teaching page\n\n\n\n",
-      "last_modified": "2021-03-04T11:34:30-05:00"
+      "last_modified": "2021-03-04T14:55:18-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
