@@ -1,0 +1,17 @@
+---
+title: "Dance"
+description: |
+  A short description of my love for swing dancing.
+author:
+  - name: John Paul Helveston
+    url: https://www.jhelvy.com/about
+    affiliation: George Washington University
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This is my dance page

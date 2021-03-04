@@ -1,0 +1,17 @@
+---
+title: "Technology Change Lab"
+description: |
+  A summary of my research lab at GWU.
+author:
+  - name: John Paul Helveston
+    url: https://www.jhelvy.com/lab
+    affiliation: George Washington University
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This is my lab page

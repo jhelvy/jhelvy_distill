@@ -1,0 +1,17 @@
+---
+title: "Publications"
+description: |
+  Publication.
+author:
+  - name: John Paul Helveston
+    url: https://www.jhelvy.com/publications
+    affiliation: George Washington University
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This is my publications page

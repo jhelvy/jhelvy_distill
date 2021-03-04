@@ -1,0 +1,17 @@
+---
+title: "Research Highlights"
+description: |
+  Some highlights of research from the Technology Change Lag.
+author:
+  - name: John Paul Helveston
+    url: https://www.jhelvy.com/research-highlights
+    affiliation: George Washington University
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This is my research highlights page

@@ -1,5 +1,5 @@
-Home page for my [GitHub](https://github.com/jhelvy) account. 
+Home page for my [GitHub](https://github.com/jhelvy) account.
 
-I mostly use this site to host presentations and other publicly available files. 
+This is still a work in progress.
 
-Go to [jhelvy.com](http://www.jhelvy.com/) to see my personal webpage. 
+Go to [jhelvy.com](http://www.jhelvy.com/) to see my more up-to-date personal website (this will eventually all be moved to this repo).

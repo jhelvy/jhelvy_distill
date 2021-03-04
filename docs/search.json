@@ -1,0 +1,110 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About",
+      "description": "A brief bio.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/about"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my about me page\nEducation\nPh.D. Engineering & Public Policy | Carnegie Mellon University, 2016 M.S. Engineering & Public Policy | Carnegie Mellon University, 2015 B.S. Engineering Science & Mechanics | Carnegie Mellon University, 2010\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:27-05:00"
+    },
+    {
+      "path": "dance.html",
+      "title": "Dance",
+      "description": "A short description of my love for swing dancing.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/about"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my dance page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:27-05:00"
+    },
+    {
+      "path": "good-eats.html",
+      "title": "Good Eats",
+      "description": "A map of amazing restaurants I've visited around the world.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/good-eats"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my good eats page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:28-05:00"
+    },
+    {
+      "path": "index.html",
+      "title": "John Paul Helveston",
+      "author": [],
+      "contents": "\n\n          \n          \n          John Paul Helveston\n          \n          \n          \n          \n          \n          About\n          \n          \n          Research\n           \n          ▾\n          \n          \n          Highlights\n          Publications\n          Lab\n          \n          \n          Teaching\n          Blog\n          \n          \n          Misc\n           \n          ▾\n          \n          \n          Dance\n          Good Eats\n          \n          \n          \n          \n          \n          \n          \n          \n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Twitter\n                      \n                    \n                  \n                                    \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        ORCID iD\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            Welcome to my personal website! I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              John Paul Helveston\n            \n            \n              \n                \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Twitter\n                    \n                  \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      ORCID iD\n                    \n                  \n                                  \n              \n            \n            \n              Welcome to my personal website! I am a researcher, engineer, musician, swing dancer, and an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my about page for more about me, and explore the site menu to view my blog posts or find out more about my research and teaching.\n            \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-03-04T11:34:28-05:00"
+    },
+    {
+      "path": "lab.html",
+      "title": "Technology Change Lab",
+      "description": "A summary of my research lab at GWU.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/lab"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my lab page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:28-05:00"
+    },
+    {
+      "path": "publications.html",
+      "title": "Publications",
+      "description": "Publication.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/publications"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my publications page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:29-05:00"
+    },
+    {
+      "path": "research-highlights.html",
+      "title": "Research Highlights",
+      "description": "Some highlights of research from the Technology Change Lag.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/research-highlights"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my research highlights page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:30-05:00"
+    },
+    {
+      "path": "teaching.html",
+      "title": "Teaching",
+      "description": "A summary of all the classes / workshops I teach / have taught.\n",
+      "author": [
+        {
+          "name": "John Paul Helveston",
+          "url": "https://www.jhelvy.com/teaching"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\nThis is my teaching page\n\n\n\n",
+      "last_modified": "2021-03-04T11:34:30-05:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
