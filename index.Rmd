@@ -10,6 +10,10 @@ links:
     url: "https://www.linkedin.com/in/jhelvy/"
   - label: ORCID iD
     url: "https://orcid.org/0000-0002-2657-9191"
+base_url: https://jhelvy.github.io/
+preview: images/helveston.png
+twitter:
+  creator: "@JohnHelveston"
 site: distill::distill_website
 output:
   postcards::trestles

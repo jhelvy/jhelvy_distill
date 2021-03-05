@@ -1,6 +1,10 @@
 ---
 title: "Technology Change Lab"
 output: distill::distill_article
+twitter:
+  creator: "@JohnHelveston"
+base_url: https://jhelvy.github.io/
+preview: images/helveston.png
 ---
 
 ```{r setup, include=FALSE}
