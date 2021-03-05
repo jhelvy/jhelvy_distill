@@ -85,24 +85,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>John Paul Helveston: Teaching</title>
+  <title>jhelvy.com: Teaching</title>
 
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="John Paul Helveston: Teaching"/>
+  <meta property="og:title" content="jhelvy.com: Teaching"/>
   <meta property="og:type" content="article"/>
   <meta property="og:image" content="https://jhelvy.github.io/images/helveston.png"/>
   <meta property="og:image:width" content="2058"/>
   <meta property="og:image:height" content="2061"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="John Paul Helveston"/>
+  <meta property="og:site_name" content="jhelvy.com"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:title" content="John Paul Helveston: Teaching"/>
+  <meta property="twitter:title" content="jhelvy.com: Teaching"/>
   <meta property="twitter:image" content="https://jhelvy.github.io/images/helveston.png"/>
   <meta property="twitter:image:width" content="2058"/>
   <meta property="twitter:image:height" content="2061"/>
@@ -1931,9 +1931,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .distill-site-header {
     --title-size:       18px;
-    --text-color:       var(--color-text);
+    --text-color:       var(--color-primary);
     --text-size:        18px;
-    --hover-color:      #000000;
+    --hover-color:      var(--color-secondary);
     --bkgd-color:       var(--color-background);
     font-weight:        500;
   }
@@ -1941,7 +1941,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   .distill-site-footer {
     --text-color:       rgba(255, 255, 255, 0.8);
     --text-size:        15px;
-    --hover-color:      white;
+    --hover-color:      var(--color-secondary);
     --bkgd-color:       var(--color-primary);
   }
 
@@ -1952,13 +1952,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       background-color: var(--color-background);
   }
 
+  /* Links */
+
   a {
       color: var(--color-primary);
-  }
-
-  a:hover, a:focus {
-      color: var(--color-primary);
-      font-weight:        500;
+      border-bottom: 0px;
+      text-decoration: none;
   }
 
   d-article a {
@@ -1967,14 +1966,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       text-decoration: none;
   }
 
-  d-article a:hover, a:focus {
-      color: var(--color-primary);
-      font-weight:        500;
-      border-color: var(--color-primary);
+  a:hover, a:focus {
+      color: var(--color-secondary);
+      font-weight: 500;
+      border-color: var(--color-secondary);
   }
 
+  d-article a:hover, a:focus {
+      color: var(--color-secondary);
+      font-weight: 500;
+      border-color: var(--color-secondary);
+  }
+
+  /* Buttons on home page */
+
   .btn-outline-dark {
-      background-color: var(--color-white);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 0px;
+  }
+
+  .btn-outline-dark:hover {
+      background-color: var(--color-secondary);
+  }
+
+  /* Menu */
+
+  .nav-dropdown-content a {
+      color: var(--color-primary);
+  }
+
+  .nav-dropdown-content a:hover {
+      background-color: var(--color-background);
   }</style>
   <style type="text/css">
   /* base style */
@@ -2159,7 +2182,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">John Paul Helveston</a>
+<a href="index.html" class="title">jhelvy.com</a>
 </div>
 <div class="nav-right">
 <a href="index.html">
@@ -2230,21 +2253,21 @@ Misc
 <h2 id="academic-year">2020–21 academic year</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div>
-        <img src="images/eda_hex_sticker_square.png" style="float:left; width:120px;"><h3 style="margin-bottom: 5px;"><a href=http://eda.seas.gwu.edu/>EMSE 4575: Exploratory Data Analysis</a></h3><p style="margin-bottom: 5px;">Spring 2021 | George Washington University</p><span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span></div>
+          <img src="images/eda_hex_sticker_square.png" style="float:left; width:120px; margin: 0 15px 0 0"><h3 style="margin-bottom: 5px;"><a href=http://eda.seas.gwu.edu/>EMSE 4575: Exploratory Data Analysis</a></h3><p style="margin-bottom: 5px;">Spring 2021 | George Washington University</p><span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span></div>
 <div>
-        <img src="images/p4a_hex_sticker_square.png" style="float:left; width:120px;"><h3 style="margin-bottom: 5px;"><a href=http://p4a.seas.gwu.edu/>EMSE 4574: Programming for Analytics</a></h3><p style="margin-bottom: 5px;">Fall 2020 | George Washington University</p><span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span></div>
+          <img src="images/p4a_hex_sticker_square.png" style="float:left; width:120px; margin: 0 15px 0 0"><h3 style="margin-bottom: 5px;"><a href=http://p4a.seas.gwu.edu/>EMSE 4574: Programming for Analytics</a></h3><p style="margin-bottom: 5px;">Fall 2020 | George Washington University</p><span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span></div>
 </div>
 <h2 id="academic-year-1">2019–20 academic year</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div>
-        <img src="images/eda_hex_sticker_square.png" style="float:left; width:120px;"><h3 style="margin-bottom: 5px;"><a href=http://eda.seas.gwu.edu/>EMSE 4197: Exploratory Data Analysis</a></h3><p style="margin-bottom: 5px;">Spring 2020 | George Washington University</p><span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span></div>
+          <img src="images/eda_hex_sticker_square.png" style="float:left; width:120px; margin: 0 15px 0 0"><h3 style="margin-bottom: 5px;"><a href=http://eda.seas.gwu.edu/>EMSE 4197: Exploratory Data Analysis</a></h3><p style="margin-bottom: 5px;">Spring 2020 | George Washington University</p><span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span></div>
 <div>
-        <img src="images/p4a_hex_sticker_square.png" style="float:left; width:120px;"><h3 style="margin-bottom: 5px;"><a href=http://p4a.seas.gwu.edu/>EMSE 6574: Programming for Analytics</a></h3><p style="margin-bottom: 5px;">Fall 2019 | George Washington University</p><span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span></div>
+          <img src="images/p4a_hex_sticker_square.png" style="float:left; width:120px; margin: 0 15px 0 0"><h3 style="margin-bottom: 5px;"><a href=http://p4a.seas.gwu.edu/>EMSE 6574: Programming for Analytics</a></h3><p style="margin-bottom: 5px;">Fall 2019 | George Washington University</p><span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span></div>
 </div>
 <h2 id="academic-year-2">2018–19 academic year</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div>
-        <img src="" style="float:left; width:120px;"><h3 style="margin-bottom: 5px;"><a href=>EMSE 6035: Marketing of Technology</a></h3><p style="margin-bottom: 5px;">Spring 2019 | George Washington University</p><span style="font-size:0.8rem;">Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.</span></div>
+          <img src="" style="float:left; width:120px; margin: 0 15px 0 0"><h3 style="margin-bottom: 5px;">EMSE 6035: Marketing of Technology</h3><p style="margin-bottom: 5px;">Spring 2019 | George Washington University</p><span style="font-size:0.8rem;">Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.</span></div>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

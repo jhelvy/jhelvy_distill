@@ -85,7 +85,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>John Paul Helveston: Welcome to John Paul Helveston</title>
+<title>jhelvy.com: Welcome to John Paul Helveston</title>
 
 <meta property="description" itemprop="description" content="Welcome to our new blog, John Paul Helveston. We hope you enjoy &#10;reading what we have to say!"/>
 
@@ -97,15 +97,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta name="article:author" content="Nora Jones"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="John Paul Helveston: Welcome to John Paul Helveston"/>
+<meta property="og:title" content="jhelvy.com: Welcome to John Paul Helveston"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Welcome to our new blog, John Paul Helveston. We hope you enjoy &#10;reading what we have to say!"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:site_name" content="John Paul Helveston"/>
+<meta property="og:site_name" content="jhelvy.com"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="John Paul Helveston: Welcome to John Paul Helveston"/>
+<meta property="twitter:title" content="jhelvy.com: Welcome to John Paul Helveston"/>
 <meta property="twitter:description" content="Welcome to our new blog, John Paul Helveston. We hope you enjoy &#10;reading what we have to say!"/>
 <meta property="twitter:site" content="@JohnHelveston"/>
 
@@ -1935,9 +1935,9 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       var(--color-text);
+  --text-color:       var(--color-primary);
   --text-size:        18px;
-  --hover-color:      #000000;
+  --hover-color:      var(--color-secondary);
   --bkgd-color:       var(--color-background);
   font-weight:        500;
 }
@@ -1945,7 +1945,7 @@ d-appendix {
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
-  --hover-color:      white;
+  --hover-color:      var(--color-secondary);
   --bkgd-color:       var(--color-primary);
 }
 
@@ -1956,13 +1956,12 @@ body {
     background-color: var(--color-background);
 }
 
+/* Links */
+
 a {
     color: var(--color-primary);
-}
-
-a:hover, a:focus {
-    color: var(--color-primary);
-    font-weight:        500;
+    border-bottom: 0px;
+    text-decoration: none;
 }
 
 d-article a {
@@ -1971,14 +1970,38 @@ d-article a {
     text-decoration: none;
 }
 
-d-article a:hover, a:focus {
-    color: var(--color-primary);
-    font-weight:        500;
-    border-color: var(--color-primary);
+a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-color: var(--color-secondary);
 }
 
+d-article a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-color: var(--color-secondary);
+}
+
+/* Buttons on home page */
+
 .btn-outline-dark {
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 0px;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Menu */
+
+.nav-dropdown-content a {
+    color: var(--color-primary);
+}
+
+.nav-dropdown-content a:hover {
+    background-color: var(--color-background);
 }</style>
 <style type="text/css">
 /* base style */
@@ -2164,7 +2187,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="../../index.html" class="title">John Paul Helveston</a>
+<a href="../../index.html" class="title">jhelvy.com</a>
 </div>
 <div class="nav-right">
 <a href="../../index.html">

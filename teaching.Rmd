@@ -1,6 +1,6 @@
 ---
 title: "Teaching"
-output: 
+output:
   distill::distill_article:
     toc: true
 twitter:
@@ -17,19 +17,19 @@ source(file.path("R", "functions.R"))
 ## 2020–21 academic year
 
 ```{r, echo=FALSE}
-make_link_card(
+make_title_card(
     title = "EMSE 4575: Exploratory Data Analysis",
-    subtitle = "Spring 2021 | George Washington University",
-    description = "Foundations in exploring and visualizing data in R.",
+    text = "Spring 2021 | George Washington University",
+    subtext = "Foundations in exploring and visualizing data in R.",
     url = "http://eda.seas.gwu.edu/",
     image_src = "images/eda_hex_sticker_square.png",
     image_width = 120
 )
 
-make_link_card(
+make_title_card(
     title = "EMSE 4574: Programming for Analytics",
-    subtitle = "Fall 2020 | George Washington University",
-    description = "Foundations in programming and computational thinking for data analytics in R.",
+    text = "Fall 2020 | George Washington University",
+    subtext = "Foundations in programming and computational thinking for data analytics in R.",
     url = "http://p4a.seas.gwu.edu/",
     image_src = "images/p4a_hex_sticker_square.png",
     image_width = 120
@@ -39,19 +39,19 @@ make_link_card(
 ## 2019–20 academic year
 
 ```{r, echo=FALSE}
-make_link_card(
+make_title_card(
     title = "EMSE 4197: Exploratory Data Analysis",
-    subtitle = "Spring 2020 | George Washington University",
-    description = "Foundations in exploring and visualizing data in R.",
+    text = "Spring 2020 | George Washington University",
+    subtext = "Foundations in exploring and visualizing data in R.",
     url = "http://eda.seas.gwu.edu/",
     image_src = "images/eda_hex_sticker_square.png",
     image_width = 120
 )
 
-make_link_card(
+make_title_card(
     title = "EMSE 6574: Programming for Analytics",
-    subtitle = "Fall 2019 | George Washington University",
-    description = "Foundations in programming and computational thinking for data analytics in R.",
+    text = "Fall 2019 | George Washington University",
+    subtext = "Foundations in programming and computational thinking for data analytics in R.",
     url = "http://p4a.seas.gwu.edu/",
     image_src = "images/p4a_hex_sticker_square.png",
     image_width = 120
@@ -61,9 +61,9 @@ make_link_card(
 ## 2018–19 academic year
 
 ```{r, echo=FALSE}
-make_link_card(
+make_title_card(
     title = "EMSE 6035: Marketing of Technology",
-    subtitle = "Spring 2019 | George Washington University",
-    description = "Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market."
+    text = "Spring 2019 | George Washington University",
+    subtext = "Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market."
 )
 ```

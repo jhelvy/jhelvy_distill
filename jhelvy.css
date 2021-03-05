@@ -73,9 +73,9 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       var(--color-text);
+  --text-color:       var(--color-primary);
   --text-size:        18px;
-  --hover-color:      #000000;
+  --hover-color:      var(--color-secondary);
   --bkgd-color:       var(--color-background);
   font-weight:        500;
 }
@@ -83,7 +83,7 @@ d-appendix {
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
-  --hover-color:      white;
+  --hover-color:      var(--color-secondary);
   --bkgd-color:       var(--color-primary);
 }
 
@@ -94,13 +94,12 @@ body {
     background-color: var(--color-background);
 }
 
+/* Links */
+
 a {
     color: var(--color-primary);
-}
-
-a:hover, a:focus {
-    color: var(--color-primary);
-    font-weight:        500;
+    border-bottom: 0px;
+    text-decoration: none;
 }
 
 d-article a {
@@ -109,12 +108,36 @@ d-article a {
     text-decoration: none;
 }
 
-d-article a:hover, a:focus {
-    color: var(--color-primary);
-    font-weight:        500;
-    border-color: var(--color-primary);
+a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-color: var(--color-secondary);
 }
 
+d-article a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-color: var(--color-secondary);
+}
+
+/* Buttons on home page */
+
 .btn-outline-dark {
-    background-color: var(--color-white);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 0px;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--color-secondary);
+}
+
+/* Menu */
+
+.nav-dropdown-content a {
+    color: var(--color-primary);
+}
+
+.nav-dropdown-content a:hover {
+    background-color: var(--color-background);
 }

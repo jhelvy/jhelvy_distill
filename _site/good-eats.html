@@ -85,22 +85,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>John Paul Helveston: Good Eats</title>
+  <title>jhelvy.com: Good Eats</title>
 
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="John Paul Helveston: Good Eats"/>
+  <meta property="og:title" content="jhelvy.com: Good Eats"/>
   <meta property="og:type" content="article"/>
   <meta property="og:image" content="https://jhelvy.github.io/images/john_china_duck.jpg"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="John Paul Helveston"/>
+  <meta property="og:site_name" content="jhelvy.com"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:title" content="John Paul Helveston: Good Eats"/>
+  <meta property="twitter:title" content="jhelvy.com: Good Eats"/>
   <meta property="twitter:image" content="https://jhelvy.github.io/images/john_china_duck.jpg"/>
   <meta property="twitter:site" content="@JohnHelveston"/>
   <meta property="twitter:creator" content="@JohnHelveston"/>
@@ -1927,9 +1927,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   .distill-site-header {
     --title-size:       18px;
-    --text-color:       var(--color-text);
+    --text-color:       var(--color-primary);
     --text-size:        18px;
-    --hover-color:      #000000;
+    --hover-color:      var(--color-secondary);
     --bkgd-color:       var(--color-background);
     font-weight:        500;
   }
@@ -1937,7 +1937,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   .distill-site-footer {
     --text-color:       rgba(255, 255, 255, 0.8);
     --text-size:        15px;
-    --hover-color:      white;
+    --hover-color:      var(--color-secondary);
     --bkgd-color:       var(--color-primary);
   }
 
@@ -1948,13 +1948,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       background-color: var(--color-background);
   }
 
+  /* Links */
+
   a {
       color: var(--color-primary);
-  }
-
-  a:hover, a:focus {
-      color: var(--color-primary);
-      font-weight:        500;
+      border-bottom: 0px;
+      text-decoration: none;
   }
 
   d-article a {
@@ -1963,14 +1962,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       text-decoration: none;
   }
 
-  d-article a:hover, a:focus {
-      color: var(--color-primary);
-      font-weight:        500;
-      border-color: var(--color-primary);
+  a:hover, a:focus {
+      color: var(--color-secondary);
+      font-weight: 500;
+      border-color: var(--color-secondary);
   }
 
+  d-article a:hover, a:focus {
+      color: var(--color-secondary);
+      font-weight: 500;
+      border-color: var(--color-secondary);
+  }
+
+  /* Buttons on home page */
+
   .btn-outline-dark {
-      background-color: var(--color-white);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 0px;
+  }
+
+  .btn-outline-dark:hover {
+      background-color: var(--color-secondary);
+  }
+
+  /* Menu */
+
+  .nav-dropdown-content a {
+      color: var(--color-primary);
+  }
+
+  .nav-dropdown-content a:hover {
+      background-color: var(--color-background);
   }</style>
   <style type="text/css">
   /* base style */
@@ -2155,7 +2178,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="index.html" class="title">John Paul Helveston</a>
+<a href="index.html" class="title">jhelvy.com</a>
 </div>
 <div class="nav-right">
 <a href="index.html">
