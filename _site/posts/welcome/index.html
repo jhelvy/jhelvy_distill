@@ -1870,6 +1870,7 @@ d-appendix {
 
   --color-background: #EAE9EA;
   --color-primary:    #74a08a;
+  --color-primary-dark: #2F4238;
   --color-secondary:  #8a74a0;
   --color-tertiary:  #a08a74;
   --color-text:       #172a3a;
@@ -2002,6 +2003,36 @@ d-article a:hover, a:focus {
 
 .nav-dropdown-content a:hover {
     background-color: var(--color-background);
+}
+
+/* Link buttons */
+
+.link-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 2px 5px;
+    border-radius: 5px; /* Rounded edges */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--body-size, 1.06rem);
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 2px 5px;
+    border-radius: 5px; /* Rounded edges */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--body-size, 1.06rem);
+    margin: 4px 2px;
+    cursor: pointer;
 }</style>
 <style type="text/css">
 /* base style */
@@ -2169,6 +2200,7 @@ d-appendix d-footnote-list a.footnote-backlink {
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 <!--/radix_placeholder_site_in_header-->
 
 
@@ -2269,6 +2301,9 @@ Misc
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
   <p>© John Paul Helveston 2021 · <i class="fas fa-wrench"/> Made with <i class="far fa-heart"/>, <a href="https://github.com/jhelvy"><i class="fas fa-code-branch"/></a>, and the <a href="https://cran.r-project.org/"><i class="fab fa-r-project"/></a><a href="https://github.com/rstudio/distill">distill</a> package.</p>
+  <p>
+    <span style="font-size:0.8rem;">Last updated on <code>r format(Sys.Date(), format="%B %d %Y")</code></span>
+  </p>
   <!-- Add function to open links to external links in new tab, from: -->
   <!-- https://yihui.name/en/2018/09/target-blank/ -->
   <script src="js/external-link.js"/>

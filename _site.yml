@@ -1,6 +1,6 @@
 name: "jhelvy.com"
 title: "jhelvy.com"
-theme: jhelvy.css
+theme: css/jhelvy.css
 output_dir: _site
 description: |
   The personal website of John Paul Helveston
@@ -38,4 +38,8 @@ navbar:
     - icon: fab fa-twitter
       href: https://twitter.com/JohnHelveston
 
-output: distill::distill_article
+output:
+  distill::distill_article:
+    includes:
+      in_header:
+      - _includes/header.html

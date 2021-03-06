@@ -8,6 +8,7 @@
 
   --color-background: #EAE9EA;
   --color-primary:    #74a08a;
+  --color-primary-dark: #2F4238;
   --color-secondary:  #8a74a0;
   --color-tertiary:  #a08a74;
   --color-text:       #172a3a;
@@ -140,4 +141,34 @@ d-article a:hover, a:focus {
 
 .nav-dropdown-content a:hover {
     background-color: var(--color-background);
+}
+
+/* Link buttons */
+
+.link-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 2px 5px;
+    border-radius: 5px; /* Rounded edges */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--body-size, 1.06rem);
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 2px 5px;
+    border-radius: 5px; /* Rounded edges */
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: var(--body-size, 1.06rem);
+    margin: 4px 2px;
+    cursor: pointer;
 }
