@@ -33,6 +33,8 @@ navbar:
           href: dance.html
         - text: "Good Eats"
           href: good-eats.html
+    - icon: ai ai-cv
+      href: content/docs/Helveston_CV.pdf
     - icon: fab fa-github
       href: https://github.com/jhelvy
     - icon: fab fa-twitter

@@ -17,6 +17,11 @@ cites <- get_cites()
 ```
 
 <center>
+Citations: `r cites$citations` | h-index: `r cites$hindex` | i10-index: `r cites$i10index`
+</center>
+<aside>Source: Google Scholar</aside>
+
+<center>
 ```{r, echo=FALSE}
 make_link_button(
     text = "Google Scholar",
@@ -34,12 +39,7 @@ make_link_button(
     icon = "ai ai-researchgate"
 )
 ```
-
-Citations: `r cites$citations` | h-index: `r cites$hindex` | i10-index: `r cites$i10index`
-
 </center>
-
-<aside>Source: Google Scholar</aside>
 
 ## Publications in Peer Reviewed Journals
 
