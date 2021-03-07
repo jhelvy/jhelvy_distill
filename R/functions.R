@@ -1,5 +1,5 @@
-# Function for generating the html used to create a two-column layout 
-# with a thumbnail image, a title, and some text:
+# Function for generating the html used to create a two-column layout
+# with a thumbnail image, a title with an optional link, and some text:
 #
 # |       | title
 # | image | text
@@ -19,7 +19,7 @@ make_title_card <- function(
   if (is.null(url)) {
     html <- htmltools::HTML(paste0(
       '<div>
-          <img src="', image_src, '" style="float:left; width:', image_width, 
+          <img src="', image_src, '" style="float:left; width:', image_width,
       'px; margin: 0 15px 0 0">',
           '<h3 style="margin-bottom: 5px;">', title, '</h3>',
           '<p style="margin-bottom: 5px;">',  text, '</p>',
@@ -29,7 +29,7 @@ make_title_card <- function(
   } else {
     html <- htmltools::HTML(paste0(
       '<div>
-          <img src="', image_src, '" style="float:left; width:', image_width, 
+          <img src="', image_src, '" style="float:left; width:', image_width,
       'px; margin: 0 15px 0 0">',
           '<h3 style="margin-bottom: 5px;"><a href=', url, '>', title, '</a></h3>',
           '<p style="margin-bottom: 5px;">',  text, '</p>',
@@ -37,7 +37,7 @@ make_title_card <- function(
       '</div>'
     ))
   }
-  
+
   return(html)
 }
 
@@ -47,7 +47,7 @@ make_link_button <- function(
   url = NULL,
   icon = NULL
 ) {
-  
+
   if (!is.null(icon)) {
     text <- paste0('<i class="', icon, '"></i> ', text)
   }

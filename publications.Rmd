@@ -73,7 +73,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Yanmin Wang, Valerie J. Karplus, & Erica R.H. Fuchs (2019) "Institutional Complementarities: The Origins of Experimentation in China’s Plug-in Electric Vehicle Industry," Research Policy, 48(1), pg. 206-222.
+**Helveston, John P.**, Yanmin Wang, Valerie J. Karplus, & Erica R.H. Fuchs (2019) "Institutional Complementarities: The Origins of Experimentation in China’s Plug-in Electric Vehicle Industry," _Research Policy_, 48(1), pg. 206-222.
 `r make_doi("10.1016/j.respol.2018.08.006")`
 
 ```{r, echo=FALSE}
@@ -88,7 +88,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Stephanie Seki, Jihoon Min, Evelyn Fairman, Arthur A. Boni, Jeremy J. Michalek, & Ines Azevedo (2019) "Choice at the Pump: Measuring Preferences for Lower-Carbon Combustion Fuels," Environmental Research Letters. 14(8) [pdf] [view online]
+**Helveston, John P.**, Stephanie Seki, Jihoon Min, Evelyn Fairman, Arthur A. Boni, Jeremy J. Michalek, & Ines Azevedo (2019) "Choice at the Pump: Measuring Preferences for Lower-Carbon Combustion Fuels," _Environmental Research Letters_. 14(8)
 `r make_doi("10.1088/1748-9326/ab2bd2")`
 
 ```{r, echo=FALSE}
@@ -99,7 +99,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Elea M. Feit, & Jeremy J. Michalek (2018) “Pooling Stated and Revealed Preference Data in the Presence of Endogeneity,” Transportation Research Part B: Methodological. 109, pg. 70-89.
+**Helveston, John P.**, Elea M. Feit, & Jeremy J. Michalek (2018) "Pooling Stated and Revealed Preference Data in the Presence of Endogeneity," _Transportation Research Part B: Methodological_, 109, pg. 70-89.
 `r make_doi("10.1016/j.trb.2018.01.010")`
 
 ```{r, echo=FALSE}
@@ -115,7 +115,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Yimin Liu, Elea M. Feit, Erica R.H. Fuchs, Erica Klampﬂ, & Jeremy J. Michalek (2015) "Will subsidies drive electric vehicle adoption? Measuring consumer preferences in the U.S. and China". Transportation Research Part A: Policy and Practice, 73, 96–112.
+**Helveston, John P.**, Yimin Liu, Elea M. Feit, Erica R.H. Fuchs, Erica Klampﬂ, & Jeremy J. Michalek (2015) "Will subsidies drive electric vehicle adoption? Measuring consumer preferences in the U.S. and China". _Transportation Research Part A: Policy and Practice_, 73, 96–112.
 `r make_doi("10.1016/j.tra.2015.01.002")`
 
 ```{r, echo=FALSE}
@@ -138,10 +138,10 @@ make_link_button(
 
 ## Full-Length Peer-Reviewed Conference Publications
 
-Liang, Z., Li, D., Fu, X., Beltekian, D., **Helveston, J.P.** (2018) "The Co-evolution of MNE R&D Strategies and China’s National Innovation System: A Case Study on Siemens." 2018 IEEE International Symposium on Innovation and Entrepreneurship (TEMS-ISIE), Beijing. pp. 1-9.
+Liang, Z., Li, D., Fu, X., Beltekian, D., **Helveston, J.P.** (2018) "The Co-evolution of MNE R&D Strategies and China’s National Innovation System: A Case Study on Siemens." 2018 _IEEE International Symposium on Innovation and Entrepreneurship (TEMS-ISIE)_, Beijing. pp. 1-9.
 `r make_doi("10.1109/TEMS-ISIE.2018.8478558")`
 
-**Helveston, John P.**, Wang, Y., Karplus, V. J., & Fuchs, E.R. (2016) "Up, Down, and Sideways: Innovation in China and the Case of Plug-in Electric Vehicles." Academy of Management Annual Meeting. Anaheim, CA. Aug. 5.
+**Helveston, John P.**, Wang, Y., Karplus, V. J., & Fuchs, E.R. (2016) "Up, Down, and Sideways: Innovation in China and the Case of Plug-in Electric Vehicles." _Academy of Management Annual Meeting_. Anaheim, CA. Aug. 5.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -151,7 +151,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S.and China." Academy of Management Annual Meeting. Philadelphia, PA. Aug. 5.
+**Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S.and China." _Academy of Management Annual Meeting_. Philadelphia, PA. Aug. 5.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -161,7 +161,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S. and China." National Academies Transportation Research Board Annual Meeting. Washington, D.C. Jan. 13.
+**Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S. and China." _National Academies Transportation Research Board Annual Meeting_. Washington, D.C. Jan. 13.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -173,7 +173,7 @@ make_link_button(
 
 ## Magazine Publications
 
-**Helveston, John P.** “Why the US Trails the World in Electric Vehicles,” Issues in Science and Technology 37, no. 2 (Winter 2021). [view online]
+**Helveston, John P.** "Why the US Trails the World in Electric Vehicles," _Issues in Science and Technology_ 37, no. 2 (Winter 2021).
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -183,7 +183,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.** “Perspective: Navigating an Uncertain Future for US Roads,” Issues in Science and Technology 34, no. 1 (Fall 2017). [pdf] [view online]
+**Helveston, John P.** "Perspective: Navigating an Uncertain Future for US Roads," _Issues in Science and Technology_ 34, no. 1 (Fall 2017).
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -200,7 +200,7 @@ make_link_button(
 
 ## Books / Book Chapters
 
-Ren, Justin Z. & John P. Helveston (2019) “Measuring Electric Vehicle Infrastructure Among Cities: A Multi-Dimensional Approach.” Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press. [pdf] [view online]
+Ren, Justin Z. & John P. Helveston (2019) "Measuring Electric Vehicle Infrastructure Among Cities: A Multi-Dimensional Approach." Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -215,7 +215,7 @@ make_link_button(
 )
 ```
 
-Hatch, Jennifer & John P. Helveston (2019) “Brookline, MA: A Small Town seeking to lead in a Broader EV Charging Network.” Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press. [pdf] [view online]
+Hatch, Jennifer & John P. Helveston (2019) "Brookline, MA: A Small Town seeking to lead in a Broader EV Charging Network." Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -238,7 +238,7 @@ Helveston, John P, Lujin Zhao, Saurav Pantha. "Are we there yet? The significanc
 
 ## Theses
 
-**Helveston, John P.** (2016) “Development and Adoption of Plug-in Electric Vehicles in China: Markets, Policy, and Innovation,” Ph.D. Dissertation, Carnegie Mellon University, Pittsburgh, PA.
+**Helveston, John P.** (2016) "Development and Adoption of Plug-in Electric Vehicles in China: Markets, Policy, and Innovation," Ph.D. Dissertation, Carnegie Mellon University, Pittsburgh, PA.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -260,7 +260,7 @@ make_link_button(
 
 ## Reports, Articles for Non-Academic Audiences, and Other Publications
 
-Podcast: GWU Professor **John Helveston** on EVs in China, The Future Car: A Siemens Podcast May 13, 2019.
+Podcast: GWU Professor **John Helveston** on EVs in China, _The Future Car: A Siemens Podcast_, May 13, 2019.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -270,7 +270,7 @@ make_link_button(
 )
 ```
 
-**Helveston, John P.** (2019) “China’s looser rules may usher in a new era for EV and AV companies,” Axios. February 1, 2019. 
+**Helveston, John P.** (2019) "China’s looser rules may usher in a new era for EV and AV companies," _Axios_. February 1, 2019.
 
 ```{r, echo=FALSE}
 make_link_button(
@@ -280,7 +280,7 @@ make_link_button(
 )
 ```
 
-Hatch, Jennifer & **John P. Helveston**. "Will Autonomous Vehicles be Electric?" Institute for Sustainable Energy. August 8, 2018. 
+Hatch, Jennifer & **John P. Helveston**. "Will Autonomous Vehicles be Electric?" _Institute for Sustainable Energy_. August 8, 2018.
 
 ```{r, echo=FALSE}
 make_link_button(
