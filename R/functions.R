@@ -3,7 +3,7 @@ create_footer <- function() {
   footer <- htmltools::HTML(paste0(
   '
   © John Paul Helveston 2021\n
-  <i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, <a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>, and the <a href="https://cran.r-project.org/"><i class="fab fa-r-project"></i></a><a href="https://github.com/rstudio/distill">distill</a> package.\n
+  <i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, <a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>, and the <a href="https://cran.r-project.org/"><i class="fab fa-r-project"></i></a><a href="https://github.com/rstudio/distill"> distill</a> package.\n
   <span style="font-size:0.8rem;">Last updated on ',
   format(Sys.Date(), format="%B %d, %Y"), '</span>
 

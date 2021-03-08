@@ -21,9 +21,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-source(file.path("R", "functions.R"))
-create_footer()
 ```
 
 ### Welcome to my personal website!

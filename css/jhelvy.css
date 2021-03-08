@@ -84,7 +84,7 @@ d-appendix {
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
-  --hover-color:      var(--color-secondary);
+  --hover-color:      var(--color-white);
   --bkgd-color:       var(--color-primary);
 }
 
@@ -171,4 +171,10 @@ d-article a:hover, a:focus {
     font-size: var(--body-size, 1.06rem);
     margin: 4px 2px;
     cursor: pointer;
+}
+
+/* Footer */
+
+.distill-site-footer p {
+    margin-bottom: 0em;
 }
