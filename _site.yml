@@ -27,12 +27,6 @@ navbar:
       href: teaching.html
     - text: "Blog"
       href: blog.html
-    - text: "Misc"
-      menu:
-        - text: "Dance"
-          href: dance.html
-        - text: "Good Eats"
-          href: good-eats.html
     - icon: ai ai-cv
       href: content/docs/Helveston_CV.pdf
     - icon: fab fa-github
