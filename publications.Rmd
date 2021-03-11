@@ -13,30 +13,29 @@ preview: images/helveston.png
 knitr::opts_chunk$set(echo = FALSE)
 
 source(file.path("R", "functions.R"))
-cites <- get_cites()
 ```
 
 <center>
-Citations: `r cites$citations` | h-index: `r cites$hindex` | i10-index: `r cites$i10index`
+`r gscholar_stats("https://scholar.google.com/citations?user=DY2D56IAAAAJ")`
 </center>
 <aside>Source: Google Scholar</aside>
 
 <center>
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "ai ai-google-scholar",
     text = "Google Scholar",
-    url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ",
-    icon = "ai ai-google-scholar"
+    url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
 )
-make_link_button(
+link_button(
+    icon = "ai ai-orcid",
     text = "ORCID",
-    url  = "https://orcid.org/0000-0002-2657-9191",
-    icon = "ai ai-orcid"
+    url  = "https://orcid.org/0000-0002-2657-9191"
 )
-make_link_button(
+link_button(
+    icon = "ai ai-researchgate",
     text = "Research Gate",
-    url  = "https://www.researchgate.net/profile/John_Helveston",
-    icon = "ai ai-researchgate"
+    url  = "https://www.researchgate.net/profile/John_Helveston"
 )
 ```
 </center>
@@ -50,15 +49,15 @@ Roberson, Laura A. & **Helveston, John P.** (2020) "Electric vehicle adoption: c
 `r make_doi("10.1088/1748-9326/aba715")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "https://iopscience.iop.org/article/10.1088/1748-9326/aba715/pdf",
-    icon = "fa fa-file-pdf"
+    url  = "https://iopscience.iop.org/article/10.1088/1748-9326/aba715/pdf"
 )
-make_link_button(
+link_button(
+    icon = "fab fa-github",
     text = "Code & Data",
-    url  = "https://zenodo.org/badge/latestdoi/247706381",
-    icon = "fab fa-github"
+    url  = "https://zenodo.org/badge/latestdoi/247706381"
 )
 ```
 
@@ -66,10 +65,10 @@ make_link_button(
 `r make_doi("10.1126/science.aaz1014")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "https://science.sciencemag.org/content/sci/366/6467/794.full.pdf?ijkey=BpsTMIIAzoEgE&keytype=ref&siteid=sci",
-    icon = "fa fa-file-pdf"
+    url  = "https://science.sciencemag.org/content/sci/366/6467/794.full.pdf?ijkey=BpsTMIIAzoEgE&keytype=ref&siteid=sci"
 )
 ```
 
@@ -77,12 +76,12 @@ make_link_button(
 `r make_doi("10.1016/j.respol.2018.08.006")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20Helveston%20et%20al%20-%20Institutional%20Complementarities%20-%20Research%20Policy.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20Helveston%20et%20al%20-%20Institutional%20Complementarities%20-%20Research%20Policy.pdf"
 )
-make_link_button(
+link_button(
     text = "SSRN",
     url  = "http://ssrn.com/abstract=2817052"
 )
@@ -92,10 +91,10 @@ make_link_button(
 `r make_doi("10.1088/1748-9326/ab2bd2")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "https://iopscience.iop.org/article/10.1088/1748-9326/ab2bd2/pdf",
-    icon = "fa fa-file-pdf"
+    url  = "https://iopscience.iop.org/article/10.1088/1748-9326/ab2bd2/pdf"
 )
 ```
 
@@ -103,15 +102,15 @@ make_link_button(
 `r make_doi("10.1016/j.trb.2018.01.010")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2018%20-%20Helveston%20et%20al%20-%20Pooling%20Stated%20and%20Revealed%20Preference%20Data.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2018%20-%20Helveston%20et%20al%20-%20Pooling%20Stated%20and%20Revealed%20Preference%20Data.pdf"
 )
-make_link_button(
+link_button(
+    icon = "ai ai-researchgate",
     text = "Research Gate",
-    url  = "https://www.researchgate.net/publication/323491265_Pooling_stated_and_revealed_preference_data_in_the_presence_of_RP_endogeneity",
-    icon = "ai ai-researchgate"
+    url  = "https://www.researchgate.net/publication/323491265_Pooling_stated_and_revealed_preference_data_in_the_presence_of_RP_endogeneity"
 )
 ```
 
@@ -119,20 +118,21 @@ make_link_button(
 `r make_doi("10.1016/j.tra.2015.01.002")`
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2015%20-%20Helveston%20et%20al%20-%20Will%20Subsidies%20Drive%20Electric%20Vehicle%20Adoption%20Measuring%20Consumer%20Preferences%20in%20the%20U.S.%20and%20China.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2015%20-%20Helveston%20et%20al%20-%20Will%20Subsidies%20Drive%20Electric%20Vehicle%20Adoption%20Measuring%20Consumer%20Preferences%20in%20the%20U.S.%20and%20China.pdf"
 )
-make_link_button(
+link_button(
+    icon = "fab fa-github",
     text = "Code & Data",
-    url  = "https://zenodo.org/badge/latestdoi/308370580",
-    icon = "fab fa-github"
+    url  = "https://zenodo.org/badge/latestdoi/308370580"
 )
-make_link_button(
+link_button(
+    icon = "ai ai-researchgate",
     text = "Research Gate",
-    url  = "https://www.researchgate.net/publication/272297857_Will_subsidies_drive_electric_vehicle_adoption_Measuring_consumer_preferences_in_the_US_and_China?ev=prf_high",
-    icon = "ai ai-researchgate"
+    url  = "https://www.researchgate.net/publication/272297857_Will_subsidies_drive_electric_vehicle_adoption_Measuring_consumer_preferences_in_the_US_and_China?ev=prf_high"
+
 )
 ```
 
@@ -144,30 +144,30 @@ Liang, Z., Li, D., Fu, X., Beltekian, D., **Helveston, J.P.** (2018) "The Co-evo
 **Helveston, John P.**, Wang, Y., Karplus, V. J., & Fuchs, E.R. (2016) "Up, Down, and Sideways: Innovation in China and the Case of Plug-in Electric Vehicles." _Academy of Management Annual Meeting_. Anaheim, CA. Aug. 5.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "Slides",
-    url  = "http://www.box.jhelvy.com/slides/2016-AOM.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/slides/2016-AOM.pdf"
 )
 ```
 
 **Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S.and China." _Academy of Management Annual Meeting_. Philadelphia, PA. Aug. 5.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "Slides",
-    url  = "http://www.box.jhelvy.com/slides/2014-AOM.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/slides/2014-AOM.pdf"
 )
 ```
 
 **Helveston, John P.**, Liu, Y., Feit, E.M., Fuchs, E.R., Klampfl, E., & Michalek, J.J. (2014) "Will Subsidies Drive Electric Vehicle Adoption? Measuring Consumer Preferences in the U.S. and China." _National Academies Transportation Research Board Annual Meeting_. Washington, D.C. Jan. 13.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "Slides",
-    url  = "http://www.box.jhelvy.com/slides/2014-TRB.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/slides/2014-TRB.pdf"
 )
 ```
 
@@ -176,25 +176,25 @@ make_link_button(
 **Helveston, John P.** "Why the US Trails the World in Electric Vehicles," _Issues in Science and Technology_ 37, no. 2 (Winter 2021).
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "https://issues.org/china-norway-ev-tesla/",
-    icon = "fas fa-external-link-alt"
+    url  = "https://issues.org/china-norway-ev-tesla/"
 )
 ```
 
 **Helveston, John P.** "Perspective: Navigating an Uncertain Future for US Roads," _Issues in Science and Technology_ 34, no. 1 (Fall 2017).
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2017%20-%20Helveston%20-%20Navigating%20an%20Uncertain%20Future%20for%20US%20Roads%20(Fall%202017%20IST).pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2017%20-%20Helveston%20-%20Navigating%20an%20Uncertain%20Future%20for%20US%20Roads%20(Fall%202017%20IST).pdf"
 )
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "http://issues.org/34-1/perspective-navigating-an-uncertain-future-for-us-roads/",
-    icon = "fas fa-external-link-alt"
+    url  = "http://issues.org/34-1/perspective-navigating-an-uncertain-future-for-us-roads/"
 )
 ```
 
@@ -203,30 +203,30 @@ make_link_button(
 Ren, Justin Z. & John P. Helveston (2019) "Measuring Electric Vehicle Infrastructure Among Cities: A Multi-Dimensional Approach." Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20MeltingIceBook_7.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20MeltingIceBook_7.pdf"
 )
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "http://www.bu.edu/ise/research/meltingtheice/",
-    icon = "fas fa-external-link-alt"
+    url  = "http://www.bu.edu/ise/research/meltingtheice/"
 )
 ```
 
 Hatch, Jennifer & John P. Helveston (2019) "Brookline, MA: A Small Town seeking to lead in a Broader EV Charging Network." Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O. Harvard University Press.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20MeltingIceBook_6.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2019%20-%20MeltingIceBook_6.pdf"
 )
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "http://www.bu.edu/ise/research/meltingtheice/",
-    icon = "fas fa-external-link-alt"
+    url  = "http://www.bu.edu/ise/research/meltingtheice/"
 )
 ```
 
@@ -241,20 +241,20 @@ Helveston, John P, Lujin Zhao, Saurav Pantha. "Are we there yet? The significanc
 **Helveston, John P.** (2016) "Development and Adoption of Plug-in Electric Vehicles in China: Markets, Policy, and Innovation," Ph.D. Dissertation, Carnegie Mellon University, Pittsburgh, PA.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fa fa-file-pdf",
     text = "PDF",
-    url  = "http://www.box.jhelvy.com/docs/papers/2016%20-%20Helveston%20-%20Dissertation%20-%20Development%20and%20Adoption%20of%20Plug-in%20Electric%20Vehicles%20in%20China.pdf",
-    icon = "fa fa-file-pdf"
+    url  = "http://www.box.jhelvy.com/docs/papers/2016%20-%20Helveston%20-%20Dissertation%20-%20Development%20and%20Adoption%20of%20Plug-in%20Electric%20Vehicles%20in%20China.pdf"
 )
-make_link_button(
+link_button(
+    icon = "ai ai-researchgate",
     text = "Research Gate",
-    url  = "https://www.researchgate.net/publication/315897350_Development_and_Adoption_of_Plug-in_Electric_Vehicles_in_China_Markets_Policy_and_Innovation",
-    icon = "ai ai-researchgate"
+    url  = "https://www.researchgate.net/publication/315897350_Development_and_Adoption_of_Plug-in_Electric_Vehicles_in_China_Markets_Policy_and_Innovation"
 )
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "CMU Repository",
-    url  = "https://kilthub.cmu.edu/articles/Development_and_Adoption_of_Plug-in_Electric_Vehicles_in_China_Markets_Policy_and_Innovation/6715850",
-    icon = "fas fa-external-link-alt"
+    url  = "https://kilthub.cmu.edu/articles/Development_and_Adoption_of_Plug-in_Electric_Vehicles_in_China_Markets_Policy_and_Innovation/6715850"
 )
 ```
 
@@ -263,30 +263,30 @@ make_link_button(
 Podcast: GWU Professor **John Helveston** on EVs in China, _The Future Car: A Siemens Podcast_, May 13, 2019.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Listen",
-    url  = "https://shows.pippa.io/the-future-car-a-siemens-podcast/episodes/john-helveston",
-    icon = "fas fa-external-link-alt"
+    url  = "https://shows.pippa.io/the-future-car-a-siemens-podcast/episodes/john-helveston"
 )
 ```
 
 **Helveston, John P.** (2019) "China’s looser rules may usher in a new era for EV and AV companies," _Axios_. February 1, 2019.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "https://www.axios.com/chinas-looser-rules-may-usher-in-a-new-era-for-ev-and-av-companies-2ad9f9c2-2b0e-46c6-9b58-87f409159fff.html",
-    icon = "fas fa-external-link-alt"
+    url  = "https://www.axios.com/chinas-looser-rules-may-usher-in-a-new-era-for-ev-and-av-companies-2ad9f9c2-2b0e-46c6-9b58-87f409159fff.html"
 )
 ```
 
 Hatch, Jennifer & **John P. Helveston**. "Will Autonomous Vehicles be Electric?" _Institute for Sustainable Energy_. August 8, 2018.
 
 ```{r, echo=FALSE}
-make_link_button(
+link_button(
+    icon = "fas fa-external-link-alt",
     text = "Open in new tab",
-    url  = "https://www.bu.edu/ise/2018/08/27/will-autonomous-vehicles-be-electric/",
-    icon = "fas fa-external-link-alt"
+    url  = "https://www.bu.edu/ise/2018/08/27/will-autonomous-vehicles-be-electric/"
 )
 ```
 

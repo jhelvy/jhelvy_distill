@@ -13,60 +13,77 @@ create_footer <- function() {
   <script src="js/external-link.js"></script>'
   ))
 
-  fileConn <- file("_footer.html")
-  writeLines(footer, fileConn)
-  close(fileConn)
-
+  save_raw(footer, "_footer.html")
 }
 
-# Function for generating the html used to create a two-column layout
-# with a thumbnail image, a title with an optional link, and some text:
-#
-# |       | title
-# | image | text
-# |       | subtext (smaller font than text)
-#
-# See example on my teaching page: https://jhelvy.github.io/teaching
+save_raw <- function(text, path) {
+    fileConn <- file(path)
+    writeLines(text, fileConn)
+    close(fileConn)
+}
 
-make_title_card <- function(
+# Generates html used to create a paragraph of text with an image
+# floated to the left or right. Pass markdown syntax as a string
+# inside the `title` or `text` arguments.
+#
+# See examples on my "lab" and "teaching" pages:
+# https://jhelvy.github.io/lab
+# https://jhelvy.github.io/teaching
+
+image_float_layout <- function(
   title = NULL,
   text = NULL,
-  subtext = NULL,
-  url = NULL,
-  image_src = NULL,
-  image_width = 120
+  src = NULL,
+  width = NULL,
+  height = NULL,
+  float = "left",
+  margin = "0 15px 0 0"
 ) {
+  return(div(
+    float_image(src, width, height, float, margin),
+    markdown_to_html(title),
+    markdown_to_html(text)
+  ))
+}
 
-  if (is.null(url)) {
-    html <- htmltools::HTML(paste0(
-      '<div>
-          <img src="', image_src, '" style="float:left; width:', image_width,
-      'px; margin: 0 15px 0 0">',
-          '<h3 style="margin-bottom: 5px;">', title, '</h3>',
-          '<p style="margin-bottom: 5px;">',  text, '</p>',
-          '<span style="font-size:0.8rem;">', subtext, '</span>',
-      '</div>'
-    ))
-  } else {
-    html <- htmltools::HTML(paste0(
-      '<div>
-          <img src="', image_src, '" style="float:left; width:', image_width,
-      'px; margin: 0 15px 0 0">',
-          '<h3 style="margin-bottom: 5px;"><a href=', url, '>', title, '</a></h3>',
-          '<p style="margin-bottom: 5px;">',  text, '</p>',
-          '<span style="font-size:0.8rem;">', subtext, '</span>',
-      '</div>'
-    ))
+markdown_to_html <- function(text) {
+  if (is.null(text)) { return(text) }
+  return(HTML(markdown::renderMarkdown(text = text)))
+}
+
+float_image <- function(
+  src = NULL,
+  width = NULL,
+  height = NULL,
+  float = "left",
+  margin = "0 15px 0 0"
+) {
+  style <- get_style(width, height, float, margin)
+  return(img(src = src, style = style))
+}
+
+get_style <- function(
+  width = NULL,
+  height = NULL,
+  float = "left",
+  margin = "0 15px 0 0"
+) {
+  if (!is.null(width)) {
+    width <- paste0("width: ", width, "px; ")
   }
-
-  return(html)
+  if (!is.null(height)) {
+    height <- paste0("height: ", height, "px; ")
+  }
+  float <- paste0("float:", float, "; ")
+  margin <- paste0("margin:", margin, ";")
+  return(trimws(paste0(width, height, float, margin)))
 }
 
 # Creates the html to make a button to an external link
-make_link_button <- function(
+link_button <- function(
+  icon = NULL,
   text = NULL,
-  url = NULL,
-  icon = NULL
+  url = NULL
 ) {
 
   if (!is.null(icon)) {
@@ -82,8 +99,16 @@ make_doi <- function(doi) {
   return(paste0('DOI: [', doi, '](https://doi.org/', doi, ')'))
 }
 
-get_cites <- function() {
-  url <- "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
+gscholar_stats <- function(url) {
+  cites <- get_cites(url)
+  return(paste(
+    'Citations:', cites$citations, '|',
+    'h-index:',   cites$hindex, '|',
+    'i10-index:', cites$i10index
+  ))
+}
+
+get_cites <- function(url) {
   html <- xml2::read_html(url)
   node <- rvest::html_nodes(html, xpath='//*[@id="gsc_rsb_st"]')
   cites_df <- rvest::html_table(node)[[1]]

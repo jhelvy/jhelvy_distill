@@ -162,19 +162,20 @@ d-article a:hover, a:focus {
 .link-button:hover {
     background-color: var(--color-secondary);
     color: var(--color-white);
-    padding: 2px 5px;
-    border-radius: 5px; /* Rounded edges */
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    display: inline-block;
-    font-size: var(--body-size, 1.06rem);
-    margin: 4px 2px;
-    cursor: pointer;
 }
 
 /* Footer */
 
 .distill-site-footer p {
     margin-bottom: 0em;
+}
+
+/* Reduce spacing between titles and text */
+
+d-article h3 {
+  margin-bottom: 5px;
+}
+
+d-article p {
+  margin-bottom: 5px;
 }
