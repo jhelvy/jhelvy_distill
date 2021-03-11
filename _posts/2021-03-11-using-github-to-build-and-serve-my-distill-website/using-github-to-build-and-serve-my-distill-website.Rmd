@@ -1,0 +1,20 @@
+---
+title: "Using GitHub to build and serve my distill website"
+description: |
+  How I use Github Actions to rebuild my site on every commit.
+author:
+  - name: John Paul Helveston
+    url: https://gibhub.com/jhelvy
+date: 03-11-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This website (as well as those I made for my classes I teach at GWU) is hosted on GitHub. 
+
