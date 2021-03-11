@@ -148,15 +148,9 @@ d-article a:hover, a:focus {
 .link-button {
     background-color: var(--color-primary);
     color: var(--color-white);
-    padding: 2px 5px;
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
     border-radius: 5px; /* Rounded edges */
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    display: inline-block;
-    font-size: var(--body-size, 1.06rem);
-    margin: 4px 2px;
-    cursor: pointer;
 }
 
 .link-button:hover {
@@ -170,12 +164,28 @@ d-article a:hover, a:focus {
     margin-bottom: 0em;
 }
 
-/* Reduce spacing between titles and text */
+/* Pubs page */
 
-d-article h3 {
-  margin-bottom: 5px;
+.pub {
+  margin: 0 0 15px 0;
 }
 
-d-article p {
-  margin-bottom: 5px;
+/* PDF embedded on CV page */
+
+.embed-container {
+    position: relative;
+    padding-bottom: 129%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

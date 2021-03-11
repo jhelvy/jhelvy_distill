@@ -9,6 +9,16 @@ base_url: https://jhelvy.github.io/
 preview: images/helveston.png
 ---
 
+<!-- Reduce spacing between titles and text -->
+<style>
+d-article h3 {
+  margin-bottom: 5px;
+}
+d-article p {
+  margin-bottom: 5px;
+}
+</style>
+
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))

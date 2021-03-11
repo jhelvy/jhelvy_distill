@@ -1,18 +1,17 @@
 create_footer <- function() {
 
   footer <- htmltools::HTML(paste0(
-  '
-  © John Paul Helveston 2021\n
-  <i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, <a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>, and the <a href="https://cran.r-project.org/"><i class="fab fa-r-project"></i></a><a href="https://github.com/rstudio/distill"> distill</a> package.\n
-  <span style="font-size:0.8rem;">Last updated on ',
-  format(Sys.Date(), format="%B %d, %Y"), '</span>
-
-  <!-- Add function to open links to external links in new tab, from: -->
-  <!-- https://yihui.name/en/2018/09/target-blank/ -->
-
-  <script src="js/external-link.js"></script>'
+  '© John Paul Helveston 2021\n',
+  '<i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>,',
+  '<a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>,',
+  'and the <a href="https://cran.r-project.org/"><i class="fab fa-r-project">',
+  '</i></a><a href="https://github.com/rstudio/distill"> distill</a> package.',
+  '\n<span style="font-size:0.8rem;">Last updated on ',
+  format(Sys.Date(), format="%B %d, %Y"), '</span>\n\n',
+  '<!-- Add function to open links to external links in new tab, from: -->',
+  '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
+  '<script src="js/external-link.js"></script>'
   ))
-
   save_raw(footer, "_footer.html")
 }
 
@@ -39,7 +38,7 @@ image_float_layout <- function(
   float = "left",
   margin = "0 15px 0 0"
 ) {
-  return(div(
+  return(htmltools::div(
     float_image(src, width, height, float, margin),
     markdown_to_html(title),
     markdown_to_html(text)
@@ -48,7 +47,7 @@ image_float_layout <- function(
 
 markdown_to_html <- function(text) {
   if (is.null(text)) { return(text) }
-  return(HTML(markdown::renderMarkdown(text = text)))
+  return(htmltools::HTML(markdown::renderMarkdown(text = text)))
 }
 
 float_image <- function(
@@ -58,11 +57,11 @@ float_image <- function(
   float = "left",
   margin = "0 15px 0 0"
 ) {
-  style <- get_style(width, height, float, margin)
-  return(img(src = src, style = style))
+  style <- get_img_style(width, height, float, margin)
+  return(htmltools::img(src = src, style = style))
 }
 
-get_style <- function(
+get_img_style <- function(
   width = NULL,
   height = NULL,
   float = "left",
@@ -85,18 +84,15 @@ link_button <- function(
   text = NULL,
   url = NULL
 ) {
-
   if (!is.null(icon)) {
-    text <- paste0('<i class="', icon, '"></i> ', text)
+    text <- htmltools::HTML(paste0('<i class="', icon, '"></i> ', text))
   }
-  html <- htmltools::HTML(paste0(
-    '<a href="', url, '" class="link-button">', text, '</a>'
-  ))
-  return(html)
+  return(htmltools::a(href = url, text, class = "link-button"))
 }
 
-make_doi <- function(doi) {
-  return(paste0('DOI: [', doi, '](https://doi.org/', doi, ')'))
+doi <- function(doi) {
+  url <- paste0('https://doi.org/', doi)
+  return(paste0('DOI: ', htmltools::a(href = url, doi)))
 }
 
 gscholar_stats <- function(url) {
