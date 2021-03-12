@@ -2,7 +2,7 @@
 title: "Teaching"
 output:
   distill::distill_article:
-    toc: true
+    toc: false
 twitter:
   creator: "@JohnHelveston"
 base_url: https://jhelvy.github.io/
@@ -12,64 +12,48 @@ preview: images/helveston.png
 <!-- Reduce spacing between titles and text -->
 <style>
 d-article h3 {
-  margin-bottom: 5px;
+  margin: 5px 0 0 0;
 }
 d-article p {
-  margin-bottom: 5px;
+  margin: 5px 0 0 0;
 }
 </style>
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
-image_width <- 120
 ```
-
-## 2020–21
 
 ```{r, echo=FALSE}
 image_float_layout(
     src   = "images/eda_hex_sticker_square.png",
-    width = image_width,
+    width = 150,
     float = "left",
-    title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/2021-Spring/)",
-    text  = 'Spring 2021 | George Washington University\n\n<span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span>'
-)
-
-image_float_layout(
-    src   = "images/p4a_hex_sticker_square.png",
-    width = image_width,
-    float = "left",
-    title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/2020-Fall/)",
-    text  = 'Fall 2020 | George Washington University\n\n<span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span>'
+    title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)",
+    text  = 'Foundations in exploring and visualizing data in R.\n\n**Semesters Taught**:\n\n[Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)\n\n[Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)'
 )
 ```
 
-## 2019–20
+`r htmltools::br()`
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/eda_hex_sticker_square.png",
-    width = image_width,
-    float = "left",
-    title = "### [EMSE 4197: Exploratory Data Analysis](https://eda.seas.gwu.edu/2020-Spring/)",
-    text  = 'Spring 2020 | George Washington University\n\n<span style="font-size:0.8rem;">Foundations in exploring and visualizing data in R.</span>'
-)
-
-image_float_layout(
     src   = "images/p4a_hex_sticker_square.png",
-    width = image_width,
+    width = 150,
     float = "left",
-    title = "### [EMSE 6574: Programming for Analytics](https://p4a.seas.gwu.edu/2019-Fall/)",
-    text  = 'Fall 2019 | George Washington University\n\n<span style="font-size:0.8rem;">Foundations in programming and computational thinking for data analytics in R.</span>'
+    title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)",
+    text  = 'Programming and computational thinking for data analytics in R.\n\n**Semesters Taught**:\n\n[Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)\n\n[Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)'
 )
 ```
 
-## 2018–19
+`r htmltools::br()`
 
 ```{r, echo=FALSE}
 image_float_layout(
+    src   = "images/madd_hex_sticker_square.png",
+    width = 150,
+    float = "left",
     title = "### EMSE 6035: Marketing of Technology",
-    text  = 'Spring 2019 | George Washington University\n\n<span style="font-size:0.8rem;">Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.</span>'
+    text  = 'Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.\n\n**Semesters Taught**:\n\nSpring 2019'
 )
 ```

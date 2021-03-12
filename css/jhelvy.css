@@ -91,7 +91,7 @@ d-appendix {
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below */
 
-body {
+html body {
     background-color: var(--color-background);
 }
 
