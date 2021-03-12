@@ -1,5 +1,6 @@
 ---
 title: "Technology Change Lab"
+description: My researcher addresses market and policy factors that shape technological change, with a focus on transitioning to environmentally sustainable and energy-saving technologies.
 output:
   distill::distill_article:
     toc: true
@@ -17,6 +18,9 @@ d-article h3 {
 d-article p {
   margin-bottom: 5px;
 }
+d-article li {
+  margin-bottom: 0px;
+}
 </style>
 
 ```{r setup, echo=FALSE}
@@ -27,7 +31,31 @@ library(htmltools)
 image_width <- 150
 ```
 
-## Faculty
+## Topics
+
+- **Market Analytics for Decision Making**: Measure and model consumer preferences to assess policy and product design and simulate consumer choice behavior.
+- **Sustainable Technology Change**: Study how consumers, firms, markets, and policy affect the nature & pace of transitioning to sustainable energy and transportation technologies.
+- **Electric Vehicles & Sustainable Transportation Technologies**: Assess barriers and opportunities to accelerate the development & adoption of sustainable transportation technologies.
+- **U.S.-China Climate Relationship**: Study the critical relationship between the US and China in developing and mass producing low carbon energy technologies.
+
+## Affiliations 
+
+- [Institute for Sustainable Energy](https://www.bu.edu/ise/), Boston University
+- [Vehicle Electrification Group](https://www.cmu.edu/cit/veg/), Carnegie Mellon University 
+- [Center for Climate and Energy Decision Making](https://cedmcenter.org/), Carnegie Mellon University  
+- [China Automotive Energy Research Center](http://lce.tsinghua.edu.cn/en/index.asp), Tsinghua University
+- [Innovation Center for Energy and Transportation](http://www.icet.org.cn/)
+
+## Funding 
+
+- [National Science Foundation](http://www.nsf.gov/)
+- [Toyota Mobility Foundation](https://www.toyota.com/usa/community/grant-guidelines-applications/overview.html)
+- [Link Energy Foundation](http://www.linkenergy.org/)
+- [Ford Motor Company](http://corporate.ford.com/homepage.html)
+
+## People 
+
+### Faculty
 
 ```{r, echo=FALSE}
 image_float_layout(
@@ -39,7 +67,7 @@ image_float_layout(
 )
 ```
 
-## Ph.D. Students
+### Ph.D. Students
 
 ```{r, echo=FALSE}
 image_float_layout(
@@ -67,7 +95,7 @@ image_float_layout(
 )
 ```
 
-## Masters Students
+### Masters Students
 
 ```{r, echo=FALSE}
 image_float_layout(
@@ -79,7 +107,7 @@ image_float_layout(
 )
 ```
 
-## Undergraduate Students
+### Undergraduate Students
 
 ```{r, echo=FALSE}
 image_float_layout(
@@ -97,3 +125,34 @@ image_float_layout(
     text = "Helena is an undergraduate student from Marblehead, Massachusetts majoring in Systems Engineering and minoring in Sustainability at The George Washington University. In previous roles, she has worked for a small consulting firm, analyzed market research for a building materials start-up, and researched with a professor about climate change risks in the investment industry. Within Dr. Helveston's lab, she is researching electric vehicle (EV) sales forecasts over time from different organizations. She is seeking to better understand the uncertainty in these forecasts and trends over time, in relation to actual sales, and across different industries."
 )
 ```
+
+## Opportunities 
+
+### Ph.D. Students
+
+I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me, please send me an email with the following information:
+
+- Your CV.
+- A brief statement describing specific research topics you are interested in and why.
+- A brief summary of your prior research experience and skills.
+
+### Graduate Research Assistants
+
+Although currently I am not seeking a GRA for ongoing research projects, there is a good chance that I may have opportunities in the near future. If you are a masters student and would like to gain some research experience in my lab, please send me an email with the following information:
+
+- Your CV.
+- A brief statement of your research interests.
+- A brief summary of your prior research experience and skills.
+
+Candidates with the following skills / experience are particularly encouraged: webscraping, data cleaning, exploratory data analysis, life cycle assessment, simulation.
+
+### Undergraduate Research Assistants
+
+If you are an undergraduate student and would like to gain some research experience in my lab, don't hesitate to send me an email. I frequently have specific research tasks that make for great undergraduate research projects. If you are interested, please send me an email with the following information:
+
+- Your CV.
+- A brief statement describing specific research topics you are interested in and why.
+
+### Visitors
+
+I am happy to welcome visiting scholars and students to my lab. Although I do not have funding at the moment to sponsor visitors, I would be happy to host you if you can be funded by your own institutions or other sources. Please email me your CV and research plan for further discussions.

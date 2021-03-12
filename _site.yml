@@ -15,12 +15,8 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Research"
-      menu:
-        - text: "Publications"
-          href: publications.html
-        - text: "Lab"
-          href: lab.html
+    - text: "Lab"
+      href: lab.html
     - text: "Projects"
       href: projects.html
     - text: "Teaching"
