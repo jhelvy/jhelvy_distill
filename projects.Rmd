@@ -74,6 +74,8 @@ image_float_layout(
 )
 ```
 
+`r htmltools::br()`
+
 ```{r}
 image_float_layout(
     src   = "images/hex/xaringanBuilder.png",
@@ -84,6 +86,8 @@ image_float_layout(
 )
 ```
 
+`r htmltools::br()`
+
 ```{r}
 image_float_layout(
     src   = "images/hex/conjointTools.png",
@@ -91,5 +95,29 @@ image_float_layout(
     float = "left",
     title = "### [conjointTools](https://jhelvy.github.io/conjointTools/)",
     text  = 'An R package of tools for designing choice based conjoint survey experiments.'
+)
+```
+
+`r htmltools::br()`
+
+```{r}
+image_float_layout(
+    src   = "images/splitKBCompare.png",
+    width = 140,
+    float = "left",
+    title = "### [splitKBCompare](https://jhelvy.shinyapps.io/splitkbcompare/)",
+    text  = 'An interactive R Shiny app for comparing layouts of different split mechanical keyboards built for the [ergonomic keyboard community](https://www.reddit.com/r/ErgoMechKeyboards/).'
+)
+```
+
+`r htmltools::br()`
+
+```{r}
+image_float_layout(
+    src   = "images/lexis.png",
+    width = 140,
+    float = "left",
+    title = "### [λέξις (lexis)](https://jhelvy.github.io/lexis/)",
+    text  = "A theme for [xaringan slides](https://github.com/yihui/xaringan). It has a light gray background and uses Fira Sans Condensed for headers, Inter for body text, and SFMono-Regular for mono text (i.e. code)."
 )
 ```
