@@ -30,7 +30,7 @@ source(file.path("R", "functions.R"))
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/p4a_hex_sticker_square.png",
+    src   = "images/hex/p4a.png",
     width = 140,
     float = "left",
     title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)",
@@ -49,7 +49,7 @@ image_float_layout(
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/eda_hex_sticker_square.png",
+    src   = "images/hex/eda.png",
     width = 140,
     float = "left",
     title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)",
@@ -68,7 +68,7 @@ image_float_layout(
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/madd_hex_sticker_square.png",
+    src   = "images/hex/madd.png",
     width = 140,
     float = "left",
     title = "### EMSE 6035: Marketing of Technology",

@@ -17,12 +17,12 @@ navbar:
       href: about.html
     - text: "Research"
       menu:
-        - text: "Highlights"
-          href: research-highlights.html
         - text: "Publications"
           href: publications.html
         - text: "Lab"
           href: lab.html
+    - text: "Projects"
+      href: projects.html
     - text: "Teaching"
       href: teaching.html
     - text: "Blog"
