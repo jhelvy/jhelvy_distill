@@ -1,5 +1,6 @@
 ---
 title: "Teaching"
+description: I teach undergraduate and graduate courses on data analysis in R in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University.
 output:
   distill::distill_article:
     toc: false
@@ -17,6 +18,9 @@ d-article h3 {
 d-article p {
   margin: 5px 0 0 0;
 }
+d-article li {
+  margin-bottom: 0;
+}
 </style>
 
 ```{r setup, echo=FALSE}
@@ -26,34 +30,54 @@ source(file.path("R", "functions.R"))
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/eda_hex_sticker_square.png",
-    width = 150,
+    src   = "images/p4a_hex_sticker_square.png",
+    width = 140,
     float = "left",
-    title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)",
-    text  = 'Foundations in exploring and visualizing data in R.\n\n**Semesters Taught**:\n\n[Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)\n\n[Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)'
+    title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)",
+    text  = 'Fundamentals of programming and computational thinking in R.'
 )
 ```
+
+<aside>
+**Semesters Taught**:
+
+- [Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)
+- [Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)
+</aside>
 
 `r htmltools::br()`
 
 ```{r, echo=FALSE}
 image_float_layout(
-    src   = "images/p4a_hex_sticker_square.png",
-    width = 150,
+    src   = "images/eda_hex_sticker_square.png",
+    width = 140,
     float = "left",
-    title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)",
-    text  = 'Programming and computational thinking for data analytics in R.\n\n**Semesters Taught**:\n\n[Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)\n\n[Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)'
+    title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)",
+    text  = 'Foundations in exploring and visualizing data in R.'
 )
 ```
+
+<aside>
+**Semesters Taught**:
+
+- [Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)
+- [Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)
+</aside>
 
 `r htmltools::br()`
 
 ```{r, echo=FALSE}
 image_float_layout(
     src   = "images/madd_hex_sticker_square.png",
-    width = 150,
+    width = 140,
     float = "left",
     title = "### EMSE 6035: Marketing of Technology",
-    text  = 'Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.\n\n**Semesters Taught**:\n\nSpring 2019'
+    text  = 'Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.'
 )
 ```
+
+<aside>
+**Semesters Taught**:
+
+- Spring 2019
+</aside>

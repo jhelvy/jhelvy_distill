@@ -21,6 +21,21 @@ save_raw <- function(text, path) {
     close(fileConn)
 }
 
+image_left_layout <- function(
+  title = NULL,
+  text = NULL,
+  src = NULL,
+  width = NULL,
+  height = NULL,
+  margin = "0 15px 0 0"
+) {
+  return(htmltools::div(
+    float_image(src, width, height, float, margin),
+    markdown_to_html(title),
+    markdown_to_html(text)
+  ))
+}
+
 # Generates html used to create a paragraph of text with an image
 # floated to the left or right. Pass markdown syntax as a string
 # inside the `title` or `text` arguments.
