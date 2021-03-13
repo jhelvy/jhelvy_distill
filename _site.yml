@@ -15,13 +15,15 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Publications"
+      href: publications.html
     - text: "Lab"
       href: lab.html
     - text: "Projects"
       href: projects.html
     - text: "Teaching"
       href: teaching.html
-    - text: "Blog"
+    - text: "Thoughts"
       href: blog.html
     - icon: ai ai-cv
       href: content/docs/Helveston_CV.pdf
