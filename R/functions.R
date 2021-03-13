@@ -1,18 +1,10 @@
 create_footer <- function() {
   footer <- htmltools::HTML(paste0(
-  '© 2021 John Paul Helveston ',
-  '<a href="https://github.com/jhelvy">',
-  '<i class="fab fa-github" aria-hidden="true"></i></a> ',
-  '<a href="https://twitter.com/JohnHelveston">',
-  '<i class="fab fa-twitter" aria-hidden="true"></i></a> ',
-  '<a href="https://www.linkedin.com/in/jhelvy/">',
-  '<i class="fab fa-linkedin" aria-hidden="true"></i></a> ',
-  '<a href="https://orcid.org/0000-0002-2657-9191">',
-  '<i class="ai ai-orcid" aria-hidden="true"></i></a> ',
-  '<a href="https://scholar.google.com/citations?user=DY2D56IAAAAJ">',
-  '<i class="ai ai-google-scholar" aria-hidden="true"></i></a> ',
-  '<a href="https://www.researchgate.net/profile/John_Helveston">',
-  '<i class="ai ai-researchgate" aria-hidden="true"></i></a>\n\n',
+  '© 2021 John Paul Helveston, ',
+  '<a href="https://creativecommons.org/licenses/by-sa/4.0/"> ',
+  'CC-BY-SA <i class="fab fa-creative-commons"></i>',
+  '<i class="fab fa-creative-commons-by"></i>',
+  '<i class="fab fa-creative-commons-sa"></i></a>\n\n',
   '<i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, ',
   '<a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>',
   ', and the <a href="https://cran.r-project.org/">',
@@ -126,4 +118,15 @@ get_cites <- function(url) {
   cites <- tidyr::spread(cites_df, category, All)
   names(cites) <- c('citations', 'hindex', 'i10index')
   return(cites)
+}
+
+# Masonry layout for projects page:
+# https://jhelvy.github.io/projects
+
+masonry_grid <- function() {
+
+}
+
+masonry_item <- function() {
+
 }
