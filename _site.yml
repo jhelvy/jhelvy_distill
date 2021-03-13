@@ -4,6 +4,7 @@ theme: css/jhelvy.css
 output_dir: _site
 description: |
   The personal website of John Paul Helveston
+base_url: https://jhelvy.github.io
 twitter:
   site: "@JohnHelveston"
 repository_url: https://github.com/jhelvy/jhelvy.github.io
