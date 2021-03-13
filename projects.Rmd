@@ -27,16 +27,16 @@ masonry_grid(
     url = "https://jhelvy.github.io/logitr/"
   ),
   masonry_item(
-    src = "images/hex/conjointTools.png",
-    title = "conjointTools",
-    description = 'An R package of tools for designing choice based conjoint survey experiments.',
-    url = "https://jhelvy.github.io/conjointTools/"
-  ),
-  masonry_item(
     src = "images/hex/xaringanBuilder-square.png",
     title = "xaringanBuilder",
     description = 'An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.',
     url = "https://jhelvy.github.io/xaringanBuilder/"
+  ),
+  masonry_item(
+    src = "images/hex/conjointTools.png",
+    title = "conjointTools",
+    description = 'An R package of tools for designing choice based conjoint survey experiments.',
+    url = "https://jhelvy.github.io/conjointTools/"
   ),
   masonry_item(
     src = "images/splitKbCompare.png",
@@ -49,6 +49,30 @@ masonry_grid(
     title = "λέξις (lexis)",
     description = 'A theme for xaringan slides with a light gray background, "Fira Sans Condensed" for headers, "Inter" for body text, and "SFMono-Regular" for mono text.',
     url = "https://jhelvy.github.io/lexis/"
+  ),
+  masonry_item(
+    src = "images/formr4conjoint.png",
+    title = "formr4conjoint",
+    description = 'A template for how to create a choice-based conjoint survey using the formr survey platform.',
+    url = "https://github.com/jhelvy/formr4conjoint"
+  ),
+  masonry_item(
+    src = "images/iris_rev2.jpg",
+    title = "Iris Rev 2 Build Log",
+    description = 'A build log of how I built my Iris Rev 2 keyboard.',
+    url = "https://github.com/jhelvy/iris-rev2"
+  ),
+  masonry_item(
+    src = "images/r4a.png",
+    title = "R for Analytics Primer",
+    description = 'A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.',
+    url = "https://jhelvy.github.io/r4aPrimer/"
+  ),
+  masonry_item(
+    src = "images/distillery.png",
+    title = "The Distillery",
+    description = 'A distill website showcasing other distill websites and blogs.',
+    url = "https://jhelvy.github.io/distillery/"
   )
 )
 ```
