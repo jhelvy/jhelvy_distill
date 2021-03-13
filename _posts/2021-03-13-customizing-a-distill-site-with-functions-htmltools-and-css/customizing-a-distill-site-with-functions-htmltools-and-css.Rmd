@@ -1,0 +1,18 @@
+---
+title: "Customizing a distill site with R functions, {htmltools}, and CSS"
+description: |
+  An overview of how I added some of the features on this site.
+author:
+  - name: John Paul Helveston
+    url: https://jhelvy.github.io/
+date: 03-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
