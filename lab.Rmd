@@ -1,27 +1,17 @@
 ---
 title: "Technology Change Lab"
-description: My researcher addresses market and policy factors that shape technological change, with a focus on transitioning to environmentally sustainable and energy-saving technologies.
+description: I study relationships between technological change and consumers, firms, markets, and policy, with a goal of accelerating  transitions to environmentally sustainable and energy-saving technologies.
 output:
   distill::distill_article:
     toc: true
+    css: 
+      - css/jhelvy.css
+      - css/small-spacing.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://jhelvy.github.io/
 preview: images/helveston.png
 ---
-
-<!-- Reduce spacing between titles and text -->
-<style>
-d-article h3 {
-  margin-bottom: 5px;
-}
-d-article p {
-  margin-bottom: 5px;
-}
-d-article li {
-  margin-bottom: 0px;
-}
-</style>
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -33,27 +23,27 @@ image_width <- 150
 
 ## Topics
 
+- **Technology Change**: Study how consumers, firms, markets, and policy affect the nature & pace of transitioning to new technologies.
 - **Market Analytics for Decision Making**: Measure and model consumer preferences to assess policy and product design and simulate consumer choice behavior.
-- **Sustainable Technology Change**: Study how consumers, firms, markets, and policy affect the nature & pace of transitioning to sustainable energy and transportation technologies.
 - **Electric Vehicles & Sustainable Transportation Technologies**: Assess barriers and opportunities to accelerate the development & adoption of sustainable transportation technologies.
-- **U.S.-China Climate Relationship**: Study the critical relationship between the US and China in developing and mass producing low carbon energy technologies.
+- **U.S.-China Climate Relationship**: Study the critical relationship between the U.S. and China in developing and mass producing low carbon energy technologies.
 
-## Affiliations 
+## Affiliations
 
 - [Institute for Sustainable Energy](https://www.bu.edu/ise/), Boston University
-- [Vehicle Electrification Group](https://www.cmu.edu/cit/veg/), Carnegie Mellon University 
-- [Center for Climate and Energy Decision Making](https://cedmcenter.org/), Carnegie Mellon University  
+- [Vehicle Electrification Group](https://www.cmu.edu/cit/veg/), Carnegie Mellon University
+- [Center for Climate and Energy Decision Making](https://cedmcenter.org/), Carnegie Mellon University
 - [China Automotive Energy Research Center](http://lce.tsinghua.edu.cn/en/index.asp), Tsinghua University
 - [Innovation Center for Energy and Transportation](http://www.icet.org.cn/)
 
-## Funding 
+## Funding
 
 - [National Science Foundation](http://www.nsf.gov/)
 - [Toyota Mobility Foundation](https://www.toyota.com/usa/community/grant-guidelines-applications/overview.html)
 - [Link Energy Foundation](http://www.linkenergy.org/)
 - [Ford Motor Company](http://corporate.ford.com/homepage.html)
 
-## People 
+## People
 
 ### Faculty
 
@@ -126,7 +116,7 @@ image_float_layout(
 )
 ```
 
-## Opportunities 
+## Opportunities
 
 ### Ph.D. Students
 

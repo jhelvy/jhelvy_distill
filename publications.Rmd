@@ -3,18 +3,14 @@ title: "Publications"
 output:
   distill::distill_article:
     toc: true
+    css: 
+      - css/jhelvy.css
+      - css/small-spacing.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://jhelvy.github.io/
 preview: images/helveston.png
 ---
-
-<!-- Reduce spacing between titles and text -->
-<style>
-d-article p {
-  margin: 5px 0 0 0;
-}
-</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -48,10 +44,13 @@ link_button(
 
 ## Publications in Peer Reviewed Journals
 
+<br>`r haiku("**Haiku Summaries**")`
+
 <div class="pub">
 Feinberg, F., Bruch, E., Braun, M., Hemenway Falk, B., Fefferman, N., Feit, E.M., **Helveston, J.P.**, Larremore, D., McShane, B.B., Patania, A., & Small, M.L. (2020). "Choices in networks: a research framework." _Marketing Letters_. 31(4), 349-359.
 `r doi("10.1007/s11002-020-09541-9")`
 </div>
+`r haiku("_We live in networks;<br>Choice modelers should include<br>them in their models_")`
 
 <div class="pub">
 Roberson, Laura A. & **Helveston, John P.** (2020) "Electric vehicle adoption: can short experiences lead to big change?," _Environmental Research Letters_. 15(0940c3).
@@ -69,6 +68,7 @@ link_button(
 )
 ```
 </div>
+`r haiku("_Some don't like EVs<br>Until they ride in one, and<br>Then they change their minds_")`
 
 <div class="pub">
 **Helveston, John P.** & Jonas Nahm (2019) "China's key role in scaling low-carbon energy technologies," _Science_, 366(6467), pg. 794-796.
@@ -81,9 +81,10 @@ link_button(
 )
 ```
 </div>
+`r haiku("_To meet climate goals<br>We must work with China to<br>Scale up more green tech_")`
 
 <div class="pub">
-**Helveston, John P.**, Yanmin Wang, Valerie J. Karplus, & Erica R.H. Fuchs (2019) "Institutional Complementarities: The Origins of Experimentation in China’s Plug-in Electric Vehicle Industry," _Research Policy_, 48(1), pg. 206-222.
+**Helveston, John P.**, Yanmin Wang, Valerie J. Karplus, & Erica R.H. Fuchs (2019) "Institutional Complementarities: The Origins of Experimentation in China's Plug-in Electric Vehicle Industry," _Research Policy_, 48(1), pg. 206-222.
 `r doi("10.1016/j.respol.2018.08.006")`
 ```{r, echo=FALSE}
 link_button(
@@ -97,6 +98,7 @@ link_button(
 )
 ```
 </div>
+`r haiku("_Institutions can<br>Dramatically affect how<br>Industries emerge_")`
 
 <div class="pub">
 **Helveston, John P.**, Stephanie Seki, Jihoon Min, Evelyn Fairman, Arthur A. Boni, Jeremy J. Michalek, & Ines Azevedo (2019) "Choice at the Pump: Measuring Preferences for Lower-Carbon Combustion Fuels," _Environmental Research Letters_. 14(8)
@@ -109,6 +111,7 @@ link_button(
 )
 ```
 </div>
+`r haiku("_Drivers on average<br>Are willing to pay more for<br>Lower carbon fuels_")`
 
 <div class="pub">
 **Helveston, John P.**, Elea M. Feit, & Jeremy J. Michalek (2018) "Pooling Stated and Revealed Preference Data in the Presence of Endogeneity," _Transportation Research Part B: Methodological_, 109, pg. 70-89.
@@ -126,6 +129,7 @@ link_button(
 )
 ```
 </div>
+`r haiku("_RP data with<br>Endogeneity may<br>Make things worse when pooled_")`
 
 <div class="pub">
 **Helveston, John P.**, Yimin Liu, Elea M. Feit, Erica R.H. Fuchs, Erica Klampﬂ, & Jeremy J. Michalek (2015) "Will subsidies drive electric vehicle adoption? Measuring consumer preferences in the U.S. and China". _Transportation Research Part A: Policy and Practice_, 73, 96–112.
@@ -149,6 +153,7 @@ link_button(
 )
 ```
 </div>
+`r haiku("_Full electric cars:<br>Chinese seem to like them more<br>Than Americans_")`
 
 ## Full-Length Peer-Reviewed Conference Publications
 

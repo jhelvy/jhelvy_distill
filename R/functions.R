@@ -1,6 +1,6 @@
 create_footer <- function() {
   footer <- htmltools::HTML(paste0(
-  '© 2021 John Paul Helveston, ',
+  '© 2021 John Paul Helveston ',
   '<a href="https://creativecommons.org/licenses/by-sa/4.0/"> ',
   'CC-BY-SA <i class="fab fa-creative-commons"></i>',
   '<i class="fab fa-creative-commons-by"></i>',
@@ -123,10 +123,40 @@ get_cites <- function(url) {
 # Masonry layout for projects page:
 # https://jhelvy.github.io/projects
 
-masonry_grid <- function() {
-
+masonry_grid <- function(...) {
+  return(htmltools::div(
+    class = "masonry-wrapper",
+    htmltools::div(class = "masonry", ...)
+  ))
 }
 
-masonry_item <- function() {
+masonry_item <- function(
+  src = NULL,
+  title = NULL,
+  description = NULL,
+  url = NULL
+) {
+  image <- htmltools::img(src = src)
+  if (!is.null(url)) {
+    image <- htmltools::a(
+      href = url,
+      class = "card-hover",
+      htmltools::img(src = src))
+  }
+  return(htmltools::div(class = "masonry-item",
+    htmltools::div(
+      class = "masonry-content",
+      image,
+      htmltools::h3(class = "masonry-title", title),
+      htmltools::p(class = "masonry-description", description)
+    )
+  ))
+}
 
+haiku <- function(text) {
+  return(htmltools::HTML(paste0(
+    '<aside><center>',
+    markdown_to_html(text),
+    '</center></aside>'
+  )))
 }

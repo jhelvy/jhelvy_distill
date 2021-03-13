@@ -15,7 +15,7 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Publications"
+    - text: "Pubs"
       href: publications.html
     - text: "Lab"
       href: lab.html
@@ -23,7 +23,7 @@ navbar:
       href: projects.html
     - text: "Teaching"
       href: teaching.html
-    - text: "Thoughts"
+    - text: "Blog"
       href: blog.html
     - icon: ai ai-cv
       href: content/docs/Helveston_CV.pdf
