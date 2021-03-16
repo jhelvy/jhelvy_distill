@@ -27,16 +27,28 @@ masonry_grid(
     url = "https://jhelvy.github.io/logitr/"
   ),
   masonry_item(
-    src = "images/hex/xaringanBuilder-square.png",
-    title = "xaringanBuilder",
-    description = 'An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.',
-    url = "https://jhelvy.github.io/xaringanBuilder/"
+    src = "images/gwcoders.png",
+    title = "GW Coders",
+    description = 'A study group that brings together students and faculty to apply computational and data analytics skills in research.',
+    url = "https://gwcoders.github.io/"
   ),
   masonry_item(
     src = "images/hex/conjointTools.png",
     title = "conjointTools",
     description = 'An R package of tools for designing choice based conjoint survey experiments.',
     url = "https://jhelvy.github.io/conjointTools/"
+  ),
+  masonry_item(
+    src = "images/hex/xaringanBuilder-square.png",
+    title = "xaringanBuilder",
+    description = 'An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.',
+    url = "https://jhelvy.github.io/xaringanBuilder/"
+  ),
+  masonry_item(
+    src = "images/iris_rev2.jpg",
+    title = "Iris Rev 2 Build Log",
+    description = 'A build log of how I built my Iris Rev 2 keyboard.',
+    url = "https://github.com/jhelvy/iris-rev2"
   ),
   masonry_item(
     src = "images/splitKbCompare.png",
@@ -55,12 +67,6 @@ masonry_grid(
     title = "formr4conjoint",
     description = 'A template for how to create a choice-based conjoint survey using the formr survey platform.',
     url = "https://github.com/jhelvy/formr4conjoint"
-  ),
-  masonry_item(
-    src = "images/iris_rev2.jpg",
-    title = "Iris Rev 2 Build Log",
-    description = 'A build log of how I built my Iris Rev 2 keyboard.',
-    url = "https://github.com/jhelvy/iris-rev2"
   ),
   masonry_item(
     src = "images/r4a.png",
