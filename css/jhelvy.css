@@ -6,13 +6,13 @@
   --font-header: "Fira Sans Condensed",Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
 
-  --color-background: #EAE9EA;
-  --color-primary:    #74a08a;
+  --color-background:   #EAE9EA;
+  --color-primary:      #74a08a;
   --color-primary-dark: #2F4238;
-  --color-secondary:  #8a74a0;
-  --color-tertiary:  #a08a74;
-  --color-text:       #172a3a;
-  --color-white:      #FFFFFF;
+  --color-secondary:    #8a74a0;
+  --color-tertiary:     #a08a74;
+  --color-text:         #172a3a;
+  --color-white:        #FFFFFF;
 }
 
 /* base variables */
@@ -82,7 +82,7 @@ d-appendix {
 }
 
 .distill-site-footer {
-  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-color:       #ededeb;
   --text-size:        15px;
   --hover-color:      var(--color-white);
   --bkgd-color:       var(--color-primary);

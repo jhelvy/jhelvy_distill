@@ -1,22 +1,30 @@
 create_footer <- function() {
-  footer <- htmltools::HTML(paste0(
-  '© 2021 John Paul Helveston ',
-  '[<i class="fab fa-creative-commons"></i>',
-  '<i class="fab fa-creative-commons-by"></i>',
-  '<i class="fab fa-creative-commons-sa"></i>]',
-  '(https://creativecommons.org/licenses/by-sa/4.0/)\n\n',
   
-  '<i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, ',
-  '[<i class="fas fa-code-branch"></i>](https://github.com/jhelvy), ',
-  'and the [<i class="fab fa-r-project"></i>](https://cran.r-project.org/) ',
-  '[distill](https://github.com/rstudio/distill) package\n\n',
-
+  fill <- '#ededeb'
+  height <- 14
+  
+  footer <- htmltools::HTML(paste0(
+  '© 2021 John Paul Helveston [',
+  fa('creative-commons', fill = fill, height = height),
+  fa('creative-commons-by', fill = fill, height = height),
+  fa('creative-commons-sa', fill = fill, height = height),
+  '](https://creativecommons.org/licenses/by-sa/4.0/)\n',
+  htmltools::br(),
+  fa('wrench', fill = fill, height = height), ' Made with ',
+  fa('heart', fill = fill, height = height), ', [',
+  fa('code-branch', fill = fill, height = height), 
+  '](https://github.com/jhelvy), and the [',
+  fa('r-project', fill = fill, height = height),
+  '](https://cran.r-project.org/) ',
+  '[distill](https://github.com/rstudio/distill) package\n',
+  htmltools::br(),
   '<span style="font-size:0.8rem;">Last updated ',
   'on ', format(Sys.Date(), format="%B %d, %Y"), '</span>\n\n',
   '<!-- Add function to open links to external links in new tab, from: -->',
   '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
   '<script src="js/external-link.js"></script>'
   ))
+  
   save_raw(footer, "_footer.html")
 }
 

@@ -5,5 +5,3 @@ twitter:
 preview: images/helveston.jpg
 listing: posts
 ---
-
-** Under Construction **
