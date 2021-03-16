@@ -1,16 +1,16 @@
 create_footer <- function() {
   footer <- htmltools::HTML(paste0(
   '© 2021 John Paul Helveston ',
-  '<a href="https://creativecommons.org/licenses/by-sa/4.0/"> ',
-  'CC-BY-SA <i class="fab fa-creative-commons"></i>',
+  '[<i class="fab fa-creative-commons"></i>',
   '<i class="fab fa-creative-commons-by"></i>',
-  '<i class="fab fa-creative-commons-sa"></i></a>\n\n',
+  '<i class="fab fa-creative-commons-sa"></i>]',
+  '(https://creativecommons.org/licenses/by-sa/4.0/)\n\n',
+  
   '<i class="fas fa-wrench"></i> Made with <i class="far fa-heart"></i>, ',
-  '<a href="https://github.com/jhelvy"><i class="fas fa-code-branch"></i></a>',
-  ', and the <a href="https://cran.r-project.org/">',
-  '<i class="fab fa-r-project"></i></a>',
-  '<a href="https://github.com/rstudio/distill"> distill</a> package.',
-  '\n\n',
+  '[<i class="fas fa-code-branch"></i>](https://github.com/jhelvy), ',
+  'and the [<i class="fab fa-r-project"></i>](https://cran.r-project.org/) ',
+  '[distill](https://github.com/rstudio/distill) package\n\n',
+
   '<span style="font-size:0.8rem;">Last updated ',
   'on ', format(Sys.Date(), format="%B %d, %Y"), '</span>\n\n',
   '<!-- Add function to open links to external links in new tab, from: -->',
