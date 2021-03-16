@@ -1,20 +1,20 @@
 create_footer <- function() {
-  
+
   fill <- '#ededeb'
   height <- 14
-  
+
   footer <- htmltools::HTML(paste0(
   '© 2021 John Paul Helveston [',
-  fa('creative-commons', fill = fill, height = height),
-  fa('creative-commons-by', fill = fill, height = height),
-  fa('creative-commons-sa', fill = fill, height = height),
+  fontawesome::fa('creative-commons', fill = fill, height = height),
+  fontawesome::fa('creative-commons-by', fill = fill, height = height),
+  fontawesome::fa('creative-commons-sa', fill = fill, height = height),
   '](https://creativecommons.org/licenses/by-sa/4.0/)\n',
   htmltools::br(),
-  fa('wrench', fill = fill, height = height), ' Made with ',
-  fa('heart', fill = fill, height = height), ', [',
-  fa('code-branch', fill = fill, height = height), 
+  fontawesome::fa('wrench', fill = fill, height = height), ' Made with ',
+  fontawesome::fa('heart', fill = fill, height = height), ', [',
+  fontawesome::fa('code-branch', fill = fill, height = height),
   '](https://github.com/jhelvy), and the [',
-  fa('r-project', fill = fill, height = height),
+  fontawesome::fa('r-project', fill = fill, height = height),
   '](https://cran.r-project.org/) ',
   '[distill](https://github.com/rstudio/distill) package\n',
   htmltools::br(),
@@ -24,7 +24,7 @@ create_footer <- function() {
   '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
   '<script src="js/external-link.js"></script>'
   ))
-  
+
   save_raw(footer, "_footer.html")
 }
 
