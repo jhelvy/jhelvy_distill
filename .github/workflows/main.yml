@@ -27,11 +27,6 @@ jobs:
           key: macOS-r-3.6-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: macOS-r-3.6-
 
-      - name: Install magick dependencies
-        run: |
-          brew install imagemagick
-          brew install ffmpeg
-
       - name: Install dependencies
         run: |
           install.packages("remotes")

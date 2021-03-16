@@ -26,13 +26,9 @@ Imports:
     roxygen2,
     tidyverse,
     viridis,
-    xaringanBuilder,
-    xaringanExtra,
     yaml
 Remotes:
     hadley/emo,
     rstudio/fontawesome,
     haozhu233/kableExtra,
-    rstudio/rmarkdown,
-    jhelvy/xaringanBuilder,
-    gadenbuie/xaringanExtra
+    rstudio/rmarkdown
