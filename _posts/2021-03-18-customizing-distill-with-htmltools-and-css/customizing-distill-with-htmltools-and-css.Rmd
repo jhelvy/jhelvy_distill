@@ -1,0 +1,64 @@
+---
+title: "Customizing distill with {htmltools} and CSS"
+description: |
+  How I added lots of little features to my distill site with custom functions, the {htmltools} package, and CSS.
+author: John Paul Helveston
+date: 03-18-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+draft: true
+---
+
+One of the things I love about [{distill}](https://rstudio.github.io/distill/) as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. This is the number one reason I chose distill over [{blogdown}](https://bookdown.org/yihui/blogdown/) to build my site. I tried for days to customize the [Hugo Academic theme](https://themes.gohugo.io/academic/) to create the site I had in mind with blogdown, but I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill's incredible [post](https://alison.rbind.io/post/new-year-new-blogdown/) on how to do it (btw, if you want to make a blogdown site, you totally should read her [posts on blogdown](https://alison.rbind.io/categories/blogdown/)).
+
+That said, once I did get my distill site running, I found myself longing for some of the really cool features I've seen on peoples' blogdown sites, like how to make masonry cards like [these](https://alison.rbind.io/projects/) (if you can't tell yet, [Alison Hill's site](https://alison.rbind.io/) was a major source of inspiration for me). But then I realized I'm working in R, and whenever I want some functionality that doesn't yet exist, I just write my own function! 
+
+So that's what I set out to do - write a bunch of functions to construct the features I wanted. This post walks through the general strategy and then shows how I implemented each custom feature on my site. 
+
+# Finding the html 
+
+For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the "inspect" tool in Chrome to grab the html by right-clicking on it and selecting "Copy element", like this: 
+
+<center>
+<img src="images/inspect.gif" width=100%>
+</center>
+
+With some html in hand, I had a template to work with. My starting point was to just drop in the html directly to a page and edit it until it looked the way I wanted. Then I had to find a way to _generate_ that html on the fly. 
+
+But how to write R code to create html code...?
+
+# [{htmltools}](https://unleash-shiny.rinterface.com/htmltools-overview.html) to the rescue!
+
+Luckily, some [clever folks](https://unleash-shiny.rinterface.com/references.html#ref-R-htmltools) wrote a package that generates html code! Since html controls formatting by wrapping content inside tags, the {htmltools} package uses a bunch of handy functions to generate those tags for you. For example, if I wanted to make a level 1 header tag, I could use the `h1()` function:
+
+```{r htmltools_div}
+library(htmltools)
+
+content <- h1("Hello World")
+print(content)
+```
+
+For most situations, this works great, but there are also times where I need a tag that isn't yet supported. In those case, you can insert the tags yourself as a string and use the `tag()` function to create custom tags. For example, the `<aside>` tag is used in distill to put content in the sidebar, but {htmltools} does not have an `aside()` function. Instead, I can create those tages like this:
+
+```{r htmltools_raw}
+content <- tag("aside", "Hello World")
+print(content)
+```
+
+> Note: I knew essentially **none** of this when I started this just a few weeks ago, for fortunately the [{htmltools} documentation](https://unleash-shiny.rinterface.com/htmltools-overview.html) is really, really good!
+
+With this in mind, we now have just about everything we need to start writing functions to construct some html.
+
+# Haiku research summaries
+
+# Icon links
+
+# Google Scholar stats
+
+# "Last updated on..." statement in footer
+
+# Float image left layout
+
+# "Masonry" cards
