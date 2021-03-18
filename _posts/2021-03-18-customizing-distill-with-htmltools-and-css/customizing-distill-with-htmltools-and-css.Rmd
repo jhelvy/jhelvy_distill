@@ -11,21 +11,34 @@ output:
 draft: true
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "figs/",
+  fig.width = 7.252,
+  fig.height = 4,
+  comment = "#>",
+  fig.retina = 3,
+  R.options = list(width = 60)
+)
+```
+
 One of the things I love about [{distill}](https://rstudio.github.io/distill/) as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. This is the number one reason I chose distill over [{blogdown}](https://bookdown.org/yihui/blogdown/) to build my site. I tried for days to customize the [Hugo Academic theme](https://themes.gohugo.io/academic/) to create the site I had in mind with blogdown, but I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill's incredible [post](https://alison.rbind.io/post/new-year-new-blogdown/) on how to do it (btw, if you want to make a blogdown site, you totally should read her [posts on blogdown](https://alison.rbind.io/categories/blogdown/)).
 
-That said, once I did get my distill site running, I found myself longing for some of the really cool features I've seen on peoples' blogdown sites, like how to make masonry cards like [these](https://alison.rbind.io/projects/) (if you can't tell yet, [Alison Hill's site](https://alison.rbind.io/) was a major source of inspiration for me). But then I realized I'm working in R, and whenever I want some functionality that doesn't yet exist, I just write my own function! 
+That said, once I did get my distill site running, I found myself longing for some of the really cool features I've seen on peoples' blogdown sites, like how to make masonry cards like [these](https://alison.rbind.io/projects/) (if you can't tell yet, [Alison Hill's site](https://alison.rbind.io/) was a major source of inspiration for me). But then I realized I'm working in R, and whenever I want some functionality that doesn't yet exist, I just write my own function!
 
-So that's what I set out to do - write a bunch of functions to construct the features I wanted. This post walks through the general strategy and then shows how I implemented each custom feature on my site. 
+So that's what I set out to do - write a bunch of functions to construct the features I wanted. This post walks through the general strategy and then shows how I implemented each custom feature on my site.
 
-# Finding the html 
+# Finding the html
 
-For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the "inspect" tool in Chrome to grab the html by right-clicking on it and selecting "Copy element", like this: 
+For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the "inspect" tool in Chrome to grab the html by right-clicking on it and selecting "Copy element", like this:
 
 <center>
 <img src="images/inspect.gif" width=100%>
 </center>
 
-With some html in hand, I had a template to work with. My starting point was to just drop in the html directly to a page and edit it until it looked the way I wanted. Then I had to find a way to _generate_ that html on the fly. 
+With some html in hand, I had a template to work with. My starting point was to just drop in the html directly to a page and edit it until it looked the way I wanted. Then I had to find a way to _generate_ that html on the fly.
 
 But how to write R code to create html code...?
 
@@ -51,9 +64,19 @@ print(content)
 
 With this in mind, we now have just about everything we need to start writing functions to construct some html! I'll start with a simple example of writing a function to insert some text in the sidebar.
 
+# Getting organized 
+
+Before I started writing functions, I needed to find a convenient place to put them so I could use them later in my distill articles and posts. Following the typical folder structure for R packages, I decided to make a folder called "R" in the root directory of my distill site and put a file called `functions.R` in it. Now I can access any functions I write inside this file by calling the following at the top of any .Rmd file:
+
+```{r, eval=FALSE}
+source(file.path("R", "functions.R"))
+```
+
+It's kind of like calling `library(package)` at the top of a file, except your functions don't live in a package. Eventually, I may choose to move some of my functions to an external package so others can use them, but for now they'll live happily in my `functions.R` file `r emo::ji("smile")`. 
+
 # Haiku research summaries
 
-Inspired by [Andrew Heiss's research page](https://www.andrewheiss.com/research/), I wanted to insert a haiku summary next to each citation of each paper on my [publications page](https://jhelvy.github.io/publications.html). All you need to do is wrap some text in `<aside>` tags and it will show up in the side bar. But rather than write the html for each haiku (e.g. `<aside>haiku text</aside>`), I decided to write a simple function to generate the html tags for me. 
+Inspired by [Andrew Heiss's research page](https://www.andrewheiss.com/research/), I wanted to insert a haiku summary next to each citation of each paper on my [publications page](https://jhelvy.github.io/publications.html). All you need to do is wrap some text in `<aside>` tags and it will show up in the side bar. But rather than write the html for each haiku (e.g. `<aside>haiku text</aside>`), I decided to write a simple function to generate the html tags for me.
 
 I started with three functions to generate the tags for some center-aligned text in the sidebar:
 
@@ -80,8 +103,8 @@ Now I can insert some center-aligned text in the sidebar with the function `asid
 haiku <- function(one, two, three) {
   return(aside_center(list(
     htmltools::em(
-      one, htmltools::br(), 
-      two, htmltools::br(), 
+      one, htmltools::br(),
+      two, htmltools::br(),
       three)
   )))
 }
@@ -90,7 +113,11 @@ haiku <- function(one, two, three) {
 With this little function, I can insert haikus throughout my publications page without having to write any html! For example, the html for the haiku for our recent [paper](https://doi.org/10.1088/1748-9326/aba715) in _Environmental Research Letters_ is generated like this:
 
 ```{r}
-html <- haiku("A five minute ride", "In an EV can increase", "the chance you'll buy one")
+html <- haiku(
+  "A five minute ride", 
+  "In an EV can increase", 
+  "The chance you'll buy one"
+)
 
 print(html)
 ```
@@ -101,10 +128,22 @@ Hopefully this example gives you the gist of the general strategy of writing a f
 
 # Icon links
 
-# Google Scholar stats
 
-# "Last updated on..." statement in footer
 
 # Float image left layout
 
+
+
+# Google Scholar stats
+
+
+
+# "Last updated on..." statement in footer
+
+
+
 # "Masonry" cards
+
+This is the most involved of my custom features, and it took the most tweaking to get it right. 
+
+https://w3bits.com/tools/masonry-generator/
