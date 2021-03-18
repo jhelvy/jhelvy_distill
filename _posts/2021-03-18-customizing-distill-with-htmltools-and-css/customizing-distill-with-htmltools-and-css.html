@@ -1527,14 +1527,73 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <blockquote>
 <p>Note: I knew essentially <strong>none</strong> of this when I started this just a few weeks ago, for fortunately the <a href="https://unleash-shiny.rinterface.com/htmltools-overview.html">{htmltools} documentation</a> is really, really good!</p>
 </blockquote>
-<p>With this in mind, we now have just about everything we need to start writing functions to construct some html.</p>
+<p>With this in mind, we now have just about everything we need to start writing functions to construct some html! I’ll start with a simple example of writing a function to insert some text in the sidebar.</p>
 <h1 id="haiku-research-summaries">Haiku research summaries</h1>
+<p>Inspired by <a href="https://www.andrewheiss.com/research/">Andrew Heiss’s research page</a>, I wanted to insert a haiku summary next to each citation of each paper on my <a href="https://jhelvy.github.io/publications.html">publications page</a>. All you need to do is wrap some text in <code>&lt;aside&gt;</code> tags and it will show up in the side bar. But rather than write the html for each haiku (e.g. <code>&lt;aside&gt;haiku text&lt;/aside&gt;</code>), I decided to write a simple function to generate the html tags for me.</p>
+<p>I started with three functions to generate the tags for some center-aligned text in the sidebar:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generates &lt;aside&gt;text&lt;/aside&gt;</span>
+<span class='va'>aside</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/tag.html'>tag</a></span><span class='op'>(</span><span class='st'>"aside"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'># Generates &lt;center&gt;text&lt;/center&gt;</span>
+<span class='va'>center</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/tag.html'>tag</a></span><span class='op'>(</span><span class='st'>"center"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='co'># Generates &lt;aside&gt;&lt;center&gt;text&lt;/center&gt;&lt;/aside&gt;</span>
+<span class='va'>aside_center</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>aside</span><span class='op'>(</span><span class='fu'>center</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>Now I can insert some center-aligned text in the sidebar with the function <code>aside_center(text)</code>. But since haikus have a particular 5-7-5 syllabic structure, I thought it would be better to put each line on a separate row. I also wanted the haikus to be in italic font. So I wrote a <code>haiku()</code> function that takes three text inputs and generates the html to put them in the side bar on separate lines:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>haiku</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>one</span>, <span class='va'>two</span>, <span class='va'>three</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>aside_center</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    <span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>em</a></span><span class='op'>(</span>
+      <span class='va'>one</span>, <span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>br</a></span><span class='op'>(</span><span class='op'>)</span>, 
+      <span class='va'>two</span>, <span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>br</a></span><span class='op'>(</span><span class='op'>)</span>, 
+      <span class='va'>three</span><span class='op'>)</span>
+  <span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>With this little function, I can insert haikus throughout my publications page without having to write any html! For example, the html for the haiku for our recent <a href="https://doi.org/10.1088/1748-9326/aba715">paper</a> in <em>Environmental Research Letters</em> is generated like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>html</span> <span class='op'>&lt;-</span> <span class='fu'>haiku</span><span class='op'>(</span><span class='st'>"A five minute ride"</span>, <span class='st'>"In an EV can increase"</span>, <span class='st'>"the chance you'll buy one"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>html</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&lt;aside&gt;
+  &lt;center&gt;
+    &lt;em&gt;
+      A five minute ride
+      &lt;br/&gt;
+      In an EV can increase
+      &lt;br/&gt;
+      the chance you&#39;ll buy one
+    &lt;/em&gt;
+  &lt;/center&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+<blockquote>
+<p><strong>Important caveat</strong>: For this to work, I had to insert each haiku using in-line R code, like this: <code>`r haiku("one", "two", "three")`</code>. If I used a code chunk, the output will get wrapped in a <code>&lt;div&gt;</code>, nullifying the <code>&lt;aside&gt;</code> tags.</p>
+</blockquote>
+<p>Hopefully this example gives you the gist of the general strategy of writing a function to produce the desired html. For the remaining features on this post, I won’t spend as much time walking through the details, but I will show the functions I wrote (and accompanying CSS code when necessary) to generate different features.</p>
 <h1 id="icon-links">Icon links</h1>
 <h1 id="google-scholar-stats">Google Scholar stats</h1>
 <h1 id="last-updated-on-statement-in-footer">“Last updated on…” statement in footer</h1>
 <h1 id="float-image-left-layout">Float image left layout</h1>
 <h1 id="masonry-cards">“Masonry” cards</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

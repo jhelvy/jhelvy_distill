@@ -49,9 +49,55 @@ print(content)
 
 > Note: I knew essentially **none** of this when I started this just a few weeks ago, for fortunately the [{htmltools} documentation](https://unleash-shiny.rinterface.com/htmltools-overview.html) is really, really good!
 
-With this in mind, we now have just about everything we need to start writing functions to construct some html.
+With this in mind, we now have just about everything we need to start writing functions to construct some html! I'll start with a simple example of writing a function to insert some text in the sidebar.
 
 # Haiku research summaries
+
+Inspired by [Andrew Heiss's research page](https://www.andrewheiss.com/research/), I wanted to insert a haiku summary next to each citation of each paper on my [publications page](https://jhelvy.github.io/publications.html). All you need to do is wrap some text in `<aside>` tags and it will show up in the side bar. But rather than write the html for each haiku (e.g. `<aside>haiku text</aside>`), I decided to write a simple function to generate the html tags for me. 
+
+I started with three functions to generate the tags for some center-aligned text in the sidebar:
+
+```{r}
+# Generates <aside>text</aside>
+aside <- function(text) {
+  return(htmltools::tag("aside", list(text)))
+}
+
+# Generates <center>text</center>
+center <- function(text) {
+  return(htmltools::tag("center", list(text)))
+}
+
+# Generates <aside><center>text</center></aside>
+aside_center <- function(text) {
+  return(aside(center(list(text))))
+}
+```
+
+Now I can insert some center-aligned text in the sidebar with the function `aside_center(text)`. But since haikus have a particular 5-7-5 syllabic structure, I thought it would be better to put each line on a separate row. I also wanted the haikus to be in italic font. So I wrote a `haiku()` function that takes three text inputs and generates the html to put them in the side bar on separate lines:
+
+```{r}
+haiku <- function(one, two, three) {
+  return(aside_center(list(
+    htmltools::em(
+      one, htmltools::br(), 
+      two, htmltools::br(), 
+      three)
+  )))
+}
+```
+
+With this little function, I can insert haikus throughout my publications page without having to write any html! For example, the html for the haiku for our recent [paper](https://doi.org/10.1088/1748-9326/aba715) in _Environmental Research Letters_ is generated like this:
+
+```{r}
+html <- haiku("A five minute ride", "In an EV can increase", "the chance you'll buy one")
+
+print(html)
+```
+
+> **Important caveat**: For this to work, I had to insert each haiku using in-line R code, like this: `` `r knitr::inline_expr('haiku("one", "two", "three")')` ``. If I used a code chunk, the output will get wrapped in a `<div>`, nullifying the `<aside>` tags.
+
+Hopefully this example gives you the gist of the general strategy of writing a function to produce the desired html. For the remaining features on this post, I won't spend as much time walking through the details, but I will show the functions I wrote (and accompanying CSS code when necessary) to generate different features.
 
 # Icon links
 

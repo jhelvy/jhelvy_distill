@@ -15,15 +15,12 @@ aside_center_b <- function(text) {
 }
 
 haiku <- function(one, two, three) {
-  haiku <- aside_center(
-    list(
-        htmltools::em(
-          one, htmltools::br(), 
-          two, htmltools::br(), 
-          three
-        )
-    ))
-  return(haiku)
+  return(aside_center(list(
+    htmltools::em(
+      one, htmltools::br(), 
+      two, htmltools::br(), 
+      three)
+  )))
 }
 
 # Generates html used to create a paragraph of text with an image
