@@ -145,7 +145,7 @@ d-article a:hover, a:focus {
 
 /* Link buttons */
 
-.link-button {
+.icon-link {
     background-color: var(--color-primary);
     color: var(--color-white);
     padding: 3px 5px 3px 5px;
@@ -153,7 +153,7 @@ d-article a:hover, a:focus {
     border-radius: 5px; /* Rounded edges */
 }
 
-.link-button:hover {
+.icon-link:hover {
     background-color: var(--color-secondary);
     color: var(--color-white);
 }

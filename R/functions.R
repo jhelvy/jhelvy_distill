@@ -1,37 +1,29 @@
-create_footer <- function() {
-
-  fill <- '#ededeb'
-  height <- 14
-
-  footer <- htmltools::HTML(paste0(
-  '© 2021 John Paul Helveston [',
-  fontawesome::fa('creative-commons', fill = fill, height = height),
-  fontawesome::fa('creative-commons-by', fill = fill, height = height),
-  fontawesome::fa('creative-commons-sa', fill = fill, height = height),
-  '](https://creativecommons.org/licenses/by-sa/4.0/)\n',
-  htmltools::br(),
-  fontawesome::fa('wrench', fill = fill, height = height), ' Made with ',
-  fontawesome::fa('heart', fill = fill, height = height), ', [',
-  fontawesome::fa('code-branch', fill = fill, height = height),
-  '](https://github.com/jhelvy), and the [',
-  fontawesome::fa('r-project', fill = fill, height = height),
-  '](https://cran.r-project.org/) ',
-  '[distill](https://github.com/rstudio/distill) package\n',
-  htmltools::br(),
-  '<span style="font-size:0.8rem;">Last updated ',
-  'on ', format(Sys.Date(), format="%B %d, %Y"), '</span>\n\n',
-  '<!-- Add function to open links to external links in new tab, from: -->',
-  '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
-  '<script src="js/external-link.js"></script>'
-  ))
-
-  save_raw(footer, "_footer.html")
+aside <- function(text) {
+  return(htmltools::tag("aside", list(text)))
 }
 
-save_raw <- function(text, path) {
-    fileConn <- file(path)
-    writeLines(text, fileConn)
-    close(fileConn)
+center <- function(text) {
+  return(htmltools::tag("center", list(text)))
+}
+
+aside_center <- function(text) {
+  return(aside(center(list(text))))
+}
+
+aside_center_b <- function(text) {
+  return(aside(center(list(htmltools::tag("b", text)))))
+}
+
+haiku <- function(one, two, three) {
+  haiku <- aside_center(
+    list(
+        htmltools::em(
+          one, htmltools::br(), 
+          two, htmltools::br(), 
+          three
+        )
+    ))
+  return(haiku)
 }
 
 # Generates html used to create a paragraph of text with an image
@@ -60,7 +52,9 @@ image_float_layout <- function(
 
 markdown_to_html <- function(text) {
   if (is.null(text)) { return(text) }
-  return(htmltools::HTML(markdown::renderMarkdown(text = text)))
+  return(htmltools::HTML(
+    markdown::renderMarkdown(text = text))
+  )
 }
 
 float_image <- function(
@@ -92,15 +86,25 @@ get_img_style <- function(
 }
 
 # Creates the html to make a button to an external link
-link_button <- function(
+icon_link <- function(
   icon = NULL,
   text = NULL,
   url = NULL
 ) {
   if (!is.null(icon)) {
-    text <- htmltools::HTML(paste0('<i class="', icon, '"></i> ', text))
+    text <- make_icon_text(icon, text)
   }
-  return(htmltools::a(href = url, text, class = "link-button"))
+  return(htmltools::a(href = url, text, class = "icon-link"))
+}
+
+make_icon_text <- function(icon, text) {
+  return(htmltools::HTML(paste0(
+    make_icon(icon), " ", text))
+  )
+}
+
+make_icon <- function(icon) {
+  return(htmltools::tag("i", list(class = icon)))
 }
 
 doi <- function(doi) {
@@ -161,10 +165,48 @@ masonry_item <- function(
   ))
 }
 
-haiku <- function(text) {
-  return(htmltools::HTML(paste0(
-    '<aside><center>',
-    markdown_to_html(text),
-    '</center></aside>'
-  )))
+create_footer <- function() {
+
+  fill <- '#ededeb'
+  height <- 14
+
+  footer <- htmltools::HTML(paste0(
+  '© 2021 John Paul Helveston [',
+  fontawesome::fa('creative-commons', fill = fill, height = height),
+  fontawesome::fa('creative-commons-by', fill = fill, height = height),
+  fontawesome::fa('creative-commons-sa', fill = fill, height = height),
+  '](https://creativecommons.org/licenses/by-sa/4.0/)\n',
+  htmltools::br(),
+  fontawesome::fa('wrench', fill = fill, height = height), ' Made with ',
+  fontawesome::fa('heart', fill = fill, height = height), ', [',
+  fontawesome::fa('code-branch', fill = fill, height = height),
+  '](https://github.com/jhelvy), and the [',
+  fontawesome::fa('r-project', fill = fill, height = height),
+  '](https://cran.r-project.org/) ',
+  '[distill](https://github.com/rstudio/distill) package\n',
+  htmltools::br(),
+  last_updated(), "\n\n",
+  
+  '<!-- Add function to open links to external links in new tab, from: -->',
+  '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
+  '<script src="js/external-link.js"></script>'
+  ))
+
+  save_raw(footer, "_footer.html")
+}
+
+save_raw <- function(text, path) {
+    fileConn <- file(path)
+    writeLines(text, fileConn)
+    close(fileConn)
+}
+
+last_updated <- function() {
+  return(htmltools::span(
+    paste0(
+      'Last updated on ', 
+      format(Sys.Date(), format="%B %d, %Y")
+    ), 
+    style = "font-size:0.8rem;")
+  )
 }
