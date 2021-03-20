@@ -17,8 +17,8 @@ aside_center_b <- function(text) {
 haiku <- function(one, two, three) {
   return(aside_center(list(
     htmltools::em(
-      one, htmltools::br(), 
-      two, htmltools::br(), 
+      one, htmltools::br(),
+      two, htmltools::br(),
       three)
   )))
 }
@@ -165,7 +165,7 @@ masonry_item <- function(
 create_footer <- function() {
 
   fill <- '#ededeb'
-  height <- 14
+  height <- '14px'
 
   footer <- htmltools::HTML(paste0(
   '© 2021 John Paul Helveston [',
@@ -183,7 +183,7 @@ create_footer <- function() {
   '[distill](https://github.com/rstudio/distill) package\n',
   htmltools::br(),
   last_updated(), "\n\n",
-  
+
   '<!-- Add function to open links to external links in new tab, from: -->',
   '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
   '<script src="js/external-link.js"></script>'
@@ -201,9 +201,9 @@ save_raw <- function(text, path) {
 last_updated <- function() {
   return(htmltools::span(
     paste0(
-      'Last updated on ', 
+      'Last updated on ',
       format(Sys.Date(), format="%B %d, %Y")
-    ), 
+    ),
     style = "font-size:0.8rem;")
   )
 }
