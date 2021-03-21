@@ -1489,13 +1489,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#link-buttons-with-icons-text">Link “buttons” with icons + text</a><ul>
 <li><a href="#side-note-on-academic-icons">Side note on academic icons</a></li>
 </ul></li>
-<li><a href="#wrapping-text-around-an-image">Wrapping text around an image</a><ul>
-<li><a href="#method-1-make-a-div-with">Method 1: Make a div with <code>:::</code></a></li>
-<li><a href="#method-2-more-html-constructor-functions">Method 2: More html constructor functions</a></li>
+<li><a href="#float-an-image-left-right-with-wrapped-text">Float an image left / right with wrapped text</a><ul>
+<li><a href="#float-a-single-image">Float a single image</a></li>
+<li><a href="#float-multiple-images">Float multiple images</a></li>
 </ul></li>
 <li><a href="#auto-updated-google-scholar-stats">Auto-updated Google Scholar stats</a></li>
 <li><a href="#last-updated-on-statement-in-footer">“Last updated on…” statement in footer</a></li>
-<li><a href="#masonry-cards">“Masonry” cards</a></li>
 </ul>
 </nav>
 </div>
@@ -1533,9 +1532,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>#&gt; &lt;aside&gt;Hello World&lt;/aside&gt;</code></pre>
 </div>
-<blockquote>
-<p>Note: I knew essentially <strong>none</strong> of this when I started this just a few weeks ago, for fortunately the <a href="https://unleash-shiny.rinterface.com/htmltools-overview.html">{htmltools} documentation</a> is really, really good!</p>
-</blockquote>
 <p>With this in mind, we now have just about everything we need to start writing functions to construct some html! I’ll start with a simple example of writing a function to insert some text in the sidebar.</p>
 <h1 id="getting-organized">Getting organized</h1>
 <p>Before I started writing functions, I needed to find a convenient place to put them so I could use them later in my distill articles and posts. Following the typical folder structure for R packages, I decided to make a folder called “R” in the root directory of my distill site and put a file called <a href="link"><code>functions.R</code></a> in it. Now I can access any functions I write inside this file by calling the following at the top of any .Rmd file:</p>
@@ -1650,7 +1646,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>By itself, this function will produce a link with an icon and text. To make it looks more like a button (which is what I wanted), I added the following CSS in my <a href="link"><code>jhelvy.css</code></a> file, which is the theme I set to all pages in my <a href="link"><code>_site.yml</code></a> file:</p>
+<p>By itself, this function will produce a link with an icon and text. To make it looks more like a button (which is what I wanted), I added the following CSS in my <a href="link"><code>jhelvy.css</code></a> theme, which is the theme I set to all pages in my <a href="link"><code>_site.yml</code></a> file:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">.icon-link</span> {</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">background-color</span>: <span class="fu">var(</span><span class="va">--color-primary</span><span class="fu">)</span><span class="op">;</span></span>
@@ -1703,6 +1699,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
+<center>
+<div class="layout-chunk" data-layout="l-body">
+<p><a href="https://scholar.google.com/citations?user=DY2D56IAAAAJ" class="icon-link"><i class="ai ai-google-scholar"></i> Google Scholar</a><a href="https://orcid.org/0000-0002-2657-9191" class="icon-link"><i class="ai ai-orcid"></i> ORCID</a><a href="https://www.researchgate.net/profile/John_Helveston" class="icon-link"><i class="ai ai-researchgate"></i> Research Gate</a></p>
+</div>
+</center>
 <h2 id="side-note-on-academic-icons">Side note on academic icons</h2>
 <p>The distill package supports <a href="link">fontawesome</a> icons out of the box, but if you want to include <a href="">academic icons</a> you’ll need to include a link to the style sheet in the page header. You can quickly add it to all pages by making a <code>header.html</code> file in your root directory that contains this line:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1714,103 +1715,63 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     includes:
       in_header:
       - header.html</code></pre>
-<h1 id="wrapping-text-around-an-image">Wrapping text around an image</h1>
-<p>A very common layout I see on lots of sites is a smaller image on the left or right with text wrapping around it. Here’s an example from my <a href="https://jhelvy.github.io/lab.html">lab page</a>:</p>
+<h1 id="float-an-image-left-right-with-wrapped-text">Float an image left / right with wrapped text</h1>
+<p>A very common layout I see on lots of sites is an image floated to the left or right with text wrapping around it. Here’s an example from my <a href="https://jhelvy.github.io/lab.html">lab page</a>:</p>
 <center>
-<img src="images/text_wrap.png" width=600px>
+<img src="images/text_wrap.png" width="600px">
 </center>
-<p>There are probably lots of ways to do this, but I found two approaches.</p>
-<h2 id="method-1-make-a-div-with">Method 1: Make a div with <code>:::</code></h2>
-<p>There is a pretty straightforward way to do this using the <code>:::</code> notation to create custom divs. This isn’t needed if your output is a <code>html_document</code>, but for distill articles you need to create a new div that include the image and text wrapping around it (see <a href="https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2">this issue</a> for details as to why you have to do this). Here is an example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a>::: {.floatting}</span>
+<p>There are probably lots of ways to do this, but a simple enough solution is to use the <code>:::</code> notation to create custom divs. This isn’t needed if your output is a <code>html_document</code>, but for distill articles you need to create a new div that includes the image <em>and</em> text wrapping around it (see <a href="https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2">this issue</a> for details as to why you have to do this).</p>
+<h2 id="float-a-single-image">Float a single image</h2>
+<p>If you have just a single image that you want to wrap text around, you can do it like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1"></a>:::float-image</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="bn">```{r out.width=&#39;30%&#39;, out.extra=&#39;style=&quot;float:left; padding:10px&quot;&#39;, echo=FALSE}</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bn">```{r out.width=&#39;150px&#39;, out.extra=&#39;style=&quot;float:left; padding:10px&quot;&#39;, echo=FALSE}</span></span>
 <span id="cb7-4"><a href="#cb7-4"></a><span class="bn">knitr::include_graphics(&quot;path/to/image&quot;)</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a><span class="bn">```</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a>Here is all the text you want to wrap around the image.</span>
+<span id="cb7-7"><a href="#cb7-7"></a>Here is some text you want to wrap around the image.</span>
 <span id="cb7-8"><a href="#cb7-8"></a>:::</span></code></pre></div>
-<p>Going this route, you can set the CSS using the <code>out.extra</code> chunk setting to float the image.</p>
-<h2 id="method-2-more-html-constructor-functions">Method 2: More html constructor functions</h2>
-<p>In my case, since I intended on using this particular layout in multiple areas, I figured it would be work it to make a single function that could generate the html to make this layout. To do so, I first made a function to generate the html to float an image left or right:</p>
+<p>You can name the div whatever you want - I just used <code>float-image</code> to be descriptive. I included all the CSS needed to float the image in the code chunk settings: <code>out.width='150px', out.extra='style="float:left; padding:10px"'</code>. You may want to adjust the padding to fit your site’s look and feel, but this should be all you need to get the job done.</p>
+<h2 id="float-multiple-images">Float multiple images</h2>
+<p>Since I use this layout frequently, I decided to define two classes, <code>float-left</code> and <code>float-right</code>, in my <a href="link"><code>jhelvy.css</code></a> theme that style any images in a div with those classes to float left or right, with a little padding:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>float_image</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span>
-  <span class='va'>src</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>width</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>height</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>float</span> <span class='op'>=</span> <span class='st'>"left"</span>,
-  <span class='va'>padding</span> <span class='op'>=</span> <span class='st'>"5px 10px 5px 0px"</span>
-<span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>style</span> <span class='op'>&lt;-</span> <span class='fu'>get_img_style</span><span class='op'>(</span><span class='va'>width</span>, <span class='va'>height</span>, <span class='va'>float</span>, <span class='va'>padding</span><span class='op'>)</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>img</a></span><span class='op'>(</span>src <span class='op'>=</span> <span class='va'>src</span>, style <span class='op'>=</span> <span class='va'>style</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">.float-left</span> img {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">float</span>:<span class="dv">left</span><span class="op">;</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="kw">padding</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">.float-right</span> img {</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="kw">float</span>:<span class="dv">right</span><span class="op">;</span> </span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="kw">padding</span>: <span class="dv">5</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>}</span></code></pre></div>
+<style type="text/css">
+.float-left img {
+    float:left; 
+    padding: 5px 10px 5px 0px;
+}
 
-<span class='va'>get_img_style</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span>
-  <span class='va'>width</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>height</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>float</span> <span class='op'>=</span> <span class='st'>"left"</span>,
-  <span class='va'>padding</span> <span class='op'>=</span> <span class='st'>"5px 10px 5px 0px"</span>
-<span class='op'>)</span> <span class='op'>{</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>width</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>width</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"width: "</span>, <span class='va'>width</span>, <span class='st'>"px; "</span><span class='op'>)</span>
-  <span class='op'>}</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>height</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>height</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"height: "</span>, <span class='va'>height</span>, <span class='st'>"px; "</span><span class='op'>)</span>
-  <span class='op'>}</span>
-  <span class='va'>float</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"float:"</span>, <span class='va'>float</span>, <span class='st'>"; "</span><span class='op'>)</span>
-  <span class='va'>padding</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"padding:"</span>, <span class='va'>padding</span>, <span class='st'>";"</span><span class='op'>)</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/trimws.html'>trimws</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>width</span>, <span class='va'>height</span>, <span class='va'>float</span>, <span class='va'>padding</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-</code></pre>
+.float-right img {
+    float:right; 
+    padding: 5px 0px 5px 10px;
+}
+</style>
 </div>
-</div>
-<p>The <code>get_img_style()</code> function creates a string with the style code to set the image dimensions, margin, and float the image left or right; the <code>float_image()</code> function creates the html to insert the image with that style. I broke these into two functions in case I wanted to use <code>get_img_style()</code> for a different layout later.</p>
-<p>With those functions to float the image, all I had to do to create a div that inserts text to wrap around the image. The <code>image_float_layout()</code> function below does just that. The only caveat is that I had to pass the title and text to wrap around the image as one long string, and if I want to include markdown syntax in that text, it wouldn’t render. So I had to make one other small helper function, <code>markdown_to_html()</code>, to first render the markdown and then pass it to <code>image_float_layout()</code>:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>image_float_layout</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span>
-  <span class='va'>title</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>text</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>src</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>width</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>height</span> <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>float</span> <span class='op'>=</span> <span class='st'>"left"</span>,
-  <span class='va'>padding</span> <span class='op'>=</span> <span class='st'>"5px 10px 5px 0px"</span>
-<span class='op'>)</span> <span class='op'>{</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/builder.html'>div</a></span><span class='op'>(</span>
-    <span class='fu'>float_image</span><span class='op'>(</span><span class='va'>src</span>, <span class='va'>width</span>, <span class='va'>height</span>, <span class='va'>float</span>, <span class='va'>padding</span><span class='op'>)</span>,
-    <span class='fu'>markdown_to_html</span><span class='op'>(</span><span class='va'>title</span><span class='op'>)</span>,
-    <span class='fu'>markdown_to_html</span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span>
-  <span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='va'>markdown_to_html</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>text</span><span class='op'>)</span> <span class='op'>}</span>
-  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='fu'>htmltools</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/htmltools/man/HTML.html'>HTML</a></span><span class='op'>(</span><span class='fu'>markdown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/markdown/man/renderMarkdown.html'>renderMarkdown</a></span><span class='op'>(</span>text <span class='op'>=</span> <span class='va'>text</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>}</span>
-</code></pre>
-</div>
-</div>
-<p>That’s it! As an example, here is the code chunk I used to insert the short bio about myself on my lab page - notice that I used markdown syntax to control styling and insert links in the <code>title</code> and <code>text</code> arguments (I shortened the text in this example):</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>image_float_layout</span><span class='op'>(</span>
-    src <span class='op'>=</span> <span class='st'>"images/helveston.jpg"</span>,
-    width <span class='op'>=</span> <span class='fl'>150</span>,
-    float <span class='op'>=</span> <span class='st'>"left"</span>,
-    title <span class='op'>=</span> <span class='st'>"### John Paul Helveston, Ph.D."</span>,
-    text <span class='op'>=</span> <span class='st'>"John Paul Helveston is an Assistant Professor in the [Department of..."</span>
-<span class='op'>)</span>
-</code></pre>
-</div>
-</div>
+<p>Now to float an image and wrap text around it, all I need to do is use one of those classes for the div name, and any images between the <code>:::</code> marks will be floated left or right:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a>:::float-left</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="bn">```{r, out.width=&#39;150px&#39;}</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bn">knitr::include_graphics(&quot;path/to/image&quot;)</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bn">```</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a>Here is some text you want to wrap around the image.</span>
+<span id="cb9-8"><a href="#cb9-8"></a>:::</span></code></pre></div>
+<p>You can use whatever method you want to insert images, like <code>knitr::include_graphics()</code> or just insert direct html (which is what I actually end up doing most often).</p>
+<blockquote>
+<p><strong>Caveat</strong>: Anything in the div created by <code>:::</code> will be masked to the table of contents, so I don’t recomment wrapping a whole article inside <code>:::</code> to float multiple images (though you could) and instead recommend wrapping just the elements you want to float.</p>
+</blockquote>
 <h1 id="auto-updated-google-scholar-stats">Auto-updated Google Scholar stats</h1>
 <h1 id="last-updated-on-statement-in-footer">“Last updated on…” statement in footer</h1>
-<h1 id="masonry-cards">“Masonry” cards</h1>
-<p>This is the most involved of my custom features, and it took the most tweaking to get it right.</p>
-<p><a href="https://w3bits.com/tools/masonry-generator/" class="uri">https://w3bits.com/tools/masonry-generator/</a></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

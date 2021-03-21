@@ -65,19 +65,17 @@ content <- tag("aside", "Hello World")
 print(content)
 ```
 
-> Note: I knew essentially **none** of this when I started this just a few weeks ago, for fortunately the [{htmltools} documentation](https://unleash-shiny.rinterface.com/htmltools-overview.html) is really, really good!
-
 With this in mind, we now have just about everything we need to start writing functions to construct some html! I'll start with a simple example of writing a function to insert some text in the sidebar.
 
-# Getting organized 
+# Getting organized
 
-Before I started writing functions, I needed to find a convenient place to put them so I could use them later in my distill articles and posts. Following the typical folder structure for R packages, I decided to make a folder called "R" in the root directory of my distill site and put a file called [`functions.R`](link) in it. Now I can access any functions I write inside this file by calling the following at the top of any .Rmd file:
+Before I started writing functions, I needed to find a convenient place to put them so I could use them later in my distill articles and posts. Following the typical folder structure for R packages, I decided to make a folder called "R" in the root directory of my distill site and put a file called [`functions.R`](https://github.com/jhelvy/jhelvy.github.io/blob/master/R/functions.R) in it. Now I can access any functions I write inside this file by calling the following at the top of any .Rmd file:
 
 ```{r, eval=FALSE}
 source(file.path("R", "functions.R"))
 ```
 
-It's kind of like calling `library(package)` at the top of a file, except your functions don't live in a package. Eventually, I may choose to move some of my functions to an external package so others can use them, but for now they'll live happily in my `functions.R` file `r emo::ji("smile")`. 
+It's kind of like calling `library(package)` at the top of a file, except your functions don't live in a package. Eventually, I may choose to move some of my functions to an external package so others can use them, but for now they'll live happily in my `functions.R` file `r emo::ji("smile")`.
 
 # Haiku research summaries
 
@@ -119,8 +117,8 @@ With this little function, I can insert haikus throughout my publications page w
 
 ```{r}
 html <- haiku(
-  "A five minute ride", 
-  "In an EV can increase", 
+  "A five minute ride",
+  "In an EV can increase",
   "The chance you'll buy one"
 )
 
@@ -148,7 +146,7 @@ I can now get an icon for any fontawesome by using it's class. For example, I ca
 make_icon("fab fa-github")
 ```
 
-Because this function just generates generic `<i></i>` tags, it works with other icon libraries too. For example, I can insert the Google Scholar icon from [academic icons](link) using `make_icon("ai ai-google-scholar")`. Cool!
+Because this function just generates generic `<i></i>` tags, it works with other icon libraries too. For example, I can insert the Google Scholar icon from [academic icons](https://jpswalsh.github.io/academicons/) using `make_icon("ai ai-google-scholar")`. Cool!
 
 Of course I want links that have icons + text, so I made another function to paste on the text:
 
@@ -169,7 +167,7 @@ icon_link <- function(icon = NULL, text = NULL, url = NULL) {
 }
 ```
 
-By itself, this function will produce a link with an icon and text. To make it looks more like a button (which is what I wanted), I added the following CSS in my [`jhelvy.css`](link) file, which is the theme I set to all pages in my [`_site.yml`](link) file:
+By itself, this function will produce a link with an icon and text. To make it looks more like a button (which is what I wanted), I added the following CSS in my [`jhelvy.css`](https://github.com/jhelvy/jhelvy.github.io/blob/master/css/jhelvy.css) theme, which is the theme I set to all pages in my [`_site.yml`](https://github.com/jhelvy/jhelvy.github.io/blob/master/_site.yml) file:
 
 ```{css}
 .icon-link {
@@ -186,9 +184,9 @@ By itself, this function will produce a link with an icon and text. To make it l
 }
 ```
 
-> Note: I use parameters throughout my css file so I can use common values, like colors, so that's what `var(--color-primary);` and `var(--color-secondary);` are about. You can see what color values these refer to at the top of my [`jhelvy.css`](link) file.
+> Note: I use parameters throughout my css file so I can use common values, like colors, so that's what `var(--color-primary);` and `var(--color-secondary);` are about. You can see what color values these refer to at the top of my [`jhelvy.css`](https://github.com/jhelvy/jhelvy.github.io/blob/master/css/jhelvy.css) file.
 
-You can see how these "buttons" look on my [publications page](https://jhelvy.github.io/publications.html). For example, the three buttons at the top are generated with this chunk in my [publications.Rmd](link) file:
+You can see how these "buttons" look on my [publications page](https://jhelvy.github.io/publications.html). For example, the three buttons at the top are generated with this chunk in my [`publications.Rmd`](https://github.com/jhelvy/jhelvy.github.io/blob/master/publications.Rmd) file:
 
 ```{r, eval=FALSE}
 icon_link(
@@ -208,9 +206,30 @@ icon_link(
 )
 ```
 
+
+<center>
+```{r, echo=FALSE}
+icon_link(
+    icon = "ai ai-google-scholar",
+    text = "Google Scholar",
+    url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
+)
+icon_link(
+    icon = "ai ai-orcid",
+    text = "ORCID",
+    url  = "https://orcid.org/0000-0002-2657-9191"
+)
+icon_link(
+    icon = "ai ai-researchgate",
+    text = "Research Gate",
+    url  = "https://www.researchgate.net/profile/John_Helveston"
+)
+```
+</center>
+
 ## Side note on academic icons
 
-The distill package supports [fontawesome](link) icons out of the box, but if you want to include [academic icons]() you'll need to include a link to the style sheet in the page header. You can quickly add it to all pages by making a `header.html` file in your root directory that contains this line:
+The distill package supports [fontawesome](https://fontawesome.com/) icons out of the box, but if you want to include [academic icons](https://jpswalsh.github.io/academicons/) you'll need to include a link to the style sheet in the page header. You can quickly add it to all pages by making a `header.html` file in your root directory that contains this line:
 
 ```{html}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -226,107 +245,65 @@ output:
       - header.html
 ```
 
-# Wrapping text around an image
+# Float an image left / right with wrapped text
 
-A very common layout I see on lots of sites is a smaller image on the left or right with text wrapping around it. Here's an example from my [lab page](https://jhelvy.github.io/lab.html): 
+A very common layout I see on lots of sites is an image floated to the left or right with text wrapping around it. Here's an example from my [lab page](https://jhelvy.github.io/lab.html):
 
 <center>
-<img src="images/text_wrap.png" width=600px>
+<img src="images/text_wrap.png" width="600px">
 </center>
 
-There are probably lots of ways to do this, but I found two approaches.
+There are probably lots of ways to do this, but a simple enough solution is to use the `:::` notation to create custom divs. This isn't needed if your output is a `html_document`, but for distill articles you need to create a new div that includes the image _and_ text wrapping around it (see [this issue](https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2) for details as to why you have to do this).
 
-## Method 1: Make a div with `:::`
+## Float a single image
 
-There is a pretty straightforward way to do this using the `:::` notation to create custom divs. This isn't needed if your output is a `html_document`, but for distill articles you need to create a new div that include the image and text wrapping around it (see [this issue](https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2) for details as to why you have to do this). Here is an example:
-
+If you have just a single image that you want to wrap text around, you can do it like this:
 
 ````markdown
-::: {.floatting}
+:::float-image
 
-`r ''````{r out.width='30%', out.extra='style="float:left; padding:10px"', echo=FALSE}
+`r ''````{r out.width='150px', out.extra='style="float:left; padding:10px"', echo=FALSE}
 knitr::include_graphics("path/to/image")
 ```
 
-Here is all the text you want to wrap around the image.
+Here is some text you want to wrap around the image.
 :::
 ````
 
-Going this route, you can set the CSS using the `out.extra` chunk setting to float the image. 
+You can name the div whatever you want - I just used `float-image` to be descriptive. I included all the CSS needed to float the image in the code chunk settings: `out.width='150px', out.extra='style="float:left; padding:10px"'`. You may want to adjust the padding to fit your site's look and feel, but this should be all you need to get the job done.
 
-## Method 2: More html constructor functions
+## Float multiple images
 
-In my case, since I intended on using this particular layout in multiple areas, I figured it would be work it to make a single function that could generate the html to make this layout. To do so, I first made a function to generate the html to float an image left or right:
+Since I use this layout frequently, I decided to define two classes, `float-left` and `float-right`, in my [`jhelvy.css`](https://github.com/jhelvy/jhelvy.github.io/blob/master/css/jhelvy.css) theme that style any images in a div with those classes to float left or right, with a little padding:
 
-```{r}
-float_image <- function(
-  src = NULL,
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  style <- get_img_style(width, height, float, padding)
-  return(htmltools::img(src = src, style = style))
+```{css}
+.float-left img {
+    float:left;
+    padding: 5px 10px 5px 0px;
 }
 
-get_img_style <- function(
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  if (!is.null(width)) {
-    width <- paste0("width: ", width, "px; ")
-  }
-  if (!is.null(height)) {
-    height <- paste0("height: ", height, "px; ")
-  }
-  float <- paste0("float:", float, "; ")
-  padding <- paste0("padding:", padding, ";")
-  return(trimws(paste0(width, height, float, padding)))
+.float-right img {
+    float:right;
+    padding: 5px 0px 5px 10px;
 }
 ```
 
-The `get_img_style()` function creates a string with the style code to set the image dimensions, margin, and float the image left or right; the `float_image()` function creates the html to insert the image with that style. I broke these into two functions in case I wanted to use `get_img_style()` for a different layout later. 
+Now to float an image and wrap text around it, all I need to do is use one of those classes for the div name, and any images between the `:::` marks will be floated left or right:
 
-With those functions to float the image, all I had to do to create a div that inserts text to wrap around the image. The `image_float_layout()` function below does just that. The only caveat is that I had to pass the title and text to wrap around the image as one long string, and if I want to include markdown syntax in that text, it wouldn't render. So I had to make one other small helper function, `markdown_to_html()`, to first render the markdown and then pass it to `image_float_layout()`:
+````markdown
+:::float-left
 
-```{r}
-image_float_layout <- function(
-  title = NULL,
-  text = NULL,
-  src = NULL,
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  return(htmltools::div(
-    float_image(src, width, height, float, padding),
-    markdown_to_html(title),
-    markdown_to_html(text)
-  ))
-}
-
-markdown_to_html <- function(text) {
-  if (is.null(text)) { return(text) }
-  return(htmltools::HTML(markdown::renderMarkdown(text = text)))
-}
+`r ''````{r, out.width='150px'}
+knitr::include_graphics("path/to/image")
 ```
 
-That's it! As an example, here is the code chunk I used to insert the short bio about myself on my lab page - notice that I used markdown syntax to control styling and insert links in the `title` and `text` arguments (I shortened the text in this example):
+Here is some text you want to wrap around the image.
+:::
+````
 
-```{r, eval=FALSE}
-image_float_layout(
-    src = "images/helveston.jpg",
-    width = 150,
-    float = "left",
-    title = "### John Paul Helveston, Ph.D.",
-    text = "John Paul Helveston is an Assistant Professor in the [Department of..."
-)
-```
+You can use whatever method you want to insert images, like `knitr::include_graphics()` or just insert direct html (which is what I actually end up doing most often).
 
+> **Caveat**: Anything in the div created by `:::` will be masked to the table of contents, so I don't recomment wrapping a whole article inside `:::` to float multiple images (though you could) and instead recommend wrapping just the elements you want to float.
 
 # Auto-updated Google Scholar stats
 
@@ -337,8 +314,3 @@ image_float_layout(
 
 
 
-# "Masonry" cards
-
-This is the most involved of my custom features, and it took the most tweaking to get it right. 
-
-https://w3bits.com/tools/masonry-generator/

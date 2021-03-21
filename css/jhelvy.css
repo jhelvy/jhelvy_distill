@@ -158,6 +158,18 @@ d-article a:hover, a:focus {
     color: var(--color-white);
 }
 
+/* For floating images - see lab page, for example */
+
+.float-left img {
+    float:left; 
+    padding: 5px 10px 5px 0px;
+}
+
+.float-right img {
+    float:right; 
+    padding: 5px 0px 5px 10px;
+}
+
 /* Footer */
 
 .distill-site-footer p {

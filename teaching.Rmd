@@ -4,39 +4,29 @@ description: I teach undergraduate and graduate courses on data analysis in R in
 output:
   distill::distill_article:
     toc: false
+    css:
+      - css/jhelvy.css
+      - css/small-spacing.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://jhelvy.github.io/
 preview: images/helveston.png
 ---
 
-<!-- Reduce spacing between titles and text -->
-<style>
-d-article h3 {
-  margin: 5px 0 0 0;
-}
-d-article p {
-  margin: 5px 0 0 0;
-}
-d-article li {
-  margin-bottom: 0;
-}
-</style>
-
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
 ```
 
-```{r, echo=FALSE}
-image_float_layout(
-    src   = "images/hex/p4a.png",
-    width = 140,
-    float = "left",
-    title = "### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)",
-    text  = 'Fundamentals of programming and computational thinking in R.'
-)
-```
+:::float-left
+
+<img src="images/hex/p4a.png" width="100px">
+
+### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)
+
+Fundamentals of programming and computational thinking in R.
+
+:::
 
 <aside>
 **Semesters Taught**:
@@ -47,15 +37,15 @@ image_float_layout(
 
 `r htmltools::br()`
 
-```{r, echo=FALSE}
-image_float_layout(
-    src   = "images/hex/eda.png",
-    width = 140,
-    float = "left",
-    title = "### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)",
-    text  = 'Foundations in exploring and visualizing data in R.'
-)
-```
+:::float-left
+
+<img src="images/hex/eda.png" width="100px">
+
+### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
+
+Foundations in exploring and visualizing data in R.
+
+:::
 
 <aside>
 **Semesters Taught**:
@@ -66,15 +56,15 @@ image_float_layout(
 
 `r htmltools::br()`
 
-```{r, echo=FALSE}
-image_float_layout(
-    src   = "images/hex/madd.png",
-    width = 140,
-    float = "left",
-    title = "### EMSE 6035: Marketing of Technology",
-    text  = 'Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.'
-)
-```
+:::float-left
+
+<img src="images/hex/madd.png" width="100px">
+
+### EMSE 6035: Marketing of Technology
+
+Analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.
+
+:::
 
 <aside>
 **Semesters Taught**:

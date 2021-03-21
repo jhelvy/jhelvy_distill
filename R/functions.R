@@ -23,61 +23,9 @@ haiku <- function(one, two, three) {
   )))
 }
 
-# Generates html used to create a paragraph of text with an image
-# floated to the left or right. Pass markdown syntax as a string
-# inside the `title` or `text` arguments.
-#
-# See examples on my "lab" and "teaching" pages:
-# https://jhelvy.github.io/lab
-# https://jhelvy.github.io/teaching
-
-image_float_layout <- function(
-  title = NULL,
-  text = NULL,
-  src = NULL,
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  return(htmltools::div(
-    float_image(src, width, height, float, padding),
-    markdown_to_html(title),
-    markdown_to_html(text)
-  ))
-}
-
 markdown_to_html <- function(text) {
   if (is.null(text)) { return(text) }
   return(htmltools::HTML(markdown::renderMarkdown(text = text)))
-}
-
-float_image <- function(
-  src = NULL,
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  style <- get_img_style(width, height, float, padding)
-  return(htmltools::img(src = src, style = style))
-}
-
-get_img_style <- function(
-  width = NULL,
-  height = NULL,
-  float = "left",
-  padding = "5px 10px 5px 0px"
-) {
-  if (!is.null(width)) {
-    width <- paste0("width: ", width, "px; ")
-  }
-  if (!is.null(height)) {
-    height <- paste0("height: ", height, "px; ")
-  }
-  float <- paste0("float:", float, "; ")
-  padding <- paste0("padding:", padding, ";")
-  return(trimws(paste0(width, height, float, padding)))
 }
 
 make_icon <- function(icon) {
