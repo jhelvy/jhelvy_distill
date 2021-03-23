@@ -20,6 +20,7 @@ Imports:
     janitor,
     kableExtra,
     knitr,
+    metathis,
     postcards,
     remotes,
     rmarkdown,
