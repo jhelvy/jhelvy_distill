@@ -1,8 +1,12 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
 [![Render & Deploy
-Site](https://github.com/jhelvy/jhelvy.github.io/actions/workflows/site.yml/badge.svg?branch=master)](https://github.com/jhelvy/jhelvy.github.io/actions/workflows/site.yml)
+Site](https://github.com/jhelvy/jhelvy.github.io/actions/workflows/build_site.yml/badge.svg?branch=master)](https://github.com/jhelvy/jhelvy.github.io/actions/workflows/build_site.yml)
+[![Netlify
+Status](https://api.netlify.com/api/v1/badges/8e836ec0-395a-44dc-adb2-03bb2f387e4c/deploy-status)](https://app.netlify.com/sites/jhelvy/deploys)
 <!-- badges: end -->
 
 Home page for my [personal website](https://jhelvy.github.io/), built

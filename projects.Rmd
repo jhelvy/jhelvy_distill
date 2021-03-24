@@ -4,7 +4,7 @@ description: A collection of some of my ongoing projects that may or may not be 
 output:
   distill::distill_article:
     toc: false
-    css: 
+    css:
       - css/jhelvy.css
       - css/masonry.css
 twitter:
@@ -78,7 +78,7 @@ masonry_grid(
     src = "images/distillery.png",
     title = "The Distillery",
     description = 'A distill website showcasing other distill websites and blogs.',
-    url = "https://jhelvy.github.io/distillery/"
+    url = "https://distillery.rbind.io"
   )
 )
 ```
