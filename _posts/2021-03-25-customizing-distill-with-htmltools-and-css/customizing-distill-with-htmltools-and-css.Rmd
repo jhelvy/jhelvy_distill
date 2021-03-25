@@ -1,15 +1,14 @@
 ---
 title: "Customizing distill with {htmltools} and CSS"
 description: |
-  How I added lots of little features to my distill site with custom functions, the {htmltools} package, and CSS.
+  How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.
 author: John Paul Helveston
-date: 03-18-2021
+date: 03-25-2021
 preview: "images/css_html.png"
 output:
   distill::distill_article:
     self_contained: false
     toc: true
-draft: true
 ---
 
 ```{r setup, include=FALSE}
@@ -29,23 +28,23 @@ knitr::opts_chunk$set(
 <img src="images/css_html.png" width=100%>
 </center>
 
-One of the things I love about [{distill}](https://rstudio.github.io/distill/) as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. This is the number one reason I chose distill over [{blogdown}](https://bookdown.org/yihui/blogdown/) to build my site. I tried for days to customize the [Hugo Academic theme](https://themes.gohugo.io/academic/) to create the site I had in mind with blogdown, but I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill's incredible [post](https://alison.rbind.io/post/new-year-new-blogdown/) on how to do it (btw, if you want to make a blogdown site, you totally should read her [posts on blogdown](https://alison.rbind.io/categories/blogdown/)).
+One of the things I love about [{distill}](https://rstudio.github.io/distill/) as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. I tried using [{blogdown}](https://bookdown.org/yihui/blogdown/) with the [Hugo Academic theme](https://themes.gohugo.io/academic/), but in the end I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill's incredible [post](https://alison.rbind.io/post/new-year-new-blogdown/) on how to do it (btw, if you want to make a blogdown site, you totally should read her [posts on blogdown](https://alison.rbind.io/categories/blogdown/)). Distill was just simpler, so I dove in.
 
-That said, once I did get my distill site running, I found myself longing for some of the really cool features I've seen on peoples' blogdown sites, like how to make masonry cards like [these](https://alison.rbind.io/projects/) (if you can't tell yet, [Alison Hill's site](https://alison.rbind.io/) was a major source of inspiration for me). But then I realized I'm working in R, and whenever I want some functionality that doesn't yet exist, I just write my own function!
+That said, once I did get my distill site running, I found myself longing for some of the really cool features I've seen on peoples' blogdown sites, like [Alison Hill's site](https://alison.rbind.io/) (if you can't tell, Alison's work has been a major source of inspiration for me). But then I realized, "wait a minute...I'm working in R, and whenever I want some functionality that doesn't yet exist, I can just write my own functions!"
 
-So that's what I set out to do - write a bunch of functions to construct the features I wanted. This post walks through the general strategy and then shows how I implemented each custom feature on my site. Full disclosure: I am sure there are probably other (likely better) ways to do some of these things, but this is what I came up with and it worked for me!
+So that's what I set out to do - write a bunch of functions and hack away at CSS to construct the features I wanted. This post walks through my general strategy and then shows how I implemented some of the features on my site.
+
+> Full disclosure: I am sure there are probably other (likely better) ways to do some of these things, but this is what I came up with and it worked for me!
 
 # Finding the html
 
 For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the "inspect" tool in Chrome to grab the html by right-clicking on it and selecting "Copy element", like this:
 
 <center>
-<img src="images/inspect.gif" width=100%>
+<img src="images/inspect.gif" width=100% class="shadow">
 </center>
 
-With some html in hand, I had a template to work with. My starting point was to just drop in the html directly to a page and edit it until it looked the way I wanted. Then I had to find a way to _generate_ that html on the fly.
-
-But how to write R code to create html code...?
+With some html in hand, I had a template to work with. My starting point was always to just drop the html directly into a page and edit it until it looked the way I wanted. But most of the time I needed to replicate and reuse that html in multiple places, so I had to find a way to write R code to _generate_ html.
 
 # [{htmltools}](https://unleash-shiny.rinterface.com/htmltools-overview.html) to the rescue!
 
@@ -206,7 +205,6 @@ icon_link(
 )
 ```
 
-
 <center>
 ```{r, echo=FALSE}
 icon_link(
@@ -250,7 +248,7 @@ output:
 A very common layout I see on lots of sites is an image floated to the left or right with text wrapping around it. Here's an example from my [lab page](https://jhelvy.github.io/lab.html):
 
 <center>
-<img src="images/text_wrap.png" width="600px">
+<img src="images/text_wrap.png" width="600px" class="shadow">
 </center>
 
 There are probably lots of ways to do this, but a simple enough solution is to use the `:::` notation to create custom divs. This isn't needed if your output is a `html_document`, but for distill articles you need to create a new div that includes the image _and_ text wrapping around it (see [this issue](https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2) for details as to why you have to do this).
@@ -305,12 +303,41 @@ You can use whatever method you want to insert images, like `knitr::include_grap
 
 > **Caveat**: Anything in the div created by `:::` will be masked to the table of contents, so I don't recomment wrapping a whole article inside `:::` to float multiple images (though you could) and instead recommend wrapping just the elements you want to float.
 
-# Auto-updated Google Scholar stats
-
-
-
-
 # "Last updated on..." statement in footer
 
+I wanted to put a date somewhere on my site so people can see when it was last updated, and I figured the footer was a good location since it's out of the way but still on every page (even blog posts). The thing is, {distill} generates the footer from a single, static `_footer.html` file in the root directory. So if I want the date to update in the footer, I have to update the `_footer.html` file on every build.
 
+Not a problem - just make a `create_footer()` function and call it before you build the site! My `create_footer()` function lives in my [`functions.R`](https://github.com/jhelvy/jhelvy.github.io/blob/master/R/functions.R) file, and it's a bit long as it also inserts some icons and other text. But the main part doing the date updating is the function `last_updated()`:
+
+```{r}
+last_updated <- function() {
+  return(htmltools::span(
+    paste0(
+      'Last updated on ',
+      format(Sys.Date(), format="%B %d, %Y")
+    ),
+    style = "font-size:0.8rem;")
+  )
+}
+```
+
+This just generates a span of the text "Last updated on {date}" with a smaller font size. I call this function inside my `create_footer()` function to grab the latest date, then the function write the `_footer.html` file to the root directory.
+
+To simplify the site build, I put a [build_site.R](https://github.com/jhelvy/jhelvy.github.io/blob/master/build_site.R) file in root directory with code to load all the functions in `functions.R`, create the footer, then build the site:
+
+```{r, eval=FALSE}
+source(file.path("R", "functions.R"))
+
+# Fist build the footer to capture today's date
+create_footer()
+
+# Then render the site
+rmarkdown::render_site(encoding = 'UTF-8')
+```
+
+Now I just source `build_site.R` and my site builds with an updated footer to today's date! What's even more fun is I use a [GitHub Action](https://github.com/jhelvy/jhelvy.github.io/blob/master/.github/workflows/build_site.yml) to automatically run `build_site.R` every time I commit something to the repo where my site lives and commit all the site files to my `gh-pages` branch. So I never have to worry about creating the footer - it's all done automatically!
+
+# Final thoughts
+
+Coming up with little solutions to each of these features was a highly iterative process, and for the most part I really wasn't sure how to do any of this when I first got started. Each feature I added usually started by being inspired from someone else's work, like the haiku research summaries and buttons with icons and text on [Andrew Heiss's research page](https://www.andrewheiss.com/research/). I found the process of coming up with a solution to implement each feature to be a fun way to learn new R tricks, especially in working with CSS. If you're an R / distill / blogdown user looking to customize your site, hopefully these little examples will inspire you too!
 

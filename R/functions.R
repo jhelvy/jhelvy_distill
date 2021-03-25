@@ -132,12 +132,6 @@ create_footer <- function() {
   save_raw(footer, "_footer.html")
 }
 
-save_raw <- function(text, path) {
-    fileConn <- file(path)
-    writeLines(text, fileConn)
-    close(fileConn)
-}
-
 last_updated <- function() {
   return(htmltools::span(
     paste0(
@@ -146,4 +140,10 @@ last_updated <- function() {
     ),
     style = "font-size:0.8rem;")
   )
+}
+
+save_raw <- function(text, path) {
+    fileConn <- file(path)
+    writeLines(text, fileConn)
+    close(fileConn)
 }
