@@ -10,7 +10,7 @@ output:
       - css/small-spacing.css
 twitter:
   creator: "@JohnHelveston"
-base_url: https://jhelvy.github.io/
+base_url: https://www.jhelvy.com
 preview: images/helveston.png
 ---
 

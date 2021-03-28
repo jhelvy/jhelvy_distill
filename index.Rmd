@@ -10,7 +10,7 @@ links:
     url: "https://www.linkedin.com/in/jhelvy/"
   - label: ORCID iD
     url: "https://orcid.org/0000-0002-2657-9191"
-base_url: https://jhelvy.github.io/
+base_url: https://www.jhelvy.com
 preview: images/helveston.png
 twitter:
   creator: "@JohnHelveston"
@@ -27,12 +27,12 @@ meta() %>%
   meta_description(
     "The personal website of John Paul Helveston"
   ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.github.io") %>%
+  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
   meta_viewport() %>%
   meta_social(
     title = "jhelvy.com",
-    url = "https://jhelvy.github.io/",
-    image = "https://jhelvy.github.io/images/helveston.png",
+    url = "https://jhelvy.com/",
+    image = "https://jhelvy.com/images/helveston.png",
     image_alt = "A photo of John Paul Helveston",
     og_type = "website",
     og_author = c("John Paul Helveston"),

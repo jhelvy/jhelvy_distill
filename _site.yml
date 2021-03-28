@@ -4,10 +4,10 @@ theme: css/jhelvy.css
 output_dir: _site
 description: |
   The personal website of John Paul Helveston
-base_url: https://jhelvy.github.io
+base_url: https://www.jhelvy.com
 twitter:
   site: "@JohnHelveston"
-repository_url: https://github.com/jhelvy/jhelvy.github.io
+repository_url: https://github.com/jhelvy/jhelvy.com
 creative_commons: CC BY-SA
 navbar:
   search: false
@@ -29,7 +29,7 @@ navbar:
     - icon: ai ai-cv
       href: content/docs/Helveston_CV.pdf
     - icon: fab fa-github
-      href: https://github.com/jhelvy/jhelvy.github.io
+      href: https://github.com/jhelvy/jhelvy.com
     - icon: fab fa-twitter
       href: https://twitter.com/JohnHelveston
 

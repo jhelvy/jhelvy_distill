@@ -3,7 +3,7 @@ title: "Good Eats"
 output: distill::distill_article
 twitter:
   creator: "@JohnHelveston"
-base_url: https://jhelvy.github.io/
+base_url: https://www.jhelvy.com
 preview: images/john_china_duck.jpg
 ---
 
