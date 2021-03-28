@@ -2,8 +2,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>jhelvy.com</title>
-    <link>https://jhelvy.github.io</link>
-    <atom:link href="https://jhelvy.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+    <link>https://www.jhelvy.com</link>
+    <atom:link href="https://www.jhelvy.com/blog.xml" rel="self" type="application/rss+xml"/>
     <description>The personal website of John Paul Helveston
 </description>
     <generator>Distill</generator>
@@ -11,11 +11,11 @@
     <item>
       <title>Customizing distill with {htmltools} and CSS</title>
       <dc:creator>John Paul Helveston</dc:creator>
-      <link>https://jhelvy.github.io/posts/2021-03-25-customizing-distill-with-htmltools-and-css</link>
+      <link>https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css</link>
       <description>How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.</description>
-      <guid>https://jhelvy.github.io/posts/2021-03-25-customizing-distill-with-htmltools-and-css</guid>
+      <guid>https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css</guid>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://jhelvy.github.io/posts/2021-03-25-customizing-distill-with-htmltools-and-css/images/css_html.png" medium="image" type="image/png" width="4780" height="1575"/>
+      <media:content url="https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css/images/css_html.png" medium="image" type="image/png" width="4780" height="1575"/>
     </item>
   </channel>
 </rss>
