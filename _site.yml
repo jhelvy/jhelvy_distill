@@ -25,7 +25,7 @@ collections:
     disqus: jhelvy
     share: [twitter, linkedin]
 navbar:
-  search: false
+  search: true
   left:
     - icon: fa-home
       href: index.html
