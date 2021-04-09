@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
+  <link rel="alternate" type="application/rss+xml" href="https://www.jhelvy.com/talks.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -86,30 +87,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>jhelvy.com: Projects</title>
+  <title>jhelvy.com: Selected Talks</title>
   
-  <meta property="description" itemprop="description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
+  <meta property="description" itemprop="description" content="Some of my talks and workshops I&#39;ve given"/>
   
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
   
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="jhelvy.com: Projects"/>
+  <meta property="og:title" content="jhelvy.com: Selected Talks"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
-  <meta property="og:image" content="https://www.jhelvy.com/./images/helveston.png"/>
-  <meta property="og:image:width" content="2058"/>
-  <meta property="og:image:height" content="2061"/>
+  <meta property="og:description" content="Some of my talks and workshops I&#39;ve given"/>
+  <meta property="og:image" content="https://www.jhelvy.com/./images/helveston.jpg"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="jhelvy.com"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:title" content="jhelvy.com: Projects"/>
-  <meta property="twitter:description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
-  <meta property="twitter:image" content="https://www.jhelvy.com/./images/helveston.png"/>
-  <meta property="twitter:image:width" content="2058"/>
-  <meta property="twitter:image:height" content="2061"/>
+  <meta property="twitter:title" content="jhelvy.com: Selected Talks"/>
+  <meta property="twitter:description" content="Some of my talks and workshops I&#39;ve given"/>
+  <meta property="twitter:image" content="https://www.jhelvy.com/./images/helveston.jpg"/>
   <meta property="twitter:site" content="@JohnHelveston"/>
   <meta property="twitter:creator" content="@JohnHelveston"/>
   
@@ -117,7 +114,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["A collection of some of my ongoing projects that may or may not be related to my research."]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/masonry.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["images/helveston.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","twitter","preview","listing"]}},"value":[{"type":"character","attributes":{},"value":["Selected Talks"]},{"type":"character","attributes":{},"value":["Some of my talks and workshops I've given\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["images/helveston.jpg"]},{"type":"character","attributes":{},"value":["talks"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2254,17 +2251,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!-- </script> -->
   <!--/radix_placeholder_site_in_header-->
 
-  <link rel="stylesheet" href="css/jhelvy.css" type="text/css"/>
-  <link rel="stylesheet" href="css/masonry.css" type="text/css"/>
 
 </head>
 
-<body>
+<body class="layout-listing">
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Projects","description":"A collection of some of my ongoing projects that may or may not be related to my research.","authors":[]}
+{"title":"Selected Talks","description":"Some of my talks and workshops I've given","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2301,115 +2296,165 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
+<!--radix_placeholder_article_listing-->
+
+
+<script type="application/javascript">
+
+function init_posts_list() {
+
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).load(function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
+      }
+
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
+
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
+
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace(/^#category:/, "");
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+            post = $(script).parent().get();
+            return false;
+          }
+        });
+        return post;
+      });
+      set_posts_visible(posts, true);
+
+      // mark the hash active
+      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
+
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
+
+    }
+  }
+
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
+
+
+
+<div class="posts-container posts-apply-limit l-page">
+<div class="posts-list">
+<h1 class="posts-list-caption" data-caption="Selected Talks">Selected Talks</h1>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Projects</h1>
+<h1>Selected Talks</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>A collection of some of my ongoing projects that may or may not be related to my research.</p>
+<p><p>Some of my talks and workshops I’ve given</p></p>
 </div>
 
 
 <div class="d-article">
 <div class="layout-chunk" data-layout="l-body">
-
+<style type="text/css">
+.thumbnail {
+  border: 1px solid black;
+}
+</style>
 </div>
-<div class="layout-chunk" data-layout="l-body-outset">
-<div class="masonry-wrapper">
-<div class="masonry">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/logitr/" class="card-hover">
-<img src="images/hex/logitr-square.png"/>
-</a>
-<h3 class="masonry-title">logitr</h3>
-<p class="masonry-description">An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with "Preference" space or "Willingness-to-pay" (WTP) space utility parameterizations.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://gwcoders.github.io/" class="card-hover">
-<img src="images/gwcoders.png"/>
-</a>
-<h3 class="masonry-title">GW Coders</h3>
-<p class="masonry-description">A study group that brings together students and faculty to apply computational and data analytics skills in research.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/conjointTools/" class="card-hover">
-<img src="images/hex/conjointTools.png"/>
-</a>
-<h3 class="masonry-title">conjointTools</h3>
-<p class="masonry-description">An R package of tools for designing choice based conjoint survey experiments.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/xaringanBuilder/" class="card-hover">
-<img src="images/hex/xaringanBuilder-square.png"/>
-</a>
-<h3 class="masonry-title">xaringanBuilder</h3>
-<p class="masonry-description">An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://github.com/jhelvy/iris-rev2" class="card-hover">
-<img src="images/iris_rev2.jpg"/>
-</a>
-<h3 class="masonry-title">Iris Rev 2 Build Log</h3>
-<p class="masonry-description">A build log of how I built my Iris Rev 2 keyboard.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.shinyapps.io/splitKbCompare/" class="card-hover">
-<img src="images/splitKBCompare.png"/>
-</a>
-<h3 class="masonry-title">splitKbCompare</h3>
-<p class="masonry-description">An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/lexis/" class="card-hover">
-<img src="images/lexis.png"/>
-</a>
-<h3 class="masonry-title">λέξις (lexis)</h3>
-<p class="masonry-description">A theme for xaringan slides with a light gray background, "Fira Sans Condensed" for headers, "Inter" for body text, and "SFMono-Regular" for mono text.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://github.com/jhelvy/formr4conjoint" class="card-hover">
-<img src="images/formr4conjoint.png"/>
-</a>
-<h3 class="masonry-title">formr4conjoint</h3>
-<p class="masonry-description">A template for how to create a choice-based conjoint survey using the formr survey platform.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/r4aPrimer/" class="card-hover">
-<img src="images/r4a.png"/>
-</a>
-<h3 class="masonry-title">R for Analytics Primer</h3>
-<p class="masonry-description">A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.</p>
-</div>
-</div>
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://distillery.rbind.io" class="card-hover">
-<img src="images/distillery.png"/>
-</a>
-<h3 class="masonry-title">The Distillery</h3>
-<p class="masonry-description">A distill website showcasing other distill websites and blogs.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Took this idea from Emi Tanaka - thanks Emi! https://github.com/emitanaka/emitanaka.github.io/blob/master/talks.Rmd -->
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
