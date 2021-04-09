@@ -80,6 +80,11 @@ icon_link(
     text = "PDF",
     url  = "https://science.sciencemag.org/content/sci/366/6467/794.full.pdf?ijkey=BpsTMIIAzoEgE&keytype=ref&siteid=sci"
 )
+icon_link(
+    icon = "fas fa-external-link-alt",
+    text = "View in new tab",
+    url  = "https://science.sciencemag.org/content/366/6467/794.full?ijkey=BpsTMIIAzoEgE&keytype=ref&siteid=sci"
+)
 ```
 </div>
 `r haiku("To meet climate goals", "We must work with China to", "Scale up more green tech")`
