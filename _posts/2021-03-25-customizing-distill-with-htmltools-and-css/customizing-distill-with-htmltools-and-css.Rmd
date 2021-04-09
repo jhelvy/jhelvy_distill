@@ -5,6 +5,10 @@ description: |
 author: John Paul Helveston
 date: 03-25-2021
 preview: "images/css_html.png"
+categories:
+  - tutorial
+  - distill
+  - R
 output:
   distill::distill_article:
     self_contained: false
