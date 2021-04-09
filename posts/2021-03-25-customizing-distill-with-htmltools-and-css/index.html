@@ -2492,6 +2492,35 @@ d-appendix d-footnote-list a.footnote-backlink {
   <!--radix_placeholder_site_in_header-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (!/posts/.test(location.pathname)) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.src = "https://utteranc.es/client.js";
+    script.setAttribute("repo", "jhelvy/jhelvy.com");
+    script.setAttribute("issue-term", "title");
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("label", "comments 💬");
+    script.setAttribute("theme", "github-dark");
+
+    /* wait for article to load, append script to article element */
+    var observer = new MutationObserver(function (mutations, observer) {
+      var article = document.querySelector("d-article");
+      if (article) {
+        observer.disconnect();
+        /* HACK: article scroll */
+        article.setAttribute("style", "overflow-y: hidden");
+        article.appendChild(script);
+      }
+    });
+
+    observer.observe(document.body, { childList: true });
+  });
+</script>
+
 <!--/radix_placeholder_site_in_header-->
 
 
@@ -2892,38 +2921,6 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Coming up with little solutions to each of these features was a highly iterative process, and for the most part I really wasn’t sure how to do any of this when I first got started. Each feature I added usually started by being inspired from someone else’s work, like the haiku research summaries and buttons with icons and text on <a href="https://www.andrewheiss.com/research/">Andrew Heiss’s research page</a>. I found the process of coming up with a solution to implement each feature to be a fun way to learn new R tricks, especially in working with CSS. If you’re an R / distill / blogdown user looking to customize your site, hopefully these little examples will inspire you too!</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
-<div class="article-footer">
-  <p class="social_footer">
-    <span class="disqus-comments">
-      <i class="fas fa-comments"></i>
-      &nbsp;
-      <span class="disqus-comment-count" data-disqus-identifier="posts/2021-03-25-customizing-distill-with-htmltools-and-css/">Comment on this article</span>
-    </span>
-    <span class="article-sharing">
-      Share: &nbsp;
-      <a href="https://twitter.com/share?text=Customizing%20distill%20with%20%7Bhtmltools%7D%20and%20CSS&amp;url=https%3A%2F%2Fwww.jhelvy.com%2Fposts%2F2021-03-25-customizing-distill-with-htmltools-and-css%2F">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.jhelvy.com%2Fposts%2F2021-03-25-customizing-distill-with-htmltools-and-css%2F&amp;title=Customizing%20distill%20with%20%7Bhtmltools%7D%20and%20CSS">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </span>
-  </p>
-  <script id="dsq-count-scr" src="https://jhelvy.disqus.com/count.js" async></script>
-  <div id="disqus_thread" class="hidden"></div>
-  <script type="text/javascript" cookie-consent="functionality">
-var disqus_config = function () {
-  this.page.url = 'https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css/';
-  this.page.identifier = 'posts/2021-03-25-customizing-distill-with-htmltools-and-css/';
-};
-(function() {
-  var d = document, s = d.createElement('script');
-  s.src = 'https://jhelvy.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
-</script>
-</div>
 <!--/radix_placeholder_article_footer-->
 </div>
 
