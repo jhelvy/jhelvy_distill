@@ -31,16 +31,16 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Lab"
+      href: lab.html
     - text: "Pubs"
       href: publications.html
     - text: "Talks"
       href: talks.html
-    - text: "Lab"
-      href: lab.html
-    - text: "Projects"
-      href: projects.html
     - text: "Teaching"
       href: teaching.html
+    - text: "Projects"
+      href: projects.html
     - text: "Blog"
       href: blog.html
   right:
@@ -56,4 +56,3 @@ output:
     includes:
       in_header:
       - _includes/header.html
-      - _includes/utterances.html
