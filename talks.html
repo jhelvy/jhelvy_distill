@@ -2212,43 +2212,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_site_in_header-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (!/posts/.test(location.pathname)) {
-        return;
-      }
-  
-      var script = document.createElement("script");
-      script.src = "https://utteranc.es/client.js";
-      script.setAttribute("repo", "sciencificity/Blog_Vebash");
-      script.setAttribute("issue-term", "title");
-      script.setAttribute("crossorigin", "anonymous");
-      script.setAttribute("label", "comments 💬");
-      script.setAttribute("theme", "github-light");
-  
-      /* wait for article to load, append script to article element */
-      var observer = new MutationObserver(function (mutations, observer) {
-        var article = document.querySelector("d-article");
-        if (article) {
-          observer.disconnect();
-          /* HACK: article scroll */
-          article.setAttribute("style", "overflow-y: hidden");
-          article.appendChild(script);
-        }
-      });
-  
-      observer.observe(document.body, { childList: true });
-    });
-  </script>
-  
-  <!-- <script src="https://utteranc.es/client.js" -->
-  <!--         repo="sciencificity/Blog_Vebash" -->
-  <!--         issue-term="title" -->
-  <!--         label="comments 💬" -->
-  <!--         theme="github-light" -->
-  <!--         crossorigin="anonymous" -->
-  <!--         async> -->
-  <!-- </script> -->
   <!--/radix_placeholder_site_in_header-->
 
 
@@ -2272,11 +2235,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <i class="fa fa-home" aria-hidden="true"></i>
 </a>
 <a href="about.html">About</a>
+<a href="lab.html">Lab</a>
 <a href="publications.html">Pubs</a>
 <a href="talks.html">Talks</a>
-<a href="lab.html">Lab</a>
-<a href="projects.html">Projects</a>
 <a href="teaching.html">Teaching</a>
+<a href="projects.html">Projects</a>
 <a href="blog.html">Blog</a>
 </div>
 <div class="nav-right">
@@ -2428,9 +2391,45 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Selected Talks">Selected Talks</h1>
+<a href="talks/2021-01-21-surveys-with-formr/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","surveys"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 21, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="talks/2021-01-21-surveys-with-formr/surveys-with-formr.png"/>
+</div>
+<div class="description">
+<h2>Using formr to create R-powered surveys with individualized feedback</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">surveys</div>
+</div>
+<p>My rstudio::conf 2021 lightning talk on creating R-powered surveys using {formr}"</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:R">R</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:surveys">surveys</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>

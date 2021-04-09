@@ -2209,43 +2209,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_site_in_header-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      if (!/posts/.test(location.pathname)) {
-        return;
-      }
-  
-      var script = document.createElement("script");
-      script.src = "https://utteranc.es/client.js";
-      script.setAttribute("repo", "sciencificity/Blog_Vebash");
-      script.setAttribute("issue-term", "title");
-      script.setAttribute("crossorigin", "anonymous");
-      script.setAttribute("label", "comments 💬");
-      script.setAttribute("theme", "github-light");
-  
-      /* wait for article to load, append script to article element */
-      var observer = new MutationObserver(function (mutations, observer) {
-        var article = document.querySelector("d-article");
-        if (article) {
-          observer.disconnect();
-          /* HACK: article scroll */
-          article.setAttribute("style", "overflow-y: hidden");
-          article.appendChild(script);
-        }
-      });
-  
-      observer.observe(document.body, { childList: true });
-    });
-  </script>
-  
-  <!-- <script src="https://utteranc.es/client.js" -->
-  <!--         repo="sciencificity/Blog_Vebash" -->
-  <!--         issue-term="title" -->
-  <!--         label="comments 💬" -->
-  <!--         theme="github-light" -->
-  <!--         crossorigin="anonymous" -->
-  <!--         async> -->
-  <!-- </script> -->
   <!--/radix_placeholder_site_in_header-->
 
 
@@ -2269,11 +2232,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <i class="fa fa-home" aria-hidden="true"></i>
 </a>
 <a href="about.html">About</a>
+<a href="lab.html">Lab</a>
 <a href="publications.html">Pubs</a>
 <a href="talks.html">Talks</a>
-<a href="lab.html">Lab</a>
-<a href="projects.html">Projects</a>
 <a href="teaching.html">Teaching</a>
+<a href="projects.html">Projects</a>
 <a href="blog.html">Blog</a>
 </div>
 <div class="nav-right">
@@ -2425,11 +2388,11 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Blog">Blog</h1>
 <a href="posts/2021-03-25-customizing-distill-with-htmltools-and-css/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<script class="post-metadata" type="text/json">{"categories":["tutorial","distill","R"]}</script>
 <div class="metadata">
 <div class="publishedDate">March 25, 2021</div>
 </div>
@@ -2438,10 +2401,37 @@ function init_posts_list() {
 </div>
 <div class="description">
 <h2>Customizing distill with {htmltools} and CSS</h2>
-<div class="dt-tags"></div>
+<div class="dt-tags">
+<div class="dt-tag">tutorial</div>
+<div class="dt-tag">distill</div>
+<div class="dt-tag">R</div>
+</div>
 <p>How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.</p>
 </div>
 </a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:distill">distill</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:R">R</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:tutorial">tutorial</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>

@@ -13,6 +13,9 @@
       <dc:creator>John Paul Helveston</dc:creator>
       <link>https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css</link>
       <description>How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.</description>
+      <category>tutorial</category>
+      <category>distill</category>
+      <category>R</category>
       <guid>https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css</guid>
       <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css/images/css_html.png" medium="image" type="image/png" width="4780" height="1575"/>
