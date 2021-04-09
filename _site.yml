@@ -15,15 +15,11 @@ collections:
     categories_metadata: true
     authors_metadata: false
     feed_iems_max: 20 # default
-    disqus: jhelvy
-    share: [twitter, linkedin]
   talks:
     categories: true
     categories_metadata: true
     authors_metadata: false
     feed_iems_max: 20 # default
-    disqus: jhelvy
-    share: [twitter, linkedin]
 navbar:
   search: true
   left:
@@ -56,3 +52,4 @@ output:
     includes:
       in_header:
       - _includes/header.html
+      - _includes/utterances.html
