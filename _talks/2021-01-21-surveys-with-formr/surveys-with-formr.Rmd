@@ -8,6 +8,7 @@ preview: "surveys-with-formr.png"
 categories:
   - R
   - surveys
+  - formr
 twitter:
   creator: "@JohnHelveston"
 output:
@@ -65,7 +66,13 @@ icon_link(
 ```
 </center>
 
+I also gave an extended version of the talk at the [GW Coders](http://gwcoders.github.io/) Meetup on Feb. 19, 2021. You can see that below (the first 5 minutes is the same as my rstudio::conf lightning talk): 
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Hjosc_NQ3t0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Slides
+
+Here are my slides for my rstudio::conf lightning talk built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can also see the source code for the slides [here](https://github.com/jhelvy/surveys-with-formr).
 
 Keyboard Shortcuts for Slides:
 
