@@ -14,7 +14,7 @@ twitter:
 output:
   distill::distill_article:
     self_contained: false
-    toc: false
+    toc: true
 ---
 
 ```{r, include = FALSE}
@@ -27,12 +27,7 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-```
 
-I gave a lightning talk at the [2021 rstudio conference](https://www.rstudio.com/resources/rstudioglobal-2021/) on using [{formr}](https://formr.org/) to create R-powered surveys.
-
-<center>
-```{r, echo=FALSE}
 make_icon <- function(icon) {
   return(htmltools::tag("i", list(class = icon)))
 }
@@ -47,12 +42,29 @@ icon_link <- function(icon = NULL, text = NULL, url = NULL) {
   }
   return(htmltools::a(href = url, text, class = "icon-link"))
 }
+```
 
+# Watch the talk
+
+I gave a lightning talk at the [2021 rstudio conference](https://www.rstudio.com/resources/rstudioglobal-2021/) on using [{formr}](https://formr.org/) to create R-powered surveys. 
+
+```{r, echo=FALSE}
 icon_link(
     icon = "fa fa-video",
-    text = "Watch the talk",
+    text = "Watch the lightning talk",
     url  = "https://rstudio.com/resources/rstudioglobal-2021/using-formr-to-create-r-powered-surveys-with-individualized-feedback/"
 )
+```
+
+I also gave an extended version of the talk at the [GW Coders](http://gwcoders.github.io/) Meetup on Feb. 19, 2021. You can see that below (the first 5 minutes is the same as my rstudio::conf lightning talk): 
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Hjosc_NQ3t0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Slides
+
+Here are my slides for my rstudio::conf lightning talk built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can also see the source code for the slides [here](https://github.com/jhelvy/surveys-with-formr).
+
+```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
     text = "Full screen slides",
@@ -64,15 +76,6 @@ icon_link(
     url  = "https://github.com/jhelvy/surveys-with-formr/raw/main/surveys-with-formr.pdf"
 )
 ```
-</center>
-
-I also gave an extended version of the talk at the [GW Coders](http://gwcoders.github.io/) Meetup on Feb. 19, 2021. You can see that below (the first 5 minutes is the same as my rstudio::conf lightning talk): 
-
-<iframe width="640" height="360" src="https://www.youtube.com/embed/Hjosc_NQ3t0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-# Slides
-
-Here are my slides for my rstudio::conf lightning talk built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can also see the source code for the slides [here](https://github.com/jhelvy/surveys-with-formr).
 
 Keyboard Shortcuts for Slides:
 
