@@ -7,7 +7,19 @@
     <description>The personal website of John Paul Helveston
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 21 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr</link>
+      <description>My talk for the 2021 Sawtooth Conference Turbo Choice Modeling Panel</description>
+      <category>R</category>
+      <category>surveys</category>
+      <category>conjoint</category>
+      <guid>https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr</guid>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/sawtooth-conf-logitr.png" medium="image" type="image/png" width="1261" height="710"/>
+    </item>
     <item>
       <title>Using formr to create R-powered surveys with individualized feedback</title>
       <dc:creator>John Paul Helveston</dc:creator>
