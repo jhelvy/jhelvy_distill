@@ -17,8 +17,9 @@ output:
     toc: true
 ---
 
-```{r, include = FALSE}
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 library(fontawesome)
+library(metathis)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -28,6 +29,24 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+meta() %>%
+  meta_description(
+    'My rstudio::conf 2021 lightning talk on creating R-powered surveys using {formr}'
+  ) %>%
+  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "Using formr to create R-powered surveys with individualized feedback",
+    url = "https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/",
+    image = "https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/surveys-with-formr.png",
+    image_alt = "Title slide for my talk",
+    og_type = "website",
+    og_author = c("John Paul Helveston"),
+    twitter_card_type = "summary",
+    twitter_creator = "@JohnHelveston"
+  )
+
+# Load button functions (eventually will replace this with {distilltools})
 make_icon <- function(icon) {
   return(htmltools::tag("i", list(class = icon)))
 }

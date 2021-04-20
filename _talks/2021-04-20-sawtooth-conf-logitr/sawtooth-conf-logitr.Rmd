@@ -17,7 +17,9 @@ output:
     toc: false
 ---
 
-```{r, include = FALSE}
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(metathis)
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -26,6 +28,24 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
+meta() %>%
+  meta_description(
+    'My talk for the 2021 Sawtooth Conference Turbo Choice Modeling Panel'
+  ) %>%
+  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models",
+    url = "https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/",
+    image = "https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/sawtooth-conf-logitr.png",
+    image_alt = "Title slide for my talk",
+    og_type = "website",
+    og_author = c("John Paul Helveston"),
+    twitter_card_type = "summary",
+    twitter_creator = "@JohnHelveston"
+  )
+
+# Load button functions (eventually will replace this with {distilltools})
 make_icon <- function(icon) {
   return(htmltools::tag("i", list(class = icon)))
 }
