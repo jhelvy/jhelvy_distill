@@ -105,9 +105,6 @@ Once you have a survey uploaded, you can make it live by creating a "Run" and in
 You can control the "publicness" of the survey by modifying the "volume" icons:
 
 - `r fa("eject-solid")` means only you can access the survey
-
 - `r fa("volume-off-solid")` means you and people who have an access code can access (no new users can enroll).
-
 - `r fa("volume-down-solid")` means people who have the link can access.
-
 - `r fa("volume-up-solid")` means the link is public, everyone can access.

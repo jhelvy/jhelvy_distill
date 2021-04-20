@@ -1,0 +1,77 @@
+---
+title: "Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models"
+description: |
+  My talk for the 2021 Sawtooth Conference Turbo Choice Modeling Panel
+author: John Paul Helveston
+date: 04-20-2021
+preview: "sawtooth-conf-logitr.png"
+categories:
+  - R
+  - surveys
+  - conjoint
+twitter:
+  creator: "@JohnHelveston"
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: false
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.retina = 3,
+  comment = "#>"
+)
+
+make_icon <- function(icon) {
+  return(htmltools::tag("i", list(class = icon)))
+}
+
+make_icon_text <- function(icon, text) {
+  return(htmltools::HTML(paste0(make_icon(icon), " ", text)))
+}
+
+icon_link <- function(icon = NULL, text = NULL, url = NULL) {
+  if (!is.null(icon)) {
+    text <- make_icon_text(icon, text)
+  }
+  return(htmltools::a(href = url, text, class = "icon-link"))
+}
+```
+
+I gave a talk at the Sawtooth Software Conference [Turbo Choice Modeling Seminar](https://events.sawtoothsoftware.com/turboseminar) in San Antonio, Texas, April 19-23, 2021 (I pre-recorded my talk as I did not attend in-person). The talk is titled, "The [{logitr}](https://jhelvy.github.io/logitr/) R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models".
+
+Learn more about the {logitr} package [here](https://jhelvy.github.io/logitr/).
+
+# Slides
+
+My slides were built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can see the source code for the slides [here](https://github.com/jhelvy/2021-sawtooth-conf).
+
+```{r, echo=FALSE}
+icon_link(
+    icon = "fas fa-external-link-alt",
+    text = "Full screen slides",
+    url  = "https://jhelvy.github.io/2021-sawtooth-conf"
+)
+icon_link(
+    icon = "fa fa-file-pdf",
+    text = "Slides as PDF",
+    url  = "https://github.com/jhelvy/2021-sawtooth-conf/raw/main/2021-sawtooth-conf.pdf"
+)
+```
+
+Keyboard Shortcuts for Slides:
+
+- Use <kbd>←</kbd> and <kbd>→</kbd> to navigate through the slides.
+- Use <kbd>f</kbd> to toggle full screen.
+- Use <kbd>o</kbd> to view an overview of all slides.
+- Use <kbd>h</kbd> to see a list of other shortcuts.
+
+```{r slides, echo=FALSE}
+xaringanExtra::embed_xaringan(
+  url = "https://jhelvy.github.io/2021-sawtooth-conf/index.html",
+  ratio = "16:9")
+```
