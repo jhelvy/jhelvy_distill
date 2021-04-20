@@ -8,10 +8,4 @@ preview: images/helveston.jpg
 listing: talks
 ---
 
-```{css, echo = FALSE}
-.thumbnail {
-  border: 1px solid black;
-}
-```
-
 <!-- Took this idea from Emi Tanaka - thanks Emi! https://github.com/emitanaka/emitanaka.github.io/blob/master/talks.Rmd -->
