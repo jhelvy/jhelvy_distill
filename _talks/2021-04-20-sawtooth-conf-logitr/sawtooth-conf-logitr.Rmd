@@ -19,6 +19,7 @@ output:
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 library(metathis)
+library(distilltools)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -44,22 +45,6 @@ meta() %>%
     twitter_card_type = "summary",
     twitter_creator = "@JohnHelveston"
   )
-
-# Load button functions (eventually will replace this with {distilltools})
-make_icon <- function(icon) {
-  return(htmltools::tag("i", list(class = icon)))
-}
-
-make_icon_text <- function(icon, text) {
-  return(htmltools::HTML(paste0(make_icon(icon), " ", text)))
-}
-
-icon_link <- function(icon = NULL, text = NULL, url = NULL) {
-  if (!is.null(icon)) {
-    text <- make_icon_text(icon, text)
-  }
-  return(htmltools::a(href = url, text, class = "icon-link"))
-}
 ```
 
 I gave a talk at the Sawtooth Software Conference [Turbo Choice Modeling Seminar](https://events.sawtoothsoftware.com/turboseminar) in San Antonio, Texas, April 19-23, 2021 (I pre-recorded my talk as I did not attend in-person). The talk is titled, "The [{logitr}](https://jhelvy.github.io/logitr/) R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models".

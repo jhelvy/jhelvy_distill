@@ -12,6 +12,7 @@ preview: images/john_dancing.jpg
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
+library(distilltools)
 ```
 
 Welcome to my personal website! I am a researcher, engineer, musician, swing dancer, [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) enthusiast, and an Assistant Professor at George Washington University in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/).

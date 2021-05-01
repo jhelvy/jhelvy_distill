@@ -15,7 +15,6 @@ preview: images/helveston.png
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-source(file.path("R", "functions.R"))
 ```
 
 :::float-left

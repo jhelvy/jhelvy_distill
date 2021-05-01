@@ -9,6 +9,8 @@ preview: images/john_china_duck.jpg
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+source(file.path("R", "functions.R"))
+library(distilltools)
 ```
 
 This is my good eats page

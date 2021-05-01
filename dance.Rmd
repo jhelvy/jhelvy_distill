@@ -9,6 +9,8 @@ preview: images/john_dancing.jpg
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+source(file.path("R", "functions.R"))
+library(distilltools)
 ```
 
 This is my dance page

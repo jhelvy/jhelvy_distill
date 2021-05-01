@@ -21,6 +21,7 @@ output:
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 source(file.path("R", "functions.R"))
+library(distilltools)
 library(metathis)
 
 meta() %>%
