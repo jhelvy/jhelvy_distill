@@ -66,6 +66,10 @@ I gave a talk at the Sawtooth Software Conference [Turbo Choice Modeling Seminar
 
 Learn more about the {logitr} package [here](https://jhelvy.github.io/logitr/).
 
+# Talk 
+
+<iframe width="640" height="480" src="https://www.youtube.com/embed/eKDrTewb_QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Slides
 
 My slides were built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can see the source code for the slides [here](https://github.com/jhelvy/2021-sawtooth-conf).
