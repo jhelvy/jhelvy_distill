@@ -13,6 +13,7 @@ Encoding: UTF-8
 Imports:
     cowplot,
     distill,
+    distilltools,
     emo,
     fontawesome,
     here,
@@ -29,6 +30,7 @@ Imports:
     viridis,
     yaml
 Remotes:
+    EllaKaye/distilltools,
     hadley/emo,
     rstudio/fontawesome,
     haozhu233/kableExtra,
