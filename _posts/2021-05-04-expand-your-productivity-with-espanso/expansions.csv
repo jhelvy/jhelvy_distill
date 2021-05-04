@@ -1,0 +1,17 @@
+type,Trigger,Expansion
+personal,"`"":jp""`","`""John Paul Helveston""`"
+personal,"`"":jh""`","`""John Helveston""`"
+personal,"`"":title""`","`""Assistant Professor""`"
+personal,"`"":dept""`","`""Engineering Management and Systems Engineering""`"
+personal,"`"":gw""`","`""George Washington University""`"
+personal,"`""@@""`","`""john.helveston@gmail.com""`"
+personal,"`""@!""`","`""jph@gwu.edu""`"
+signoff,"`""cjo""`","`""Cheers,\nJohn""`"
+signoff,"`""cjp""`","`""Cheers,\nJP""`"
+signoff,"`""cpr""`","`""Cheers,\nProfessor Helveston""`"
+url,"`""//gh""`","`""https://github.com/jhelvy/""`"
+url,"`""//jh""`","`""https://jhelvy.com/""`"
+html,,
+html,,
+,,
+,,

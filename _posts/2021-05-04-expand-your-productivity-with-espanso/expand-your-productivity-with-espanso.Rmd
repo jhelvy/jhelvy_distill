@@ -1,0 +1,192 @@
+---
+title: "Expand your productivity with espanso"
+description: |
+  How I use text snippets with espanso to automate common text chunks
+author: John Paul Helveston
+date: 05-04-2021
+preview: "espanso.svg"
+categories:
+  - productivity
+  - R
+draft: true
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "figs/",
+  fig.width = 7.252,
+  fig.height = 4,
+  comment = "#>",
+  fig.retina = 3,
+  R.options = list(width = 60)
+)
+
+library(tidyverse)
+library(knitr)
+
+df <- read_csv(here::here(
+    "_posts", "2021-05-04-expand-your-productivity-with-espanso",
+    "expansions.csv"))
+tables <- split(df, df$type)
+```
+
+<center>
+<img src="espanso.svg" width=100%>
+</center>
+
+I recently discovered a wonderfully useful little program called [espanso](https://espanso.org/) -- a "text expander" that I now use on a daily basis. Text expander programs do what you might expect: they "expand" short snippets of text into longer, more complex strings of text. There are lots of these programs out there, such as [Typinator](https://www.ergonis.com/products/typinator/), or the creatively-named [textexpander](https://textexpander.com/) (macOS even has a [build-in expander](https://www.goodmanconsulting.com/hottips/2018/1/31/speed-up-mac-and-ios-typing-with-text-expansion)). But in general I prefer to use open source software whenever possible (the espanso [source code](https://github.com/federico-terzi/espanso) is on GitHub), and especially when using software that tracks the text you type (imagine how easy it would be to grab passwords with this type of software). Plus espanso is free 😄. 
+
+But more than anything, I find espanso remarkably simple, flexible, and easy to customize. So far, it has integrated quite nicely into my day-to-day workflow. Here are some examples. 
+
+> **Note**: I've included a full list of all the snippet settings I show in this post at the end of the post.
+
+# Quick overview
+
+> **Note**: I'm skipping a lot of details about installation, etc. because it's all there in the espanso [documentation](https://espanso.org/docs/). It's simple and excellent -- check it out.
+
+To set a text expansion, all you have to do is edit the `default.yml` file. You can find it's location with this in the terminal: 
+
+```{r, eval=FALSE}
+espanso path
+```
+
+Once you've opened up the `default.yml` file, set an expansion like this: 
+
+```{r, eval=FALSE}
+  # Simple text replacement
+  - trigger: ":test"
+    replace: "Hello World!"
+```
+
+Now anytime I type `:test`, the text will expand to `Hello World!`. Pretty cool! 
+
+# Some basic expansions
+
+### Personal information
+
+I often have to type personal information (e.g. my name, title, email, etc.) into forms. Here are some expansions I use for that:
+
+```{r, echo=FALSE}
+tables$personal %>% 
+    select(-type) %>% 
+    kable()
+```
+
+### Email sign offs
+
+I usually sign off my emails with "Cheers," + either "John", "JP", or "Professor Helveston," depending on the recipient. I now quickly get these phrases with the following triggers:
+
+```{r, echo=FALSE}
+tables$signoff %>% 
+    select(-type) %>% 
+    kable()
+```
+
+### URLs
+
+I used to rely on bookmarks for lots of common sites I visit, but I often need to copy-paste the actual url to those sites (e.g. if I'm sending the link to someone else). Before, I had to open up my browser, navigate to the site, then copy the url. Now I can just type a few keys 🎉! I start each of these with `"//"`, for example:
+
+```{r, echo=FALSE}
+tables$url %>% 
+    select(-type) %>% 
+    kable()
+```
+
+# Code 
+
+This is where things start getting _really_ helpful. I write lots of common code snippets for a wide variety of use cases, and the ability to automate these _globally_ (i.e. not just in a code IDE) on my computer is an incredible help. The time savings don't come from avoiding the extra keystrokes -- they come from avoiding _typos_! It's all too easy to miss a tiny symbol or letter in a chunk of code which then results in several minutes (if not longer) of searching for the bug. 
+
+For example, let's say I want to insert some html to center an image. I might start with a template code chunk like this: 
+
+```{html, eval=FALSE}
+<center>
+<img src="" width=500>
+</center>
+```
+
+Rather than type this by hand every time, I can get the whole block with `"hhimg"` with this trigger:
+
+```{r eval=FALSE}
+  - trigger: "hhimg"
+    replace: "<center>\n<img src=\"$|$\" width=500>\n</center>"
+```
+
+A couple things to note here. First, all of my "code" triggers start with a double of the first letter of the code language. So html expansions all start with `hh`, R expansions start with `rr`, python with `pp`, etc. Hence, in my mind the trigger `hhimg` is "html img". 
+
+Second, by inserting the `$|$` symbols inside the src command, the cursor will automatically jump to that spot once the expansion is complete, allowing me to quickly type in the name of the path to the image I want to insert.
+
+### R code 
+
+Since I use R more than any other language, I've come up with a lot of R-specific shortcuts. One important modification I learned (thanks to some [help](https://www.reddit.com/r/espanso/comments/n3wigg/snippets_only_partially_expand_in_rstudio/) on the [espanso Reddit community](https://www.reddit.com/r/espanso/)) is that if you're working in RStudio, the expansions don't quite work correctly on their own (I believe due to RStudio's autofill feature). To fix it, I had to insert the `force_clipboard: true` setting into _each_ espanso expansion. For example, in my snippet to read in a CSV file, I inserted this option between the trigger and expansion text like this:
+
+```{r eval=FALSE}
+  - trigger: "rrcsv"
+    force_clipboard: true
+    replace: "read_csv($|$)"
+```
+
+With that in mind, here are some expansions I use for x.
+
+# Dates
+
+```{r eval=FALSE}
+  - trigger: ":date"
+    force_clipboard: true
+    replace: "{{today}}"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ":time"
+    force_clipboard: true
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%H:%M"
+```
+
+# Paste clipboard contents as plain text
+
+```{r, eval=FALSE}
+  - trigger: "ppp"
+    force_clipboard: true
+    replace: "{{clipboard}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+```
+
+# Open things
+
+```{r, eval=FALSE}
+  - trigger: ":espanso"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "open '/Users/jhelvy/gh/espanso/espanso/default.yml'"
+```
+
+# Packages 
+
+emoji 
+
+```{r, eval=FALSE}
+  # URLs
+
+  - trigger: "//emo"
+    force_clipboard: true
+    replace: "https://www.webfx.com/tools/emoji-cheat-sheet/"
+```
