@@ -71,7 +71,7 @@ For reference, I included a copy of *most* of my settings at the [end of this po
 
 # Some basic expansions
 
-### Personal information
+## Personal information
 
 I often have to type personal information (e.g. my name, title, email, etc.) into forms. Here are some expansions I use for that:
 
@@ -81,7 +81,7 @@ tables$personal %>%
     kable()
 ```
 
-### Email sign offs
+## Email sign offs
 
 I usually sign off my emails with "Cheers," + either "John", "JP", or "Professor Helveston," depending on the recipient. I now quickly get these phrases with the following triggers:
 
@@ -91,7 +91,7 @@ tables$signoff %>%
     kable()
 ```
 
-### URLs
+## URLs
 
 I used to rely on bookmarks for lots of common sites I visit, but I often need to copy-paste the actual url to those sites (e.g. if I'm sending the link to someone else). Before, I had to open up my browser, navigate to the site, then copy the url. Now I can just type a few keys 🎉! I start each of these with `"//"`, for example:
 
@@ -100,6 +100,8 @@ tables$url %>%
     select(-type) %>%
     kable()
 ```
+
+My most used url expansion this year was `//zoom` to expand to the url to my personal zoom room! 🚀
 
 # Code
 
@@ -120,13 +122,16 @@ Rather than type this by hand every time, I can get the whole block with `"hhimg
     replace: "<center>\n<img src=\"$|$\" width=500>\n</center>"
 ```
 
-A couple things to note here. First, all of my "code" triggers start with a double of the first letter of the code language. So html expansions all start with `hh`, R expansions start with `rr`, python with `pp`, etc. Hence, in my mind the trigger `hhimg` is "html img".
+A couple things to note here:
 
-Second, by inserting the `$|$` symbols inside the src command, the cursor will automatically jump to that spot once the expansion is complete, allowing me to quickly type in the name of the path to the image I want to insert.
+1. I decided to use a convention where all of my "code" triggers start with a double of the first letter of the code language. So html expansions all start with `hh`, R expansions start with `rr`, python with `pp`, etc. Hence, in my mind the trigger `hhimg` is "html img".
+2. By inserting the `$|$` symbols inside the src command, the cursor will automatically jump to that spot once the expansion is complete, allowing me to quickly type in the name of the path to the image I want to insert.
 
-### R code
+## R code
 
-Since I use R more than any other language, I've come up with a lot of R-specific shortcuts. One important modification I learned (thanks to some [help](https://www.reddit.com/r/espanso/comments/n3wigg/snippets_only_partially_expand_in_rstudio/) on the [espanso Reddit community](https://www.reddit.com/r/espanso/)) is that if you're working in RStudio, the expansions don't quite work correctly on their own (I believe due to RStudio's autofill feature). To fix it, I had to insert the `force_clipboard: true` setting into _each_ espanso expansion. For example, in my snippet to read in a CSV file, I inserted this option between the trigger and expansion text like this:
+Since I use R more than any other language, I've come up with a lot of R-specific shortcuts. But before I dive into them, a quick side note:
+
+One important modification I learned (thanks to some [help](https://www.reddit.com/r/espanso/comments/n3wigg/snippets_only_partially_expand_in_rstudio/) on the [espanso Reddit community](https://www.reddit.com/r/espanso/)) is that if you're working in RStudio, the expansions don't quite work correctly on their own (I believe it might have something to do with RStudio's autofill feature). To fix it, I had to insert the `force_clipboard: true` setting into **each** espanso expansion. For example, in my snippet to read in a CSV file, I inserted this option between the trigger and expansion text like this:
 
 ```{r eval=FALSE}
   - trigger: "rrcsv"
@@ -134,15 +139,22 @@ Since I use R more than any other language, I've come up with a lot of R-specifi
     replace: "read_csv($|$)"
 ```
 
-So far I have come up with a LOT of R snippets. I included them all at the end of the post, so I'll just highlight a few I find particularly useful.
+Okay with that in mind, I'll highlight a few R expansions I use a lot. I've organized this based on my common workflow for exploring data:
 
-First, I usually include a "setup" chunk in most of my Rmd files, but it's really hard to remember all the specific details for various settings. So I made a snippet for the entire setup chunk!
+- Add a setup chunk (if working in Rmd)
+- Load libraries & data
+- Wrangle data 
+- Visualize
 
-```{r eval=FALSE}
+### Add a setup chunk
+
+I usually include a "setup" chunk in most of my Rmd files, but it's really hard to remember all the specific details for various settings, so I made a dedicated expansion just for this. With this expansion, I can insert my whole defaul setup chunk with `rrsetup`:
+
+````markdown
   - trigger: "rrsetup"
     force_clipboard: true
     replace: |
-              ```{r setup, include=FALSE}
+              `r ''````{r setup, include=FALSE}
               knitr::opts_chunk$set(
                 warning = FALSE,
                 message = FALSE,
@@ -153,11 +165,60 @@ First, I usually include a "setup" chunk in most of my Rmd files, but it's reall
                 fig.retina = 3
               )
               ```
+````
+
+### Load libraries & data
+
+I use some simple shortcuts to load individual libraries, like `rrtidy` to expand to `library(tidyverse)`. But I also set up an expansion to load some of my most often used libraries and settings. By typing `rrstart`, I get this expansion:
+
+```{r eval=FALSE}
+library(tidyverse)
+library(cowplot)
+options(dplyr.width = Inf)
 ```
 
-Next
+With my libraries loaded, I then read in my data. I use `rrcsv` to expand to `read_csv($|$)`, `rrex` to expand to `read_excel($|$)`, and `rrhere` to expand to `here::here($|$)`, which I use to define paths to files (**side note**: if you don't alread, you should definitely try [using the {here} package to define paths](https://malco.io/2018/11/05/why-should-i-use-the-here-package-when-i-m-already-using-projects/#:~:text=The%20here%20package%20bottles%20up,needing%20to%20think%20about%20it.)).
 
-# Dates
+### Wrangle data 
+
+
+
+`"rrgs"`
+`"group_by($|$) %>%\nsummarise()\n"`
+
+`"rrgm"`
+`"group_by($|$) %>%\nmutate()\n"`
+
+
+### Visualize
+
+
+
+
+`"rrgg"`
+`"ggplot($|$) +\n"`
+
+`"rrsy"`
+`"scale_y_continuous($|$expand = expansion(mult = c(0, 0.05))) +"`
+
+`"rrsx"`
+`"scale_x_continuous($|$expand = expansion(mult = c(0, 0.05))) +"`
+
+`"ggcol"`
+`"ggplot() +\ngeom_col(aes(x = $|$, y = , fill = ))\n"`
+
+`"ggpoint"`
+`"ggplot() +\ngeom_point(aes(x = $|$, y = ))\n"`
+
+
+
+
+
+# Other stuff
+
+## Dates
+
+These come from the espanso documentation, but they're super useful:
 
 ```{r eval=FALSE}
   - trigger: ":date"
@@ -179,7 +240,9 @@ Next
           format: "%H:%M"
 ```
 
-# Paste clipboard contents as plain text
+## Paste clipboard contents as plain text
+
+This is probably my favorite little hack. Often times, I want to copy-paste a snippet of text from one source to another, but when I go to paste it somewhere else, it retains all of the text formatting from the original source. My previous work around was to paste it first into a text editor (e.g. Sublime Text), then re-copy-paste it from there with the formatting now stripped away. But since espanso has support for working with your "clipboard", I found I could simply paste the plain text by using the `force_clipboard: true`. I use `ppp` as the trigger for this:
 
 ```{r, eval=FALSE}
   - trigger: "ppp"
@@ -190,7 +253,9 @@ Next
         type: "clipboard"
 ```
 
-# Open things
+## Open things
+
+You can run terminal commands using an espanso trigger. I haven't found too many ways to use this feature, but it is helpful for opening files or folders that may be buried deep down in some folder structure. For example, I use the `:espanso` trigger to open the `default.yml` file to edit my espanso settings:
 
 ```{r, eval=FALSE}
   - trigger: ":espanso"
@@ -204,11 +269,9 @@ Next
 
 # Packages
 
-emoji
+There are already a lot of great espanso [packages](https://hub.espanso.org/). My favorite so far is the [emoji package](https://hub.espanso.org/packages/all-emojis/). It's super convenient, but I often forget the name of specific emojis, so I made another expansion to the url to an emoji cheat sheet site:
 
 ```{r, eval=FALSE}
-  # URLs
-
   - trigger: "//emo"
     force_clipboard: true
     replace: "https://www.webfx.com/tools/emoji-cheat-sheet/"
@@ -221,3 +284,4 @@ Here's what I have in my `default.yml` file (for now...again, I removed a few th
 ```{r, eval=FALSE}
 
 ```
+
