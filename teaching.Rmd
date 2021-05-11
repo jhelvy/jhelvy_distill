@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <img src="images/hex/p4a.png" width="100px">
 
-### [EMSE 4574: Programming for Analytics](https://p4a.seas.gwu.edu/)
+### [EMSE 4571: Programming for Analytics](https://p4a.seas.gwu.edu/)
 
 Fundamentals of programming and computational thinking in R.
 
@@ -40,7 +40,7 @@ Fundamentals of programming and computational thinking in R.
 
 <img src="images/hex/eda.png" width="100px">
 
-### [EMSE 4575: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
+### [EMSE 4572: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
 
 Foundations in exploring and visualizing data in R.
 
@@ -68,5 +68,6 @@ Analyzing consumer choice data in R to inform design decisions in an uncertain, 
 <aside>
 **Semesters Taught**:
 
+- [Fall 2021](https://madd.seas.gwu.edu/2021-Fall/)
 - Spring 2019
 </aside>
