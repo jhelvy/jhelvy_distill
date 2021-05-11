@@ -32,5 +32,16 @@
       <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/surveys-with-formr.png" medium="image" type="image/png" width="1261" height="710"/>
     </item>
+    <item>
+      <title>U. Albany Confucius Institute Fall 2020 Seminar on US-China Relations in the 21st Century</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/talks/2020-10-09-confucius-institute-fall-seminar</link>
+      <description>My discussion with Barry Naughton (UCSD) about industrial policy and low-carbon energy technologies in China</description>
+      <category>China</category>
+      <category>Technology</category>
+      <guid>https://www.jhelvy.com/talks/2020-10-09-confucius-institute-fall-seminar</guid>
+      <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/talks/2020-10-09-confucius-institute-fall-seminar/title_slide.png" medium="image" type="image/png" width="794" height="614"/>
+    </item>
   </channel>
 </rss>
