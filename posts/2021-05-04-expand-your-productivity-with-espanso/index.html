@@ -20,18 +20,19 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -51,7 +52,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
@@ -87,7 +88,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
 <title>jhelvy.com: Expand your productivity with espanso</title>
 
-<meta property="description" itemprop="description" content="Automating common text snippets with espanso: a text expander written in Rust"/>
+<meta property="description" itemprop="description" content="Custom text snippets with espanso: a text expander written in Rust"/>
 
 <link rel="canonical" href="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"/>
 <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
@@ -100,18 +101,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
 <meta property="og:title" content="jhelvy.com: Expand your productivity with espanso"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Automating common text snippets with espanso: a text expander written in Rust"/>
+<meta property="og:description" content="Custom text snippets with espanso: a text expander written in Rust"/>
 <meta property="og:url" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"/>
-<meta property="og:image" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/images/date.gif"/>
+<meta property="og:image" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/images/intro.gif"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="jhelvy.com"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="jhelvy.com: Expand your productivity with espanso"/>
-<meta property="twitter:description" content="Automating common text snippets with espanso: a text expander written in Rust"/>
+<meta property="twitter:description" content="Custom text snippets with espanso: a text expander written in Rust"/>
 <meta property="twitter:url" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"/>
-<meta property="twitter:image" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/images/date.gif"/>
+<meta property="twitter:image" content="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/images/intro.gif"/>
 <meta property="twitter:site" content="@JohnHelveston"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
@@ -125,12 +126,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","preview","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["Expand your productivity with espanso"]},{"type":"character","attributes":{},"value":["Automating common text snippets with espanso: a text expander written in Rust"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["John Paul Helveston"]}]}]},{"type":"character","attributes":{},"value":["05-04-2021"]},{"type":"character","attributes":{},"value":["images/date.gif"]},{"type":"character","attributes":{},"value":["productivity","R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[1]}]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","preview","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["Expand your productivity with espanso"]},{"type":"character","attributes":{},"value":["Custom text snippets with espanso: a text expander written in Rust"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["John Paul Helveston"]}]}]},{"type":"character","attributes":{},"value":["05-04-2021"]},{"type":"character","attributes":{},"value":["images/intro.gif"]},{"type":"character","attributes":{},"value":["productivity","R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[1]}]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["expand-your-productivity-with-espanso_files/anchor-4.2.2/anchor.min.js","expand-your-productivity-with-espanso_files/bowser-1.9.3/bowser.min.js","expand-your-productivity-with-espanso_files/distill-2.2.21/template.v2.js","expand-your-productivity-with-espanso_files/header-attrs-2.7.8/header-attrs.js","expand-your-productivity-with-espanso_files/jquery-1.11.3/jquery.min.js","expand-your-productivity-with-espanso_files/popper-2.6.0/popper.min.js","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy-bundle.umd.min.js","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy-light-border.css","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy.css","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy.umd.min.js","expand-your-productivity-with-espanso_files/webcomponents-2.0.0/webcomponents.js","expansions.csv","images/date.gif","images/espanso.svg","images/ggplot.gif","images/gh.gif","images/paste.gif","images/personal.gif","images/rrgs.gif","images/rrstart.gif"]}
+  {"type":"character","attributes":{},"value":["expand-your-productivity-with-espanso_files/anchor-4.2.2/anchor.min.js","expand-your-productivity-with-espanso_files/bowser-1.9.3/bowser.min.js","expand-your-productivity-with-espanso_files/distill-2.2.21/template.v2.js","expand-your-productivity-with-espanso_files/header-attrs-2.7.8/header-attrs.js","expand-your-productivity-with-espanso_files/jquery-1.11.3/jquery.min.js","expand-your-productivity-with-espanso_files/popper-2.6.0/popper.min.js","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy-bundle.umd.min.js","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy-light-border.css","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy.css","expand-your-productivity-with-espanso_files/tippy-6.2.7/tippy.umd.min.js","expand-your-productivity-with-espanso_files/webcomponents-2.0.0/webcomponents.js","expansions.csv","images/espanso.svg","images/ggplot.gif","images/gh.gif","images/intro.gif","images/paste.gif","images/personal.gif","images/rrgs.gif","images/rrstart.gif"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2507,7 +2508,6 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.7.8/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -2559,7 +2559,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Expand your productivity with espanso","description":"Automating common text snippets with espanso: a text expander written in Rust","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-04T00:00:00.000+00:00","citationText":"Helveston, 2021"}
+{"title":"Expand your productivity with espanso","description":"Custom text snippets with espanso: a text expander written in Rust","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-04T00:00:00.000+00:00","citationText":"Helveston, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2606,7 +2606,7 @@ d-appendix d-footnote-list a.footnote-backlink {
   <a href="../../blog.html#category:R" class="dt-tag">R</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Automating common text snippets with espanso: a text expander written in Rust</p></p>
+<p><p>Custom text snippets with espanso: a text expander written in Rust</p></p>
 </div>
 
 <div class="d-byline">
@@ -2634,11 +2634,11 @@ d-appendix d-footnote-list a.footnote-backlink {
 </nav>
 </div>
 <center>
-<img src="images/espanso.svg" width=100%>
+<img src="images/espanso.svg" width=500>
 </center>
-<p>I recently discovered a wonderfully useful little program called <a href="https://espanso.org/">espanso</a> – a “text expander” that I now use on a daily basis. Text expander programs do what you might expect; they “expand” short snippets of text into longer, more complex strings of text, like this:</p>
+<p>I recently discovered a wonderfully useful little program called <a href="https://espanso.org/">espanso</a> – a “text expander” that I now use on a daily basis. Text expander programs “expand” short text “triggers” into longer / more complex strings of text, like this:</p>
 <center>
-<img src="images/date.gif" width=500>
+<img src="images/intro.gif">
 </center>
 <p>There are lots of these programs out there, such as <a href="https://www.ergonis.com/products/typinator/">Typinator</a>, or the creatively-named “<a href="https://textexpander.com/">textexpander</a>” (macOS even has a <a href="https://www.goodmanconsulting.com/hottips/2018/1/31/speed-up-mac-and-ios-typing-with-text-expansion">build-in expander</a>). But I prefer to use open source software whenever possible (the espanso <a href="https://github.com/federico-terzi/espanso">source code</a> is on GitHub), and especially when using software that tracks the text you type (imagine how easy it would be to grab passwords with this type of software). Plus espanso is free 😄. Of course if you’d like to support the project you can donate <a href="https://espanso.org/sponsors/">here</a>.</p>
 <p>More than anything, I started (and kept) using espanso because I found it to be remarkably simple to use and easy to customize. So far, it has integrated quite nicely into my day-to-day workflow. In fact, I have become such a fan of espanso that I decided to sit down and write a whole post highlighting some of the ways I use it.</p>
@@ -2648,7 +2648,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 </blockquote>
 <p>To set a text expansion, all you have to do is edit the <code>default.yml</code> file. You can find it’s location with this in the terminal:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>espanso path</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>espanso path</span></code></pre></div>
 </div>
 <pre><code>/Users/jhelvy/Library/Preferences/espanso</code></pre>
 <p>Once you’ve opened up the <code>default.yml</code> file, you can define an expansion like this:</p>
@@ -2670,7 +2670,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 </blockquote>
 <p>Here are a few I’ve set up:</p>
 <center>
-<img src="images/personal.gif" width=500>
+<img src="images/personal.gif">
 </center>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -2711,7 +2711,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1 id="urls">URLs</h1>
 <p>I used to rely on bookmarks for lots of common sites I visit, but I often need to copy-paste the actual url to those sites (e.g. if I’m sending the link to someone else). Before, I had to open up my browser, navigate to the site, then copy the url. Now I can just type a few keys 🎉! I start each of these with <code>"//"</code>. For example, to get to my GitHub page, I just type <code>//gh</code>:</p>
 <center>
-<img src="images/gh.gif" width=500>
+<img src="images/gh.gif">
 </center>
 <p>By far my most used url expansion this year was <code>//zoom</code> to expand to the url to my personal zoom room! 🚀</p>
 <h1 id="code">Code</h1>
@@ -2720,15 +2720,15 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h2 id="html">HTML</h2>
 <p>I don’t write a lot of html, but occasionally I’ll use it to insert an image in a RMarkdown document. And usually I want that image centered. The basic template I usually start with is:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;&quot;</span><span class="ot"> width=</span><span class="st">500</span><span class="kw">&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;&quot;</span><span class="ot"> width=</span><span class="st">100%</span><span class="kw">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">&lt;/center&gt;</span></span></code></pre></div>
 </div>
 <p>I use the trigger <code>hhimg</code> (which I remember as “html” + “img”) to insert this snippet. Here’s the code to define this expansion:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r">  <span class='op'>-</span> <span class='va'>trigger</span><span class='op'>:</span> <span class='st'>"hhimg"</span>
-    <span class='va'>replace</span><span class='op'>:</span> <span class='st'>"&lt;center&gt;\n&lt;img src=\"$|$\" width=500&gt;\n&lt;/center&gt;"</span>
+    <span class='va'>replace</span><span class='op'>:</span> <span class='st'>"&lt;center&gt;\n&lt;img src=\"$|$\" width=100%&gt;\n&lt;/center&gt;"</span>
 </code></pre>
 </div>
 </div>
@@ -2753,29 +2753,29 @@ d-appendix d-footnote-list a.footnote-backlink {
 </ul>
 <h3 id="add-a-setup-chunk">Add a setup chunk</h3>
 <p>I usually include a “setup” chunk in most of my Rmd files, but it’s really hard to remember all the specific details for various settings, so I made a dedicated expansion just for this. With this expansion, I can insert my whole default setup chunk with <code>rrsetup</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrsetup&quot;</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    replace: |</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">              knitr::opts_chunk$set(</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">                warning = FALSE,</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">                message = FALSE,</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.path = &quot;figs/&quot;,</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.width = 7.252,</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.height = 4,</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">                comment = &quot;#&gt;&quot;,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.retina = 3</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">              )</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">              ```</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a>  - trigger: &quot;rrsetup&quot;</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bn">    replace: |</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="bn">              ```{r setup, include=FALSE}</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="bn">              knitr::opts_chunk$set(</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="bn">                warning = FALSE,</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="bn">                message = FALSE,</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="bn">                fig.path = &quot;figs/&quot;,</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="bn">                fig.width = 7.252,</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="bn">                fig.height = 4,</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="bn">                comment = &quot;#&gt;&quot;,</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="bn">                fig.retina = 3</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bn">              )</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="bn">              ```</span></span></code></pre></div>
 <h3 id="load-libraries-data">Load libraries &amp; data</h3>
 <center>
-<img src="images/rrstart.gif" width=500>
+<img src="images/rrstart.gif">
 </center>
 <p>I use some simple shortcuts to load individual libraries, like <code>rrtidy</code> to expand to <code>library(tidyverse)</code>. But (as shown in the above image) I also set up an expansion to load some of my most often used libraries and settings. By typing <code>rrstart</code>, I get this expansion:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://wilkelab.org/cowplot/'>cowplot</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://wilkelab.org/cowplot'>cowplot</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>dplyr.width <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2786,7 +2786,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 </blockquote>
 <h3 id="wrangle-data">Wrangle data</h3>
 <center>
-<img src="images/rrgs.gif" width=500>
+<img src="images/rrgs.gif">
 </center>
 <p>I usually wrangle my data using tidyverse commands, and I have come up with a few expansions for some common “pipelines”. For example, one common sequence is to do grouped summary operations. I use the <code>rrgs</code> (“gs” for “grouped summary”) trigger to load the code block:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2807,7 +2807,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>There are so many of these you could put together!</p>
 <h3 id="visualize">Visualize</h3>
 <center>
-<img src="images/ggplot.gif" width=500>
+<img src="images/ggplot.gif">
 </center>
 <p>Since {ggplot2} has such a distinct syntax, I decided to start my ggplot code snippets with <code>gg</code> rather than <code>rr</code>. Some of my favoriate {ggplot2} expansions are the scaling shortcuts:</p>
 <ul>
@@ -2834,7 +2834,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 <h1 id="paste-clipboard-contents-as-plain-text">Paste clipboard contents as plain text</h1>
 <center>
-<img src="images/paste.gif" width="100%">
+<img src="images/paste.gif" width=100%>
 </center>
 <p>This is probably my favorite little hack. Often times, I want to copy-paste a snippet of text from one source to another, but when I go to paste it somewhere else, it retains all of the text formatting from the original source. My previous work around was to paste it first into a text editor (e.g. Sublime Text), then re-copy-paste it from there with the formatting now stripped away. But since espanso has support for working with your “clipboard”, I found I could simply paste the plain text by using the <code>force_clipboard: true</code>. I use <code>ppp</code> as the trigger for this:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2898,270 +2898,270 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 <h1 id="highlights-from-my-default.yml-file">Highlights from my <code>default.yml</code> file</h1>
 <p>Thanks for reading, and I hope you check out <a href="https://espanso.org/">espanso</a>! Here are some of the expansions I have come up with in my <code>default.yml</code> file (for now…again, I removed a few that had some personal information)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># espanso configuration file</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu"># This is the default configuration file, change it as you like it</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># You can refer to the official documentation:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># https://espanso.org/docs/</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># Matches are the substitution rules, when you type the &quot;trigger&quot; string</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># it gets replaced by the &quot;replace&quot; string.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>matches:</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  # Sign offs</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;cjo&quot;</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Cheers,\nJohn&quot;</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;bjo&quot;</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Best,\nJohn&quot;</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rjo&quot;</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Regards,\nJohn&quot;</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;cjp&quot;</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Cheers,\nJP&quot;</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;cpr&quot;</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Cheers,\nProfessor Helveston&quot;</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  # URLs</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//emo&quot;</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://www.webfx.com/tools/emoji-cheat-sheet/&quot;</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//dr&quot;</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://drive.google.com/drive/u/0/my-drive&quot;</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//gh&quot;</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://github.com/jhelvy/&quot;</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//jh&quot;</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://jhelvy.com/&quot;</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//talks&quot;</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://jhelvy.com/talks&quot;</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//pubs&quot;</span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://jhelvy.com/publications&quot;</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;//gm&quot;</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    replace: &quot;https://mail.google.com/mail/u/0/&quot;</span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>  # GW</span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:title&quot;</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Assistant Professor&quot;</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:gw&quot;</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>    replace: &quot;George Washington University&quot;</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:dept&quot;</span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>    replace: &quot;Engineering Management and Systems Engineering&quot;</span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  # Names</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:jp&quot;</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    replace: &quot;John Paul Helveston&quot;</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:jh&quot;</span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>    replace: &quot;John Helveston&quot;</span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>  # HTML</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;hhimg&quot;</span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>    replace: &quot;<span class="kw">&lt;center&gt;</span>\n<span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">\</span><span class="er">&quot;$|$\&quot;</span><span class="ot"> width=</span><span class="st">500</span><span class="kw">&gt;</span>\n<span class="kw">&lt;/center&gt;</span>&quot;</span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;hhcss&quot;</span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>    replace: &quot;<span class="kw">&lt;style&gt;</span>\n$<span class="op">|</span>$\n<span class="kw">&lt;/style&gt;</span>&quot;</span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;hhbr&quot;</span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    replace: &quot;<span class="kw">&lt;br&gt;</span>&quot;</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>  # R</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrrm&quot;</span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>    replace: &quot;rm(list = ls())&quot;</span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrrs&quot;</span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a>    replace: &quot;rs.restartR()&quot;</span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrlib&quot;</span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a>    replace: &quot;library($|$)&quot;</span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrtidy&quot;</span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a>    replace: &quot;library(tidyverse)\n&quot;</span>
-<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrdply&quot;</span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>    replace: &quot;library(dplyr)\n&quot;</span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrcow&quot;</span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>    replace: &quot;library(cowplot)\n&quot;</span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrops&quot;</span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a>    replace: &quot;options(dplyr.width = Inf)\n&quot;</span>
-<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrstart&quot;</span>
-<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a>    replace: &quot;library(tidyverse)\nlibrary(cowplot)\noptions(dplyr.width = Inf)\n&quot;</span>
-<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrsetup&quot;</span>
-<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a>    replace: |</span>
-<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a>              <span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="in">              knitr::opts_chunk$set(</span></span>
-<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="in">                warning = FALSE,</span></span>
-<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a><span class="in">                message = FALSE,</span></span>
-<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.path = &quot;figs/&quot;,</span></span>
-<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.width = 7.252,</span></span>
-<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.height = 4,</span></span>
-<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="in">                comment = &quot;#&gt;&quot;,</span></span>
-<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="in">                fig.retina = 3</span></span>
-<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="in">              )</span></span>
-<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="in">              ```</span></span>
-<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrcsv&quot;</span>
-<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a>    replace: &quot;read_csv($|$)&quot;</span>
-<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrex&quot;</span>
-<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a>    replace: &quot;read_excel($|$)&quot;</span>
-<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrhere&quot;</span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a>    replace: &quot;here::here($|$)&quot;</span>
-<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rread&quot;</span>
-<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a>    replace: &quot;read_csv(here::here($|$))&quot;</span>
-<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrgs&quot;</span>
-<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>    replace: &quot;group_by($|$) %&gt;%\n    summarise()\n&quot;</span>
-<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrgm&quot;</span>
-<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a>    replace: &quot;group_by($|$) %&gt;%\n    mutate()\n&quot;</span>
-<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;filterne&quot;</span>
-<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a>    replace: &quot;filter($|$ != )&quot;</span>
-<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrin&quot;</span>
-<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a>    replace: &quot; %in% &quot;</span>
-<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggsxc&quot;</span>
-<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a>    replace: &quot;scale_x_continuous($|$) +&quot;</span>
-<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggsyc&quot;</span>
-<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a>    replace: &quot;scale_y_continuous($|$) +&quot;</span>
-<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggsxd&quot;</span>
-<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>    replace: &quot;scale_x_discrete($|$) +&quot;</span>
-<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggsyc&quot;</span>
-<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a>    replace: &quot;scale_y_discrete($|$) +&quot;</span>
-<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggex&quot;</span>
-<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a>    replace: &quot;expand = expansion(mult = c(0, 0.05))&quot;</span>
-<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrch&quot;</span>
-<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a>    replace: &quot;<span class="in">```{r$|$}\n```</span>&quot;</span>
-<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrmd&quot;</span>
-<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a>    replace: &quot;rmarkdown::render($|$)&quot;</span>
-<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrxi&quot;</span>
-<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a>    replace: &quot;xaringan::inf_mr()&quot;</span>
-<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;rrgg&quot;</span>
-<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a>    replace: &quot;ggplot($|$) +\n&quot;</span>
-<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggcol&quot;</span>
-<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a>    replace: &quot;ggplot() +\n    geom_col(aes(x = $|$, y = , fill = ))\n&quot;</span>
-<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ggpoint&quot;</span>
-<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a>    replace: &quot;ggplot() +\n    geom_point(aes(x = $|$, y = ))\n&quot;</span>
-<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a>  # Dates</span>
-<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:date&quot;</span>
-<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a>    replace: &quot;{{today}}&quot;</span>
-<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a>    vars:</span>
-<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>name: today</span>
-<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a>        type: date</span>
-<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a>        params:</span>
-<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a>          format: &quot;%Y-%m-%d&quot;</span>
-<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:time&quot;</span>
-<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a>    replace: &quot;{{time}}&quot;</span>
-<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a>    vars:</span>
-<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>name: time</span>
-<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a>        type: date</span>
-<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a>        params:</span>
-<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a>          format: &quot;%H:%M&quot;</span>
-<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a>  # Paste clipboard contents as plain text</span>
-<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;ppp&quot;</span>
-<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a>    force_clipboard: true</span>
-<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a>    replace: &quot;{{clipboard}}&quot;</span>
-<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a>    vars:</span>
-<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>name: &quot;clipboard&quot;</span>
-<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a>        type: &quot;clipboard&quot;</span>
-<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a>  # Open things</span>
-<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>trigger: &quot;:espanso&quot;</span>
-<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a>    replace: &quot;{{output}}&quot;</span>
-<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a>    vars:</span>
-<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>name: output</span>
-<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a>        type: shell</span>
-<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a>        params:</span>
-<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a>          cmd: &quot;open &#39;/Users/jhelvy/gh/espanso/espanso/default.yml&#39;&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu"># espanso configuration file</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu"># This is the default configuration file, change it as you like it</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu"># You can refer to the official documentation:</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu"># https://espanso.org/docs/</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="fu"># Matches are the substitution rules, when you type the &quot;trigger&quot; string</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="fu"># it gets replaced by the &quot;replace&quot; string.</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>matches:</span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  # Sign offs</span>
+<span id="cb5-13"><a href="#cb5-13"></a></span>
+<span id="cb5-14"><a href="#cb5-14"></a>  - trigger: &quot;cjo&quot;</span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="bn">    replace: &quot;Cheers,\nJohn&quot;</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  - trigger: &quot;bjo&quot;</span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="bn">    replace: &quot;Best,\nJohn&quot;</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a></span>
+<span id="cb5-22"><a href="#cb5-22"></a>  - trigger: &quot;rjo&quot;</span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="bn">    replace: &quot;Regards,\nJohn&quot;</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a>  - trigger: &quot;cjp&quot;</span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="bn">    replace: &quot;Cheers,\nJP&quot;</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a></span>
+<span id="cb5-30"><a href="#cb5-30"></a>  - trigger: &quot;cpr&quot;</span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="bn">    replace: &quot;Cheers,\nProfessor Helveston&quot;</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-34"><a href="#cb5-34"></a>  # URLs</span>
+<span id="cb5-35"><a href="#cb5-35"></a></span>
+<span id="cb5-36"><a href="#cb5-36"></a>  - trigger: &quot;//emo&quot;</span>
+<span id="cb5-37"><a href="#cb5-37"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-38"><a href="#cb5-38"></a><span class="bn">    replace: &quot;https://www.webfx.com/tools/emoji-cheat-sheet/&quot;</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a></span>
+<span id="cb5-40"><a href="#cb5-40"></a>  - trigger: &quot;//dr&quot;</span>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="bn">    replace: &quot;https://drive.google.com/drive/u/0/my-drive&quot;</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a></span>
+<span id="cb5-44"><a href="#cb5-44"></a>  - trigger: &quot;//gh&quot;</span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a><span class="bn">    replace: &quot;https://github.com/jhelvy/&quot;</span></span>
+<span id="cb5-47"><a href="#cb5-47"></a></span>
+<span id="cb5-48"><a href="#cb5-48"></a>  - trigger: &quot;//jh&quot;</span>
+<span id="cb5-49"><a href="#cb5-49"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-50"><a href="#cb5-50"></a><span class="bn">    replace: &quot;https://jhelvy.com/&quot;</span></span>
+<span id="cb5-51"><a href="#cb5-51"></a></span>
+<span id="cb5-52"><a href="#cb5-52"></a>  - trigger: &quot;//talks&quot;</span>
+<span id="cb5-53"><a href="#cb5-53"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-54"><a href="#cb5-54"></a><span class="bn">    replace: &quot;https://jhelvy.com/talks&quot;</span></span>
+<span id="cb5-55"><a href="#cb5-55"></a></span>
+<span id="cb5-56"><a href="#cb5-56"></a>  - trigger: &quot;//pubs&quot;</span>
+<span id="cb5-57"><a href="#cb5-57"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-58"><a href="#cb5-58"></a><span class="bn">    replace: &quot;https://jhelvy.com/publications&quot;</span></span>
+<span id="cb5-59"><a href="#cb5-59"></a></span>
+<span id="cb5-60"><a href="#cb5-60"></a>  - trigger: &quot;//gm&quot;</span>
+<span id="cb5-61"><a href="#cb5-61"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a><span class="bn">    replace: &quot;https://mail.google.com/mail/u/0/&quot;</span></span>
+<span id="cb5-63"><a href="#cb5-63"></a></span>
+<span id="cb5-64"><a href="#cb5-64"></a>  # GW</span>
+<span id="cb5-65"><a href="#cb5-65"></a></span>
+<span id="cb5-66"><a href="#cb5-66"></a>  - trigger: &quot;:title&quot;</span>
+<span id="cb5-67"><a href="#cb5-67"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-68"><a href="#cb5-68"></a><span class="bn">    replace: &quot;Assistant Professor&quot;</span></span>
+<span id="cb5-69"><a href="#cb5-69"></a></span>
+<span id="cb5-70"><a href="#cb5-70"></a>  - trigger: &quot;:gw&quot;</span>
+<span id="cb5-71"><a href="#cb5-71"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-72"><a href="#cb5-72"></a><span class="bn">    replace: &quot;George Washington University&quot;</span></span>
+<span id="cb5-73"><a href="#cb5-73"></a></span>
+<span id="cb5-74"><a href="#cb5-74"></a>  - trigger: &quot;:dept&quot;</span>
+<span id="cb5-75"><a href="#cb5-75"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-76"><a href="#cb5-76"></a><span class="bn">    replace: &quot;Engineering Management and Systems Engineering&quot;</span></span>
+<span id="cb5-77"><a href="#cb5-77"></a></span>
+<span id="cb5-78"><a href="#cb5-78"></a>  # Names</span>
+<span id="cb5-79"><a href="#cb5-79"></a></span>
+<span id="cb5-80"><a href="#cb5-80"></a>  - trigger: &quot;:jp&quot;</span>
+<span id="cb5-81"><a href="#cb5-81"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-82"><a href="#cb5-82"></a><span class="bn">    replace: &quot;John Paul Helveston&quot;</span></span>
+<span id="cb5-83"><a href="#cb5-83"></a></span>
+<span id="cb5-84"><a href="#cb5-84"></a>  - trigger: &quot;:jh&quot;</span>
+<span id="cb5-85"><a href="#cb5-85"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-86"><a href="#cb5-86"></a><span class="bn">    replace: &quot;John Helveston&quot;</span></span>
+<span id="cb5-87"><a href="#cb5-87"></a></span>
+<span id="cb5-88"><a href="#cb5-88"></a>  # HTML</span>
+<span id="cb5-89"><a href="#cb5-89"></a></span>
+<span id="cb5-90"><a href="#cb5-90"></a>  - trigger: &quot;hhimg&quot;</span>
+<span id="cb5-91"><a href="#cb5-91"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-92"><a href="#cb5-92"></a><span class="bn">    replace: &quot;&lt;center&gt;\n&lt;img src=\&quot;$|$\&quot; width=100%&gt;\n&lt;/center&gt;&quot;</span></span>
+<span id="cb5-93"><a href="#cb5-93"></a></span>
+<span id="cb5-94"><a href="#cb5-94"></a>  - trigger: &quot;hhcss&quot;</span>
+<span id="cb5-95"><a href="#cb5-95"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-96"><a href="#cb5-96"></a><span class="bn">    replace: &quot;&lt;style&gt;\n$|$\n&lt;/style&gt;&quot;</span></span>
+<span id="cb5-97"><a href="#cb5-97"></a></span>
+<span id="cb5-98"><a href="#cb5-98"></a>  - trigger: &quot;hhbr&quot;</span>
+<span id="cb5-99"><a href="#cb5-99"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-100"><a href="#cb5-100"></a><span class="bn">    replace: &quot;&lt;br&gt;&quot;</span></span>
+<span id="cb5-101"><a href="#cb5-101"></a></span>
+<span id="cb5-102"><a href="#cb5-102"></a>  # R</span>
+<span id="cb5-103"><a href="#cb5-103"></a></span>
+<span id="cb5-104"><a href="#cb5-104"></a>  - trigger: &quot;rrrm&quot;</span>
+<span id="cb5-105"><a href="#cb5-105"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-106"><a href="#cb5-106"></a><span class="bn">    replace: &quot;rm(list = ls())&quot;</span></span>
+<span id="cb5-107"><a href="#cb5-107"></a></span>
+<span id="cb5-108"><a href="#cb5-108"></a>  - trigger: &quot;rrrs&quot;</span>
+<span id="cb5-109"><a href="#cb5-109"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-110"><a href="#cb5-110"></a><span class="bn">    replace: &quot;rs.restartR()&quot;</span></span>
+<span id="cb5-111"><a href="#cb5-111"></a></span>
+<span id="cb5-112"><a href="#cb5-112"></a>  - trigger: &quot;rrlib&quot;</span>
+<span id="cb5-113"><a href="#cb5-113"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-114"><a href="#cb5-114"></a><span class="bn">    replace: &quot;library($|$)&quot;</span></span>
+<span id="cb5-115"><a href="#cb5-115"></a></span>
+<span id="cb5-116"><a href="#cb5-116"></a>  - trigger: &quot;rrtidy&quot;</span>
+<span id="cb5-117"><a href="#cb5-117"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-118"><a href="#cb5-118"></a><span class="bn">    replace: &quot;library(tidyverse)\n&quot;</span></span>
+<span id="cb5-119"><a href="#cb5-119"></a></span>
+<span id="cb5-120"><a href="#cb5-120"></a>  - trigger: &quot;rrdply&quot;</span>
+<span id="cb5-121"><a href="#cb5-121"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-122"><a href="#cb5-122"></a><span class="bn">    replace: &quot;library(dplyr)\n&quot;</span></span>
+<span id="cb5-123"><a href="#cb5-123"></a></span>
+<span id="cb5-124"><a href="#cb5-124"></a>  - trigger: &quot;rrcow&quot;</span>
+<span id="cb5-125"><a href="#cb5-125"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-126"><a href="#cb5-126"></a><span class="bn">    replace: &quot;library(cowplot)\n&quot;</span></span>
+<span id="cb5-127"><a href="#cb5-127"></a></span>
+<span id="cb5-128"><a href="#cb5-128"></a>  - trigger: &quot;rrops&quot;</span>
+<span id="cb5-129"><a href="#cb5-129"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-130"><a href="#cb5-130"></a><span class="bn">    replace: &quot;options(dplyr.width = Inf)\n&quot;</span></span>
+<span id="cb5-131"><a href="#cb5-131"></a></span>
+<span id="cb5-132"><a href="#cb5-132"></a>  - trigger: &quot;rrstart&quot;</span>
+<span id="cb5-133"><a href="#cb5-133"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-134"><a href="#cb5-134"></a><span class="bn">    replace: &quot;library(tidyverse)\nlibrary(cowplot)\noptions(dplyr.width = Inf)\n&quot;</span></span>
+<span id="cb5-135"><a href="#cb5-135"></a></span>
+<span id="cb5-136"><a href="#cb5-136"></a>  - trigger: &quot;rrsetup&quot;</span>
+<span id="cb5-137"><a href="#cb5-137"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-138"><a href="#cb5-138"></a><span class="bn">    replace: |</span></span>
+<span id="cb5-139"><a href="#cb5-139"></a><span class="bn">              ```{r setup, include=FALSE}</span></span>
+<span id="cb5-140"><a href="#cb5-140"></a><span class="bn">              knitr::opts_chunk$set(</span></span>
+<span id="cb5-141"><a href="#cb5-141"></a><span class="bn">                warning = FALSE,</span></span>
+<span id="cb5-142"><a href="#cb5-142"></a><span class="bn">                message = FALSE,</span></span>
+<span id="cb5-143"><a href="#cb5-143"></a><span class="bn">                fig.path = &quot;figs/&quot;,</span></span>
+<span id="cb5-144"><a href="#cb5-144"></a><span class="bn">                fig.width = 7.252,</span></span>
+<span id="cb5-145"><a href="#cb5-145"></a><span class="bn">                fig.height = 4,</span></span>
+<span id="cb5-146"><a href="#cb5-146"></a><span class="bn">                comment = &quot;#&gt;&quot;,</span></span>
+<span id="cb5-147"><a href="#cb5-147"></a><span class="bn">                fig.retina = 3</span></span>
+<span id="cb5-148"><a href="#cb5-148"></a><span class="bn">              )</span></span>
+<span id="cb5-149"><a href="#cb5-149"></a><span class="bn">              ```</span></span>
+<span id="cb5-150"><a href="#cb5-150"></a></span>
+<span id="cb5-151"><a href="#cb5-151"></a>  - trigger: &quot;rrcsv&quot;</span>
+<span id="cb5-152"><a href="#cb5-152"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-153"><a href="#cb5-153"></a><span class="bn">    replace: &quot;read_csv($|$)&quot;</span></span>
+<span id="cb5-154"><a href="#cb5-154"></a></span>
+<span id="cb5-155"><a href="#cb5-155"></a>  - trigger: &quot;rrex&quot;</span>
+<span id="cb5-156"><a href="#cb5-156"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-157"><a href="#cb5-157"></a><span class="bn">    replace: &quot;read_excel($|$)&quot;</span></span>
+<span id="cb5-158"><a href="#cb5-158"></a></span>
+<span id="cb5-159"><a href="#cb5-159"></a>  - trigger: &quot;rrhere&quot;</span>
+<span id="cb5-160"><a href="#cb5-160"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-161"><a href="#cb5-161"></a><span class="bn">    replace: &quot;here::here($|$)&quot;</span></span>
+<span id="cb5-162"><a href="#cb5-162"></a></span>
+<span id="cb5-163"><a href="#cb5-163"></a>  - trigger: &quot;rread&quot;</span>
+<span id="cb5-164"><a href="#cb5-164"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-165"><a href="#cb5-165"></a><span class="bn">    replace: &quot;read_csv(here::here($|$))&quot;</span></span>
+<span id="cb5-166"><a href="#cb5-166"></a></span>
+<span id="cb5-167"><a href="#cb5-167"></a>  - trigger: &quot;rrgs&quot;</span>
+<span id="cb5-168"><a href="#cb5-168"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-169"><a href="#cb5-169"></a><span class="bn">    replace: &quot;group_by($|$) %&gt;%\n    summarise()\n&quot;</span></span>
+<span id="cb5-170"><a href="#cb5-170"></a></span>
+<span id="cb5-171"><a href="#cb5-171"></a>  - trigger: &quot;rrgm&quot;</span>
+<span id="cb5-172"><a href="#cb5-172"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-173"><a href="#cb5-173"></a><span class="bn">    replace: &quot;group_by($|$) %&gt;%\n    mutate()\n&quot;</span></span>
+<span id="cb5-174"><a href="#cb5-174"></a></span>
+<span id="cb5-175"><a href="#cb5-175"></a>  - trigger: &quot;filterne&quot;</span>
+<span id="cb5-176"><a href="#cb5-176"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-177"><a href="#cb5-177"></a><span class="bn">    replace: &quot;filter($|$ != )&quot;</span></span>
+<span id="cb5-178"><a href="#cb5-178"></a></span>
+<span id="cb5-179"><a href="#cb5-179"></a>  - trigger: &quot;rrin&quot;</span>
+<span id="cb5-180"><a href="#cb5-180"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-181"><a href="#cb5-181"></a><span class="bn">    replace: &quot; %in% &quot;</span></span>
+<span id="cb5-182"><a href="#cb5-182"></a></span>
+<span id="cb5-183"><a href="#cb5-183"></a>  - trigger: &quot;ggsxc&quot;</span>
+<span id="cb5-184"><a href="#cb5-184"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-185"><a href="#cb5-185"></a><span class="bn">    replace: &quot;scale_x_continuous($|$) +&quot;</span></span>
+<span id="cb5-186"><a href="#cb5-186"></a></span>
+<span id="cb5-187"><a href="#cb5-187"></a>  - trigger: &quot;ggsyc&quot;</span>
+<span id="cb5-188"><a href="#cb5-188"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-189"><a href="#cb5-189"></a><span class="bn">    replace: &quot;scale_y_continuous($|$) +&quot;</span></span>
+<span id="cb5-190"><a href="#cb5-190"></a></span>
+<span id="cb5-191"><a href="#cb5-191"></a>  - trigger: &quot;ggsxd&quot;</span>
+<span id="cb5-192"><a href="#cb5-192"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-193"><a href="#cb5-193"></a><span class="bn">    replace: &quot;scale_x_discrete($|$) +&quot;</span></span>
+<span id="cb5-194"><a href="#cb5-194"></a></span>
+<span id="cb5-195"><a href="#cb5-195"></a>  - trigger: &quot;ggsyc&quot;</span>
+<span id="cb5-196"><a href="#cb5-196"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-197"><a href="#cb5-197"></a><span class="bn">    replace: &quot;scale_y_discrete($|$) +&quot;</span></span>
+<span id="cb5-198"><a href="#cb5-198"></a></span>
+<span id="cb5-199"><a href="#cb5-199"></a>  - trigger: &quot;ggex&quot;</span>
+<span id="cb5-200"><a href="#cb5-200"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-201"><a href="#cb5-201"></a><span class="bn">    replace: &quot;expand = expansion(mult = c(0, 0.05))&quot;</span></span>
+<span id="cb5-202"><a href="#cb5-202"></a></span>
+<span id="cb5-203"><a href="#cb5-203"></a>  - trigger: &quot;rrch&quot;</span>
+<span id="cb5-204"><a href="#cb5-204"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-205"><a href="#cb5-205"></a><span class="bn">    replace: &quot;```{r$|$}\n```&quot;</span></span>
+<span id="cb5-206"><a href="#cb5-206"></a></span>
+<span id="cb5-207"><a href="#cb5-207"></a>  - trigger: &quot;rrmd&quot;</span>
+<span id="cb5-208"><a href="#cb5-208"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-209"><a href="#cb5-209"></a><span class="bn">    replace: &quot;rmarkdown::render($|$)&quot;</span></span>
+<span id="cb5-210"><a href="#cb5-210"></a></span>
+<span id="cb5-211"><a href="#cb5-211"></a>  - trigger: &quot;rrxi&quot;</span>
+<span id="cb5-212"><a href="#cb5-212"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-213"><a href="#cb5-213"></a><span class="bn">    replace: &quot;xaringan::inf_mr()&quot;</span></span>
+<span id="cb5-214"><a href="#cb5-214"></a></span>
+<span id="cb5-215"><a href="#cb5-215"></a>  - trigger: &quot;rrgg&quot;</span>
+<span id="cb5-216"><a href="#cb5-216"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-217"><a href="#cb5-217"></a><span class="bn">    replace: &quot;ggplot($|$) +\n&quot;</span></span>
+<span id="cb5-218"><a href="#cb5-218"></a></span>
+<span id="cb5-219"><a href="#cb5-219"></a>  - trigger: &quot;ggcol&quot;</span>
+<span id="cb5-220"><a href="#cb5-220"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-221"><a href="#cb5-221"></a><span class="bn">    replace: &quot;ggplot() +\n    geom_col(aes(x = $|$, y = , fill = ))\n&quot;</span></span>
+<span id="cb5-222"><a href="#cb5-222"></a></span>
+<span id="cb5-223"><a href="#cb5-223"></a>  - trigger: &quot;ggpoint&quot;</span>
+<span id="cb5-224"><a href="#cb5-224"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-225"><a href="#cb5-225"></a><span class="bn">    replace: &quot;ggplot() +\n    geom_point(aes(x = $|$, y = ))\n&quot;</span></span>
+<span id="cb5-226"><a href="#cb5-226"></a></span>
+<span id="cb5-227"><a href="#cb5-227"></a>  # Dates</span>
+<span id="cb5-228"><a href="#cb5-228"></a></span>
+<span id="cb5-229"><a href="#cb5-229"></a>  - trigger: &quot;:date&quot;</span>
+<span id="cb5-230"><a href="#cb5-230"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-231"><a href="#cb5-231"></a><span class="bn">    replace: &quot;{{today}}&quot;</span></span>
+<span id="cb5-232"><a href="#cb5-232"></a><span class="bn">    vars:</span></span>
+<span id="cb5-233"><a href="#cb5-233"></a><span class="bn">      - name: today</span></span>
+<span id="cb5-234"><a href="#cb5-234"></a><span class="bn">        type: date</span></span>
+<span id="cb5-235"><a href="#cb5-235"></a><span class="bn">        params:</span></span>
+<span id="cb5-236"><a href="#cb5-236"></a><span class="bn">          format: &quot;%Y-%m-%d&quot;</span></span>
+<span id="cb5-237"><a href="#cb5-237"></a></span>
+<span id="cb5-238"><a href="#cb5-238"></a>  - trigger: &quot;:time&quot;</span>
+<span id="cb5-239"><a href="#cb5-239"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-240"><a href="#cb5-240"></a><span class="bn">    replace: &quot;{{time}}&quot;</span></span>
+<span id="cb5-241"><a href="#cb5-241"></a><span class="bn">    vars:</span></span>
+<span id="cb5-242"><a href="#cb5-242"></a><span class="bn">      - name: time</span></span>
+<span id="cb5-243"><a href="#cb5-243"></a><span class="bn">        type: date</span></span>
+<span id="cb5-244"><a href="#cb5-244"></a><span class="bn">        params:</span></span>
+<span id="cb5-245"><a href="#cb5-245"></a><span class="bn">          format: &quot;%H:%M&quot;</span></span>
+<span id="cb5-246"><a href="#cb5-246"></a></span>
+<span id="cb5-247"><a href="#cb5-247"></a>  # Paste clipboard contents as plain text</span>
+<span id="cb5-248"><a href="#cb5-248"></a></span>
+<span id="cb5-249"><a href="#cb5-249"></a>  - trigger: &quot;ppp&quot;</span>
+<span id="cb5-250"><a href="#cb5-250"></a><span class="bn">    force_clipboard: true</span></span>
+<span id="cb5-251"><a href="#cb5-251"></a><span class="bn">    replace: &quot;{{clipboard}}&quot;</span></span>
+<span id="cb5-252"><a href="#cb5-252"></a><span class="bn">    vars:</span></span>
+<span id="cb5-253"><a href="#cb5-253"></a><span class="bn">      - name: &quot;clipboard&quot;</span></span>
+<span id="cb5-254"><a href="#cb5-254"></a><span class="bn">        type: &quot;clipboard&quot;</span></span>
+<span id="cb5-255"><a href="#cb5-255"></a></span>
+<span id="cb5-256"><a href="#cb5-256"></a>  # Open things</span>
+<span id="cb5-257"><a href="#cb5-257"></a></span>
+<span id="cb5-258"><a href="#cb5-258"></a>  - trigger: &quot;:espanso&quot;</span>
+<span id="cb5-259"><a href="#cb5-259"></a><span class="bn">    replace: &quot;{{output}}&quot;</span></span>
+<span id="cb5-260"><a href="#cb5-260"></a><span class="bn">    vars:</span></span>
+<span id="cb5-261"><a href="#cb5-261"></a><span class="bn">      - name: output</span></span>
+<span id="cb5-262"><a href="#cb5-262"></a><span class="bn">        type: shell</span></span>
+<span id="cb5-263"><a href="#cb5-263"></a><span class="bn">        params:</span></span>
+<span id="cb5-264"><a href="#cb5-264"></a><span class="bn">          cmd: &quot;open &#39;/Users/jhelvy/gh/espanso/espanso/default.yml&#39;&quot;</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -3193,7 +3193,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
-  <p>© 2021 John Paul Helveston <a href="https://creativecommons.org/licenses/by-sa/4.0/"><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"/></svg><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"/></svg><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zM137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6-33.1 0-51.7 14.6-55.8 43.8h18.2l-49.2 49.2-49-49.2h19.4z"/></svg></a> <br/><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:14px;width:14px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M507.73 109.1c-2.24-9.03-13.54-12.09-20.12-5.51l-74.36 74.36-67.88-11.31-11.31-67.88 74.36-74.36c6.62-6.62 3.43-17.9-5.66-20.16-47.38-11.74-99.55.91-136.58 37.93-39.64 39.64-50.55 97.1-34.05 147.2L18.74 402.76c-24.99 24.99-24.99 65.51 0 90.5 24.99 24.99 65.51 24.99 90.5 0l213.21-213.21c50.12 16.71 107.47 5.68 147.37-34.22 37.07-37.07 49.7-89.32 37.91-136.73zM64 472c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"/></svg> Made with <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:14px;width:14px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>, <a href="https://github.com/jhelvy"><svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:14px;width:10.5px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"/></svg></a>, and the <a href="https://cran.r-project.org/"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:14px;width:15.89px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg></a> <a href="https://github.com/rstudio/distill">distill</a> package <br/><span style="font-size:0.8rem;">Last updated on May 11, 2021</span></p>
+  <p>© 2021 John Paul Helveston <a href="https://creativecommons.org/licenses/by-sa/4.0/"><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"/></svg><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M314.9 194.4v101.4h-28.3v120.5h-77.1V295.9h-28.3V194.4c0-4.4 1.6-8.2 4.6-11.3 3.1-3.1 6.9-4.7 11.3-4.7H299c4.1 0 7.8 1.6 11.1 4.7 3.1 3.2 4.8 6.9 4.8 11.3zm-101.5-63.7c0-23.3 11.5-35 34.5-35s34.5 11.7 34.5 35c0 23-11.5 34.5-34.5 34.5s-34.5-11.5-34.5-34.5zM247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3z"/></svg><svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:14px;width:13.56px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zM137.7 221c13-83.9 80.5-95.7 108.9-95.7 99.8 0 127.5 82.5 127.5 134.2 0 63.6-41 132.9-128.9 132.9-38.9 0-99.1-20-109.4-97h62.5c1.5 30.1 19.6 45.2 54.5 45.2 23.3 0 58-18.2 58-82.8 0-82.5-49.1-80.6-56.7-80.6-33.1 0-51.7 14.6-55.8 43.8h18.2l-49.2 49.2-49-49.2h19.4z"/></svg></a> <br/><svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:14px;width:14px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M507.73 109.1c-2.24-9.03-13.54-12.09-20.12-5.51l-74.36 74.36-67.88-11.31-11.31-67.88 74.36-74.36c6.62-6.62 3.43-17.9-5.66-20.16-47.38-11.74-99.55.91-136.58 37.93-39.64 39.64-50.55 97.1-34.05 147.2L18.74 402.76c-24.99 24.99-24.99 65.51 0 90.5 24.99 24.99 65.51 24.99 90.5 0l213.21-213.21c50.12 16.71 107.47 5.68 147.37-34.22 37.07-37.07 49.7-89.32 37.91-136.73zM64 472c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"/></svg> Made with <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:14px;width:14px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>, <a href="https://github.com/jhelvy"><svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:14px;width:10.5px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"/></svg></a>, and the <a href="https://cran.r-project.org/"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:14px;width:15.89px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg></a> <a href="https://github.com/rstudio/distill">distill</a> package <br/><span style="font-size:0.8rem;">Last updated on May 12, 2021</span></p>
   <!-- Add function to open links to external links in new tab, from: -->
   <!-- https://yihui.name/en/2018/09/target-blank/ -->
   <script src="js/external-link.js"/>
