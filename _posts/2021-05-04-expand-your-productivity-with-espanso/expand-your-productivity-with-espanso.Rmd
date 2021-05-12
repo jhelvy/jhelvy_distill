@@ -4,7 +4,7 @@ description: |
   Custom text snippets with espanso: a text expander written in Rust
 author: John Paul Helveston
 date: 05-04-2021
-preview: "images/intro.gif"
+preview: "images/date.gif"
 categories:
   - productivity
   - R
@@ -38,7 +38,7 @@ library(knitr)
 I recently discovered a wonderfully useful little program called [espanso](https://espanso.org/) -- a "text expander" that I now use on a daily basis. Text expander programs "expand" short text "triggers" into longer / more complex strings of text, like this:
 
 <center>
-<img src="images/intro.gif">
+<img src="images/date.gif">
 </center>
 
 There are lots of these programs out there, such as [Typinator](https://www.ergonis.com/products/typinator/), or the creatively-named "[textexpander](https://textexpander.com/)" (macOS even has a [build-in expander](https://www.goodmanconsulting.com/hottips/2018/1/31/speed-up-mac-and-ios-typing-with-text-expansion)). But I prefer to use open source software whenever possible (the espanso [source code](https://github.com/federico-terzi/espanso) is on GitHub), and especially when using software that tracks the text you type (imagine how easy it would be to grab passwords with this type of software). Plus espanso is free 😄. Of course if you'd like to support the project you can donate [here](https://espanso.org/sponsors/).
