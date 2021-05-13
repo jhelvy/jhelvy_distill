@@ -9,6 +9,7 @@ twitter:
   site: "@JohnHelveston"
 repository_url: https://github.com/jhelvy/jhelvy.com
 creative_commons: CC BY-SA
+favicon: images/favicon.ico
 collections:
   posts:
     categories: true

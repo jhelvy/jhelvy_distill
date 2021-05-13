@@ -2,18 +2,20 @@
 title: "John Paul Helveston"
 image: "images/helveston.png"
 links:
-  - label: GitHub
+  - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/jhelvy"
-  - label: Twitter
+  - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/JohnHelveston"
-  - label: LinkedIn
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
     url: "https://www.linkedin.com/in/jhelvy/"
-  - label: ORCID iD
+  - label: '<i class="ai ai-orcid"></i> ORCID'
     url: "https://orcid.org/0000-0002-2657-9191"
 base_url: https://www.jhelvy.com
 preview: images/helveston.png
+favicon: images/favicon.ico
 twitter:
   creator: "@JohnHelveston"
+  site: "@JohnHelveston"
 site: distill::distill_website
 output:
   postcards::trestles
@@ -44,4 +46,4 @@ meta() %>%
 
 ### Welcome to my personal website!
 
-I am a researcher, engineer, musician, swing dancer, [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) enthusiast, and an Assistant Professor at George Washington University in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/). I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. Check out my [about](about.html) page for more about me, and explore the site menu to view my [blog posts](blog.html) or find out more about my [research](highlights.html) and [teaching](teaching.html).
+I am a researcher, engineer, musician, swing dancer, [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) enthusiast, and an Assistant Professor at George Washington University in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/). I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies.
