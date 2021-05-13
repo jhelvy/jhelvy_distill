@@ -6,6 +6,11 @@
     <atom:link href="https://www.jhelvy.com/talks.xml" rel="self" type="application/rss+xml"/>
     <description>The personal website of John Paul Helveston
 </description>
+    <image>
+      <title>jhelvy.com</title>
+      <url>https://www.jhelvy.com/images/favicon.ico</url>
+      <link>https://www.jhelvy.com</link>
+    </image>
     <generator>Distill</generator>
     <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
     <item>
