@@ -114,6 +114,12 @@ Amelia is a sophomore at The George Washington University. Originally from New O
 
 Helena is an undergraduate student from Marblehead, Massachusetts majoring in Systems Engineering and minoring in Sustainability at The George Washington University. In previous roles, she has worked for a small consulting firm, analyzed market research for a building materials start-up, and researched with a professor about climate change risks in the investment industry. Within Dr. Helveston's lab, she is researching electric vehicle (EV) sales forecasts over time from different organizations. She is seeking to better understand the uncertainty in these forecasts and trends over time, in relation to actual sales, and across different industries.
 
+<img src="images/lab/eliese_ottinger.png" width="150px">
+
+### Eliese Ottinger
+
+Eliese is a junior undergraduate student studying Engineering Management and Systems Engineering at the George Washington University with minors in Sustainability and Mathematics. In Dr. Helveston's lab, she is analyzing differences in how much people drive gas vehicles and electric vehicles. This research is important to understand the uses of electric vehicles in order to modify them to suit all uses.
+
 :::
 
 ## Opportunities
