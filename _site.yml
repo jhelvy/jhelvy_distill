@@ -30,7 +30,7 @@ navbar:
       href: about.html
     - text: "Lab"
       href: lab.html
-    - text: "Pubs"
+    - text: "Publications"
       href: publications.html
     - text: "Talks"
       href: talks.html
