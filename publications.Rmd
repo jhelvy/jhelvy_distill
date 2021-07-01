@@ -286,6 +286,10 @@ icon_link(
 ## Working Papers
 
 <div class="pub">
+Szajnfarber, Z., Groover, J., Wei, Z., Broniatowski, D., Chernicoff, W., **Helveston, J.P.** (2021) "Evolvability Analysis Framework: Adding Transition Path and Stakeholder Diversity to Infrastructure Investment Decisions." _Under review_.
+</div>
+
+<div class="pub">
 Murphree, Michael, John P. Helveston, & Daniel Breznitz. "Intellectual Property as a Production Input: Expanding Theories of Institutional Change and Profiting from Innovation." _Under review_.
 </div>
 
