@@ -1,0 +1,16 @@
+---
+title: In search of keyboard nirvana
+description: |
+  My journey to find a more ergonomic (and useful) keyboard
+author: John Paul Helveston
+date: '2021-07-03'
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
