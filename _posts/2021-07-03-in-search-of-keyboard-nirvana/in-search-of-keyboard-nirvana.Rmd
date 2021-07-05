@@ -14,3 +14,22 @@ draft: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+Ever since beginning my Ph.D., I started spending far more time typing on a computer than I had before. As I wrote more code and typed out pieces of my dissertation, I immediately started looking for better ways to reduce the amount of keystrokes needed to get the job done. Now a decade later, I have most definitely taken the red pill and become far more aware of solutions I never would have imagined back then.
+
+<center>
+<img src="image/red_pill.gif" width=400px>
+</center>
+
+This post is a brief summary of my journey in search of keyboard nirvana.
+
+# Mechanical keyboards are a gateway drug
+
+One of my first roommates in graduate school was a remarkably fast typist and used this loud, clacky [mechanical keyboard](https://en.wikipedia.org/wiki/Keyboard_technology#Mechanical-switch_keyboard) (I had to wear earplugs or listen to music to get anything done while he was typing). Curiosity got the best of me, and after trying it out for a few minutes I immediately understood why people use mechanical keyboards. There is something about the combination of aural and tactile feedback you get when typing on a keyboard with mechanical switches that makes the typing experience just...[better](https://www.businessinsider.com/what-is-a-mechanical-keyboard). But it wasn't just aesthetically better - I was able to type at a faster speed and with fewer errors when using a mechanical keyboard.
+
+Needless to say, I immediately started searching for a mechanical keyboard to replace my crummy old [Apple keyboard](https://www.apple.com/shop/product/MLA22LL/A/magic-keyboard-us-english). I decided to get one from [WASD Keyboards](https://www.wasdkeyboards.com/) since they offered custom key cap printing, and I thought it'd be fun to get a custom set.
+
+<center>
+<img src="image/jkeyboard.jpeg" width=400px>
+</center>
+
+Somewhere along my searching, I came across lots of posts and articles about people who "re-mapped" their keyboards so that some key presses would trigger other events. I quickly came across [Karabiner Elements](https://karabiner-elements.pqrs.org/).
