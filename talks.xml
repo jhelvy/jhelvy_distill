@@ -12,7 +12,19 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Healthier ❤️ &amp; Happier 😄 Hands 🙌</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands</link>
+      <description>My talk on Software and Hardware Solutions for More Ergonomic Typing for the 2021 useR! Conference</description>
+      <category>productivity</category>
+      <category>keyboards</category>
+      <category>R</category>
+      <guid>https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands</guid>
+      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands/title-slide.png" medium="image" type="image/png" width="1261" height="710"/>
+    </item>
     <item>
       <title>Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models</title>
       <dc:creator>John Paul Helveston</dc:creator>
