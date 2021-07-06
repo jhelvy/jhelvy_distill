@@ -3,7 +3,7 @@ title: "Customizing distill with {htmltools} and CSS"
 description: |
   How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.
 author: John Paul Helveston
-date: 03-25-2021
+date: '2021-03-25'
 preview: "images/css_html.png"
 categories:
   - tutorial

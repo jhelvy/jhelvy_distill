@@ -4,32 +4,220 @@ description: |
   My journey to find a more ergonomic (and useful) keyboard
 author: John Paul Helveston
 date: '2021-07-03'
+preview: "images/red_pill.gif"
+categories:
+  - productivity
+  - keyboards
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
 ```
 
-Ever since beginning my Ph.D., I started spending far more time typing on a computer than I had before. As I wrote more code and typed out pieces of my dissertation, I immediately started looking for better ways to reduce the amount of keystrokes needed to get the job done. Now a decade later, I have most definitely taken the red pill and become far more aware of solutions I never would have imagined back then.
+When I entered grad school, I started spending far more time typing on a computer than I had before. After a few months in, I started searching for a better typing experience and ways to reduce the amount of keystrokes needed to get the job done. Now a decade later, I have most definitely taken the red pill and become far more aware of solutions and technologies I never would have imagined back then.
 
-<center>
-<img src="image/red_pill.gif" width=400px>
-</center>
+```{r red-pill, fig.cap="Me back in 2011 reading about mechanical keyboards.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/red_pill.gif")
+```
 
 This post is a brief summary of my journey in search of keyboard nirvana.
 
-# Mechanical keyboards are a gateway drug
+# Mechanical keyboards
 
-One of my first roommates in graduate school was a remarkably fast typist and used this loud, clacky [mechanical keyboard](https://en.wikipedia.org/wiki/Keyboard_technology#Mechanical-switch_keyboard) (I had to wear earplugs or listen to music to get anything done while he was typing). Curiosity got the best of me, and after trying it out for a few minutes I immediately understood why people use mechanical keyboards. There is something about the combination of aural and tactile feedback you get when typing on a keyboard with mechanical switches that makes the typing experience just...[better](https://www.businessinsider.com/what-is-a-mechanical-keyboard). But it wasn't just aesthetically better - I was able to type at a faster speed and with fewer errors when using a mechanical keyboard.
+One of my first roommates in graduate school was a remarkably fast typist and used this loud, clacky [mechanical keyboard](https://mechanicalkeyboards.com/define_mechanical_keyboard.php) (I had to wear earplugs or listen to music to get anything done when he was typing). Curiosity got the best of me, and after trying out his keyboard for a few minutes I immediately understood why people use mechanical keyboards. There is something about the combination of aural and tactile feedback you get when typing on a keyboard with [mechanical switches](https://en.wikipedia.org/wiki/Keyboard_technology#Mechanical-switch_keyboard) that makes the typing experience just...[better](https://www.businessinsider.com/what-is-a-mechanical-keyboard). But it wasn't just aesthetically better - I was able to type at a faster speed and with fewer errors when using a mechanical keyboard.
 
-Needless to say, I immediately started searching for a mechanical keyboard to replace my crummy old [Apple keyboard](https://www.apple.com/shop/product/MLA22LL/A/magic-keyboard-us-english). I decided to get one from [WASD Keyboards](https://www.wasdkeyboards.com/) since they offered custom key cap printing, and I thought it'd be fun to get a custom set.
+Needless to say, I immediately started searching for a mechanical keyboard to replace my crummy old [Apple keyboard](https://www.apple.com/shop/product/MLA22LL/A/magic-keyboard-us-english). Somewhere along my searching, I came across articles about people who "re-mapped" their keyboards so that some key presses would trigger other events. This seemed like a powerful idea for reducing required key strokes, and after a bit more searching I discovered [Karabiner Elements](https://karabiner-elements.pqrs.org/) for mac. This software is invaluable. I made loads of customizations to simplify common operations. I became so dependent on it that I decided to design a custom key cap set for my first mechanical keyboard from [WASD Keyboards](https://www.wasdkeyboards.com/) to match my [Karabiner Elements settings](https://github.com/jhelvy/jkeyboard)
+
+```{r jkeyboard, fig.cap="My first custom mechanical keyboard, from WASD Keyboards.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/jkeyboard.png")
+```
+
+# Remapping Your Keyboard 
+
+There are many software options for customizing and re-mapping your keyboard. I use Karabiner Elements for mac, but [AutoHotkey](https://www.autohotkey.com/) is probably the most popular option for Windows users. 
+
+The use cases for these programs are endless, but I want to highlight one very powerful idea: **adding keyboard layers**. Every keyboard has at least two layers: the normal layer, and the "shift" layer that converts lower-case letters to upper-case and numbers to symbols. Unfortunately, some of the most useful keys (e.g. navigation arrows) are not conveniently located and require you to move your hand every time you want to use them. So one of the first things I implemented in re-mapping my keyboard was to try and move those navigation arrows back to "home row":
+
+```{r nav-arrows, fig.cap="Where I wanted to relocate the navigation arrows.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/nav_arrows.png")
+```
+
+My solution was to introduce a "Capslock" layer. This layer works just like the shift layer, except it gets triggered when holding down the otherwise rarely-used Capslock key. This layer uses <kbd>J</kbd> / <kbd>I</kbd> / <kbd>K</kbd> / <kbd>L</kbd> as arrow keys for navigating the cursor selecting text, and it re-maps the <kbd>S</kbd> / <kbd>D</kbd> / <kbd>F</kbd> keys into `cut`, `copy`, and `paste` as well as <kbd>N</kbd> and <kbd>H</kbd> into `backspace` and `delete`:
+
+```{r capslock-layer, fig.cap="My capslock layer.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/capslock_layer.png")
+```
+
+As you can see in the demo below, this modification enables me to navigate the cursor and edit code / text without ever having to leave home row:
 
 <center>
-<img src="image/jkeyboard.jpeg" width=400px>
+<video width="600" controls>
+  <source src="images/keyboard_nav_demo.mp4" type="video/mp4">
+  <source src="images/keyboard_nav_demo.mp4" type="video/ogg">
+  Your browser does not support HTML video.
+</video>
 </center>
 
-Somewhere along my searching, I came across lots of posts and articles about people who "re-mapped" their keyboards so that some key presses would trigger other events. I quickly came across [Karabiner Elements](https://karabiner-elements.pqrs.org/).
+I use Karabiner Elements for lots of other things too, like:
+
+- Launching applications like `Google Chrome` or `Terminal` with a single hotkey.
+- Opening `Google Chrome` to a webpage (e.g. gmail) with a single hotkey.
+- Typing my email send off (`"Cheers,\nJP"`) with a single hotkey.
+
+You can see all of my settings [here](https://github.com/jhelvy/jkeyboard).
+
+# Towards better ergonomics: the split keyboard
+
+Typical keyboard layouts are not that ergonomic, and after several years of using my WASD keyboard I eventually started developing wrist pain. My specific pain was from prolonged [ulnar deviation](http://www.ergopedia.ca/risk_factors/Ulnar_Deviation_When_Using_the_Keyboard.html), where the hands are bent outward at the wrist joint. So I started searching for a split keyboard to be able to hold my hands at a more natural position while typing (split keyboards actually [fix a lot of ergonomic problems](https://kinesis-ergo.com/solutions/keyboard-risk-factors/)). 
+
+```{r drake-ulnar, fig.cap="Split keyboards fix a lot of ergonomic problems, like ulnar deviation.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/drake_ergo_ulnar.png")
+```
+
+After doing a lot of research on different split boards, I decided to try out the [Ergodox EZ](https://ergodox-ez.com/), a [highly-rated](https://www.youtube.com/watch?v=LALQsqZP1nA&t=1s) (albeit quite expensive) keyboard. I chose the Ergodox EZ as it had a 30-day return policy (though you have to pay the return shipping), and because the company that makes the Ergodox (ZSA) has some of the most highly-rated customer service of any company ever. I figured if I didn't like it, I could probably return it without too much hassle.
+
+```{r ergodox, fig.cap="The Ergodox EZ.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/ergodox.png")
+```
+
+One of the other features that attracted me to the Ergodox is their [Oryx](https://ergodox-ez.com/pages/oryx) configurator software. This is an in-browser web application that enables you to fully customize every single key on the keyboard through a very user-friendly UI. All of a sudden, many of the key features that I loved about Karabiner Elements (such as re-mapping my Capslock key to use navigation arrows on the home row) could be programmed directly into the keyboard itself. This meant I could use the keyboard on any computer and have the same re-mapped keys at the ready.
+
+```{r oryx, fig.cap="The Ergodox EZ.", out.width="600", fig.align='center'}
+knitr::include_graphics("images/oryx.jpg")
+```
+
+There are a lot of things to like about the Ergodox. First, the Oryx software was a game changer. Being able to directly control what each key does gave me all sorts of new ideas that made my typing incredibly efficient and far more comfortable than anything I had used in the past. But the single biggest improvement was probably the **thumb key cluster**. Your thumbs are quite strong, but on most keyboards they're only useful for the space bar and maybe some contorted use of modifier keys. The Ergodox has several keys right under each thumb, enabling far more efficient and comfortable access to using your thumb to type. 
+
+My single biggest improvement in using the thumb keys was to swap what used to be my capslock layer trigger to a thumb key. Now instead of holding down the capslock key with my much weaker left pinky finger to trigger a new layer, I could use my much stronger left thumb, freeing up my left pinky finger to actually type key strokes. 
+
+All together, the Ergodox EZ was a major improvement in my typing, both in terms of ergonomics and efficiency. My typing speed also increased from ~70 to ~90 from the better location of keys. But after about six months of use, I still found some things weren't quite right with the board. [This review](https://medium.com/tech-reviews/ergodox-ez-review-thoughts-after-3-months-of-regular-use-370fd00cdaa2) is a great summary of the pros and cons of the Ergodox, but my single biggest complaint was the precise location of the thumb key clusters. Most thumb keys were just too far away to be useful, and even the main thumb keys were a little too far out for my hands.
+
+```{r disappoint, fig.cap="Me after 6 months of using the Ergodox EZ thumb cluster.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/disappoint.gif")
+```
+
+# Building my own split keyboard
+
+If you're at the point where you're typing on an Ergodox EZ, it doesn't take long before you start realizing there's an entire world out there of DIY keyboard hobbists obsessed with ergonomics and custom built keyboards. A short perusal of [r/ErgoMechKeyboards](https://www.reddit.com/r/ErgoMechKeyboards) and you'll see a wide range of bizarre keyboards you never would have imagined existed, with names like [Iris](https://keeb.io/products/iris-keyboard-split-ergonomic-keyboard), [Lily58](https://keyhive.xyz/shop/lily58https://keyhive.xyz/shop/lily58), [Kyria](https://splitkb.com/products/kyria-pcb-kit), and [Corne](https://github.com/foostan/crkbd).
+
+```{r whoa, fig.cap="Me after first discovering r/ErgoMechKeyboards.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/whoa.gif")
+```
+
+As an engineering faculty member at George Washington University, many of the tools needed to dive into building my own keyboard (e.g. a soldering iron) were readily available to me via the makers space in the [GW Innovation Center](https://www.seas.gwu.edu/gw-innovation-center). So I convinced myself that making a keyboard would be a fun excuse to learn some fun skills and meet some of the engineering students at GW (I had only just started at GW in 2018). I decided to make a Lily58, mostly because the parts were quite cheap and available at [keyhive.xyz](https://keyhive.xyz/).
+
+```{r lily58, fig.cap="Me and my first ever DIY keyboard (a Lily58), assembled (mostly) in the GW Innovation Center.", out.width="600", fig.align='center'}
+img1 <- "images/john_lily58.jpg"
+img2 <- "images/lily58.jpg"
+images <- c(img1, img2)
+img <- magick::image_read(images, density = "300x300") %>%
+  magick::image_montage(tile = '2', geometry = "600x600")
+
+img
+```
+
+The project of building a Lily58 was a great learning experience, and I am more greatful for the people I met in the GWIC than in what I learned about building keyboards. Turns out building a keyboard covers quite a lot of engineering skills, including: 
+
+- Soldering microelectronics. 
+- CAD designing case components.
+- 3D printing and laser cutting case components.
+- Programming the firmware.
+
+I got to work with some talented GW undergraduates on Friday afternoons working on each of these tasks. Someone even got this very promotional-esque shot of me working with a student soldering some microelectronics:
+
+```{r soldering, fig.cap="A very staged-looking (but actually wasn't staged) photo of me working with a student in the GWIC.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/john_soldering.jpg")
+```
+
+# Towards an "End Game"
+
+In the world of DIY keyboards, many speak of a mythical "End Game" keyboard - one that is so perfected that you hang up your soldering iron, never to build another keyboard again. Of course, in reality each keyboard project is a step in another direction that almost inevitably leads to yet another keyboard project. In my case, I have now built no less than **four** keyboards, so I believe I can officially call building custom keyboards a hobby (problem?).
+
+```{r architect, fig.cap="Most peoples' reaction after I show them my keyboards.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/architect.gif")
+```
+
+For each new keyboard project, I either found something new I wanted to try out, or I found something I didn't quite like about the last project (or both). For my Lily58, the biggest issue was simply the build quality wasn't that high. I used sockets to hold the key switches in place so I could swap out different switches, but whenever I traveled with the board many of the switches would fall out, which got annoying pretty fast.
+
+So I decided to build an Iris keyboard -- a close cousin to the Lily58 in terms of the key layout.
+
+```{r iris, fig.cap="My second keyboard: an Iris Rev 2.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/iris.jpg")
+```
+
+https://github.com/jhelvy/iris-rev2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Trade offs in going split
+
+There are several drawbacks to adopting a split keyboard, but I want to discuss two common ones: 
+
+- Cost 
+- Learning curve
+
+### Cost 
+
+Perhaps one of the biggest drawbacks of split keyboards is that they generally cost more than traditional keyboards. Nonetheless, there are lots of good options for under or around $100 USD, such as:
+
+- [Microsoft Scult](https://www.amazon.com/Microsoft-Ergonomic-Keyboard-Business-5KV-00001/dp/B00CYX26BC/) ($60)
+- [KINESIS Freestyle](https://kinesis-ergo.com/shop/freestyle2-for-pc-us/) ($99.00)
+- [Logitech ERGO K860](https://www.amazon.com/Logitech-Wireless-Ergonomic-Keyboard-Wrist/dp/B07ZWK2TQT) ($125.00)
+
+But despite the sometimes higher cost, I encourage you to re-frame your thinking about the value you get from your keyboards. 
+
+First, if you use your keyboard on a daily basis for your job, you should consider your keyboard as a **professional instrument**. Professional musicians invest thousands of dollars into their instruments, and likewise professional chefs invest thousands of dollars into their knives. So if you type for a profession, why not spend only a few _hundred_ dollars on a professional keyboard?
+
+Second, consider your keyboard as a **medical device**. Billions of people depend on glasses to see well, and a typical pair of glasses can easily cost several hundred dollars. And just as using a correctly-prescribed pair of glasses is important for the health of your eyes, using a more ergonomic keyboard is important for the health of your fingers, hands, wrists, and shoulders (yes, all of those things are affected by how you type).
+
+So yes, purchasing an ergonomic keyboard may cost you a little more up front, but it is generally an investment worth making, and especially if you are already finding yourself in pain from typing. 
+
+### Learning curve
+
+Adopting any new technology generally comes with a learning curve, and moving to a split keyboard is no different. But how hard it is to adapt to a new keyboard varies by a variety of factors. 
+
+First, if you already are proficient at touch-typing (meaning you use all 10 fingers to type and you don't need to look down at the key legends), adopting a split keyboard probably won't be too challenging. For me, I found I was a little slower and made more errors for a few days when first using a split board, but after about a week I was back to otherwise "normal" typing speed.
+
+Second, the _type_ of split keyboard can matter quite a lot. Some boards, such as the Microsoft Scult, have two split halves but are otherwise quite similar in the key positions compared to typical keyboards. Others, such as the [Ergodox EZ](https://ergodox-ez.com/), use an ["ortholinear"](https://www.reviewgeek.com/70291/what-is-an-ortholinear-keyboard-and-should-you-use-one/) layout, meaning that each row of keys align into columns with no stagger across rows. These columnar layouts are arguably more ergonomic and comfortable to type on, but they can take a little longer to get used to. My recommendation is to try out a split board of some type and practice using it on a site like [keybr.com](https://www.keybr.com/). Get used to it first and give it at least a week of regular use before judging it. It can take a week or more for it to stop feeling strange, and your hands will thank you in the long run.
+
+
+
+
+# Things I've tried and do **not** recommend
+
+Trying to do something more radical like learning a new layout (e.g. colemak, dvorak, etc.) is the complete opposite. Takes several weeks of regular practice, and maybe a month or more before you get back to "normal". I never found this trade off worth while and still use QWERTY
+
+
+
+
+```{r door, fig.cap="Me back in 2011 reading about mechanical keyboards.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/door.gif")
+```
+
+This is the part of the story where I start feeling a little bit like Cypher. 
+
+```{r blue-pill, fig.cap="Me back in 2011 reading about mechanical keyboards.", out.width="500", fig.align='center'}
+knitr::include_graphics("images/blue_pill.gif")
+```

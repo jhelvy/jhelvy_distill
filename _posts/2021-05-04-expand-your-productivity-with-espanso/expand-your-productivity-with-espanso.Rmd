@@ -3,7 +3,7 @@ title: "Expand your productivity with espanso"
 description: |
   Custom text snippets with espanso: a text expander written in Rust
 author: John Paul Helveston
-date: 05-04-2021
+date: '2021-05-04'
 preview: "images/date.gif"
 categories:
   - productivity
