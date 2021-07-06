@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["images/architect.gif","images/bike_rule12.jpg","images/blue_pill.gif","images/capslock_layer.png","images/corne.jpeg","images/disappoint.gif","images/door.gif","images/drake_ergo_ulnar.png","images/encoder.jpg","images/ergodox.png","images/iris.jpg","images/jkeyboard.png","images/john_lily58.jpg","images/john_soldering.jpg","images/keyboard_nav_demo.mp4","images/kinesis_freestyle2.jpg","images/kyria.jpeg","images/lily58.jpg","images/logitech.jpg","images/nav_arrows.png","images/oryx.jpg","images/red_pill.gif","images/whoa.gif","in-search-of-keyboard-nirvana_files/anchor-4.2.2/anchor.min.js","in-search-of-keyboard-nirvana_files/bowser-1.9.3/bowser.min.js","in-search-of-keyboard-nirvana_files/distill-2.2.21/template.v2.js","in-search-of-keyboard-nirvana_files/figure-html5/lily58-1.png","in-search-of-keyboard-nirvana_files/figure-html5/unnamed-chunk-1-1.png","in-search-of-keyboard-nirvana_files/header-attrs-2.7.8/header-attrs.js","in-search-of-keyboard-nirvana_files/jquery-1.11.3/jquery.min.js","in-search-of-keyboard-nirvana_files/popper-2.6.0/popper.min.js","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy-bundle.umd.min.js","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy-light-border.css","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy.css","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy.umd.min.js","in-search-of-keyboard-nirvana_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["images/architect.gif","images/bike_rule12.jpg","images/blue_pill.gif","images/capslock_layer.png","images/corne.jpeg","images/disappoint.gif","images/door.gif","images/drake_ergo_ulnar.png","images/encoder.jpg","images/ergodox.png","images/iris.jpg","images/jkeyboard.png","images/john_lily58.jpg","images/john_soldering.jpg","images/keyboard_nav_demo.mp4","images/kinesis_freestyle2.jpg","images/kyria.jpeg","images/lily58.jpg","images/logitech.jpg","images/nav_arrows.png","images/oryx.jpg","images/red_pill.gif","images/splitKbCompare.png","images/whoa.gif","in-search-of-keyboard-nirvana_files/anchor-4.2.2/anchor.min.js","in-search-of-keyboard-nirvana_files/bowser-1.9.3/bowser.min.js","in-search-of-keyboard-nirvana_files/distill-2.2.21/template.v2.js","in-search-of-keyboard-nirvana_files/figure-html5/lily58-1.png","in-search-of-keyboard-nirvana_files/figure-html5/unnamed-chunk-1-1.png","in-search-of-keyboard-nirvana_files/header-attrs-2.7.8/header-attrs.js","in-search-of-keyboard-nirvana_files/jquery-1.11.3/jquery.min.js","in-search-of-keyboard-nirvana_files/popper-2.6.0/popper.min.js","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy-bundle.umd.min.js","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy-light-border.css","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy.css","in-search-of-keyboard-nirvana_files/tippy-6.2.7/tippy.umd.min.js","in-search-of-keyboard-nirvana_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1492,6 +1492,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#towards-better-ergonomics-with-split-keyboards">Towards better ergonomics with split keyboards</a></li>
 <li><a href="#building-my-own-split-keyboard">Building my own split keyboard</a></li>
 <li><a href="#towards-an-end-game">Towards an “End Game”</a></li>
+<li><a href="#firmware">Firmware</a></li>
 <li><a href="#trade-offs-in-going-split">Trade offs in going split</a>
 <ul>
 <li><a href="#cost">Cost</a></li>
@@ -1505,7 +1506,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>When I entered grad school, I started spending far more time typing on a computer than I had before. After a few months in, I started searching for a better typing experience and ways to reduce the amount of keystrokes needed to get the job done. Now a decade later, I have most definitely taken the red pill and become far more aware of solutions and technologies I never would have imagined back then. This post is a brief summary of my journey in search of keyboard nirvana.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:red-pill"></span>
-<img src="images/red_pill.gif" alt="Me back in 2011 reading about mechanical keyboards." width="600" />
+<img src="images/red_pill.gif" alt="Me back in 2011 reading about mechanical keyboards." width="700" />
 <p class="caption">
 Figure 1: Me back in 2011 reading about mechanical keyboards.
 </p>
@@ -1516,7 +1517,7 @@ Figure 1: Me back in 2011 reading about mechanical keyboards.
 <p>Needless to say, I immediately started searching for a mechanical keyboard to replace my crummy old <a href="https://www.apple.com/shop/product/MLA22LL/A/magic-keyboard-us-english">Apple keyboard</a>. Somewhere along my searching, I came across articles about people who “re-mapped” their keyboards so that some key presses would trigger other events. This seemed like a powerful idea for reducing key strokes, and after a bit more searching I discovered <a href="https://karabiner-elements.pqrs.org/">Karabiner Elements</a> for mac. This software is invaluable. I made loads of customizations to simplify common operations. I became so dependent on it that I decided to design a custom key cap set for my first mechanical keyboard from <a href="https://www.wasdkeyboards.com/">WASD Keyboards</a> to match my <a href="https://github.com/jhelvy/jkeyboard">Karabiner Elements settings</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:jkeyboard"></span>
-<img src="images/jkeyboard.png" alt="A rendering of my first custom mechanical keyboard, from WASD Keyboards." width="600" />
+<img src="images/jkeyboard.png" alt="A rendering of my first custom mechanical keyboard, from WASD Keyboards." width="700" />
 <p class="caption">
 Figure 2: A rendering of my first custom mechanical keyboard, from WASD Keyboards.
 </p>
@@ -1527,7 +1528,7 @@ Figure 2: A rendering of my first custom mechanical keyboard, from WASD Keyboard
 <p>The use cases for these programs are endless, but I want to highlight one very powerful idea: <strong>adding keyboard layers</strong>. Every keyboard has at least two layers: the normal layer, and the “shift” layer that converts lower-case letters to upper-case and numbers to symbols. Unfortunately, some of the most useful keys (e.g. navigation arrows) are not conveniently located and require you to move your hand every time you want to use them. So one of the first things I implemented in re-mapping my keyboard was to try and move those navigation arrows back to “home row”:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:nav-arrows"></span>
-<img src="images/nav_arrows.png" alt="Where I wanted to relocate the navigation arrows." width="600" />
+<img src="images/nav_arrows.png" alt="Where I wanted to relocate the navigation arrows." width="700" />
 <p class="caption">
 Figure 3: Where I wanted to relocate the navigation arrows.
 </p>
@@ -1536,7 +1537,7 @@ Figure 3: Where I wanted to relocate the navigation arrows.
 <p>My solution was to introduce a “Capslock” layer. This layer works just like the shift layer, except it gets triggered when holding down the otherwise rarely-used Capslock key. This layer uses <kbd>J</kbd> / <kbd>I</kbd> / <kbd>K</kbd> / <kbd>L</kbd> as arrow keys for navigating the cursor selecting text, and it re-maps the <kbd>S</kbd> / <kbd>D</kbd> / <kbd>F</kbd> keys into <code>cut</code>, <code>copy</code>, and <code>paste</code> as well as <kbd>N</kbd> and <kbd>H</kbd> into <code>backspace</code> and <code>delete</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:capslock-layer"></span>
-<img src="images/capslock_layer.png" alt="My capslock layer." width="600" />
+<img src="images/capslock_layer.png" alt="My capslock layer." width="700" />
 <p class="caption">
 Figure 4: My capslock layer.
 </p>
@@ -1544,7 +1545,7 @@ Figure 4: My capslock layer.
 </div>
 <p>As you can see in the demo below, this modification enables me to navigate the cursor and edit code / text without ever having to leave home row:</p>
 <center>
-<video width="600" controls>
+<video width="700" controls>
 <source src="images/keyboard_nav_demo.mp4" type="video/mp4">
 <source src="images/keyboard_nav_demo.mp4" type="video/ogg">
 Your browser does not support HTML video. </video>
@@ -1560,7 +1561,7 @@ Your browser does not support HTML video. </video>
 <p>Typical keyboard layouts are not that ergonomic, and after several years of using my WASD keyboard I eventually started developing wrist pain. My specific pain was from prolonged <a href="http://www.ergopedia.ca/risk_factors/Ulnar_Deviation_When_Using_the_Keyboard.html">ulnar deviation</a>, where the hands are bent outward at the wrist joint. So I started searching for a split keyboard to be able to hold my hands at a more natural position while typing (split keyboards actually <a href="https://kinesis-ergo.com/solutions/keyboard-risk-factors/">fix a lot of ergonomic problems</a>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:drake-ulnar"></span>
-<img src="images/drake_ergo_ulnar.png" alt="Split keyboards fix a lot of ergonomic problems, like ulnar deviation." width="500" />
+<img src="images/drake_ergo_ulnar.png" alt="Split keyboards fix a lot of ergonomic problems, like ulnar deviation." width="600" />
 <p class="caption">
 Figure 5: Split keyboards fix a lot of ergonomic problems, like ulnar deviation.
 </p>
@@ -1569,7 +1570,7 @@ Figure 5: Split keyboards fix a lot of ergonomic problems, like ulnar deviation.
 <p>After doing a lot of research on different split boards, I decided to try out the <a href="https://ergodox-ez.com/">Ergodox EZ</a>, a <a href="https://www.youtube.com/watch?v=LALQsqZP1nA&amp;t=1s">highly-rated</a> (albeit quite expensive) keyboard. I chose the Ergodox EZ as it had a 30-day return policy (though you have to pay the return shipping), and because the company that makes the Ergodox (ZSA) has some of the most highly-rated customer service of any company ever. I figured if I didn’t like it, I could probably return it without too much hassle.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:ergodox"></span>
-<img src="images/ergodox.png" alt="The Ergodox EZ." width="600" />
+<img src="images/ergodox.png" alt="The Ergodox EZ." width="700" />
 <p class="caption">
 Figure 6: The Ergodox EZ.
 </p>
@@ -1589,9 +1590,9 @@ Figure 7: Screenshot of the Oryx software.
 <p>All together, the Ergodox EZ was a major improvement in my typing, both in terms of ergonomics and efficiency. My typing speed also increased from ~70 on an Apple keyboard to ~90 on the Ergodox. But after about six months of use, I still found some things weren’t quite right with the board. <a href="https://medium.com/tech-reviews/ergodox-ez-review-thoughts-after-3-months-of-regular-use-370fd00cdaa2">This review</a> is a great summary of the pros and cons of the Ergodox, but my single biggest complaint was the precise location of the thumb key clusters. Most thumb keys were just too far away to be useful, and even the main thumb keys were a little too far out for my hands.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:disappoint"></span>
-<img src="images/disappoint.gif" alt="Me after 6 months of using the Ergodox EZ thumb cluster." width="500" />
+<img src="images/disappoint.gif" alt="Me after about 6 months of using the Ergodox EZ thumb cluster." width="600" />
 <p class="caption">
-Figure 8: Me after 6 months of using the Ergodox EZ thumb cluster.
+Figure 8: Me after about 6 months of using the Ergodox EZ thumb cluster.
 </p>
 </div>
 </div>
@@ -1599,16 +1600,16 @@ Figure 8: Me after 6 months of using the Ergodox EZ thumb cluster.
 <p>If you’re at the point where you’re typing on an Ergodox EZ, it doesn’t take long before you start realizing there’s an entire world out there of DIY keyboard hobbists obsessed with ergonomics and custom built keyboards. A short perusal of <a href="https://www.reddit.com/r/ErgoMechKeyboards">r/ErgoMechKeyboards</a> and you’ll see a wide range of bizarre keyboards you never would have imagined existed, with names like <a href="https://keeb.io/products/iris-keyboard-split-ergonomic-keyboard">Iris</a>, <a href="https://keyhive.xyz/shop/lily58https://keyhive.xyz/shop/lily58">Lily58</a>, <a href="https://splitkb.com/products/kyria-pcb-kit">Kyria</a>, and <a href="https://github.com/foostan/crkbd">Corne</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:whoa"></span>
-<img src="images/whoa.gif" alt="Me after first discovering r/ErgoMechKeyboards." width="500" />
+<img src="images/whoa.gif" alt="Me after first discovering r/ErgoMechKeyboards." width="600" />
 <p class="caption">
 Figure 9: Me after first discovering r/ErgoMechKeyboards.
 </p>
 </div>
 </div>
-<p>As an engineering faculty member at George Washington University, many of the tools needed to dive into building my own keyboard (e.g. a soldering iron) were readily available to me via the makers space in the <a href="https://www.seas.gwu.edu/gw-innovation-center">GW Innovation Center</a>. So I convinced myself that making a keyboard would be a fun excuse to learn some fun skills and meet more of the engineering students at GW (this was in 2018, just after I had started at GW). I decided to make a Lily58, mostly because the parts were quite cheap and available at <a href="https://keyhive.xyz/">keyhive.xyz</a>.</p>
+<p>As an engineering faculty member at George Washington University, many of the tools needed to dive into building my own keyboard (e.g. a soldering iron) were readily available to me via the makers space in the <a href="https://www.seas.gwu.edu/gw-innovation-center">GW Innovation Center</a>. So I convinced myself that making a keyboard would be a fun excuse to learn some new skills and meet more of the engineering students at GW (this was in 2018, only a few months after I had started at GW). I decided to make a Lily58, mostly because the parts were quite cheap and available at <a href="https://keyhive.xyz/">keyhive.xyz</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:lily58"></span>
-<img src="in-search-of-keyboard-nirvana_files/figure-html5/lily58-1.png" alt="Me and my first ever DIY keyboard (a Lily58), assembled (mostly) in the GW Innovation Center." width="600" />
+<img src="in-search-of-keyboard-nirvana_files/figure-html5/lily58-1.png" alt="Me and my first ever DIY keyboard (a Lily58), assembled (mostly) in the GW Innovation Center." width="700" />
 <p class="caption">
 Figure 10: Me and my first ever DIY keyboard (a Lily58), assembled (mostly) in the GW Innovation Center.
 </p>
@@ -1630,11 +1631,12 @@ Figure 11: A very staged-looking (but actually wasn’t staged) photo of me work
 </p>
 </div>
 </div>
+<p>I have to say that working with student in the GWIC has been a real highlight of my little keyboard journey. Given that most of what I do and teach as a professor involves the virtual space of data analysis and programming, it was great to get to do some “hands on” engineering tasks with students outside of the classroom.</p>
 <h1 id="towards-an-end-game">Towards an “End Game”</h1>
 <p>In the world of DIY keyboards, many speak of a mythical “End Game” keyboard - one that is so perfected that you hang up your soldering iron, never to build another keyboard again. Of course, in reality each keyboard project is a step in another direction that almost inevitably leads to yet another keyboard project. It’s a similar logic to biking rule #12:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:bike-rule12"></span>
-<img src="images/bike_rule12.jpg" alt="...where N is the current number of bikes owned." width="400" />
+<img src="images/bike_rule12.jpg" alt="...where N is the current number of bikes owned." width="500" />
 <p class="caption">
 Figure 12: …where N is the current number of bikes owned.
 </p>
@@ -1643,7 +1645,7 @@ Figure 12: …where N is the current number of bikes owned.
 <p>In my case, I have now built no less than <strong>four</strong> keyboards, so I believe I can officially call building custom keyboards a hobby (problem?).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:architect"></span>
-<img src="images/architect.gif" alt="Most peoples' reaction after I show them my keyboards." width="500" />
+<img src="images/architect.gif" alt="Most peoples' reaction after I show them my keyboards." width="700" />
 <p class="caption">
 Figure 13: Most peoples’ reaction after I show them my keyboards.
 </p>
@@ -1653,7 +1655,7 @@ Figure 13: Most peoples’ reaction after I show them my keyboards.
 <p>So I decided to build an Iris keyboard – a close cousin to the Lily58 in terms of the <a href="http://jhelvy.shinyapps.io/splitkbcompare/?keyboards=iris;lily58">key layout</a>. I also decided to keep a <a href="https://github.com/jhelvy/iris-rev2">detailed record</a> of my build process as I learned so many tiny details in the process that I figured could help others looking to build their own keyboards (e.g. installing a rotary encoder).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:iris"></span>
-<img src="images/iris.jpg" alt="My second keyboard - an Iris Rev 2." width="500" />
+<img src="images/iris.jpg" alt="My second keyboard - an Iris Rev 2." width="700" />
 <p class="caption">
 Figure 14: My second keyboard - an Iris Rev 2.
 </p>
@@ -1665,7 +1667,7 @@ Figure 14: My second keyboard - an Iris Rev 2.
 <p>On most of my DIY boards, I have a <a href="https://en.wikipedia.org/wiki/Rotary_encoder">rotary encoder</a> on the right hand side, which is like a rotational switch. I use them for a variety of things. Perhaps the most obvious might be as a volume knob, but I also have my keyboards configured such that the rotary encoder triggers different behaviors depending on the active layer, including volume control, scrolling up and down, scrolling left and right, and zooming in and out.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:encoder"></span>
-<img src="images/encoder.jpg" alt="A rotary encoder I mounted on my Iris keyboard." width="300" />
+<img src="images/encoder.jpg" alt="A rotary encoder I mounted on my Iris keyboard." width="500" />
 <p class="caption">
 Figure 15: A rotary encoder I mounted on my Iris keyboard.
 </p>
@@ -1674,22 +1676,25 @@ Figure 15: A rotary encoder I mounted on my Iris keyboard.
 <p>My Iris was a fantastic keyboard. Again, I worked a lot on it in the GWIC, using the 3D printers to print the <a href="https://github.com/wizarddata/Iris-Case/tree/master/High%20Profile">case</a> and soldering equipment to assemble much of the components. After some heavy use though, the rotary encoder broke off, and it was essentially irreparable, so I decided to build what seemed like a more robust keyboard – the Kyria.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:kyria"></span>
-<img src="images/kyria.jpeg" alt="My third keyboard - a Kyria Rev 1." width="500" />
+<img src="images/kyria.jpeg" alt="My third keyboard - a Kyria Rev 1." width="700" />
 <p class="caption">
 Figure 16: My third keyboard - a Kyria Rev 1.
 </p>
 </div>
 </div>
-<p>Designed by <a href="https://thomasbaart.nl/">Thomas Baart</a>, the Kyria keyboard has arguably the best documentation about how to assemble it, and it is usually the board I recommend to first-time builders. Thomas put a lot of thought into the design of the board, and in general I would say this is probably the best quality board I built (more photos <a href="https://imgur.com/gallery/C6glvs0">here</a>, and details about the board <a href="https://www.reddit.com/r/ErgoMechKeyboards/comments/hvwqej/yin_yang_tented_kyria/">here</a>). I also learned a bit more about using CAD with this keyboard as I modified the <a href="https://github.com/jhelvy/kyria_3d_cases">3D printed case</a> using Fusion 360. That said, the layout of this board just isn’t quite as comfortable for my hands as the Iris layout. The column stagger is much more aggressive, and it just doesn’t quite work for me.</p>
+<p>Designed by <a href="https://thomasbaart.nl/">Thomas Baart</a>, the Kyria keyboard has arguably the best assembly documentation of any keyboard kit I’ve seen, and as such it is usually the board I recommend to first-time builders. Thomas put a lot of thought into the design of the board, and in general I would say this is probably the best quality board I have built (more photos <a href="https://imgur.com/gallery/C6glvs0">here</a>, and details about the board <a href="https://www.reddit.com/r/ErgoMechKeyboards/comments/hvwqej/yin_yang_tented_kyria/">here</a>). I also learned a bit more about using CAD with this keyboard as I modified the <a href="https://github.com/jhelvy/kyria_3d_cases">3D printed case</a> using Fusion 360 (thanks again to GW’s institutional license!). That said, the layout of this board just isn’t quite as comfortable for my hands as the Iris layout. In particular, the column stagger is much more aggressive, and it just doesn’t quite work for my hands.</p>
 <p>So that leads me to my latest (and hopefully last?) build: a <a href="https://www.reddit.com/r/ErgoMechKeyboards/comments/ods1t7/wireless_corne_w3d_printed_tent_case_rotary/">Wireless Corne</a> (more photos <a href="https://imgur.com/gallery/pbZcbo1">here</a>). The Corne keyboard has a near <a href="http://jhelvy.shinyapps.io/splitkbcompare/?keyboards=iris;corne">identical layout</a> with the Iris, minus the number row. By this point, I had moved to using as many as five different keyboard layers, one of which being a numpad on my right hand, so I no longer used the number row anyway. Going wireless was also a very attractive option as I enjoy working in coffee shops and libraries on my laptop, so traveling with a compact and wireless keyboard would be much more convenient. As with my Iris, I kept a detailed <a href="https://github.com/jhelvy/wireless-corne">build log</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:corne"></span>
-<img src="images/corne.jpeg" alt="My (final?) keyboard - a Wireless Corne." width="500" />
+<img src="images/corne.jpeg" alt="My (final?) keyboard - a [Wireless Corne](https://github.com/jhelvy/wireless-corne)." width="700" />
 <p class="caption">
-Figure 17: My (final?) keyboard - a Wireless Corne.
+Figure 17: My (final?) keyboard - a <a href="https://github.com/jhelvy/wireless-corne">Wireless Corne</a>.
 </p>
 </div>
 </div>
+<h1 id="firmware">Firmware</h1>
+<p>I would be remiss if I didn’t at least mention the incredible open source software that runs all of these DIY keyboards. The main software most people use to power their keyboards is <a href="https://docs.qmk.fm/#/">QMK Firmware</a>. The software has become so developed that there’s even an open source keyboard <a href="https://config.qmk.fm/#/mechlovin/delphine/mono_led/LAYOUT_ortho_6x4">configurator</a>, similar to the Oryx software for the Ergodox. QMK is packed with loads of features, but perhaps most importantly is the highly flexible layer configurations, enabling you to map multiple layers so that your hands rarely ever need to leave the home row position.</p>
+<p>QMK’s wireless cousin is <a href="https://zmk.dev/">ZMK Firmware</a>, which I am running on my wireless Corne. ZMK is newer and shares many of the same features as QMK, though not quite as many. It is also designed quite differently, and I would say it has a slightly steeper learning curve compared to QMK. If you’re newer to building your own keyboard, using QMK with the GUI configurator.</p>
 <h1 id="trade-offs-in-going-split">Trade offs in going split</h1>
 <p>There are several drawbacks to adopting a split keyboard, but I want to discuss two common ones:</p>
 <ul>
@@ -1717,10 +1722,10 @@ Figure 17: My (final?) keyboard - a Wireless Corne.
 <p>The one thing I tried along this journey that I cannot say I recommend is to learn a new keyboard layout, such as <a href="https://en.wikipedia.org/wiki/Colemak">Colemak</a> or <a href="https://en.wikipedia.org/wiki/Dvorak_keyboard_layout">Dvorak</a>. In case you didn’t know, the typical QWERTY layout is actually a pretty poor layout in terms of typing efficiency and ergonomics. There are lots of stories about why this layout was originally chosen. Some say it was intentionally designed to be inefficient so that early typewriter arms wouldn’t jam up if someone got to typing too fast. My favorite story is that early typewriter salesmen didn’t know how to type, but this layout allowed them to type “typewriter” by using only the upper row, making it easier to remember the sequence.</p>
 <p>Whatever the reason for designing the layout, QWERTY is pretty bad, but we’re all unfortunately pretty much <a href="https://www.jstor.org/stable/1805621">stuck with it</a> as the defacto standard. Being the keyboard enthusiast that I am, I have attempted several times to adopt Colemak, but I have never been able to get my speed anywhere near my speed with QWERTY. But I also do not see much benefit to using a different layout. I do not feel any discomfort using QWERTY, and my typing speed on a split keyboard is ~90 words per minute, which is plenty fast enough to be an efficient typist. So, this is just to say that if you came across this post looking for tips on ergonomics, I would much more heavily weigh using a split keyboard over the particular key layout on that keyboard.</p>
 <h1 id="tools-to-build-your-own-keyboard">Tools to build your own keyboard</h1>
-<p>At this point in my keyboard journey, I’m starting to wonder how different my life might be today if I had taken the blue pill. Certainly my hands and shoulders would be in much worse shape, but I might also just be happy using a simple old Apple keyboard.</p>
+<p>At this point in my keyboard journey, I’m starting to wonder how different my life might be today if I had taken the blue pill. Certainly my hands and shoulders would be in much worse shape, but I might also just be happy using a simple old Apple keyboard. Ignorance can sometimes be bliss.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:blue-pill"></span>
-<img src="images/blue_pill.gif" alt="Me in 2021 with about three too many keyboards in my office." width="600" />
+<img src="images/blue_pill.gif" alt="Me in 2021 with about three too many keyboards in my office." width="700" />
 <p class="caption">
 Figure 18: Me in 2021 with about three too many keyboards in my office.
 </p>
@@ -1736,13 +1741,21 @@ Figure 18: Me in 2021 with about three too many keyboards in my office.
 <li>Not super necessary, but some sort of <a href="https://www.amazon.com/dp/B00GIKVP5K/">quad hand tool</a> can be helpful for holding everything still when working.</li>
 </ul>
 <p>In terms of suppliers, most keyboard parts shops are regional. In the U.S., both <a href="https://keyhive.xyz/">Keyhive</a> and <a href="https://www.littlekeyboards.com/">Littlekeyboards</a> have a lot to offer.</p>
-<p>Finally, if you want to learn more about and / or compare the many different split keyboards out there, check out this Shiny App I made (source code <a href="https://github.com/jhelvy/splitKbCompare/">here</a>): <a href="https://jhelvy.shinyapps.io/splitkbcompare/" class="uri">https://jhelvy.shinyapps.io/splitkbcompare/</a></p>
-<p>Of course, if you do choose to adopt any of the solutions I wrote about in this post, please do reach out - I’m happy to help however I can!</p>
+<p>Finally, if you want to learn more about and / or compare the many different split keyboards out there, check out <a href="https://jhelvy.shinyapps.io/splitkbcompare/">this Shiny App</a> I made (source code <a href="https://github.com/jhelvy/splitKbCompare/">here</a>. I made it both to help the community of split keyboard users find their next board, but also to learn and practice a lot about building Shiny Apps.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:splitKbCompare"></span>
+<img src="images/splitKbCompare.png" alt="Screenshot of my [splitKbCompare app](https://jhelvy.shinyapps.io/splitkbcompare/)." width="700" />
+<p class="caption">
+Figure 19: Screenshot of my <a href="https://jhelvy.shinyapps.io/splitkbcompare/">splitKbCompare app</a>.
+</p>
+</div>
+</div>
+<p>Finally, if you do choose to adopt any of the solutions I wrote about in this post, please do reach out (<a href="https://twitter.com/JohnHelveston">Twitter</a>, <a href="https://www.reddit.com/user/jhelvy">Reddit</a>) - I’m happy to help however I can!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:door"></span>
-<img src="images/door.gif" alt="Choose wisely." width="500" />
+<img src="images/door.gif" alt="Choose wisely." width="700" />
 <p class="caption">
-Figure 19: Choose wisely.
+Figure 20: Choose wisely.
 </p>
 </div>
 </div>
