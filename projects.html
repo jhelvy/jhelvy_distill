@@ -88,7 +88,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>jhelvy.com: Projects</title>
   
-  <meta property="description" itemprop="description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
+  <meta property="description" itemprop="description" content="A collection of some projects that may or may not be related to my research."/>
   
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
   <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico"/>
@@ -97,7 +97,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="jhelvy.com: Projects"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
+  <meta property="og:description" content="A collection of some projects that may or may not be related to my research."/>
   <meta property="og:image" content="https://www.jhelvy.com/./images/helveston.png"/>
   <meta property="og:image:width" content="2058"/>
   <meta property="og:image:height" content="2061"/>
@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary_large_image"/>
   <meta property="twitter:title" content="jhelvy.com: Projects"/>
-  <meta property="twitter:description" content="A collection of some of my ongoing projects that may or may not be related to my research."/>
+  <meta property="twitter:description" content="A collection of some projects that may or may not be related to my research."/>
   <meta property="twitter:image" content="https://www.jhelvy.com/./images/helveston.png"/>
   <meta property="twitter:image:width" content="2058"/>
   <meta property="twitter:image:height" content="2061"/>
@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["A collection of some of my ongoing projects that may or may not be related to my research."]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/masonry.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["images/helveston.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["A collection of some projects that may or may not be related to my research."]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/masonry.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["images/helveston.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2548,7 +2548,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Projects","description":"A collection of some of my ongoing projects that may or may not be related to my research.","authors":[]}
+{"title":"Projects","description":"A collection of some projects that may or may not be related to my research.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2591,7 +2591,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>Projects</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>A collection of some of my ongoing projects that may or may not be related to my research.</p>
+<p>A collection of some projects that may or may not be related to my research.</p>
 </div>
 
 
@@ -2599,7 +2599,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
+<center>
+Filter projects by category:
+</center>
 <div class="layout-chunk" data-layout="l-body-outset">
+<div id="myBtnContainer" style="text-align: center;">
+<button class="btn active" onclick="filterSelection(&#39;all&#39;)">Show all</button>
+<button class="btn" onclick="filterSelection(&#39;R&#39;)">R</button>
+<button class="btn" onclick="filterSelection(&#39;Software&#39;)">Software</button>
+<button class="btn" onclick="filterSelection(&#39;Teaching&#39;)">Teaching</button>
+<button class="btn" onclick="filterSelection(&#39;Keyboards&#39;)">Keyboards</button>
+<button class="btn" onclick="filterSelection(&#39;Community&#39;)">Community</button>
+</div>
 <div class="masonry-wrapper">
 <div class="masonry">
 <div class="masonry-item">
@@ -2643,7 +2654,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="https://github.com/jhelvy/iris-rev2" class="card-hover">
 <img src="images/iris_rev2.jpg"/>
 </a>
-<h3 class="masonry-title">Iris Rev 2 Build Log</h3>
+<h3 class="masonry-title">Iris Rev 2</h3>
 <p class="masonry-description">A build log of how I built my Iris Rev 2 keyboard.</p>
 </div>
 </div>
@@ -2695,6 +2706,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 </div>
 </div>
+<script src = "js/masonry_buttons.js"></script>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

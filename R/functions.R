@@ -71,6 +71,38 @@ get_cites <- function(url) {
 # Masonry layout for projects page:
 # https://jhelvy.github.io/projects
 
+masonry_buttons <- function(projects) {
+  categories <- setdiff(
+    names(projects), 
+    c("title", "src", "url", "description"))
+  cat_button <- tagList(lapply(categories, function(x) {
+      tags$button(
+        class="btn",
+        onclick = paste0("filterSelection('", x, "')"),
+        stringr::str_to_title(x)
+      )
+  }))
+  buttons_html <- div(
+    id = "myBtnContainer",
+    style = "text-align: center;",
+    tags$button(
+      class="btn active",
+      onclick="filterSelection('all')",
+      "Show all"
+    ),
+    cat_button
+  )
+  return(buttons_html)
+}
+
+masonry_projects_grid <- function(projects) {
+  projects_html <- list()
+  for (i in seq_len(nrow(projects))) {
+    projects_html[[i]] <- masonry_item(projects[i,])
+  }
+  return(masonry_grid(projects_html))
+}
+
 masonry_grid <- function(...) {
   return(div(
     class = "masonry-wrapper",
@@ -78,25 +110,20 @@ masonry_grid <- function(...) {
   ))
 }
 
-masonry_item <- function(
-  src = NULL,
-  title = NULL,
-  description = NULL,
-  url = NULL
-) {
-  image <- img(src = src)
+masonry_item <- function(project) {
+  image <- img(src = project$src)
   if (!is.null(url)) {
     image <- a(
-      href = url,
+      href = project$url,
       class = "card-hover",
-      img(src = src))
+      img(src = project$src))
   }
   return(div(class = "masonry-item",
     div(
       class = "masonry-content",
       image,
-      h3(class = "masonry-title", title),
-      p(class = "masonry-description", description)
+      h3(class = "masonry-title", project$title),
+      p(class = "masonry-description", project$description)
     )
   ))
 }
