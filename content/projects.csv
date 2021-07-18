@@ -1,0 +1,11 @@
+title,R,Software,Teaching,Keyboards,Community,src,url,description
+logitr,1,1,0,0,0,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations."
+GW Coders,0,0,0,0,1,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.
+conjointTools,1,1,0,0,0,images/hex/conjointTools.png,https://jhelvy.github.io/conjointTools/,An R package of tools for designing choice based conjoint survey experiments.
+xaringanBuilder,1,1,0,0,0,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4."
+Iris Rev 2,0,0,0,1,0,images/iris_rev2.jpg,https://github.com/jhelvy/iris-rev2,A build log of how I built my Iris Rev 2 keyboard.
+splitKbCompare,1,1,0,1,0,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.
+λέξις (lexis),0,0,0,0,0,images/lexis.png,https://jhelvy.github.io/lexis/,"A theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, ""Inter"" for body text, and ""SFMono-Regular"" for mono text."
+formr4conjoint,1,0,1,0,0,images/formr4conjoint.png,https://github.com/jhelvy/formr4conjoint,A template for how to create a choice-based conjoint survey using the formr survey platform.
+R for Analytics Primer,1,0,1,0,0,images/r4a.png,https://jhelvy.github.io/r4aPrimer/,"A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse."
+The Distillery,0,0,0,0,1,images/distillery.png,https://distillery.rbind.io,A distill website showcasing other distill websites and blogs.
