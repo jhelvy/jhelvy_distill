@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["A collection of some projects that may or may not be related to my research."]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/masonry.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["images/helveston.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]},{"type":"character","attributes":{},"value":["A collection of some projects that may or may not be related to my research."]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/thumbnails.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["images/helveston.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2539,7 +2539,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_site_in_header-->
 
   <link rel="stylesheet" href="css/jhelvy.css" type="text/css"/>
-  <link rel="stylesheet" href="css/masonry.css" type="text/css"/>
+  <link rel="stylesheet" href="css/thumbnails.css" type="text/css"/>
 
 </head>
 
@@ -2599,134 +2599,220 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<center>
-Filter projects by category:
-</center>
-<div class="layout-chunk" data-layout="l-body-outset">
-<div id="myBtnContainer" style="text-align: center;">
-<button class="btn active" onclick="filterSelection(&#39;all&#39;)">Show all</button>
-<button class="btn" onclick="filterSelection(&#39;R&#39;)">R</button>
-<button class="btn" onclick="filterSelection(&#39;Software&#39;)">Software</button>
-<button class="btn" onclick="filterSelection(&#39;Teaching&#39;)">Teaching</button>
-<button class="btn" onclick="filterSelection(&#39;Keyboards&#39;)">Keyboards</button>
-<button class="btn" onclick="filterSelection(&#39;Community&#39;)">Community</button>
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<a href="https://jhelvy.github.io/logitr/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Software"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-<div class="masonry-wrapper">
-<div class="masonry">
-<div class="filterDiv R Software">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/logitr/" class="card-hover">
+<div class="thumbnail">
 <img src="images/hex/logitr-square.png"/>
+</div>
+<div class="description">
+<h2>logitr</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Software</div>
+</div>
+<p>An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with "Preference" space or "Willingness-to-pay" (WTP) space utility parameterizations.</p>
+</div>
 </a>
-<h3 class="masonry-title">logitr</h3>
-<p class="masonry-description">An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with "Preference" space or "Willingness-to-pay" (WTP) space utility parameterizations.</p>
+<a href="https://gwcoders.github.io/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","Community"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv Community">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://gwcoders.github.io/" class="card-hover">
+<div class="thumbnail">
 <img src="images/gwcoders.png"/>
+</div>
+<div class="description">
+<h2>GW Coders</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">Community</div>
+</div>
+<p>A study group that brings together students and faculty to apply computational and data analytics skills in research.</p>
+</div>
 </a>
-<h3 class="masonry-title">GW Coders</h3>
-<p class="masonry-description">A study group that brings together students and faculty to apply computational and data analytics skills in research.</p>
+<a href="https://jhelvy.github.io/conjointTools/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Software"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Software">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/conjointTools/" class="card-hover">
+<div class="thumbnail">
 <img src="images/hex/conjointTools.png"/>
+</div>
+<div class="description">
+<h2>conjointTools</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Software</div>
+</div>
+<p>An R package of tools for designing choice based conjoint survey experiments.</p>
+</div>
 </a>
-<h3 class="masonry-title">conjointTools</h3>
-<p class="masonry-description">An R package of tools for designing choice based conjoint survey experiments.</p>
+<a href="https://jhelvy.github.io/xaringanBuilder/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Software"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Software">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/xaringanBuilder/" class="card-hover">
+<div class="thumbnail">
 <img src="images/hex/xaringanBuilder-square.png"/>
+</div>
+<div class="description">
+<h2>xaringanBuilder</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Software</div>
+</div>
+<p>An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.</p>
+</div>
 </a>
-<h3 class="masonry-title">xaringanBuilder</h3>
-<p class="masonry-description">An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.</p>
+<a href="https://github.com/jhelvy/iris-rev2/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","Keyboards"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv Keyboards">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://github.com/jhelvy/iris-rev2" class="card-hover">
+<div class="thumbnail">
 <img src="images/iris_rev2.jpg"/>
+</div>
+<div class="description">
+<h2>Iris Rev 2</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">Keyboards</div>
+</div>
+<p>A build log of how I built my Iris Rev 2 keyboard.</p>
+</div>
 </a>
-<h3 class="masonry-title">Iris Rev 2</h3>
-<p class="masonry-description">A build log of how I built my Iris Rev 2 keyboard.</p>
+<a href="https://jhelvy.shinyapps.io/splitKbCompare/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Software","Keyboards"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Software Keyboards">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.shinyapps.io/splitKbCompare/" class="card-hover">
+<div class="thumbnail">
 <img src="images/splitKBCompare.png"/>
+</div>
+<div class="description">
+<h2>splitKbCompare</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Software</div>
+<div class="dt-tag">Keyboards</div>
+</div>
+<p>An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.</p>
+</div>
 </a>
-<h3 class="masonry-title">splitKbCompare</h3>
-<p class="masonry-description">An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.</p>
+<a href="https://jhelvy.github.io/lexis/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Software"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Software">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/lexis/" class="card-hover">
+<div class="thumbnail">
 <img src="images/lexis.png"/>
+</div>
+<div class="description">
+<h2>λέξις (lexis)</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Software</div>
+</div>
+<p>A theme for xaringan slides with a light gray background, "Fira Sans Condensed" for headers, "Inter" for body text, and "SFMono-Regular" for mono text.</p>
+</div>
 </a>
-<h3 class="masonry-title">λέξις (lexis)</h3>
-<p class="masonry-description">A theme for xaringan slides with a light gray background, "Fira Sans Condensed" for headers, "Inter" for body text, and "SFMono-Regular" for mono text.</p>
+<a href="https://github.com/jhelvy/formr4conjoint/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Teaching"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Teaching">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://github.com/jhelvy/formr4conjoint" class="card-hover">
+<div class="thumbnail">
 <img src="images/formr4conjoint.png"/>
+</div>
+<div class="description">
+<h2>formr4conjoint</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Teaching</div>
+</div>
+<p>A template for how to create a choice-based conjoint survey using the formr survey platform.</p>
+</div>
 </a>
-<h3 class="masonry-title">formr4conjoint</h3>
-<p class="masonry-description">A template for how to create a choice-based conjoint survey using the formr survey platform.</p>
+<a href="https://jhelvy.github.io/r4aPrimer/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","R","Teaching"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv R Teaching">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://jhelvy.github.io/r4aPrimer/" class="card-hover">
+<div class="thumbnail">
 <img src="images/r4a.png"/>
+</div>
+<div class="description">
+<h2>R for Analytics Primer</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">Teaching</div>
+</div>
+<p>A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.</p>
+</div>
 </a>
-<h3 class="masonry-title">R for Analytics Primer</h3>
-<p class="masonry-description">A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.</p>
+<a href="https://distillery.rbind.io/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["All","Community"]}</script>
+<div class="metadata">
+<div class="publishedDate"></div>
 </div>
-</div>
-</div>
-<div class="filterDiv Community">
-<div class="masonry-item">
-<div class="masonry-content">
-<a href="https://distillery.rbind.io" class="card-hover">
+<div class="thumbnail">
 <img src="images/distillery.png"/>
+</div>
+<div class="description">
+<h2>The Distillery</h2>
+<div class="dt-tags">
+<div class="dt-tag">All</div>
+<div class="dt-tag">Community</div>
+</div>
+<p>A distill website showcasing other distill websites and blogs.</p>
+</div>
 </a>
-<h3 class="masonry-title">The Distillery</h3>
-<p class="masonry-description">A distill website showcasing other distill websites and blogs.</p>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:All">All</a>
+<span class="category-count">(10)</span>
+</li>
+<li>
+<a href="#category:R">R</a>
+<span class="category-count">(7)</span>
+</li>
+<li>
+<a href="#category:Software">Software</a>
+<span class="category-count">(5)</span>
+</li>
+<li>
+<a href="#category:Community">Community</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Keyboards">Keyboards</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Teaching">Teaching</a>
+<span class="category-count">(2)</span>
+</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<script src = "js/masonry_buttons.js"></script>
+<script src = "js/filter_categories.js"></script>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

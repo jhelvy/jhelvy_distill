@@ -1,0 +1,6 @@
+
+/* Overwrite posts CSS for thumbnail image max width */
+
+.posts-list .post-preview .thumbnail {
+    max-width: 200px;
+}

@@ -1,11 +1,11 @@
-title,src,url,description,R,Software,Teaching,Keyboards,Community
-logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",1,1,0,0,0
-GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,0,0,0,0,1
-conjointTools,images/hex/conjointTools.png,https://jhelvy.github.io/conjointTools/,An R package of tools for designing choice based conjoint survey experiments.,1,1,0,0,0
-xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",1,1,0,0,0
-Iris Rev 2,images/iris_rev2.jpg,https://github.com/jhelvy/iris-rev2,A build log of how I built my Iris Rev 2 keyboard.,0,0,0,1,0
-splitKbCompare,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.,1,1,0,1,0
-λέξις (lexis),images/lexis.png,https://jhelvy.github.io/lexis/,"A theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, ""Inter"" for body text, and ""SFMono-Regular"" for mono text.",1,1,0,0,0
-formr4conjoint,images/formr4conjoint.png,https://github.com/jhelvy/formr4conjoint,A template for how to create a choice-based conjoint survey using the formr survey platform.,1,0,1,0,0
-R for Analytics Primer,images/r4a.png,https://jhelvy.github.io/r4aPrimer/,"A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.",1,0,1,0,0
-The Distillery,images/distillery.png,https://distillery.rbind.io,A distill website showcasing other distill websites and blogs.,0,0,0,0,1
+title,src,url,description,All,R,Software,Teaching,Keyboards,Community
+logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",1,1,1,0,0,0
+GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,1,0,0,0,0,1
+conjointTools,images/hex/conjointTools.png,https://jhelvy.github.io/conjointTools/,An R package of tools for designing choice based conjoint survey experiments.,1,1,1,0,0,0
+xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",1,1,1,0,0,0
+Iris Rev 2,images/iris_rev2.jpg,https://github.com/jhelvy/iris-rev2/,A build log of how I built my Iris Rev 2 keyboard.,1,0,0,0,1,0
+splitKbCompare,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.,1,1,1,0,1,0
+λέξις (lexis),images/lexis.png,https://jhelvy.github.io/lexis/,"A theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, ""Inter"" for body text, and ""SFMono-Regular"" for mono text.",1,1,1,0,0,0
+formr4conjoint,images/formr4conjoint.png,https://github.com/jhelvy/formr4conjoint/,A template for how to create a choice-based conjoint survey using the formr survey platform.,1,1,0,1,0,0
+R for Analytics Primer,images/r4a.png,https://jhelvy.github.io/r4aPrimer/,"A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.",1,1,0,1,0,0
+The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,1,0,0,0,0,1
