@@ -176,67 +176,6 @@ make_cats_list <- function(categories) {
   return(tags$ul(cats_list))
 }
 
-
-
-
-
-masonry_buttons <- function(categories) {
-  cat_button <- tagList(lapply(categories, function(x) {
-      tags$button(
-        class="btn",
-        onclick = paste0("filterSelection('", x, "')"),
-        stringr::str_to_title(x)
-      )
-  }))
-  buttons_html <- div(
-    id = "myBtnContainer",
-    style = "text-align: center;",
-    tags$button(
-      class="btn active",
-      onclick="filterSelection('all')",
-      "Show all"
-    ),
-    cat_button
-  )
-  return(buttons_html)
-}
-
-masonry_projects_grid <- function(projects) {
-  projects_html <- list()
-  for (i in seq_len(nrow(projects))) {
-    projects_html[[i]] <- masonry_item(projects[i,])
-  }
-  return(masonry_grid(projects_html))
-}
-
-masonry_grid <- function(...) {
-  return(div(
-    class = "masonry-wrapper",
-    div(class = "masonry", ...)
-  ))
-}
-
-masonry_item <- function(project) {
-  image <- img(src = project$src)
-  if (!is.null(project$url)) {
-    image <- a(
-      href = project$url,
-      class = "card-hover",
-      img(src = project$src))
-  }
-  return(
-    div(class = paste0("filterDiv ", project$categories),
-      div(class = "masonry-item",
-        div(class = "masonry-content",
-          image,
-          h3(class = "masonry-title", project$title),
-          p(class = "masonry-description", project$description)
-        )
-      )
-    )
-  )
-}
-
 create_footer <- function() {
 
   fill <- '#ededeb'
