@@ -71,8 +71,8 @@ get_cites <- function(url) {
 # Functions for projects page: https://jhelvy.github.io/projects
 
 make_posts_page <- function(posts) {
-  categories <- get_categories(posts)  
-  posts <- unite_post_categories(posts)
+  categories <- get_post_categories(posts)
+  posts <- unite_post_categories(posts, categories)
   posts_html <- make_posts_html(posts)
   cats_html <- make_cats_html(categories)
   return(
@@ -82,22 +82,25 @@ make_posts_page <- function(posts) {
   ))
 }
 
-make_cats_html <- function(categories) {
-  
-}
-
 get_post_categories <- function(posts) {
-  return(setdiff(
-    names(posts), 
-    c("title", "src", "url", "description")))  
+  categories <- posts %>% 
+    select(-c("title", "src", "url", "description")) %>% 
+    pivot_longer(
+      cols = everything(),
+      names_to = "category",
+      values_to = "count") %>% 
+    group_by(category) %>% 
+    summarise(count = sum(count)) %>% 
+    arrange(desc(count))
+  return(categories)
 }
 
-unite_post_categories <- function(posts) {
+unite_post_categories <- function(posts, categories) {
   posts <- posts %>% 
     pivot_longer(
       names_to = "categories", 
       values_to = "val", 
-      cols = categories) %>% 
+      cols = categories$category) %>% 
     mutate(val = ifelse(val == 1, categories, NA_character_)) %>% 
     pivot_wider(
       names_from = categories, 
@@ -110,7 +113,7 @@ unite_post_categories <- function(posts) {
 
 make_posts_html <- function(posts) {
   posts_content <- list()
-  for (i in seq_len(length(posts))) {
+  for (i in seq_len(nrow(posts))) {
     posts_content[[i]] <- make_post_content(posts[i,])
   }
   return(div(class = "posts-list", posts_content))
@@ -129,9 +132,8 @@ make_post_content <- function(post) {
         ']}</script>'
       )
     ),
-    div(class = "thumbnail",
-      img(src = post$src)
-    ),
+    div(class = "metadata", div(class = "publishedDate")),
+    div(class = "thumbnail", img(src = post$src)),
     div(class = "description",
       h2(post$title),
       post_tags,
@@ -143,11 +145,36 @@ make_post_content <- function(post) {
 get_post_tags <- function(post_cats) {
   cats <- list()
   for (i in seq_len(length(post_cats))) {
-    cats[[i]] <- div(class = "dt-tags", post_cats[i])
+    cats[[i]] <- div(class = "dt-tag", post_cats[i])
   }
   return(div(class = "dt-tags", cats))
 }
 
+make_cats_html <- function(categories) {
+  return(div(class = "posts-sidebar",
+    div(class = "sidebar-section categories",
+      h3("Categories"),
+      make_cats_list(categories)
+    )
+  ))
+}
+
+make_cats_list <- function(categories) {
+  cats_list <- list()
+  for (i in seq_len(nrow(categories))) {
+    cats_list[[i]] <- tags$li(
+      a(
+        href = paste0("#category:", categories$category[i]),
+        categories$category[i]
+      ),
+      HTML(paste0(
+        '<span class="category-count">(', 
+        categories$count[i], ')</span>'
+      ))
+    )
+  }
+  return(tags$ul(cats_list))
+}
 
 
 

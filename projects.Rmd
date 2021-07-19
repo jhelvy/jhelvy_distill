@@ -6,7 +6,7 @@ output:
     toc: false
     css:
       - css/jhelvy.css
-      - css/masonry.css
+      - css/thumbnails.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
@@ -23,8 +23,6 @@ library(tidyverse)
 projects <- readr::read_csv(here::here("content", "projects.csv"))
 ```
 
-```{r projects, layout="l-page"}
-make_posts_page(projects)
-```
+`r make_posts_page(projects)`
 
-
+<script src = "js/filter_categories.js"></script>
