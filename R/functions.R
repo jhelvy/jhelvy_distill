@@ -68,14 +68,90 @@ get_cites <- function(url) {
   return(cites)
 }
 
-# Masonry layout for projects page:
-# https://jhelvy.github.io/projects
+# Functions for projects page: https://jhelvy.github.io/projects
 
-get_categories <- function(projects) {
+make_posts_page <- function(posts) {
+  categories <- get_categories(posts)  
+  posts <- unite_post_categories(posts)
+  posts_html <- make_posts_html(posts)
+  cats_html <- make_cats_html(categories)
+  return(
+    div(class = "posts-container posts-with-sidebar posts-apply-limit l-screen-inset", 
+      posts_html,
+      cats_html
+  ))
+}
+
+make_cats_html <- function(categories) {
+  
+}
+
+get_post_categories <- function(posts) {
   return(setdiff(
-    names(projects), 
+    names(posts), 
     c("title", "src", "url", "description")))  
 }
+
+unite_post_categories <- function(posts) {
+  posts <- posts %>% 
+    pivot_longer(
+      names_to = "categories", 
+      values_to = "val", 
+      cols = categories) %>% 
+    mutate(val = ifelse(val == 1, categories, NA_character_)) %>% 
+    pivot_wider(
+      names_from = categories, 
+      values_from = val) %>% 
+    unite(
+      -c('title', 'src', 'url', 'description'), 
+      col = "categories", sep = ";", na.rm = T)
+  return(posts)
+}
+
+make_posts_html <- function(posts) {
+  posts_content <- list()
+  for (i in seq_len(length(posts))) {
+    posts_content[[i]] <- make_post_content(posts[i,])
+  }
+  return(div(class = "posts-list", posts_content))
+}
+
+make_post_content <- function(post) {
+  post_cats <- strsplit(post$categories, ";")[[1]]
+  post_tags <- get_post_tags(post_cats)
+  return(a(
+    href = post$url,
+    class = "post-preview",
+    HTML(
+      paste0(
+        '<script class="post-metadata" type="text/json">{"categories":[',
+        paste0(paste0('"', post_cats, '"'), collapse = ","),
+        ']}</script>'
+      )
+    ),
+    div(class = "thumbnail",
+      img(src = post$src)
+    ),
+    div(class = "description",
+      h2(post$title),
+      post_tags,
+      p(post$description)
+    )
+  ))
+}
+
+get_post_tags <- function(post_cats) {
+  cats <- list()
+  for (i in seq_len(length(post_cats))) {
+    cats[[i]] <- div(class = "dt-tags", post_cats[i])
+  }
+  return(div(class = "dt-tags", cats))
+}
+
+
+
+
+
 
 masonry_buttons <- function(categories) {
   cat_button <- tagList(lapply(categories, function(x) {
