@@ -71,10 +71,13 @@ get_cites <- function(url) {
 # Masonry layout for projects page:
 # https://jhelvy.github.io/projects
 
-masonry_buttons <- function(projects) {
-  categories <- setdiff(
+get_categories <- function(projects) {
+  return(setdiff(
     names(projects), 
-    c("title", "src", "url", "description"))
+    c("title", "src", "url", "description")))  
+}
+
+masonry_buttons <- function(categories) {
   cat_button <- tagList(lapply(categories, function(x) {
       tags$button(
         class="btn",
@@ -112,20 +115,23 @@ masonry_grid <- function(...) {
 
 masonry_item <- function(project) {
   image <- img(src = project$src)
-  if (!is.null(url)) {
+  if (!is.null(project$url)) {
     image <- a(
       href = project$url,
       class = "card-hover",
       img(src = project$src))
   }
-  return(div(class = "masonry-item",
-    div(
-      class = "masonry-content",
-      image,
-      h3(class = "masonry-title", project$title),
-      p(class = "masonry-description", project$description)
+  return(
+    div(class = paste0("filterDiv ", project$categories),
+      div(class = "masonry-item",
+        div(class = "masonry-content",
+          image,
+          h3(class = "masonry-title", project$title),
+          p(class = "masonry-description", project$description)
+        )
+      )
     )
-  ))
+  )
 }
 
 create_footer <- function() {
