@@ -1,7 +1,7 @@
 title,src,url,description,All,R,Software,Teaching,Keyboards,Community
 logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",1,1,1,0,0,0
 conjointTools,images/hex/conjointTools.png,https://jhelvy.github.io/conjointTools/,An R package of tools for designing choice based conjoint survey experiments.,1,1,1,0,0,0
-Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,,,,,,
+Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,1,0,0,0,1,0
 The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,1,0,0,0,0,1
 xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",1,1,1,0,0,0
 GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,1,0,0,0,0,1
