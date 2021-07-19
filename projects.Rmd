@@ -17,9 +17,25 @@ preview: images/helveston.png
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
 library(distilltools)
+library(tidyverse)
 
 # Read in projects csv file 
 projects <- readr::read_csv(here::here("content", "projects.csv"))
+
+# Unite categories in projects
+categories <- get_categories(projects)
+projects <- projects %>% 
+  pivot_longer(
+    names_to = "categories", 
+    values_to = "val", 
+    cols = categories) %>% 
+  mutate(val = ifelse(val == 1, categories, NA_character_)) %>% 
+  pivot_wider(
+    names_from = categories, 
+    values_from = val) %>% 
+  unite(
+    -c('title', 'src', 'url', 'description'), 
+    col = "categories", sep = " ", na.rm = T)
 ```
 
 <center>
@@ -27,7 +43,7 @@ Filter projects by category:
 </center>
 
 ```{r projects, layout="l-body-outset"}
-masonry_buttons(projects)
+masonry_buttons(categories)
 masonry_projects_grid(projects)
 ```
 
