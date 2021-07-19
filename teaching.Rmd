@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 :::float-left
 
-<img src="images/hex/p4a.png" width="100px">
+<img src="images/hex/p4a.png" width="200px">
 
 ### [EMSE 4571: Programming for Analytics](https://p4a.seas.gwu.edu/)
 
@@ -38,7 +38,7 @@ This course provides a foundation in programming for analytics using the [R prog
 
 :::float-left
 
-<img src="images/hex/eda.png" width="100px">
+<img src="images/hex/eda.png" width="200px">
 
 ### [EMSE 4572: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
 
@@ -58,7 +58,7 @@ This course provides students with a foundation in exploring data using the [R p
 
 :::float-left
 
-<img src="images/hex/madd.png" width="100px">
+<img src="images/hex/madd.png" width="200px">
 
 ### [EMSE 6035: Marketing of Technology](https://madd.seas.gwu.edu/)
 
