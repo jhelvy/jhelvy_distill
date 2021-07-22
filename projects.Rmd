@@ -6,7 +6,6 @@ output:
     toc: false
     css:
       - css/jhelvy.css
-      - css/thumbnails.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
