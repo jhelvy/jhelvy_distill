@@ -23,9 +23,7 @@ collections:
     feed_iems_max: 20 # default
 navbar:
   search: true
-  left:
-    - icon: fa-home
-      href: index.html
+  right:
     - text: "About"
       href: about.html
     - text: "Lab"
@@ -40,8 +38,7 @@ navbar:
       href: projects.html
     - text: "Blog"
       href: blog.html
-  right:
-    - icon: ai ai-cv
+    - text: "CV"
       href: content/docs/Helveston_CV.pdf
     - icon: fab fa-github
       href: https://github.com/jhelvy/jhelvy.com
