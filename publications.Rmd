@@ -358,7 +358,7 @@ icon_link(
 ## Software
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_), Forsythe, Connor (_aut_), (2021). _logitr_: Random utility logit models with preference and willingness to pay space parameterizations. R package version 0.2.0.
+**Helveston, John P.** (_aut_, _cre_, _cph_) (2021). _logitr_: Random utility logit models with preference and willingness to pay space parameterizations. R package version 0.2.2.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
@@ -369,7 +369,7 @@ icon_link(
 </div>
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_),  Shalloway, Brian (_ctb_), & Aden-Buie, Garrick (_ctb_). (2021). _xaringanBuilder_: Functions For Building Xaringan Slides To Different Outputs. R package version 0.0.7.
+**Helveston, John P.** (_aut_, _cre_, _cph_) & Aden-Buie, Garrick (_aut_). (2021). _xaringanBuilder_: Functions For Building Xaringan Slides To Different Outputs. R package version 0.0.8.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
