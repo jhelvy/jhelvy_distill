@@ -51,7 +51,7 @@ icon_link(
 <div class="pub">
 Szajnfarber, Z., Groover, J.A., Wei, Z., Broniatowski, D.A., Chernicoff, W., & **Helveston, J.P.** (2021) "Evolvability Analysis Framework: Adding Transition Path and Stakeholder Diversity to Infrastructure Investment Decisions." _Systems Engineering_, forthcoming.
 </div>
-`r haiku("Transition pathways;", "are important for upgrades", "to infrastructure")`
+`r haiku("Transition pathways", "are important for upgrades", "to infrastructure")`
 
 <div class="pub">
 Feinberg, F., Bruch, E., Braun, M., Hemenway Falk, B., Fefferman, N., Feit, E.M., **Helveston, J.P.**, Larremore, D., McShane, B.B., Patania, A., & Small, M.L. (2020). "Choices in networks: a research framework." _Marketing Letters_. 31(4), 349-359.
