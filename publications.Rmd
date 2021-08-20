@@ -49,6 +49,11 @@ icon_link(
 <br>`r aside_center_b("Haiku Summaries")`
 
 <div class="pub">
+Szajnfarber, Z., Groover, J.A., Wei, Z., Broniatowski, D.A., Chernicoff, W., & **Helveston, J.P.** (2021) "Evolvability Analysis Framework: Adding Transition Path and Stakeholder Diversity to Infrastructure Investment Decisions." _Systems Engineering_, forthcoming.
+</div>
+`r haiku("We live in networks;", "choice modelers should include", "them in their models")`
+
+<div class="pub">
 Feinberg, F., Bruch, E., Braun, M., Hemenway Falk, B., Fefferman, N., Feit, E.M., **Helveston, J.P.**, Larremore, D., McShane, B.B., Patania, A., & Small, M.L. (2020). "Choices in networks: a research framework." _Marketing Letters_. 31(4), 349-359.
 `r doi("10.1007/s11002-020-09541-9")`
 ```{r, echo=FALSE}
@@ -286,7 +291,11 @@ icon_link(
 ## Working Papers
 
 <div class="pub">
-Szajnfarber, Z., Groover, J., Wei, Z., Broniatowski, D., Chernicoff, W., **Helveston, J.P.** (2021) "Evolvability Analysis Framework: Adding Transition Path and Stakeholder Diversity to Infrastructure Investment Decisions." _Under review_.
+**Helveston, J.P.** (2021) "Multinomial Logit Models with Willingness to Pay Space Utility Specifications in R: The {logitr} Package." _Under review_.
+</div>
+
+<div class="pub">
+Davidson, M.R., He, G., **Helveston, J.P.** (2021) "Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets." _Under review_.
 </div>
 
 <div class="pub">
@@ -294,7 +303,7 @@ Murphree, Michael, John P. Helveston, & Daniel Breznitz. "Intellectual Property 
 </div>
 
 <div class="pub">
-Helveston, John P, Lujin Zhao, Saurav Pantha. "Are we there yet? The significance of arrival time uncertainty in multi-modal trip choices."
+Helveston, John P, Lujin Zhao, Saurav Pantha. "Are we there yet? The significance of arrival time uncertainty in multi-modal trip choices." _Working paper_.
 </div>
 
 ## Theses
@@ -358,7 +367,7 @@ icon_link(
 ## Software
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_, _cph_) (2021). _logitr_: Random utility logit models with preference and willingness to pay space parameterizations. R package version 0.2.2.
+**Helveston, John P.** (_aut_, _cre_, _cph_) (2021). _logitr_: Random utility logit models with preference and willingness to pay space parameterizations. R package version 0.3.0.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
@@ -369,7 +378,7 @@ icon_link(
 </div>
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_, _cph_) & Aden-Buie, Garrick (_aut_). (2021). _xaringanBuilder_: Functions For Building Xaringan Slides To Different Outputs. R package version 0.0.8.
+**Helveston, John P.** (_aut_, _cre_, _cph_) & Aden-Buie, Garrick (_aut_). (2021). _xaringanBuilder_: Functions For Building Xaringan Slides To Different Outputs. R package version 0.0.9.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
@@ -380,23 +389,12 @@ icon_link(
 </div>
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_). (2021). _conjointTools_: Tools For Designing Conjoint Survey Experiments. R package version 0.0.2.
+**Helveston, John P.** (_aut_, _cre_). (2021). _conjointTools_: Tools For Designing Conjoint Survey Experiments. R package version 0.0.5.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
     text = "Open in new tab",
     url  = "https://jhelvy.github.io/conjointTools/"
-)
-```
-</div>
-
-<div class="pub">
-Cowgill, Matt (_aut_, _cre_) and **Helveston, John P.** (_ctb_). (2020). _ggannotate_: Interactively annotate ggplot2 plots. R package version 0.0.1.
-```{r, echo=FALSE}
-icon_link(
-    icon = "fas fa-external-link-alt",
-    text = "Open in new tab",
-    url  = "https://github.com/MattCowgill/ggannotate"
 )
 ```
 </div>

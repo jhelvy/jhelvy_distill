@@ -30,6 +30,7 @@ Imports:
     viridis,
     yaml
 Remotes:
+    EllaKaye/distilltools,
     hadley/emo,
     rstudio/fontawesome,
     haozhu233/kableExtra,
