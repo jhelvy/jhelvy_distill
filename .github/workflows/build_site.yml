@@ -14,28 +14,23 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Query dependencies
+        run: |
+          install.packages('devtools')
+          saveRDS(devtools::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: macOS-r-3.6-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: macOS-r-3.6-
+
       - name: Install dependencies
         run: |
-          install.packages(c(
-            "cowplot",
-            "devtools",
-            "distill",
-            "here",
-            "htmltools",
-            "janitor",
-            "knitr",
-            "metathis",
-            "postcards",
-            "remotes",
-            "rmarkdown",
-            "roxygen2",
-            "tidyverse",
-            "viridis",
-            "yaml"))
-          devtools::install_github("EllaKaye/distilltools")
-          devtools::install_github("hadley/emo")
-          devtools::install_github("rstudio/fontawesome")
-          devtools::install_github("haozhu233/kableExtra")
+          install.packages("devtools")
+          devtools::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Render Site
