@@ -17,7 +17,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('devtools')
-          saveRDS(devtools::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          saveRDS(devtools::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 3)
         shell: Rscript {0}
 
       - name: Cache R packages
