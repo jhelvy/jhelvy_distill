@@ -15,8 +15,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@master
 
       - name: Query dependencies
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           install.packages('devtools')
           saveRDS(devtools::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
