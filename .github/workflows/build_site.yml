@@ -15,11 +15,11 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@master
 
       - name: Query dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           install.packages('devtools')
           saveRDS(devtools::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-        with:
-          ACCESS_TOKEN: ${{ secrets.GH_PAT }}
         shell: Rscript {0}
 
       - name: Cache R packages
