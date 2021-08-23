@@ -53,7 +53,7 @@ See also my related [blog post](https://www.jhelvy.com/posts/2021-07-03-in-searc
 
 # Talk 
 
-<iframe width="640" height="600" src="https://u.pcloud.link/publink/show?code=XZiAQPXZVaqKKlPTzjYpno8MYlmMyJ8ghLU7" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="no"></iframe>
+<iframe width="560" height="420" src="https://www.youtube.com/embed/WPLEdpSaBAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Slides
 
