@@ -11,6 +11,7 @@ Depends: R (>= 4.0.2)
 License: CC-BY-SA
 Encoding: UTF-8
 Imports:
+    bs4cards,
     cowplot,
     distill,
     distilltools,
@@ -30,6 +31,7 @@ Imports:
     viridis,
     yaml
 Remotes:
+    djnavarro/bs4cards,
     EllaKaye/distilltools,
     hadley/emo,
     rstudio/fontawesome,
