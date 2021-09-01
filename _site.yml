@@ -41,7 +41,7 @@ navbar:
     - text: "CV"
       href: content/docs/Helveston_CV.pdf
     - icon: fab fa-github
-      href: https://github.com/jhelvy/jhelvy.com
+      href: https://github.com/jhelvy
     - icon: fab fa-twitter
       href: https://twitter.com/JohnHelveston
 
