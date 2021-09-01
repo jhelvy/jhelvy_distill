@@ -6,11 +6,33 @@ output:
     toc: false
     css:
       - css/jhelvy.css
+      - css/strapless.css
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
 preview: images/helveston.png
 ---
+
+<!-- Remove margin under images -->
+<style>
+d-article img {
+  margin-bottom: 0px;
+}
+
+.btn-primary {
+    background-color: #74a08a;
+    color: #FFFFFF;
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
+    border-radius: 5px; /* Rounded edges */
+    border: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #8a74a0;
+    color: #FFFFFF;
+}
+</style>
 
 ```{r setup, echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -22,6 +44,16 @@ library(tidyverse)
 projects <- readr::read_csv(here::here("content", "projects.csv"))
 ```
 
-`r make_posts_page(projects)`
-
-<script src = "js/filter_categories.js"></script>
+```{r projects, echo=FALSE, layout="l-body-outset"}
+projects %>% 
+  bs4cards::cards(
+    title = title,
+    text = description,
+    link = url,
+    image = src,
+    label_colour = "#ffffff",
+    tags = paste("All;", tags),
+    footer = tags,
+    border_radius = 5
+  )
+```
