@@ -69,7 +69,6 @@ get_cites <- function(url) {
 }
 
 # Functions for projects page: https://jhelvy.github.io/projects
-
 make_posts_page <- function(posts) {
   categories <- get_post_categories(posts)
   posts <- unite_post_categories(posts, categories)
