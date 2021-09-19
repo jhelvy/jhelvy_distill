@@ -1,7 +1,7 @@
 ---
 title: Choice-based conjoint surveys in R with formr
 description: |
-  A how-to guide for using `r fa("r-project")` to design and implement choice-based conjoint surveys using [formr.org](https://formr.org/)
+  A how-to guide for using `r fontawesome::fa("r-project")` to design and implement choice-based conjoint surveys using [formr.org](https://formr.org/)
 author: John Paul Helveston
 date: '2021-09-18'
 preview: "images/example.png"
@@ -9,7 +9,6 @@ categories:
   - R
   - tutorials
   - conjoint
-draft: true
 output:
   distill::distill_article:
     self_contained: false
@@ -29,7 +28,7 @@ You can view the live demo survey [here](https://appleconjoint.formr.org/), and 
 
 # Overview
 
-If you've never used formr, watch the video on [this page](https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/) for a quick introduction. 
+If you've never used formr.org before, the video on [this page](https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/) offers a 5 minute  conceptual overview followed by ~40 minute demo covering the basics.
 
 Every formr survey is implemented in a spreadsheet. I highly recommend using Google Sheets for this because
 
@@ -48,9 +47,9 @@ Don't worry about what's in each sheet just yet - we'll get to that.
 
 # Creating the surveys
 
-I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel how my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF (e.g. open the survey in your browser, then print the page to a PDF). 
+I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel of my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF (e.g. open the survey in your browser, then print the page to a PDF). When I'm happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet. 
 
-When I'm happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet. For this demo, I designed the questions in each part using the following three .Rmd files in the "survey" folder of the [GitHub repo](https://github.com/jhelvy/formr4conjoint) for this demo.
+For this demo, I designed the questions in each part using the following three .Rmd files in the "survey" folder of the [GitHub repo](https://github.com/jhelvy/formr4conjoint):
 
 .Rmd file | Google Sheet
 ----------|----------------
@@ -58,20 +57,20 @@ When I'm happy with how things look, I then carefully copy-paste the content ove
 [p2-choice-questions.Rmd](https://github.com/jhelvy/formr4conjoint/blob/master/survey/p2-choice-questions.Rmd) | [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919)
 [p3-demos.Rmd](https://github.com/jhelvy/formr4conjoint/blob/master/survey/p3-demos.Rmd) | [appleConjoint_p3](https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919)
 
-The links in this table let you compare the .Rmd file with the corresponding Google Sheet. Most general content that I want to display to the respondent goes in the `label` column, and responses to questions go in the `choice` columns (for part 3, I put the choice options on a separate `choices` tab). Pay careful attention to the `type` column - this determines the nature of the row, e.g. `note` just shows the `label` column content, `mc` is a multiple choice question, etc. The `calculate` type rows allow me to run `r fa("r-project")` code to generate and store objects that can be used across different pages in the survey (these values will also be available in the resulting survey data).
+The links in this table let you compare the .Rmd file with the corresponding Google Sheet. Most general content that I want to display to the respondent goes in the `label` column of the Google Sheet, and response options to questions go in the `choice` columns (for part 3, I put the choice options on a separate `choices` tab). Pay careful attention to the `type` column - this determines the nature of the row (e.g. `note` just shows the `label` column content, `mc` is a multiple choice question, etc.). The `calculate` type rows allow me to run `r fa("r-project")` code to generate and store objects that can be used across different pages in the survey (these values will also be available in the resulting survey data).
 
 # Defining the choice questions
 
-The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [conjointTools](https://jhelvy.github.io/conjointTools/) package (which I wrote `r emo::ji('smile')`) to create these questions. The code to create the choice questions for this demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo. 
+The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [conjointTools](https://jhelvy.github.io/conjointTools/) package (which I developed `r emo::ji('smile')`) to create these questions. The code to create the choice questions for this demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo. 
 
-The data frame of randomized choice questions is saved as the [`choice_questions.csv`](https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv) file. Once created, you'll need to host it somewhere on the web so that you can read it in to your Google Sheet. For this demo, the file is hosted on the [GitHub repo](https://github.com/jhelvy/formr4conjoint), but you can also upload your `choice_questions.csv` file inside your Run (see the "Upload Files" button on the left side menu), which will generate a unique url to the file.
+The data frame of randomized choice questions is saved as the [`choice_questions.csv`](https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv) file. Once created, you'll need to host it somewhere on the web so that you can read it into your Google Sheet. For this demo, the file is hosted on the [GitHub repo](https://github.com/jhelvy/formr4conjoint), but you can also upload your `choice_questions.csv` file inside your Run (see the "Upload Files" button on the left side menu), which will generate a unique url to the file.
 
 # Implementing the choice questions
 
 I implement the choice questions in part two of my survey (the  [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919) Google Sheet). To do this, I use the first few rows of the sheet to read in the `choice_questions.csv` file and make the following calculations:
 
 1. Randomly generate a `respondentID` by sampling from all possible `respID` values in the choice questions.
-2. Create a new data frame (`df` in the sheet) that includes only the rows for the `respondentID`.
+2. Create a new `df` data frame that includes only the rows for the specific `respondentID`.
 3. Create a `df_json` object that converts the `df` data frame to JSON.
 
 That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new `r fa("r-project")` session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the `name` column), so we have to "serialize" the `df` object into one long JSON object so that we can access it later in other pages.
@@ -99,7 +98,7 @@ In this chunk, the `alts` data frame is created by converting the `df_json` obje
 **Freshness**: `r alt1$freshness`
 ```
 
-When rendered in formr, the three options looks like this:
+I copy this code over to each alternative, adjusting the numbers for alternative 2 and 3. When rendered in formr, the three options looks like this:
 
 <center>
 <img src="images/example.png" width=500>
@@ -141,14 +140,23 @@ Notice that there are two points where respondents can be screened out of the su
 
 Here is a screenshot of the specific run settings:
 
-```{r, layout="l-body-outset"}
+```{r, layout="l-body-outset", echo=FALSE}
 knitr::include_graphics("images/run.png")
 ```
+
+# Time stamps `r fa("clock")`
+
+Since your entire survey is designed in `r fa("r-project")`, why not take advantage of that fact to collect more about your respondents? One thing I always do on my formr surveys is grab the time each respondent spends on every page. This is implemented by running `Sys.time()` at the top of every new page, which I then use to compute the _difference_ between each time stamp to get the time spent on every page. This is useful in general just to be more informed about how your respondents are going through your survey, and particularly useful for examining behavior on the conjoint choice questions.
 
 # Preview and check
 
 The link to the survey will be `https://your_run_name.formr.org`. You can control whether your survey is "live" or not by modifying the "volume" icons. For collecting data, I recommend setting it to the `r fa("volume-down")` icon, which means people who have the link can access the survey.
 
-But before you go live, it's a good idea to do some quick testing. You can test each survey separately from their respective survey admin pages, and you can also test the entire run from the run admin page (check the left side menu). When testing, you will likely run into pages that look like this
+But before you go live, it's a good idea to do some quick testing. You can test each survey separately from their respective survey admin pages, and you can also test the entire run from the run admin page (check the left side menu). When testing, you may get an error - don't panic! The error pages look a little different from the errors you're used to in R, but if you click through the errors you can usually find the root cause of the error (the R error message will be buried somewhere on the page). Many times the errors are small typos, which is another reason why I like to initially build my surveys in .Rmd files - when I knit them to html pages, any typos or other small errors are much more easily identified.
 
 
+# Getting the data
+
+Once your survey is live and you start collecting responses, your response data will not be available in the "Run". Instead, they will be available in each of the three survey pages. You can use the [{formr} package](https://github.com/rubenarslan/formr) to import the data directly in `r fa("r-project")`, or just go to the admin page for each survey and download the data as .csv files. The key piece to remember is that each respondent will be given a unique `session` variable that you can use to join all of the three separate data files together.
+
+With that in mind, keep an eye out for a follow on post on how to join and clean the resulting data from this conjoint demo coming soon!
