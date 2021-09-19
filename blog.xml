@@ -17,7 +17,7 @@
       <title>Choice-based conjoint surveys in R with formr</title>
       <dc:creator>John Paul Helveston</dc:creator>
       <link>https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr</link>
-      <description>A how-to guide for using R to design and implement choice-based conjoint surveys using [formr.org](https://formr.org/)</description>
+      <description>A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org</description>
       <category>R</category>
       <category>tutorials</category>
       <category>conjoint</category>
