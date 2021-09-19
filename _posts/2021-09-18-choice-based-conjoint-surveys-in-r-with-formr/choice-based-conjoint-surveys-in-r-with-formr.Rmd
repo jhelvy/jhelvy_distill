@@ -1,7 +1,7 @@
 ---
-title: Implementing choice-based conjoint surveys in R
+title: Choice-based conjoint surveys in R with formr
 description: |
-  A how-to guide for using R to design and implement choice-based conjoint surveys using [formr.org](https://formr.org/)
+  A how-to guide for using `r fa("r-project")` to design and implement choice-based conjoint surveys using [formr.org](https://formr.org/)
 author: John Paul Helveston
 date: '2021-09-18'
 preview: "images/example.png"
@@ -21,7 +21,7 @@ library(dplyr)
 library(fontawesome)
 ```
 
-[formr.org](https://formr.org/) is a flexible platform for making surveys using `r fa("r-project")`. In this post, I'm going to show you one approach for using formr to create a choice-based conjoint survey (I'm going to assume that you know what conjoint surveys are, but if you don't take a look at this [quick introduction](https://sawtoothsoftware.com/conjoint-analysis/cbc)).
+[formr.org](https://formr.org/) is a flexible platform for making surveys using `r fa("r-project")`. In this post, I'm going to show you one approach for using formr to create a choice-based conjoint survey (I'm going to assume that you know what conjoint surveys are, but if not take a look at this [quick introduction](https://sawtoothsoftware.com/conjoint-analysis/cbc)).
 
 Throughout this post, I will use a demo survey about people's preferences for apples with three attributes: `type`, `price`, and `freshness`.^[Yes, people have [actually done conjoint surveys on fruit](https://www.emerald.com/insight/content/doi/10.1108/00070709610150879/full/html) before.] 
 
@@ -29,12 +29,14 @@ You can view the live demo survey [here](https://appleconjoint.formr.org/), and 
 
 # Overview
 
+If you've never used formr, watch the video on [this page](https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/) for a quick introduction. 
+
 Every formr survey is implemented in a spreadsheet. I highly recommend using Google Sheets for this because
 
 1. formr has a button on the admin page to quickly re-load your Google Sheet (otherwise you have to upload a new .xlsx file any time you make changes), and
 2. It's easier for collaborating and managing different versions.
 
-Each "survey" (each Google Sheet) must be loaded into a "Run" to make the survey live. Most runs include multiple surveys together to control complex logic, like filtering out a respondent based on their response to a question. 
+Each "survey" (each Google Sheet) must be loaded into a "Run" to make the survey live. Most runs include multiple surveys chained together to control complex logic, like filtering out a respondent based on their response to a question.
 
 For this demo, I have designed the run as a combination of three surveys (links below go to each respective Google Sheet):
 
@@ -46,9 +48,9 @@ Don't worry about what's in each sheet just yet - we'll get to that.
 
 # Creating the surveys
 
-I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel how my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF. 
+I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel how my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF (e.g. open the survey in your browser, then print the page to a PDF). 
 
-When I'm happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet. For this demo, I designed the questions in each part using the following three .Rmd files in the "survey" folder of the associated [GitHub repo](https://github.com/jhelvy/formr4conjoint). The links in this table let you compare the .Rmd file and the corresponding Google Sheet:
+When I'm happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet. For this demo, I designed the questions in each part using the following three .Rmd files in the "survey" folder of the [GitHub repo](https://github.com/jhelvy/formr4conjoint) for this demo.
 
 .Rmd file | Google Sheet
 ----------|----------------
@@ -56,28 +58,30 @@ When I'm happy with how things look, I then carefully copy-paste the content ove
 [p2-choice-questions.Rmd](https://github.com/jhelvy/formr4conjoint/blob/master/survey/p2-choice-questions.Rmd) | [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919)
 [p3-demos.Rmd](https://github.com/jhelvy/formr4conjoint/blob/master/survey/p3-demos.Rmd) | [appleConjoint_p3](https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919)
 
+The links in this table let you compare the .Rmd file with the corresponding Google Sheet. Most general content that I want to display to the respondent goes in the `label` column, and responses to questions go in the `choice` columns (for part 3, I put the choice options on a separate `choices` tab). Pay careful attention to the `type` column - this determines the nature of the row, e.g. `note` just shows the `label` column content, `mc` is a multiple choice question, etc. The `calculate` type rows allow me to run `r fa("r-project")` code to generate and store objects that can be used across different pages in the survey (these values will also be available in the resulting survey data).
+
 # Defining the choice questions
 
-The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [conjointTools](https://jhelvy.github.io/conjointTools/) package (which I wrote `r emo::ji('smile')`) to create these questions. The code to create this specific demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo. 
+The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [conjointTools](https://jhelvy.github.io/conjointTools/) package (which I wrote `r emo::ji('smile')`) to create these questions. The code to create the choice questions for this demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo. 
 
-The data frame of randomized choice questions is saved as the [`choice_questions.csv`](https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv) file. Once created, you'll need to host it somewhere on the web so that it can be read in to your Google Sheet. For this demo, the file is hosted on the GitHub repo, but you can also upload your `choice_questions.csv` file inside your Run (see the "Upload Files" button on the left side menu), which will generate a unique url to the file.
+The data frame of randomized choice questions is saved as the [`choice_questions.csv`](https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv) file. Once created, you'll need to host it somewhere on the web so that you can read it in to your Google Sheet. For this demo, the file is hosted on the [GitHub repo](https://github.com/jhelvy/formr4conjoint), but you can also upload your `choice_questions.csv` file inside your Run (see the "Upload Files" button on the left side menu), which will generate a unique url to the file.
 
 # Implementing the choice questions
 
-Implementing the choice questions in the [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919) Google Sheet is perhaps the most complex part of the whole survey design. To do so, I made the following calculations in the first few rows of the sheet:
+I implement the choice questions in part two of my survey (the  [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919) Google Sheet). To do this, I use the first few rows of the sheet to read in the `choice_questions.csv` file and make the following calculations:
 
-1. Read in the full `choice_questions.csv` file.
-2. Randomly generate a `respondentID` by sampling from all possible `respID` values in the choice questions.
-3. Create a new data frame (`df` in the sheet) that includes only the rows for the `respondentID`.
-4. Create a `df_json` object that converts the `df` data frame to JSON.
+1. Randomly generate a `respondentID` by sampling from all possible `respID` values in the choice questions.
+2. Create a new data frame (`df` in the sheet) that includes only the rows for the `respondentID`.
+3. Create a `df_json` object that converts the `df` data frame to JSON.
 
-That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new R session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data, so we have to "serialize" the `df` object as one long JSON object so that we can access it later in other pages.
+That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new `r fa("r-project")` session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the `name` column), so we have to "serialize" the `df` object into one long JSON object so that we can access it later in other pages.
 
 Once we have everything set up, we can then start defining choice questions. In each choice question row, the first thing I do is define the questions label and then write a code chunk to create multiple data frames to store the values to display for each alternative. For example, on row 10 of the [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919) Google Sheet, you can see the following code chunk under the question label:
 
 ```{r, eval=FALSE}
 library(dplyr)
-alts <- jsonlite::fromJSON(df_json) %>% filter(qID == 1)
+alts <- jsonlite::fromJSON(df_json) %>% 
+  filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
 alt3 <- alts %>% filter(altID == 3)
