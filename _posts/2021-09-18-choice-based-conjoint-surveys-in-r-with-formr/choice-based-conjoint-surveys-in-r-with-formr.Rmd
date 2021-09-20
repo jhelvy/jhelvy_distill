@@ -7,7 +7,7 @@ date: '2021-09-18'
 preview: "images/example.png"
 categories:
   - R
-  - tutorials
+  - tutorial
   - conjoint
 output:
   distill::distill_article:
