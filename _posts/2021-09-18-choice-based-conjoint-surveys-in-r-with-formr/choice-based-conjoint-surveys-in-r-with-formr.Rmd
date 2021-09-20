@@ -91,7 +91,7 @@ In this chunk, the `alts` data frame is created by converting the `df_json` obje
 ```{r, eval=FALSE}
 **Option 1**
 
-![](`r alt1$image`){width=100}
+<img src=`r alt1$image` width=100>
 
 **Type**: `r alt1$type`
 **Price**: $ `r alt1$price` / lb
