@@ -43,7 +43,11 @@ navbar:
     - icon: fab fa-github
       href: https://github.com/jhelvy
     - icon: fab fa-twitter
+    - icon: fa fa-linkedin
+      href: https://www.linkedin.com/in/jhelvy
       href: https://twitter.com/JohnHelveston
+    - icon: fa fa-rss
+      href: blog.xml
 
 output:
   distill::distill_article:
