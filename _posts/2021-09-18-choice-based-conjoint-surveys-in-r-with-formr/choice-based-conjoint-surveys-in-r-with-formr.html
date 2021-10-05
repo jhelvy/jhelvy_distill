@@ -55,7 +55,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,13 +76,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Choice-based conjoint surveys in R with formr</title>
@@ -115,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["choice-based-conjoint-surveys-in-r-with-formr_files/anchor-4.2.2/anchor.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/bowser-1.9.3/bowser.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/distill-2.2.21/template.v2.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-1.11.3/jquery.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.map","choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-bundle.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-light-border.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/webcomponents-2.0.0/webcomponents.js","images/example.png","images/run.png"]}
+  {"type":"character","attributes":{},"value":["choice-based-conjoint-surveys-in-r-with-formr_files/anchor-4.2.2/anchor.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/bowser-1.9.3/bowser.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/distill-2.2.21/template.v2.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11.2/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-1.11.3/jquery.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.map","choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-bundle.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-light-border.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/webcomponents-2.0.0/webcomponents.js","images/cbc_table.png","images/example.png","images/run.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1262,7 +1263,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1433,7 +1437,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11.2/header-attrs.js"></script>
   <script src="choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js"></script>
   <link href="choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1454,7 +1458,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Choice-based conjoint surveys in R with formr","description":"A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-18T00:00:00.000+00:00","citationText":"Helveston, 2021"}
+{"title":"Choice-based conjoint surveys in R with formr","description":"A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-18T00:00:00.000-04:00","citationText":"Helveston, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1491,6 +1495,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#creating-the-surveys">Creating the surveys</a></li>
 <li><a href="#defining-the-choice-questions">Defining the choice questions</a></li>
 <li><a href="#implementing-the-choice-questions">Implementing the choice questions</a></li>
+<li><a href="#buttons-versus-tables">Buttons versus tables</a></li>
 <li><a href="#implementing-the-surveys-in-formr">Implementing the surveys in formr</a></li>
 <li><a href="#time-stamps">Time stamps <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256,8C119,8,8,119,8,256S119,504,256,504,504,393,504,256,393,8,256,8Zm92.49,313h0l-20,25a16,16,0,0,1-22.49,2.5h0l-67-49.72a40,40,0,0,1-15-31.23V112a16,16,0,0,1,16-16h32a16,16,0,0,1,16,16V256l58,42.5A16,16,0,0,1,348.49,321Z"/></svg></a></li>
 <li><a href="#preview-and-check">Preview and check</a></li>
@@ -1580,6 +1585,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <img src="images/example.png" width=500>
 </center>
 <p>And that’s it! The nice thing about this approach is that the only thing I need to modify in these code chunks for the remaining choice questions is the question number used to define the <code>alts</code> data frame. Other than that, the code for the question label and the alternatives can be reused on the rest of the choice questions.</p>
+<h1 id="buttons-versus-tables">Buttons versus tables</h1>
+<p>In the example above, the conjoint choice questions are displayed as “buttons” where all the information for each alternative is shown as a button. This works particularly well for mobile phone applications where the user may need to scroll vertically to see each option.</p>
+<p>An alternative is to use a tabular layout where each column represents an alternative and the row names explain the attribute. This takes a little manipulation to get it right, but the key concept is to use <code>kable()</code> to display the transpose of the <code>alts</code> data frame. I also use the wonderful <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a> package to modify some of the table stying. If you want to see this version in practice, the survey link is <a href="https://appleconjointtable.formr.org/">here</a>, and the Google Sheet with the configurtions for this is <a href="https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbWaXkwIOGLU">here</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span>
+<span class='va'>alts</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='va'>df_json</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>qID</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    price <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_dollar.html'>dollar</a></span><span class='op'>(</span><span class='va'>price</span><span class='op'>)</span>, <span class='st'>"/ lb"</span><span class='op'>)</span>,
+    image <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>'&lt;img src="'</span>, <span class='va'>image</span>, <span class='st'>'" width=100&gt;'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='co'># Make nicer attribute labels</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span>
+    `Option:` <span class='op'>=</span> <span class='va'>altID</span>, 
+    ` ` <span class='op'>=</span> <span class='va'>image</span>,
+    `Price:` <span class='op'>=</span> <span class='va'>price</span>, 
+    `Type:` <span class='op'>=</span> <span class='va'>type</span>, 
+    `Freshness:` <span class='op'>=</span> <span class='va'>freshness</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/row.names.html'>row.names</a></span><span class='op'>(</span><span class='va'>alts</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># Drop row names</span>
+
+<span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>alts</span><span class='op'>)</span>, escape <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>
+    bootstrap_options <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"striped"</span>, <span class='st'>"hover"</span>, <span class='st'>"condensed"</span><span class='op'>)</span>, 
+    full_width <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+    position <span class='op'>=</span> <span class='st'>"center"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<center>
+<img src="images/cbc_table.png" width=500>
+</center>
 <h1 id="implementing-the-surveys-in-formr">Implementing the surveys in formr</h1>
 <p>You’ll need to upload each Google Sheet survey into formr to convert them into surveys. Go to your admin page, click on “Create Survey”, then import one of the Google Sheets. This creates one survey. On the left panel you can click “Test Survey” to preview it.</p>
 <p>Once you have all three surveys loaded into formr, you can then assemble them into a “Run” by clicking on “Runs -&gt; Create New Run”. Give the run a name, then add your survey to the run by clicking on the <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 480H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zM238.1 177.9L102.4 313.6l-6.3 57.1c-.8 7.6 5.6 14.1 13.3 13.3l57.1-6.3L302.2 242c2.3-2.3 2.3-6.1 0-8.5L246.7 178c-2.5-2.4-6.3-2.4-8.6-.1zM345 165.1L314.9 135c-9.4-9.4-24.6-9.4-33.9 0l-23.1 23.1c-2.3 2.3-2.3 6.1 0 8.5l55.5 55.5c2.3 2.3 6.1 2.3 8.5 0L345 199c9.3-9.3 9.3-24.5 0-33.9z"/></svg> icon. You’ll want to add all three surveys, and then at the end add a stopping point by clicking the <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"/></svg> icon. You can use other logic to control how the user navigates through the survey, such as a “Skip Forward” (<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M500.5 231.4l-192-160C287.9 54.3 256 68.6 256 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2zm-256 0l-192-160C31.9 54.3 0 68.6 0 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2z"/></svg> icon) to screen respondents out before letting them get to a later part of the survey.</p>

@@ -106,6 +106,41 @@ I copy this code over to each alternative, adjusting the numbers for alternative
 
 And that's it! The nice thing about this approach is that the only thing I need to modify in these code chunks for the remaining choice questions is the question number used to define the `alts` data frame. Other than that, the code for the question label and the alternatives can be reused on the rest of the choice questions.
 
+# Buttons versus tables 
+
+In the example above, the conjoint choice questions are displayed as "buttons" where all the information for each alternative is shown as a button. This works particularly well for mobile phone applications where the user may need to scroll vertically to see each option. 
+
+An alternative is to use a tabular layout where each column represents an alternative and the row names explain the attribute. This takes a little manipulation to get it right, but the key concept is to use `kable()` to display the transpose of the `alts` data frame. I also use the wonderful [kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) package to modify some of the table stying. If you want to see this version in practice, the survey link is [here](https://appleconjointtable.formr.org/), and the Google Sheet with the configurtions for this is [here](https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbWaXkwIOGLU). 
+
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(kableExtra)
+alts <- jsonlite::fromJSON(df_json) %>%
+  filter(qID == 1) %>% 
+  mutate(
+    price = paste(scales::dollar(price), "/ lb"),
+    image = paste0('<img src="', image, '" width=100>')) %>% 
+  # Make nicer attribute labels
+  select(
+    `Option:` = altID, 
+    ` ` = image,
+    `Price:` = price, 
+    `Type:` = type, 
+    `Freshness:` = freshness)
+row.names(alts) <- NULL # Drop row names
+
+kable(t(alts), escape = FALSE) %>% 
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"), 
+    full_width = FALSE, 
+    position = "center"
+  )
+```
+
+<center>
+<img src="images/cbc_table.png" width=500>
+</center>
+
 # Implementing the surveys in formr
 
 You'll need to upload each Google Sheet survey into formr to convert them into surveys. Go to your admin page, click on "Create Survey", then import one of the Google Sheets. This creates one survey. On the left panel you can click "Test Survey" to preview it.
