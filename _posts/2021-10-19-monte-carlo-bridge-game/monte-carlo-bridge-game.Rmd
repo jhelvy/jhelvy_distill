@@ -1,0 +1,248 @@
+---
+title: Simulating the Squid Game bridge scene in R
+description: |
+  A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**
+author: John Paul Helveston
+date: '2021-10-19'
+preview: "squid-game.png"
+categories:
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+# Rmd settings
+knitr::opts_chunk$set(
+    warning    = FALSE,
+    message    = FALSE,
+    comment    = "#>",
+    fig.align  = "center",
+    fig.path   = "figs/",
+    fig.retina = 3
+)
+set.seed(42)
+```
+
+<center>
+<img src="squid-game.png" width=600>
+</center>
+
+If you had a Netflix account in 2021, chances are you've at least heard of [Squid Game](https://en.wikipedia.org/wiki/Squid_Game) -- a South Korean survival drama in which players play a series of children's games for the chance to win a large sum of money, with the penalty of death if they lose. The show is like a mixture of [Richard Connell](https://en.wikipedia.org/wiki/Richard_Connell)'s [The Most Dangerous Game](https://en.wikipedia.org/wiki/The_Most_Dangerous_Game), the [Hunger Games](https://en.wikipedia.org/wiki/The_Hunger_Games), and the horror stories of [Edgar Allan Poe](https://en.wikipedia.org/wiki/Edgar_Allan_Poe). It quickly became the #1 most most-watched show after just one week of being released.
+
+> SPOILER ALERT: I mention a few details in this post that might be spoilers if you haven't yet watched the show.
+
+In Episode 7, the remaining 16 players play a game where they must cross a glass bridge with 18 steps. At each step, the lead player must choose between two glass panes -- one made of tempered glass strong enough to support two players, and the other of regular glass that will shatter if stepped on, in which case the player will plummet to their death. 
+
+When I watched the episode, I immediately started trying to calculate the expected number of survivors for the game. While seemingly straightforward, the problems is a bit more complex when you realize that each person behind the leader learns information from the leader's choices. That is, if the lead player chooses the "not safe" pane, that player dies, but every remaining player now knows which glass pane is "safe" at that step.
+
+Rather than try and work the math, I decided to take a [Monte Carlo](https://en.wikipedia.org/wiki/Monte_Carlo_method) approach -- just simulate a bunch of trials of the game, then count up how many players "survived" in each trial.
+
+# Defining the simulation
+
+The first step I took in trying to simulate the game is to simplify the problem. The actual game has two glass panes (one "safe" and one "not safe") at each step in the bridge. This same situation can be modeled with a series of _single_ steps where the lead player has a 50% chance of surviving at each step. If the lead player steps on a "not safe" pane, we mark that player as dead and replace that pane with a "safe" one, allowing all remaining players to safely cross it. 
+
+To run a simulation, I first had to create the players, which I modeled using a simple data.table of 1s and 0s for "alive" and "dead". Everyone starts out alive.
+
+```{r}
+# Create an initial data.table of players
+library(data.table)
+
+num_players <- 16
+players <- data.table(player = seq(num_players), alive = 1)
+players
+```
+
+To simulate a single game, I created a `run_game()` function that iterates through a specified number of bridge steps, each with a 50% chance of being "safe". The function iterates through each step until all "safe" panels are known, at which point the remaining "alive" players are assumed to all be able to safely finish crossing the bridge (I am assuming that all players have sufficient time to cross the bridge).
+
+```{r}
+# Define a function for simulating one game
+run_game <- function(players, num_steps) {
+    lead_player <- 1
+    for (step in seq(num_steps)) {
+        # 50% chance that the pane is safe
+        if (sample(c(TRUE, FALSE), 1)) {
+            # The pane is safe, keep going!
+            next
+        } else {
+            # The pane broke 💀
+            # Before continuing, check if any players are still alive
+            if (sum(players$alive) == 0) { return(players$alive) }
+            # The lead player died
+            players$alive[lead_player] <- 0
+            lead_player <- lead_player + 1
+        }
+    }
+    return(players$alive)
+}
+```
+
+With that, let's run one game of 18 steps and 16 players (same as in the show):
+
+```{r}
+# Run one iteration of the game
+single_game <- run_game(players, num_steps = 18)
+single_game
+```
+
+So after one game, we had `r sum(single_game)` survivors. But of course if we want to get an estimate of the _expected_ number of survivors, we need to run lots of trials of the game (a lot of bits are about to die).
+
+# Estimating the expected number of survivors
+
+I ran my trials inside a data.table, a simulation strategy I picked up from [Grant McDermott](https://grantmcdermott.com/) and his wonderful post on [efficient simulations in R](https://grantmcdermott.com/efficient-simulations-in-r/).
+
+```{r}
+# Run the main trials
+
+# Repeat the "players" data.table for each trial
+num_trials <- 10000
+sims <- players[rep(seq(num_players), num_trials),]
+
+# Keep track of the trial number
+sims[, trial := rep(seq(num_trials), each = num_players)]
+
+# Now run the simulation for each trial
+sims[, alive := run_game(.SD, num_steps = 18), by = trial]
+```
+
+In addition to being very fast, one really nice thing about running the trials using {data.table} is that you get all of the results back in a nicely-formatted data.table, which you can then use to compute all sorts of statistics. 
+
+For example, if you wanted to see the outcome of an individual trial, just filter for it:
+
+```{r}
+# View one trial outcome
+sims[trial == 42]
+```
+
+Of course, we can also use the trials to compute the expected number of survivors from the game. Since the outcomes are discrete, I take median number of survivors across all trials to reflect the expected number of survivors:
+
+```{r}
+# Compute the expected number of survivors across all trials
+trials_counts <- sims[, .(count = sum(alive)), by = trial]
+expected_survivors <- median(trials_counts$count)
+expected_survivors
+```
+
+The simulation suggests that we should expect `r expected_survivors` players to survive when running a game with 16 players and 18 steps. When we look at the distribution of trial outcomes, we can also see that there is a pretty good chance of having `r expected_survivors - 1` or `r expected_survivors + 1` survivors in any one round of the game:
+
+```{r, fig.width=6, fig.height=4}
+# Plot the distribution of survivors across all trials
+library(ggplot2)
+
+trial_count_summary <- as.data.frame(table(trials_counts$count))
+names(trial_count_summary) <- c("n_survivors", "count")
+
+ggplot(trial_count_summary) +
+  geom_col(aes(x = n_survivors, y = count), width = 0.1) + 
+  theme_bw() +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    title = "Outcomes of 10,000 trials",
+    x = "Number of survivors", 
+    y = "Count"
+  )
+```
+
+# Choose wisely
+
+While the expected number of survivors from these trials is higher than the actual number in the TV series (only 3 survive), keep in mind that these trials reflect ideal conditions in which all the players act strictly rationally. In the show, multiple players die as a result of the selfish or revengeful actions of other players, not strictly because of the breaking glass panes.
+
+But perhaps the more important question from the perspective of the players is:
+
+> **"Which number should I choose?"** 
+
+Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the "safe" glass panes. But how likely would you be to survive if you chose a number near the middle (which most players chose first)?
+
+Since we have all the results of every trial outcome for every player in a convenient data.table, computing the probability of surviving for each player is straightforward:
+
+```{r, fig.width=6, fig.height=4}
+# Plot the probability of survival based on the player order number
+survival_summary <- sims[, .(p_survive = sum(alive) / num_trials), by = player]
+
+ggplot(survival_summary) +
+  geom_point(aes(x = player, y = p_survive)) + 
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(breaks = seq(16)) +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    title = "Probability of survival based on player order number",
+    x = "Player order number", 
+    y = "Probability"
+  )
+```
+
+So even though the expected number of survivors is `r expected_survivors` out of 16 players, those survivors are overwhelmingly more likely to be the players who chose the highest order numbers.
+
+# How many steps to include?
+
+One final question I had was what if the game designers chose to include more steps in the bridge? Because this was not supposed to be the last game, the designers needed to make sure at least **two** players survived, otherwise the games would simply end. 
+
+We can see from the previous simulations that with 16 players, the choice of 18 steps already puts a small (but non-zero) probability on having less than two survivors:
+
+```{r}
+# Probability of having less than two survivors
+sum(trials_counts$count < 2) / num_trials
+```
+
+Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are humans, which might make some irrational choices when playing such a deadly game (as we saw play out in the TV series version of the game).
+
+Still, what if the game designers were more risk seeking? How many steps could they include if they were willing to live with, for example, a 5% chance of having less than 2 players remaining at the end of the bridge game? 
+
+To answer that, we have to re-run our simulations, but with an increasing number of steps. To keep things simple, I run 1,000 iterations of the game over an increasing number of steps from 10 to 30:
+
+```{r}
+# Re-run the trials using an increasing number of bridge steps (10 to 30)
+
+# Repeat the "players" data.table for each trial
+min_num_steps <- 10
+max_num_steps <- 30
+step_trials <- seq(min_num_steps, max_num_steps, by = 1)
+num_step_trials <- length(step_trials)
+num_trials <- 1000
+step_sims <- players[rep(seq(num_players), num_trials*num_step_trials),]
+
+# Keep track of the trial number and the step number
+step_sims[, trial := rep(seq(num_trials*num_step_trials), each = num_players)]
+step_sims[, steps := rep(step_trials, each = num_players*num_trials)]
+
+# Now run the simulation for each trial
+step_sims[, alive := run_game(.SD, num_steps = unique(steps)), by = trial]
+```
+
+Now I can compute the probability of having less than two survivors for each step size: 
+
+```{r}
+# Compute probability of having less than two survivors for each step size
+step_counts <- step_sims[, .(count = sum(alive)), by = c("trial", "steps")]
+step_summary <- step_counts[, .(p_under2 = sum(count < 2) / num_trials), by = steps]
+
+ggplot(step_summary) +
+  geom_point(aes(x = steps, y = p_under2)) + 
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(breaks = step_trials) +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    title = "Probability of having less than two remaining players",
+    x = "Number of bridge steps", 
+    y = "Probability"
+  )
+```
+
+I found it quite interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:
+
+```{r}
+step_summary[steps %in% seq(18, 23)]
+```
+
+Okay, that's it! I'm sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.
+
+# Appendix
+
+Here is the combined code for this entire simulation:
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+```
