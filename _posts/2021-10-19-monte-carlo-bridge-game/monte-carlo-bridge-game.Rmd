@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
     fig.path   = "figs/",
     fig.retina = 3
 )
-set.seed(42)
+set.seed(5678)
 ```
 
 <center>
@@ -153,7 +153,7 @@ But perhaps the more important question from the perspective of the players is:
 
 > **"Which number should I choose?"** 
 
-Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the "safe" glass panes. But how likely would you be to survive if you chose a number near the middle (which most players chose first)?
+Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the "safe" glass panes. But how likely would you be to survive if you chose a number near the middle (which most players in the TV series chose first)?
 
 Since we have all the results of every trial outcome for every player in a convenient data.table, computing the probability of surviving for each player is straightforward:
 
@@ -187,7 +187,7 @@ We can see from the previous simulations that with 16 players, the choice of 18 
 sum(trials_counts$count < 2) / num_trials
 ```
 
-Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are humans, which might make some irrational choices when playing such a deadly game (as we saw play out in the TV series version of the game).
+Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are human beings who tend to make irrational choices when playing a deadly game (as we saw play out in the TV series version of the game).
 
 Still, what if the game designers were more risk seeking? How many steps could they include if they were willing to live with, for example, a 5% chance of having less than 2 players remaining at the end of the bridge game? 
 
@@ -232,7 +232,7 @@ ggplot(step_summary) +
   )
 ```
 
-I found it quite interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:
+I found it interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:
 
 ```{r}
 step_summary[steps %in% seq(18, 23)]

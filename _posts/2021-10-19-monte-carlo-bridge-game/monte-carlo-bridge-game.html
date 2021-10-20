@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["figs/unnamed-chunk-11-1.png","figs/unnamed-chunk-7-1.png","figs/unnamed-chunk-8-1.png","squid-game.png"]}
+  {"type":"character","attributes":{},"value":["figs/unnamed-chunk-11-1.png","figs/unnamed-chunk-7-1.png","figs/unnamed-chunk-8-1.png","monte-carlo-bridge-game_files/anchor-4.2.2/anchor.min.js","monte-carlo-bridge-game_files/bowser-1.9.3/bowser.min.js","monte-carlo-bridge-game_files/distill-2.2.21/template.v2.js","monte-carlo-bridge-game_files/header-attrs-2.11/header-attrs.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.map","monte-carlo-bridge-game_files/popper-2.6.0/popper.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-bundle.umd.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-light-border.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.umd.min.js","monte-carlo-bridge-game_files/webcomponents-2.0.0/webcomponents.js","squid-game.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1575,9 +1575,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='va'>single_game</span>
 </code></pre>
 </div>
-<pre><code>#&gt;  [1] 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1</code></pre>
+<pre><code>#&gt;  [1] 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1</code></pre>
 </div>
-<p>So after one game, we had 7 survivors. But of course if we want to get an estimate of the <em>expected</em> number of survivors, we need to run lots of trials of the game (a lot of bits are about to die).</p>
+<p>So after one game, we had 4 survivors. But of course if we want to get an estimate of the <em>expected</em> number of survivors, we need to run lots of trials of the game (a lot of bits are about to die).</p>
 <h1 id="estimating-the-expected-number-of-survivors">Estimating the expected number of survivors</h1>
 <p>I ran my trials inside a data.table, a simulation strategy I picked up from <a href="https://grantmcdermott.com/">Grant McDermott</a> and his wonderful post on <a href="https://grantmcdermott.com/efficient-simulations-in-r/">efficient simulations in R</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1611,9 +1611,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt;  4:      4     0    42
 #&gt;  5:      5     0    42
 #&gt;  6:      6     0    42
-#&gt;  7:      7     1    42
-#&gt;  8:      8     1    42
-#&gt;  9:      9     1    42
+#&gt;  7:      7     0    42
+#&gt;  8:      8     0    42
+#&gt;  9:      9     0    42
 #&gt; 10:     10     1    42
 #&gt; 11:     11     1    42
 #&gt; 12:     12     1    42
@@ -1661,7 +1661,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <blockquote>
 <p><strong>“Which number should I choose?”</strong></p>
 </blockquote>
-<p>Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the “safe” glass panes. But how likely would you be to survive if you chose a number near the middle (which most players chose first)?</p>
+<p>Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the “safe” glass panes. But how likely would you be to survive if you chose a number near the middle (which most players in the TV series chose first)?</p>
 <p>Since we have all the results of every trial outcome for every player in a convenient data.table, computing the probability of surviving for each player is straightforward:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1693,9 +1693,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>trials_counts</span><span class='op'>$</span><span class='va'>count</span> <span class='op'>&lt;</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>num_trials</span>
 </code></pre>
 </div>
-<pre><code>#&gt; [1] 0.0032</code></pre>
+<pre><code>#&gt; [1] 0.0036</code></pre>
 </div>
-<p>Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are humans, which might make some irrational choices when playing such a deadly game (as we saw play out in the TV series version of the game).</p>
+<p>Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are human beings who tend to make irrational choices when playing a deadly game (as we saw play out in the TV series version of the game).</p>
 <p>Still, what if the game designers were more risk seeking? How many steps could they include if they were willing to live with, for example, a 5% chance of having less than 2 players remaining at the end of the bridge game?</p>
 <p>To answer that, we have to re-run our simulations, but with an increasing number of steps. To keep things simple, I run 1,000 iterations of the game over an increasing number of steps from 10 to 30:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1741,19 +1741,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="figs/unnamed-chunk-11-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<p>I found it quite interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:</p>
+<p>I found it interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>step_summary</span><span class='op'>[</span><span class='va'>steps</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>23</span><span class='op'>)</span><span class='op'>]</span>
 </code></pre>
 </div>
 <pre><code>#&gt;    steps p_under2
-#&gt; 1:    18    0.003
-#&gt; 2:    19    0.013
-#&gt; 3:    20    0.019
-#&gt; 4:    21    0.028
-#&gt; 5:    22    0.060
-#&gt; 6:    23    0.111</code></pre>
+#&gt; 1:    18    0.005
+#&gt; 2:    19    0.008
+#&gt; 3:    20    0.024
+#&gt; 4:    21    0.040
+#&gt; 5:    22    0.057
+#&gt; 6:    23    0.107</code></pre>
 </div>
 <p>Okay, that’s it! I’m sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.</p>
 <h1 id="appendix">Appendix</h1>
@@ -1769,7 +1769,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     fig.path   <span class='op'>=</span> <span class='st'>"figs/"</span>,
     fig.retina <span class='op'>=</span> <span class='fl'>3</span>
 <span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>42</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>5678</span><span class='op'>)</span>
 <span class='co'># Create an initial data.table of players</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-datatable.com'>data.table</a></span><span class='op'>)</span>
 
