@@ -240,6 +240,138 @@ step_summary[steps %in% seq(18, 23)]
 
 Okay, that's it! I'm sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.
 
+# Revision 1 - including time
+
+_Updated October 22, 2021_
+
+Many people on [twitter](https://twitter.com/JohnHelveston/status/1450830941056815105?s=20) and [reddit](https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/) had some great suggestions about this post. In particular, @evalparse had a [brilliant, one-line solution](https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw) for simulating the number of survivors in one game:
+
+<center>
+<img src="evalparse.png" width=400>
+</center>
+
+One critique that was mentioned multiple times was that my simulations left out a critical element in the game: **time**. In the show, the players had just 16 minutes to cross the bridge, otherwise all of the glass panes shatter and anyone left behind dies. I originally omitted time for simplicity, but looking back at it now this is a pretty crucial element in the game because it means that the latter order numbers aren't necessarily so safe after all -- the further back in line you are, the higher risk you face of running out of time.
+
+So, here's one attempt at including time in the simulation.
+
+My immediate thought was to assume a distribution for the amount of time delay it takes for a player to take a step and then sample from that distribution for each player in each trial of the game. The key question is **what should that distribution look like?**
+
+Obviously time needs to be positive, so I can't use distributions that could have negative numbers. But time also can't go on forever -- as we saw in the show, the people in the back of the line start to get impatient if the lead player takes too long and might "encourage" them to make a choice. 
+
+Since I didn't have any real-world data to inform my decision (I sure hope there are no real-world data on this!), I decided to use the data from the show itself. I re-watched the scene and timed how long each lead player took to take a step. Time in the show isn't quite preserved because the camera cuts to other scenes, there's slow motion, etc., but many of the steps could be timed, so here's what I measured:
+
+```{r, fig.width=6, fig.height=4}
+# Lead player step times in seconds
+seconds <- c(36, 20, 25, 49, 66, 22, 112, 10, 115, 184, 144, 18, 22, 36, 28, 15, 10)
+summary(seconds)
+```
+
+Most lead players moved relatively quickly, with a median of just `r median(seconds)` seconds. But a few players took longer. In the show, player 9 (the bully guy) took quite a long time, and he might have taken longer if he wasn't forced to move by the woman he scorned.
+
+Given these considerations, I chose to model the step time with a log-normal distribution because it prevents negative times and it has a long tail for those one or two players who might take a long time to move. Here are the parameters that fit these data, using the lovely `fitdistr()` function from the {MASS} package:
+
+```{r}
+fit <- MASS::fitdistr(seconds, "log-normal")
+fit
+```
+
+Let's take a quick visual check of the fit:
+
+```{r, fig.width=6, fig.height=4}
+meanlog <- fit$estimate[1]
+sdlog <- fit$estimate[2]
+ggplot() + 
+    geom_histogram(aes(x = seconds, y = ..density..), 
+                   binwidth = 10, fill = "grey60") +
+    geom_density(aes(x = rlnorm(1000, meanlog, sdlog)), color = "red") +
+    scale_x_continuous(limits = c(0, 200)) +
+    theme_bw() + 
+    labs(
+        title = "Log-normal fit of time delay for each lead player step",
+        x = "Time (seconds)",
+        y = "Density"
+    )
+```
+
+Is it a good fit? Eh, sort of? 
+
+Do I have time to do a better job? Not really.
+
+One issue with the log-normal though is that you can occasionally get a _really_ high number out on that long tail, which I would think is highly unlikely because at some point the next player is just going to push you off the bridge. So I censored my log-normal fit at 200 seconds. So, with this in mind, I created a new `run_game_timed()` function that includes a time delay for each step, sampling from a censored log-normal distribution. 
+
+```{r}
+# Modified function for simulating one game with time
+run_game_timed <- function(players, num_steps, max_seconds, meanlog, sdlog) {
+    lead_player <- 1
+    cum_time <- 0
+    for (step in seq(num_steps)) {
+        cum_time <- cum_time + min(rlnorm(1, meanlog, sdlog), 200)
+        if (cum_time >= max_seconds) { return(players$alive*0) }
+        if (sample(c(TRUE, FALSE), 1)) { next }
+        if (sum(players$alive) == 0) { return(players$alive) }
+        players$alive[lead_player] <- 0
+        lead_player <- lead_player + 1
+    }
+    return(players$alive)
+}
+```
+
+Now I can re-run all the trials and compute a new expected number of survivors:
+
+```{r}
+# Re-run trials
+num_trials <- 10000
+sims_timed <- players[rep(seq(num_players), num_trials),]
+sims_timed[, trial := rep(seq(num_trials), each = num_players)]
+sims_timed[, alive := run_game_timed(
+    .SD, num_steps = 18, max_seconds = 16*60, meanlog, sdlog), by = trial]
+
+# Compute the new expected number of survivors across all trials
+trials_counts_timed <- sims_timed[, .(count = sum(alive)), by = trial]
+expected_survivors <- median(trials_counts_timed$count)
+expected_survivors
+```
+
+As would be expected, the expected number of survivors decreased, which is now closer to the actual number of survivors in the show (3).
+
+But how about the distribution? Well, by introducing time, all we've really done is modify the original distribution to be "zero-inflated" (which is _super_ common in data sets you run across in the wild):
+
+```{r, fig.width=6, fig.height=4}
+# Plot the distribution of survivors across all trials
+trial_count_timed_summary <- as.data.frame(table(trials_counts_timed$count))
+names(trial_count_timed_summary) <- c("n_survivors", "count")
+ggplot(trial_count_timed_summary) +
+  geom_col(aes(x = n_survivors, y = count), width = 0.1) +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    title = "Outcomes of 10,000 trials",
+    x = "Number of survivors",
+    y = "Count"
+  )
+```
+
+Of course, this also impacts the likelihood of survival for each individual player. As might be expected, zero-inflating the distribution of survivors simply reduces the probability of survival for _all_ players, with the higher-number players still ranking the most likely to survive:
+
+```{r, fig.width=6, fig.height=4}
+# Plot the probability of survival based on the player order number
+survival_summary_timed <- sims_timed[, 
+    .(p_survive = sum(alive) / num_trials), by = player]
+ggplot(survival_summary_timed) +
+  geom_point(aes(x = player, y = p_survive)) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(breaks = seq(16)) +
+  theme_bw() +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    title = "Probability of survival based on player order number",
+    x = "Player order number",
+    y = "Probability"
+  )
+```
+
+This is of course is not quite what might be expected. Instead, I would expect the probability to be a tiny bit lower for the very last player or two as they could get left behind. But I chose to ignore feature as the lead player delay seemed to be a much bigger factor in determining survival. Plus, if you have an issue with how "realistic" my modeling is, I would encourage you to remember the context of this entire exercise (if you think _anything_ about this is realistic, please see a psychiatrist).
+
 # Appendix
 
 Here is the combined code for this entire simulation:

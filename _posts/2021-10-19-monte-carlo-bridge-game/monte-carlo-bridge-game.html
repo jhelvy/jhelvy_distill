@@ -23,7 +23,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -117,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["figs/unnamed-chunk-11-1.png","figs/unnamed-chunk-7-1.png","figs/unnamed-chunk-8-1.png","monte-carlo-bridge-game_files/anchor-4.2.2/anchor.min.js","monte-carlo-bridge-game_files/bowser-1.9.3/bowser.min.js","monte-carlo-bridge-game_files/distill-2.2.21/template.v2.js","monte-carlo-bridge-game_files/header-attrs-2.11/header-attrs.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.map","monte-carlo-bridge-game_files/popper-2.6.0/popper.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-bundle.umd.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-light-border.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.umd.min.js","monte-carlo-bridge-game_files/webcomponents-2.0.0/webcomponents.js","squid-game.png"]}
+  {"type":"character","attributes":{},"value":["evalparse.png","figs/unnamed-chunk-11-1.png","figs/unnamed-chunk-13-1.png","figs/unnamed-chunk-15-1.png","figs/unnamed-chunk-18-1.png","figs/unnamed-chunk-19-1.png","figs/unnamed-chunk-7-1.png","figs/unnamed-chunk-8-1.png","monte-carlo-bridge-game_files/anchor-4.2.2/anchor.min.js","monte-carlo-bridge-game_files/bowser-1.9.3/bowser.min.js","monte-carlo-bridge-game_files/distill-2.2.21/template.v2.js","monte-carlo-bridge-game_files/header-attrs-2.11/header-attrs.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.js","monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.map","monte-carlo-bridge-game_files/popper-2.6.0/popper.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-bundle.umd.min.js","monte-carlo-bridge-game_files/tippy-6.2.7/tippy-light-border.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.css","monte-carlo-bridge-game_files/tippy-6.2.7/tippy.umd.min.js","monte-carlo-bridge-game_files/webcomponents-2.0.0/webcomponents.js","squid-game.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1494,6 +1493,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#estimating-the-expected-number-of-survivors">Estimating the expected number of survivors</a></li>
 <li><a href="#choose-wisely">Choose wisely</a></li>
 <li><a href="#how-many-steps-to-include">How many steps to include?</a></li>
+<li><a href="#revision-1---including-time">Revision 1 - including time</a></li>
 <li><a href="#appendix">Appendix</a></li>
 </ul>
 </nav>
@@ -1756,6 +1756,141 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt; 6:    23    0.107</code></pre>
 </div>
 <p>Okay, that’s it! I’m sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.</p>
+<h1 id="revision-1---including-time">Revision 1 - including time</h1>
+<p><em>Updated October 22, 2021</em></p>
+<p>Many people on <a href="https://twitter.com/JohnHelveston/status/1450830941056815105?s=20">twitter</a> and <a href="https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/">reddit</a> had some great suggestions about this post. In particular, <span class="citation" data-cites="evalparse">@evalparse</span> had a <a href="https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw">brilliant, one-line solution</a> for simulating the number of survivors in one game:</p>
+<center>
+<img src="evalparse.png" width=400>
+</center>
+<p>One critique that was mentioned multiple times was that my simulations left out a critical element in the game: <strong>time</strong>. In the show, the players had just 16 minutes to cross the bridge, otherwise all of the glass panes shatter and anyone left behind dies. I originally omitted time for simplicity, but looking back at it now this is a pretty crucial element in the game because it means that the latter order numbers aren’t necessarily so safe after all – the further back in line you are, the higher risk you face of running out of time.</p>
+<p>So, here’s one attempt at including time in the simulation.</p>
+<p>My immediate thought was to assume a distribution for the amount of time delay it takes for a player to take a step and then sample from that distribution for each player in each trial of the game. The key question is <strong>what should that distribution look like?</strong></p>
+<p>Obviously time needs to be positive, so I can’t use distributions that could have negative numbers. But time also can’t go on forever – as we saw in the show, the people in the back of the line start to get impatient if the lead player takes too long and might “encourage” them to make a choice.</p>
+<p>Since I didn’t have any real-world data to inform my decision (I sure hope there are no real-world data on this!), I decided to use the data from the show itself. I re-watched the scene and timed how long each lead player took to take a step. Time in the show isn’t quite preserved because the camera cuts to other scenes, there’s slow motion, etc., but many of the steps could be timed, so here’s what I measured:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Lead player step times in seconds</span>
+<span class='va'>seconds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>36</span>, <span class='fl'>20</span>, <span class='fl'>25</span>, <span class='fl'>49</span>, <span class='fl'>66</span>, <span class='fl'>22</span>, <span class='fl'>112</span>, <span class='fl'>10</span>, <span class='fl'>115</span>, <span class='fl'>184</span>, <span class='fl'>144</span>, <span class='fl'>18</span>, <span class='fl'>22</span>, <span class='fl'>36</span>, <span class='fl'>28</span>, <span class='fl'>15</span>, <span class='fl'>10</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>seconds</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#&gt;   10.00   20.00   28.00   53.65   66.00  184.00</code></pre>
+</div>
+<p>Most lead players moved relatively quickly, with a median of just 28 seconds. But a few players took longer. In the show, player 9 (the bully guy) took quite a long time, and he might have taken longer if he wasn’t forced to move by the woman he scorned.</p>
+<p>Given these considerations, I chose to model the step time with a log-normal distribution because it prevents negative times and it has a long tail for those one or two players who might take a long time to move. Here are the parameters that fit these data, using the lovely <code>fitdistr()</code> function from the {MASS} package:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>MASS</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/fitdistr.html'>fitdistr</a></span><span class='op'>(</span><span class='va'>seconds</span>, <span class='st'>"log-normal"</span><span class='op'>)</span>
+<span class='va'>fit</span>
+</code></pre>
+</div>
+<pre><code>#&gt;     meanlog      sdlog  
+#&gt;   3.5781872   0.8824273 
+#&gt;  (0.2140201) (0.1513350)</code></pre>
+</div>
+<p>Let’s take a quick visual check of the fit:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>meanlog</span> <span class='op'>&lt;-</span> <span class='va'>fit</span><span class='op'>$</span><span class='va'>estimate</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
+<span class='va'>sdlog</span> <span class='op'>&lt;-</span> <span class='va'>fit</span><span class='op'>$</span><span class='va'>estimate</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>seconds</span>, y <span class='op'>=</span> <span class='va'>..density..</span><span class='op'>)</span>, 
+                   binwidth <span class='op'>=</span> <span class='fl'>10</span>, fill <span class='op'>=</span> <span class='st'>"grey60"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>200</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+        title <span class='op'>=</span> <span class='st'>"Log-normal fit of time delay for each lead player step"</span>,
+        x <span class='op'>=</span> <span class='st'>"Time (seconds)"</span>,
+        y <span class='op'>=</span> <span class='st'>"Density"</span>
+    <span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="figs/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<p>Is it a good fit? Eh, sort of?</p>
+<p>Do I have time to do a better job? Not really.</p>
+<p>One issue with the log-normal though is that you can occasionally get a <em>really</em> high number out on that long tail, which I would think is highly unlikely because at some point the next player is just going to push you off the bridge. So I censored my log-normal fit at 200 seconds. So, with this in mind, I created a new <code>run_game_timed()</code> function that includes a time delay for each step, sampling from a censored log-normal distribution.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modified function for simulating one game with time</span>
+<span class='va'>run_game_timed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>players</span>, <span class='va'>num_steps</span>, <span class='va'>max_seconds</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>lead_player</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
+    <span class='va'>cum_time</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+    <span class='kw'>for</span> <span class='op'>(</span><span class='va'>step</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_steps</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+        <span class='va'>cum_time</span> <span class='op'>&lt;-</span> <span class='va'>cum_time</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span>, <span class='fl'>200</span><span class='op'>)</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='va'>cum_time</span> <span class='op'>&gt;=</span> <span class='va'>max_seconds</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>*</span><span class='fl'>0</span><span class='op'>)</span> <span class='op'>}</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>}</span>
+        <span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>[</span><span class='va'>lead_player</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+        <span class='va'>lead_player</span> <span class='op'>&lt;-</span> <span class='va'>lead_player</span> <span class='op'>+</span> <span class='fl'>1</span>
+    <span class='op'>}</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>Now I can re-run all the trials and compute a new expected number of survivors:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Re-run trials</span>
+<span class='va'>num_trials</span> <span class='op'>&lt;-</span> <span class='fl'>10000</span>
+<span class='va'>sims_timed</span> <span class='op'>&lt;-</span> <span class='va'>players</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_players</span><span class='op'>)</span>, <span class='va'>num_trials</span><span class='op'>)</span>,<span class='op'>]</span>
+<span class='va'>sims_timed</span><span class='op'>[</span>, <span class='va'>trial</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_trials</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='va'>num_players</span><span class='op'>)</span><span class='op'>]</span>
+<span class='va'>sims_timed</span><span class='op'>[</span>, <span class='va'>alive</span> <span class='op'>:=</span> <span class='fu'>run_game_timed</span><span class='op'>(</span>
+    <span class='va'>.SD</span>, num_steps <span class='op'>=</span> <span class='fl'>18</span>, max_seconds <span class='op'>=</span> <span class='fl'>16</span><span class='op'>*</span><span class='fl'>60</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>trial</span><span class='op'>]</span>
+
+<span class='co'># Compute the new expected number of survivors across all trials</span>
+<span class='va'>trials_counts_timed</span> <span class='op'>&lt;-</span> <span class='va'>sims_timed</span><span class='op'>[</span>, <span class='fu'>.</span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>alive</span><span class='op'>)</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>trial</span><span class='op'>]</span>
+<span class='va'>expected_survivors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>trials_counts_timed</span><span class='op'>$</span><span class='va'>count</span><span class='op'>)</span>
+<span class='va'>expected_survivors</span>
+</code></pre>
+</div>
+<pre><code>#&gt; [1] 5</code></pre>
+</div>
+<p>As would be expected, the expected number of survivors decreased, which is now closer to the actual number of survivors in the show (3).</p>
+<p>But how about the distribution? Well, by introducing time, all we’ve really done is modify the original distribution to be “zero-inflated” (which is <em>super</em> common in data sets you run across in the wild):</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the distribution of survivors across all trials</span>
+<span class='va'>trial_count_timed_summary</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>trials_counts_timed</span><span class='op'>$</span><span class='va'>count</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>trial_count_timed_summary</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"n_survivors"</span>, <span class='st'>"count"</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>trial_count_timed_summary</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>n_survivors</span>, y <span class='op'>=</span> <span class='va'>count</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.grid.minor <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='st'>"Outcomes of 10,000 trials"</span>,
+    x <span class='op'>=</span> <span class='st'>"Number of survivors"</span>,
+    y <span class='op'>=</span> <span class='st'>"Count"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="figs/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<p>Of course, this also impacts the likelihood of survival for each individual player. As might be expected, zero-inflating the distribution of survivors simply reduces the probability of survival for <em>all</em> players, with the higher-number players still ranking the most likely to survive:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the probability of survival based on the player order number</span>
+<span class='va'>survival_summary_timed</span> <span class='op'>&lt;-</span> <span class='va'>sims_timed</span><span class='op'>[</span>, 
+    <span class='fu'>.</span><span class='op'>(</span>p_survive <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>num_trials</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>player</span><span class='op'>]</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>survival_summary_timed</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>player</span>, y <span class='op'>=</span> <span class='va'>p_survive</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='va'><a href='https://scales.r-lib.org/reference/label_percent.html'>percent</a></span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.grid.minor <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='st'>"Probability of survival based on player order number"</span>,
+    x <span class='op'>=</span> <span class='st'>"Player order number"</span>,
+    y <span class='op'>=</span> <span class='st'>"Probability"</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="figs/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<p>This is of course is not quite what might be expected. Instead, I would expect the probability to be a tiny bit lower for the very last player or two as they could get left behind. But I chose to ignore feature as the lead player delay seemed to be a much bigger factor in determining survival. Plus, if you have an issue with how “realistic” my modeling is, I would encourage you to remember the context of this entire exercise (if you think <em>anything</em> about this is realistic, please see a psychiatrist).</p>
 <h1 id="appendix">Appendix</h1>
 <p>Here is the combined code for this entire simulation:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1878,10 +2013,79 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     y <span class='op'>=</span> <span class='st'>"Probability"</span>
   <span class='op'>)</span>
 <span class='va'>step_summary</span><span class='op'>[</span><span class='va'>steps</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>23</span><span class='op'>)</span><span class='op'>]</span>
+<span class='co'># Lead player step times in seconds</span>
+<span class='va'>seconds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>36</span>, <span class='fl'>20</span>, <span class='fl'>25</span>, <span class='fl'>49</span>, <span class='fl'>66</span>, <span class='fl'>22</span>, <span class='fl'>112</span>, <span class='fl'>10</span>, <span class='fl'>115</span>, <span class='fl'>184</span>, <span class='fl'>144</span>, <span class='fl'>18</span>, <span class='fl'>22</span>, <span class='fl'>36</span>, <span class='fl'>28</span>, <span class='fl'>15</span>, <span class='fl'>10</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>seconds</span><span class='op'>)</span>
+<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>MASS</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/fitdistr.html'>fitdistr</a></span><span class='op'>(</span><span class='va'>seconds</span>, <span class='st'>"log-normal"</span><span class='op'>)</span>
+<span class='va'>fit</span>
+<span class='va'>meanlog</span> <span class='op'>&lt;-</span> <span class='va'>fit</span><span class='op'>$</span><span class='va'>estimate</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>
+<span class='va'>sdlog</span> <span class='op'>&lt;-</span> <span class='va'>fit</span><span class='op'>$</span><span class='va'>estimate</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>seconds</span>, y <span class='op'>=</span> <span class='va'>..density..</span><span class='op'>)</span>, 
+                   binwidth <span class='op'>=</span> <span class='fl'>10</span>, fill <span class='op'>=</span> <span class='st'>"grey60"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>200</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+        title <span class='op'>=</span> <span class='st'>"Log-normal fit of time delay for each lead player step"</span>,
+        x <span class='op'>=</span> <span class='st'>"Time (seconds)"</span>,
+        y <span class='op'>=</span> <span class='st'>"Density"</span>
+    <span class='op'>)</span>
+<span class='co'># Modified function for simulating one game with time</span>
+<span class='va'>run_game_timed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>players</span>, <span class='va'>num_steps</span>, <span class='va'>max_seconds</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>lead_player</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
+    <span class='va'>cum_time</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+    <span class='kw'>for</span> <span class='op'>(</span><span class='va'>step</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_steps</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+        <span class='va'>cum_time</span> <span class='op'>&lt;-</span> <span class='va'>cum_time</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span>, <span class='fl'>200</span><span class='op'>)</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='va'>cum_time</span> <span class='op'>&gt;=</span> <span class='va'>max_seconds</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>*</span><span class='fl'>0</span><span class='op'>)</span> <span class='op'>}</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>TRUE</span>, <span class='cn'>FALSE</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'>next</span> <span class='op'>}</span>
+        <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span> <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>}</span>
+        <span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>[</span><span class='va'>lead_player</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+        <span class='va'>lead_player</span> <span class='op'>&lt;-</span> <span class='va'>lead_player</span> <span class='op'>+</span> <span class='fl'>1</span>
+    <span class='op'>}</span>
+    <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>players</span><span class='op'>$</span><span class='va'>alive</span><span class='op'>)</span>
+<span class='op'>}</span>
+<span class='co'># Re-run trials</span>
+<span class='va'>num_trials</span> <span class='op'>&lt;-</span> <span class='fl'>10000</span>
+<span class='va'>sims_timed</span> <span class='op'>&lt;-</span> <span class='va'>players</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_players</span><span class='op'>)</span>, <span class='va'>num_trials</span><span class='op'>)</span>,<span class='op'>]</span>
+<span class='va'>sims_timed</span><span class='op'>[</span>, <span class='va'>trial</span> <span class='op'>:=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='va'>num_trials</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='va'>num_players</span><span class='op'>)</span><span class='op'>]</span>
+<span class='va'>sims_timed</span><span class='op'>[</span>, <span class='va'>alive</span> <span class='op'>:=</span> <span class='fu'>run_game_timed</span><span class='op'>(</span>
+    <span class='va'>.SD</span>, num_steps <span class='op'>=</span> <span class='fl'>18</span>, max_seconds <span class='op'>=</span> <span class='fl'>16</span><span class='op'>*</span><span class='fl'>60</span>, <span class='va'>meanlog</span>, <span class='va'>sdlog</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>trial</span><span class='op'>]</span>
+
+<span class='co'># Compute the new expected number of survivors across all trials</span>
+<span class='va'>trials_counts_timed</span> <span class='op'>&lt;-</span> <span class='va'>sims_timed</span><span class='op'>[</span>, <span class='fu'>.</span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>alive</span><span class='op'>)</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>trial</span><span class='op'>]</span>
+<span class='va'>expected_survivors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>trials_counts_timed</span><span class='op'>$</span><span class='va'>count</span><span class='op'>)</span>
+<span class='va'>expected_survivors</span>
+<span class='co'># Plot the distribution of survivors across all trials</span>
+<span class='va'>trial_count_timed_summary</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>trials_counts_timed</span><span class='op'>$</span><span class='va'>count</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>trial_count_timed_summary</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"n_survivors"</span>, <span class='st'>"count"</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>trial_count_timed_summary</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>n_survivors</span>, y <span class='op'>=</span> <span class='va'>count</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.grid.minor <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='st'>"Outcomes of 10,000 trials"</span>,
+    x <span class='op'>=</span> <span class='st'>"Number of survivors"</span>,
+    y <span class='op'>=</span> <span class='st'>"Count"</span>
+  <span class='op'>)</span>
+<span class='co'># Plot the probability of survival based on the player order number</span>
+<span class='va'>survival_summary_timed</span> <span class='op'>&lt;-</span> <span class='va'>sims_timed</span><span class='op'>[</span>, 
+    <span class='fu'>.</span><span class='op'>(</span>p_survive <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>alive</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>num_trials</span><span class='op'>)</span>, by <span class='op'>=</span> <span class='va'>player</span><span class='op'>]</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>survival_summary_timed</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>player</span>, y <span class='op'>=</span> <span class='va'>p_survive</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='va'><a href='https://scales.r-lib.org/reference/label_percent.html'>percent</a></span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>panel.grid.minor <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_blank</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='st'>"Probability of survival based on player order number"</span>,
+    x <span class='op'>=</span> <span class='st'>"Player order number"</span>,
+    y <span class='op'>=</span> <span class='st'>"Probability"</span>
+  <span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
