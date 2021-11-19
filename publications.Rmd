@@ -44,6 +44,10 @@ icon_link(
 ```
 </center>
 
+(*indicates student advised by Helveston)
+
+
+
 ## Publications in Peer Reviewed Journals
 
 <br>`r aside_center_b("Haiku Summaries")`
@@ -80,7 +84,7 @@ icon_link(
 `r haiku("We live in networks;", "choice modelers should include", "them in their models")`
 
 <div class="pub">
-Roberson, Laura A. & **Helveston, John P.** (2020) "Electric vehicle adoption: can short experiences lead to big change?," _Environmental Research Letters_. 15(0940c3).
+*Roberson, Laura A. & **Helveston, John P.** (2020) "Electric vehicle adoption: can short experiences lead to big change?," _Environmental Research Letters_. 15(0940c3).
 `r doi("10.1088/1748-9326/aba715")`
 ```{r, echo=FALSE}
 icon_link(
@@ -183,6 +187,41 @@ icon_link(
 </div>
 `r haiku("Full electric cars:", "Chinese seem to like them more", "than Americans")`
 
+
+
+
+## Working Papers & Papers Under Review
+
+<div class="pub">
+**Helveston, J.P.** (2021) "`logitr`: Fast Estimation of Multinomial and Mixed Logit Models with Preference Space and Willingness to Pay Space Utility Parameterizations." _Under review_.
+</div>
+
+<div class="pub">
+Davidson, M.R., He, G., **Helveston, J.P.** (2021) "Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets." _Under review_.
+</div>
+
+<div class="pub">
+*Zhao, L., *Pantha, S., **Helveston, J.P.** "Measuring and modeling multi-modal trip choices with uncertain arrival times" _Working paper_.
+</div>
+
+<div class="pub">
+*Roberson, L.A. & **Helveston, J.P.**. "Identifying more efficient equitable plug-in electric vehicle financial incentives through consumer-centric design" _Working paper_.
+</div>
+
+<div class="pub">
+*Roberson, L.A. & **Helveston, J.P.**. "Identifying more efficient equitable plug-in electric vehicle financial incentives through consumer-centric design" _Working paper_.
+</div>
+
+<div class="pub">
+*Kaplan, L. & **Helveston, J.P.**. "Undercutting Transit? Exploring potential competition between autonomous vehicles and public transportation in the U.S." _Working paper_.
+</div>
+
+<div class="pub">
+Murphree, M., **Helveston, J.P.**, & Breznitz, D. "Intellectual Property as a Production Input: Expanding Theories of Institutional Change and Profiting from Innovation." _Under review_.
+</div>
+
+
+
 ## Full-Length Peer-Reviewed Conference Publications
 
 <div class="pub">
@@ -231,6 +270,8 @@ icon_link(
 </div>
 `r haiku("Full electric cars:", "Chinese seem to like them more", "than Americans")`
 
+
+
 ## Magazine Publications
 
 <div class="pub">
@@ -261,6 +302,8 @@ icon_link(
 ```
 </div>
 `r haiku("We should tax miles", "driven (not fuel consumed), or", "our roads will crumble")`
+
+
 
 ## Books / Book Chapters
 
@@ -294,24 +337,6 @@ icon_link(
     url  = "http://www.bu.edu/ise/research/meltingtheice/"
 )
 ```
-</div>
-
-## Working Papers
-
-<div class="pub">
-**Helveston, J.P.** (2021) "Multinomial Logit Models with Willingness to Pay Space Utility Specifications in R: The {logitr} Package." _Under review_.
-</div>
-
-<div class="pub">
-Davidson, M.R., He, G., **Helveston, J.P.** (2021) "Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets." _Under review_.
-</div>
-
-<div class="pub">
-Murphree, Michael, John P. Helveston, & Daniel Breznitz. "Intellectual Property as a Production Input: Expanding Theories of Institutional Change and Profiting from Innovation." _Under review_.
-</div>
-
-<div class="pub">
-Helveston, John P, Lujin Zhao, Saurav Pantha. "Are we there yet? The significance of arrival time uncertainty in multi-modal trip choices." _Working paper_.
 </div>
 
 ## Theses
@@ -375,7 +400,7 @@ icon_link(
 ## Software
 
 <div class="pub">
-**Helveston, John P.** (_aut_, _cre_, _cph_) (2021). _logitr_: Random utility logit models with preference and willingness to pay space parameterizations. R package version 0.3.0.
+**Helveston, John P.** (_aut_, _cre_, _cph_) (2021). `logitr`: Fast Estimation of Multinomial and Mixed Logit Models with Preference Space and Willingness to Pay Space Utility Parameterizations. R package version 0.4.0.
 ```{r, echo=FALSE}
 icon_link(
     icon = "fas fa-external-link-alt",
