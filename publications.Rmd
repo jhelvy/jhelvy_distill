@@ -209,10 +209,6 @@ Davidson, M.R., He, G., **Helveston, J.P.** (2021) "Quantifying the role of glob
 </div>
 
 <div class="pub">
-*Roberson, L.A. & **Helveston, J.P.**. "Identifying more efficient equitable plug-in electric vehicle financial incentives through consumer-centric design" _Working paper_.
-</div>
-
-<div class="pub">
 *Kaplan, L. & **Helveston, J.P.**. "Undercutting Transit? Exploring potential competition between autonomous vehicles and public transportation in the U.S." _Working paper_.
 </div>
 
