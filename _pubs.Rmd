@@ -1,0 +1,55 @@
+---
+title: "Publications"
+output:
+  distill::distill_article:
+    toc: true
+    css:
+      - css/jhelvy.css
+      - css/small-spacing.css
+twitter:
+  creator: "@JohnHelveston"
+base_url: https://www.jhelvy.com
+preview: images/helveston.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source(file.path("R", "functions.R"))
+library(distilltools)
+pubs <- readr::read_csv(here::here("content", "pubs.csv"))
+```
+
+<center>
+`r gscholar_stats("https://scholar.google.com/citations?user=DY2D56IAAAAJ")`
+</center>
+
+`r aside_center("Source: Google Scholar")`
+
+<center>
+```{r, echo=FALSE}
+icon_link(
+    icon = "ai ai-google-scholar",
+    text = "Google Scholar",
+    url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
+)
+icon_link(
+    icon = "ai ai-orcid",
+    text = "ORCID",
+    url  = "https://orcid.org/0000-0002-2657-9191"
+)
+icon_link(
+    icon = "ai ai-researchgate",
+    text = "Research Gate",
+    url  = "https://www.researchgate.net/profile/John_Helveston"
+)
+```
+</center>
+
+<br>
+
+(^†^indicates student advised by Helveston)
+`r aside_center_b("Haiku Summaries")`
+
+## Publications in Peer Reviewed Journals
+
+`r make_pub_list(pubs, "peer_reviewed")`

@@ -1,5 +1,63 @@
 library(htmltools)
 
+# Functions for pubs page: https://jhelvy.com/publications
+make_pub_list <- function(pubs, category) {
+  x <- subset(pubs, category == "peer_reviewed") 
+  return(paste(unlist(lapply(split(x, 1:nrow(x)), make_pub)), collapse = ""))
+}
+
+make_pub <- function(pub) {
+  return(HTML(
+      '<div class="pub">',
+      as.character(markdown_to_html(pub$citation)), 
+      doi(pub$doi),
+      '<br>',
+      make_icons(pub),
+      '</div>',
+      as.character(haiku(pub$haiku1, pub$haiku2, pub$haiku3))
+  ))
+}
+
+make_icons <- function(pub) {
+  html <- c()
+  if (!is.na(pub$url_pub)) {
+    html <- c(html, as.character(icon_link(
+      icon = "fas fa-external-link-alt",
+      text = "View in new tab",
+      url  = pub$url_pub
+    )))
+  }
+  if (!is.na(pub$url_pdf)) {
+    html <- c(html, as.character(icon_link(
+      icon = "fa fa-file-pdf",
+      text = "PDF",
+      url  = pub$url_pdf
+    )))
+  }
+  if (!is.na(pub$url_repo)) {
+    html <- c(html, as.character(icon_link(
+      icon = "fab fa-github",
+      text = "Code & Data",
+      url  = pub$url_repo
+    )))
+  }
+  if (!is.na(pub$url_rg)) {
+    html <- c(html, as.character(icon_link(
+      icon = "ai ai-researchgate",
+      text = "Research Gate",
+      url  = pub$url_rg
+    )))
+  }
+  if (!is.na(pub$url_other)) {
+    html <- c(html, as.character(icon_link(
+      icon = "fas fa-external-link-alt",
+      text = pub$other_label,
+      url  = pub$url_other
+    )))
+  }
+  return(paste(html, collapse = ""))
+}
+
 aside <- function(text) {
   return(tag("aside", list(text)))
 }
@@ -27,21 +85,23 @@ markdown_to_html <- function(text) {
   return(HTML(markdown::renderMarkdown(text = text)))
 }
 
-make_icon <- function(icon) {
-  return(tag("i", list(class = icon)))
-}
-
-make_icon_text <- function(icon, text) {
-  return(HTML(paste0(make_icon(icon), " ", text)))
-}
-
-# Creates the html to make a button to an external link
-icon_link <- function(icon = NULL, text = NULL, url = NULL) {
-  if (!is.null(icon)) {
-    text <- make_icon_text(icon, text)
-  }
-  return(a(href = url, text, class = "icon-link"))
-}
+# These are now in {distilltools} 
+#
+# make_icon <- function(icon) {
+#   return(tag("i", list(class = icon)))
+# }
+# 
+# make_icon_text <- function(icon, text) {
+#   return(HTML(paste0(make_icon(icon), " ", text)))
+# }
+# 
+# # Creates the html to make a button to an external link
+# icon_link <- function(icon = NULL, text = NULL, url = NULL) {
+#   if (!is.null(icon)) {
+#     text <- make_icon_text(icon, text)
+#   }
+#   return(a(href = url, text, class = "icon-link"))
+# }
 
 doi <- function(doi) {
   url <- paste0('https://doi.org/', doi)
@@ -68,112 +128,112 @@ get_cites <- function(url) {
   return(cites)
 }
 
-# Functions for projects page: https://jhelvy.github.io/projects
-make_posts_page <- function(posts) {
-  categories <- get_post_categories(posts)
-  posts <- unite_post_categories(posts, categories)
-  posts_html <- make_posts_html(posts)
-  cats_html <- make_cats_html(categories)
-  return(
-    div(class = "posts-container posts-with-sidebar posts-apply-limit l-screen-inset", 
-      posts_html,
-      cats_html
-  ))
-}
-
-get_post_categories <- function(posts) {
-  categories <- posts %>% 
-    select(-c("title", "src", "url", "description")) %>% 
-    pivot_longer(
-      cols = everything(),
-      names_to = "category",
-      values_to = "count") %>% 
-    group_by(category) %>% 
-    summarise(count = sum(count)) %>% 
-    arrange(desc(count))
-  return(categories)
-}
-
-unite_post_categories <- function(posts, categories) {
-  posts <- posts %>% 
-    pivot_longer(
-      names_to = "categories", 
-      values_to = "val", 
-      cols = categories$category) %>% 
-    mutate(val = ifelse(val == 1, categories, NA_character_)) %>% 
-    pivot_wider(
-      names_from = categories, 
-      values_from = val) %>% 
-    unite(
-      -c('title', 'src', 'url', 'description'), 
-      col = "categories", sep = ";", na.rm = T)
-  return(posts)
-}
-
-make_posts_html <- function(posts) {
-  posts_content <- list()
-  for (i in seq_len(nrow(posts))) {
-    posts_content[[i]] <- make_post_content(posts[i,])
-  }
-  return(div(class = "posts-list", posts_content))
-}
-
-make_post_content <- function(post) {
-  post_cats <- strsplit(post$categories, ";")[[1]]
-  post_tags <- get_post_tags(post_cats)
-  return(a(
-    href = post$url,
-    class = "post-preview",
-    HTML(
-      paste0(
-        '<script class="post-metadata" type="text/json">{"categories":[',
-        paste0(paste0('"', post_cats, '"'), collapse = ","),
-        ']}</script>'
-      )
-    ),
-    div(class = "metadata", div(class = "publishedDate")),
-    div(class = "thumbnail", img(src = post$src)),
-    div(class = "description",
-      h2(post$title),
-      post_tags,
-      p(post$description)
-    )
-  ))
-}
-
-get_post_tags <- function(post_cats) {
-  cats <- list()
-  for (i in seq_len(length(post_cats))) {
-    cats[[i]] <- div(class = "dt-tag", post_cats[i])
-  }
-  return(div(class = "dt-tags", cats))
-}
-
-make_cats_html <- function(categories) {
-  return(div(class = "posts-sidebar",
-    div(class = "sidebar-section categories",
-      h3("Categories"),
-      make_cats_list(categories)
-    )
-  ))
-}
-
-make_cats_list <- function(categories) {
-  cats_list <- list()
-  for (i in seq_len(nrow(categories))) {
-    cats_list[[i]] <- tags$li(
-      a(
-        href = paste0("#category:", categories$category[i]),
-        categories$category[i]
-      ),
-      HTML(paste0(
-        '<span class="category-count">(', 
-        categories$count[i], ')</span>'
-      ))
-    )
-  }
-  return(tags$ul(cats_list))
-}
+# Functions for (old) projects page: https://jhelvy.github.io/projects
+# make_posts_page <- function(posts) {
+#   categories <- get_post_categories(posts)
+#   posts <- unite_post_categories(posts, categories)
+#   posts_html <- make_posts_html(posts)
+#   cats_html <- make_cats_html(categories)
+#   return(
+#     div(class = "posts-container posts-with-sidebar posts-apply-limit l-screen-inset", 
+#       posts_html,
+#       cats_html
+#   ))
+# }
+# 
+# get_post_categories <- function(posts) {
+#   categories <- posts %>% 
+#     select(-c("title", "src", "url", "description")) %>% 
+#     pivot_longer(
+#       cols = everything(),
+#       names_to = "category",
+#       values_to = "count") %>% 
+#     group_by(category) %>% 
+#     summarise(count = sum(count)) %>% 
+#     arrange(desc(count))
+#   return(categories)
+# }
+# 
+# unite_post_categories <- function(posts, categories) {
+#   posts <- posts %>% 
+#     pivot_longer(
+#       names_to = "categories", 
+#       values_to = "val", 
+#       cols = categories$category) %>% 
+#     mutate(val = ifelse(val == 1, categories, NA_character_)) %>% 
+#     pivot_wider(
+#       names_from = categories, 
+#       values_from = val) %>% 
+#     unite(
+#       -c('title', 'src', 'url', 'description'), 
+#       col = "categories", sep = ";", na.rm = T)
+#   return(posts)
+# }
+# 
+# make_posts_html <- function(posts) {
+#   posts_content <- list()
+#   for (i in seq_len(nrow(posts))) {
+#     posts_content[[i]] <- make_post_content(posts[i,])
+#   }
+#   return(div(class = "posts-list", posts_content))
+# }
+# 
+# make_post_content <- function(post) {
+#   post_cats <- strsplit(post$categories, ";")[[1]]
+#   post_tags <- get_post_tags(post_cats)
+#   return(a(
+#     href = post$url,
+#     class = "post-preview",
+#     HTML(
+#       paste0(
+#         '<script class="post-metadata" type="text/json">{"categories":[',
+#         paste0(paste0('"', post_cats, '"'), collapse = ","),
+#         ']}</script>'
+#       )
+#     ),
+#     div(class = "metadata", div(class = "publishedDate")),
+#     div(class = "thumbnail", img(src = post$src)),
+#     div(class = "description",
+#       h2(post$title),
+#       post_tags,
+#       p(post$description)
+#     )
+#   ))
+# }
+# 
+# get_post_tags <- function(post_cats) {
+#   cats <- list()
+#   for (i in seq_len(length(post_cats))) {
+#     cats[[i]] <- div(class = "dt-tag", post_cats[i])
+#   }
+#   return(div(class = "dt-tags", cats))
+# }
+# 
+# make_cats_html <- function(categories) {
+#   return(div(class = "posts-sidebar",
+#     div(class = "sidebar-section categories",
+#       h3("Categories"),
+#       make_cats_list(categories)
+#     )
+#   ))
+# }
+# 
+# make_cats_list <- function(categories) {
+#   cats_list <- list()
+#   for (i in seq_len(nrow(categories))) {
+#     cats_list[[i]] <- tags$li(
+#       a(
+#         href = paste0("#category:", categories$category[i]),
+#         categories$category[i]
+#       ),
+#       HTML(paste0(
+#         '<span class="category-count">(', 
+#         categories$count[i], ')</span>'
+#       ))
+#     )
+#   }
+#   return(tags$ul(cats_list))
+# }
 
 create_footer <- function() {
 
