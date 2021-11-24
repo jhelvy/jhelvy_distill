@@ -3,18 +3,21 @@ library(htmltools)
 # Functions for pubs page: https://jhelvy.com/publications
 make_pub_list <- function(pubs, category) {
   x <- subset(pubs, category == "peer_reviewed") 
-  return(paste(unlist(lapply(split(x, 1:nrow(x)), make_pub)), collapse = ""))
+  pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
+  return(paste(unlist(pub_list), collapse = ""))
 }
 
 make_pub <- function(pub) {
+  # index number from the lapply
+  index <- parent.frame()$i[]
   return(HTML(
       '<div class="pub">',
-      as.character(markdown_to_html(pub$citation)), 
+      as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
       doi(pub$doi),
       '<br>',
       make_icons(pub),
       '</div>',
-      as.character(haiku(pub$haiku1, pub$haiku2, pub$haiku3))
+      as.character(haiku(index, pub$haiku1, pub$haiku2, pub$haiku3))
   ))
 }
 
@@ -74,7 +77,12 @@ aside_center_b <- function(text) {
   return(aside(center(list(tag("b", text)))))
 }
 
-haiku <- function(one, two, three) {
+haiku <- function(i, one, two, three) {
+  if (i == 1) {
+    return(aside_center(list(
+      HTML("<b>Haiku Summaries</b>"), br(), em(one, HTML("&#8226;"), two, HTML("&#8226;"), three)
+    )))    
+  }
   return(aside_center(list(
     em(one, HTML("&#8226;"), two, HTML("&#8226;"), three)
   )))

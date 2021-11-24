@@ -1,5 +1,5 @@
 ---
-title: "Publications"
+title: "Research"
 output:
   distill::distill_article:
     toc: true
@@ -48,8 +48,25 @@ icon_link(
 <br>
 
 (^†^indicates student advised by Helveston)
-`r aside_center_b("Haiku Summaries")`
 
 ## Publications in Peer Reviewed Journals
 
 `r make_pub_list(pubs, "peer_reviewed")`
+
+## Working Papers & Papers Under Review
+
+`r make_pub_list(pubs, "working")`
+
+## Full-Length Peer-Reviewed Conference Publications
+
+## Magazine Publications
+
+## Books / Book Chapters
+
+## Theses
+
+## Reports, Articles for Non-Academic Audiences, and Other Publications
+
+## Software
+
+## Media Coverage
