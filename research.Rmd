@@ -1,5 +1,6 @@
 ---
 title: "Research"
+description: I study how consumers, firms, markets, and policy affect technological change, with a goal of facilitating transitions to sustainable, low-carbon technologies.
 output:
   distill::distill_article:
     toc: true

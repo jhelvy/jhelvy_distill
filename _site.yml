@@ -28,8 +28,8 @@ navbar:
       href: about.html
     - text: "Lab"
       href: lab.html
-    - text: "Publications"
-      href: publications.html
+    - text: "Research"
+      href: research.html
     - text: "Talks"
       href: talks.html
     - text: "Teaching"
