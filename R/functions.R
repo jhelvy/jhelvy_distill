@@ -1,5 +1,9 @@
 library(htmltools)
 
+get_pubs <- function() {
+    return(gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU'))
+}
+
 # Functions for pubs page: https://jhelvy.com/publications
 make_pub_list <- function(pubs, category) {
   x <- pubs[which(pubs$category == category),]

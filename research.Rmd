@@ -17,7 +17,7 @@ preview: images/helveston.png
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
 library(distilltools)
-pubs <- readr::read_csv(here::here("content", "pubs.csv"))
+pubs <- get_pubs()
 ```
 
 <center>
