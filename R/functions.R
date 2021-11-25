@@ -2,23 +2,36 @@ library(htmltools)
 
 # Functions for pubs page: https://jhelvy.com/publications
 make_pub_list <- function(pubs, category) {
-  x <- subset(pubs, category == "peer_reviewed") 
+  x <- pubs[which(pubs$category == category),]
   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
   return(paste(unlist(pub_list), collapse = ""))
 }
 
 make_pub <- function(pub) {
-  # index number from the lapply
-  index <- parent.frame()$i[]
+  index <- parent.frame()$i[] # index number from the lapply
   return(HTML(
       '<div class="pub">',
       as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-      doi(pub$doi),
+      make_doi(pub),
       '<br>',
       make_icons(pub),
       '</div>',
-      as.character(haiku(index, pub$haiku1, pub$haiku2, pub$haiku3))
+      make_haiku(pub, index)
   ))
+}
+
+make_doi <- function(pub) {
+  if (!is.na(pub$doi)) {
+    return(doi(pub$doi))
+  }
+  return("")
+}
+
+make_haiku <- function(pub, index) {
+  if (!is.na(pub$haiku1)) {
+    return(as.character(haiku(index, pub$haiku1, pub$haiku2, pub$haiku3)))
+  }
+  return("")
 }
 
 make_icons <- function(pub) {
