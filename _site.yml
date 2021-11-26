@@ -30,10 +30,10 @@ navbar:
       href: lab.html
     - text: "Research"
       href: research.html
-    - text: "Talks"
-      href: talks.html
     - text: "Teaching"
       href: teaching.html
+    - text: "Talks"
+      href: talks.html
     - text: "Projects"
       href: projects.html
     - text: "Blog"
