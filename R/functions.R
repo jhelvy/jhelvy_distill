@@ -26,6 +26,7 @@ get_pubs <- function() {
 
 make_citations <- function(pubs) {
   pubs$citation <- unlist(lapply(split(pubs, 1:nrow(pubs)), make_citation))
+  return(pubs)
 }
 
 make_citation <- function(pub) {
@@ -61,10 +62,9 @@ make_pub <- function(pub) {
   index <- parent.frame()$i[] # index number from the lapply
   header <- FALSE
   if (index == 1) { header <- TRUE }
-  return(HTML(
+  return(paste0(
       '<div class="pub">',
       as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-      '<br>',
       make_icons(pub),
       '</div>',
       make_haiku(pub, header)
