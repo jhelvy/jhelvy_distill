@@ -1,5 +1,6 @@
 ---
 title: "Research"
+description: I study how consumers, firms, markets, and policy affect technological change, with a goal of facilitating transitions to sustainable, low-carbon technologies.
 output:
   distill::distill_article:
     toc: true
@@ -12,11 +13,19 @@ base_url: https://www.jhelvy.com
 preview: images/helveston.png
 ---
 
+<!-- Remove margin under list items -->
+<style>
+d-article ol {
+    margin-bottom: 5px;
+}
+</style>
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
 library(distilltools)
-pubs <- readr::read_csv(here::here("content", "pubs.csv"))
+pubs <- get_pubs()
+pubs <- make_citations(pubs)
 ```
 
 <center>
@@ -57,17 +66,29 @@ icon_link(
 
 `r make_pub_list(pubs, "working")`
 
-## Full-Length Peer-Reviewed Conference Publications
+## Conference Publications
+
+`r make_pub_list(pubs, "conference")`
 
 ## Magazine Publications
 
+`r make_pub_list(pubs, "magazine")`
+
 ## Books / Book Chapters
+
+`r make_pub_list(pubs, "book")`
 
 ## Theses
 
+`r make_pub_list(pubs, "theses")`
+
 ## Reports, Articles for Non-Academic Audiences, and Other Publications
 
+`r make_pub_list(pubs, "other")`
+
 ## Software
+
+`r make_pub_list(pubs, "software")`
 
 ## Media Coverage
 

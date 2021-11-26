@@ -17,6 +17,7 @@ Imports:
     distilltools,
     emo,
     fontawesome,
+    gsheet,
     here,
     htmltools,
     janitor,

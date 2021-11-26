@@ -28,12 +28,12 @@ navbar:
       href: about.html
     - text: "Lab"
       href: lab.html
-    - text: "Publications"
-      href: publications.html
-    - text: "Talks"
-      href: talks.html
+    - text: "Research"
+      href: research.html
     - text: "Teaching"
       href: teaching.html
+    - text: "Talks"
+      href: talks.html
     - text: "Projects"
       href: projects.html
     - text: "Blog"
