@@ -1,21 +1,97 @@
 library(htmltools)
 
+gscholar_stats <- function(url) {
+  cites <- get_cites(url)
+  return(paste(
+    'Citations:', cites$citations, '|',
+    'h-index:',   cites$hindex, '|',
+    'i10-index:', cites$i10index
+  ))
+}
+
+get_cites <- function(url) {
+  html <- xml2::read_html(url)
+  node <- rvest::html_nodes(html, xpath='//*[@id="gsc_rsb_st"]')
+  cites_df <- rvest::html_table(node)[[1]]
+  names(cites_df)[1] <- "category"
+  cites_df$`Since 2016` <- NULL
+  cites <- tidyr::spread(cites_df, category, All)
+  names(cites) <- c('citations', 'hindex', 'i10index')
+  return(cites)
+}
+
+get_pubs <- function() {
+    return(gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU'))
+}
+
+make_citations <- function(pubs) {
+  pubs$citation <- unlist(lapply(split(pubs, 1:nrow(pubs)), make_citation))
+  return(pubs)
+}
+
+make_citation <- function(pub) {
+  if (!is.na(pub$journal)) {
+    pub$journal <- paste0('_', pub$journal, '_.')
+  }
+  if (!is.na(pub$number)) {
+    pub$number <- paste0(pub$number, '.')
+  }
+  if (!is.na(pub$doi)) {
+    pub$doi <- make_doi(pub$doi)
+  }
+  pub$year <- paste0("(", pub$year, ")")
+  pub$title <- paste0('"', pub$title, '"')
+  pub[,which(is.na(pub))] <- ''
+  paste(
+    pub$author, pub$year, pub$title, pub$journal, 
+    pub$number, pub$doi)
+}
+
+make_doi <- function(doi) {
+  return(paste0('DOI: [', doi, '](', 'https://doi.org/', doi, ')'))
+}
+
 # Functions for pubs page: https://jhelvy.com/publications
 make_pub_list <- function(pubs, category) {
-  x <- subset(pubs, category == "peer_reviewed") 
-  return(paste(unlist(lapply(split(x, 1:nrow(x)), make_pub)), collapse = ""))
+  x <- pubs[which(pubs$category == category),]
+  pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
+  return(paste(unlist(pub_list), collapse = ""))
 }
 
 make_pub <- function(pub) {
-  return(HTML(
+  index <- parent.frame()$i[] # index number from the lapply
+  header <- FALSE
+  if (index == 1) { header <- TRUE }
+  return(paste0(
       '<div class="pub">',
-      as.character(markdown_to_html(pub$citation)), 
-      doi(pub$doi),
-      '<br>',
+      as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
       make_icons(pub),
       '</div>',
-      as.character(haiku(pub$haiku1, pub$haiku2, pub$haiku3))
+      make_haiku(pub, header)
   ))
+}
+
+make_haiku <- function(pub, header = FALSE) {
+  html <- ""
+  if (!is.na(pub$haiku1)) {
+    if (header) {
+      html <- as.character(aside_center(list(
+        HTML("<b>Haiku Summaries</b>"), 
+        br(), 
+        em(
+          pub$haiku1, HTML("&#8226;"), 
+          pub$haiku2, HTML("&#8226;"), 
+          pub$haiku3)
+      )))
+    } else {
+      html <- as.character(aside_center(list(em(
+        pub$haiku1, HTML("&#8226;"), 
+        pub$haiku2, HTML("&#8226;"), 
+        pub$haiku3)
+      )))
+    }
+  }
+  return(html)
 }
 
 make_icons <- function(pub) {
@@ -74,12 +150,6 @@ aside_center_b <- function(text) {
   return(aside(center(list(tag("b", text)))))
 }
 
-haiku <- function(one, two, three) {
-  return(aside_center(list(
-    em(one, HTML("&#8226;"), two, HTML("&#8226;"), three)
-  )))
-}
-
 markdown_to_html <- function(text) {
   if (is.null(text)) { return(text) }
   return(HTML(markdown::renderMarkdown(text = text)))
@@ -102,31 +172,6 @@ markdown_to_html <- function(text) {
 #   }
 #   return(a(href = url, text, class = "icon-link"))
 # }
-
-doi <- function(doi) {
-  url <- paste0('https://doi.org/', doi)
-  return(paste0('DOI: ', a(href = url, doi)))
-}
-
-gscholar_stats <- function(url) {
-  cites <- get_cites(url)
-  return(paste(
-    'Citations:', cites$citations, '|',
-    'h-index:',   cites$hindex, '|',
-    'i10-index:', cites$i10index
-  ))
-}
-
-get_cites <- function(url) {
-  html <- xml2::read_html(url)
-  node <- rvest::html_nodes(html, xpath='//*[@id="gsc_rsb_st"]')
-  cites_df <- rvest::html_table(node)[[1]]
-  names(cites_df)[1] <- "category"
-  cites_df$`Since 2016` <- NULL
-  cites <- tidyr::spread(cites_df, category, All)
-  names(cites) <- c('citations', 'hindex', 'i10index')
-  return(cites)
-}
 
 # Functions for (old) projects page: https://jhelvy.github.io/projects
 # make_posts_page <- function(posts) {
