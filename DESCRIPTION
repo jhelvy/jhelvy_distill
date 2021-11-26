@@ -23,6 +23,7 @@ Imports:
     janitor,
     kableExtra,
     knitr,
+    markdown,
     metathis,
     postcards,
     remotes,
