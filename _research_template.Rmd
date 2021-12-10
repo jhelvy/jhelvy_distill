@@ -1,0 +1,16 @@
+---
+params: 
+    pub: pub
+    title: "title"
+title: "`r params$title`"
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true
+    css:
+      - css/jhelvy.css
+      - css/small-spacing.css
+twitter:
+  creator: "@JohnHelveston"
+base_url: https://www.jhelvy.com
+---

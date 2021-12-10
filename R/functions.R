@@ -332,4 +332,16 @@ save_raw <- function(text, path) {
 # For creating individual pages in the "research" folder 
 make_research_pages <- function() {
     pubs <- get_pubs()
+    render_research_page(pubs[1,])
 }
+
+render_research_page <- function(pub) {
+    stub <- paste0(
+        pub$pub_date, '-', 
+        str_replace_all(str_to_lower(pub$journal), ' ', '-'), '.html')
+    outfile <- file.path('research', stub)
+    rmarkdown::render(
+        input = here::here('_research_template.Rmd'),
+        output_file = outfile,
+        params = list(pub = pub, title = pub$title))
+}    
