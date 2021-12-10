@@ -23,9 +23,7 @@ d-article ol {
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
-library(distilltools)
 pubs <- get_pubs()
-pubs <- make_citations(pubs)
 ```
 
 <center>

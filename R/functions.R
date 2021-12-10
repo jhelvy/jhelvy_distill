@@ -1,4 +1,5 @@
 library(htmltools)
+library(distilltools)
 
 gscholar_stats <- function(url) {
   cites <- get_cites(url)
@@ -21,7 +22,9 @@ get_cites <- function(url) {
 }
 
 get_pubs <- function() {
-    return(gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU'))
+    pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
+    pubs <- make_citations(pubs)    
+    return(pubs)
 }
 
 make_citations <- function(pubs) {
@@ -324,4 +327,9 @@ save_raw <- function(text, path) {
     fileConn <- file(path)
     writeLines(text, fileConn)
     close(fileConn)
+}
+
+# For creating individual pages in the "research" folder 
+make_research_pages <- function() {
+    pubs <- get_pubs()
 }
