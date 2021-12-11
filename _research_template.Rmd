@@ -1,16 +1,34 @@
 ---
 params: 
     pub: pub
-    title: "title"
-title: "`r params$title`"
+title: "`r params$pub$title`"
+description: "`r params$pub$author`, _`r params$pub$journal`_, `r params$pub$year`"
 output:
   distill::distill_article:
-    self_contained: true
-    toc: true
-    css:
-      - css/jhelvy.css
-      - css/small-spacing.css
+    toc: false
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
 ---
+
+`r make_icons(pub)`
+
+```{r, echo=FALSE, fig.align='center', out.width="100%"}
+if (pub$image) {
+    knitr::include_graphics(file.path("images", "pubs", paste0(pub$stub, ".png")))
+}
+```
+
+**Abstract**:
+
+`r pub$abstract`
+
+**Recommended Citation**:
+
+`r pub$citation`
+
+**Bibtex**:
+
+```{r, echo=FALSE}
+cat(pub$bibtex)
+```

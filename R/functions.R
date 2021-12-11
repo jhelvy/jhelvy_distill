@@ -1,5 +1,6 @@
 library(htmltools)
 library(distilltools)
+library(stringr)
 
 gscholar_stats <- function(url) {
   cites <- get_cites(url)
@@ -23,7 +24,10 @@ get_cites <- function(url) {
 
 get_pubs <- function() {
     pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
-    pubs <- make_citations(pubs)    
+    pubs <- make_citations(pubs)
+    pubs$stub <- paste0(
+        pubs$year, '-', 
+        str_replace_all(str_to_lower(pubs$journal), ' ', '-'))
     return(pubs)
 }
 
@@ -336,12 +340,10 @@ make_research_pages <- function() {
 }
 
 render_research_page <- function(pub) {
-    stub <- paste0(
-        pub$pub_date, '-', 
-        str_replace_all(str_to_lower(pub$journal), ' ', '-'), '.html')
-    outfile <- file.path('research', stub)
+    outfile <- file.path('research', paste0(pub$stub, ".html"))
     rmarkdown::render(
         input = here::here('_research_template.Rmd'),
         output_file = outfile,
-        params = list(pub = pub, title = pub$title))
+        params = list(pub = pub)
+    )
 }    
