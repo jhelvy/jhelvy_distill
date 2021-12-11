@@ -345,7 +345,12 @@ save_raw <- function(text, path) {
 # For creating individual pages in the "research" folder 
 make_research_pages <- function() {
     pubs <- get_pubs()
-    render_research_page(pubs[1,])
+    for (i in seq_len(nrow(pubs))) {
+        pub <- pubs[i,]
+        if (pub$details) {
+            render_research_page(pub)
+        }
+    }
 }
 
 render_research_page <- function(pub) {
