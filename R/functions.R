@@ -25,9 +25,11 @@ get_cites <- function(url) {
 get_pubs <- function() {
     pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
     pubs <- make_citations(pubs)
+    pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
     pubs$stub <- paste0(
         pubs$year, '-', 
         str_replace_all(str_to_lower(pubs$journal), ' ', '-'))
+    pubs$url_details <- file.path('research', paste0(pubs$stub, ".html"))
     return(pubs)
 }
 
@@ -72,7 +74,7 @@ make_pub <- function(pub) {
   return(paste0(
       '<div class="pub">',
       as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-      make_icons(pub),
+      make_icons(pub, details = pub$details),
       '</div>',
       make_haiku(pub, header)
   ))
@@ -101,15 +103,22 @@ make_haiku <- function(pub, header = FALSE) {
   return(html)
 }
 
-make_icons <- function(pub) {
+make_icons <- function(pub, details = TRUE) {
   html <- c()
-  if (!is.na(pub$url_pub)) {
+  if (details) {
     html <- c(html, as.character(icon_link(
       icon = "fas fa-external-link-alt",
-      text = "View in new tab",
-      url  = pub$url_pub
-    )))
+      text = "View details",
+      url  = pub$url_details
+    )))      
   }
+  # if (!is.na(pub$url_pub)) {
+  #   html <- c(html, as.character(icon_link(
+  #     icon = "fas fa-external-link-alt",
+  #     text = "View in new tab",
+  #     url  = pub$url_pub
+  #   )))
+  # }
   if (!is.na(pub$url_pdf)) {
     html <- c(html, as.character(icon_link(
       icon = "fa fa-file-pdf",
@@ -340,10 +349,9 @@ make_research_pages <- function() {
 }
 
 render_research_page <- function(pub) {
-    outfile <- file.path('research', paste0(pub$stub, ".html"))
     rmarkdown::render(
         input = here::here('_research_template.Rmd'),
-        output_file = outfile,
+        output_file = pub$url_details,
         params = list(pub = pub)
     )
 }    
