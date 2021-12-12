@@ -16,6 +16,17 @@ twitter:
 base_url: https://www.jhelvy.com
 ---
 
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"></i>",
+    success_text = "<i class=\"fa fa-check fa-3x\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle  fa-3x\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
 <center>
 ### _`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
 </center>
