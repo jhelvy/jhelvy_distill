@@ -4,7 +4,7 @@ source(file.path("R", "functions.R"))
 create_footer()
 
 # Build pages for "research" folder
-make_research_pages()
+# make_research_pages()
 
 # Then render the site
 rmarkdown::render_site(encoding = 'UTF-8')
