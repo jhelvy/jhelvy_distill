@@ -2,7 +2,12 @@
 params: 
     pub: pub
 title: "`r params$pub$title`"
-description: "`r params$pub$author`, _`r params$pub$journal`_, `r params$pub$year`, `r make_doi(pub$doi)`"
+description: |
+  `r params$pub$author`
+  _`r params$pub$journal`_, `r params$pub$year`
+  `r make_doi(pub$doi)`
+  
+  `r make_icons(pub, details = FALSE)`
 output:
   distill::distill_article:
     toc: false
@@ -11,7 +16,11 @@ twitter:
 base_url: https://www.jhelvy.com
 ---
 
-`r make_icons(pub, details = FALSE)`
+<center>
+### _`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
+</center>
+
+<br>
 
 ```{r, echo=FALSE, fig.align='center', out.width="100%"}
 if (pub$image) {
