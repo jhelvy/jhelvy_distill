@@ -54,9 +54,9 @@ icon_link(
 
 <br>
 
-(^†^indicates student advised by Helveston)
+## Publications in Peer Reviewed Journals 
 
-## Publications in Peer Reviewed Journals
+<aside>*indicates student advised by Helveston</aside>
 
 `r make_pub_list(pubs, "peer_reviewed")`
 

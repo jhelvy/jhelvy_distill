@@ -3,7 +3,7 @@ params:
     pub: pub
 title: "`r params$pub$title`"
 description: |
-  `r params$pub$author`
+  `r params$pub$author`<br>
   _`r params$pub$journal`_, `r params$pub$year`<br>
   `r make_doi(pub$doi)`
   
@@ -16,7 +16,11 @@ twitter:
 base_url: https://www.jhelvy.com
 ---
 
-```{r xaringanExtra-clipboard, echo=FALSE}
+```{r setup, echo=FALSE}
+pub <- params$pub
+pub$citation <- str_replace(pub$citation, "\\\\\\*", "")
+
+# For clipboard in bibtex
 htmltools::tagList(
   xaringanExtra::use_clipboard(
     button_text = "<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"></i>",
@@ -28,7 +32,9 @@ htmltools::tagList(
 ```
 
 <center>
-### _`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
+### Haiku Summary
+
+_`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
 </center>
 
 <br>
