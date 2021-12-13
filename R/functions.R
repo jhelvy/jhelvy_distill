@@ -26,9 +26,7 @@ get_pubs <- function() {
     pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
     pubs <- make_citations(pubs)
     pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
-    pubs$stub <- paste0(
-        pubs$year, '-', 
-        str_replace_all(str_to_lower(pubs$journal), ' ', '-'))
+    pubs$stub <- make_stubs(pubs)
     pubs$url_details <- file.path('research', paste0(pubs$stub, ".html"))
     return(pubs)
 }
@@ -58,6 +56,19 @@ make_citation <- function(pub) {
 
 make_doi <- function(doi) {
   return(paste0('DOI: [', doi, '](', 'https://doi.org/', doi, ')'))
+}
+
+make_stubs <- function(pubs) {
+    journal <- str_to_lower(pubs$journal)
+    journal <- str_replace_all(journal, ':', '')
+    journal <- str_replace_all(journal, '`', '')
+    journal <- str_replace_all(journal, "'", '')
+    journal <- str_replace_all(journal, "\\.", '')
+    journal <- str_replace_all(journal, "&", '')
+    journal <- str_replace_all(journal, ',', '')
+    journal <- str_replace_all(journal, '  ', '-')
+    journal <- str_replace_all(journal, ' ', '-')
+    return(paste0(pubs$year, '-', journal))
 }
 
 # Functions for pubs page: https://jhelvy.com/publications

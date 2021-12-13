@@ -4,7 +4,7 @@ params:
 title: "`r params$pub$title`"
 description: |
   `r params$pub$author`
-  _`r params$pub$journal`_, `r params$pub$year`
+  _`r params$pub$journal`_, `r params$pub$year`<br>
   `r make_doi(pub$doi)`
   
   `r make_icons(pub, details = FALSE)`
