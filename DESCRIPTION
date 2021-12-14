@@ -31,6 +31,7 @@ Imports:
     roxygen2,
     tidyverse,
     viridis,
+    xaringanExtra,
     yaml
 Remotes:
     djnavarro/bs4cards,
@@ -38,4 +39,5 @@ Remotes:
     hadley/emo,
     rstudio/fontawesome,
     haozhu233/kableExtra,
-    rstudio/rmarkdown
+    rstudio/rmarkdown,
+    gadenbuie/xaringanExtra
