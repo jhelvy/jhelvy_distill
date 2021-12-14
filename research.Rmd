@@ -23,9 +23,7 @@ d-article ol {
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
-library(distilltools)
 pubs <- get_pubs()
-pubs <- make_citations(pubs)
 ```
 
 <center>
@@ -56,9 +54,9 @@ icon_link(
 
 <br>
 
-(^†^indicates student advised by Helveston)
+## Publications in Peer Reviewed Journals 
 
-## Publications in Peer Reviewed Journals
+<aside>*indicates student advised by Helveston</aside>
 
 `r make_pub_list(pubs, "peer_reviewed")`
 

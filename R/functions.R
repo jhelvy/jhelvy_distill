@@ -1,4 +1,6 @@
 library(htmltools)
+library(distilltools)
+library(stringr)
 
 gscholar_stats <- function(url) {
   cites <- get_cites(url)
@@ -21,7 +23,12 @@ get_cites <- function(url) {
 }
 
 get_pubs <- function() {
-    return(gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU'))
+    pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
+    pubs <- make_citations(pubs)
+    pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
+    pubs$stub <- make_stubs(pubs)
+    pubs$url_details <- file.path('research', paste0(pubs$stub, ".html"))
+    return(pubs)
 }
 
 make_citations <- function(pubs) {
@@ -51,6 +58,19 @@ make_doi <- function(doi) {
   return(paste0('DOI: [', doi, '](', 'https://doi.org/', doi, ')'))
 }
 
+make_stubs <- function(pubs) {
+    journal <- str_to_lower(pubs$journal)
+    journal <- str_replace_all(journal, ':', '')
+    journal <- str_replace_all(journal, '`', '')
+    journal <- str_replace_all(journal, "'", '')
+    journal <- str_replace_all(journal, "\\.", '')
+    journal <- str_replace_all(journal, "&", '')
+    journal <- str_replace_all(journal, ',', '')
+    journal <- str_replace_all(journal, '  ', '-')
+    journal <- str_replace_all(journal, ' ', '-')
+    return(paste0(pubs$year, '-', journal))
+}
+
 # Functions for pubs page: https://jhelvy.com/publications
 make_pub_list <- function(pubs, category) {
   x <- pubs[which(pubs$category == category),]
@@ -65,7 +85,7 @@ make_pub <- function(pub) {
   return(paste0(
       '<div class="pub">',
       as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-      make_icons(pub),
+      make_icons(pub, details = pub$details),
       '</div>',
       make_haiku(pub, header)
   ))
@@ -94,15 +114,22 @@ make_haiku <- function(pub, header = FALSE) {
   return(html)
 }
 
-make_icons <- function(pub) {
+make_icons <- function(pub, details = TRUE) {
   html <- c()
-  if (!is.na(pub$url_pub)) {
+  if (details) {
     html <- c(html, as.character(icon_link(
       icon = "fas fa-external-link-alt",
-      text = "View in new tab",
-      url  = pub$url_pub
-    )))
+      text = "View details",
+      url  = pub$url_details
+    )))      
   }
+  # if (!is.na(pub$url_pub)) {
+  #   html <- c(html, as.character(icon_link(
+  #     icon = "fas fa-external-link-alt",
+  #     text = "View in new tab",
+  #     url  = pub$url_pub
+  #   )))
+  # }
   if (!is.na(pub$url_pdf)) {
     html <- c(html, as.character(icon_link(
       icon = "fa fa-file-pdf",
@@ -325,3 +352,22 @@ save_raw <- function(text, path) {
     writeLines(text, fileConn)
     close(fileConn)
 }
+
+# For creating individual pages in the "research" folder 
+make_research_pages <- function() {
+    pubs <- get_pubs()
+    for (i in seq_len(nrow(pubs))) {
+        pub <- pubs[i,]
+        if (pub$details) {
+            render_research_page(pub)
+        }
+    }
+}
+
+render_research_page <- function(pub) {
+    rmarkdown::render(
+        input = here::here('_research_template.Rmd'),
+        output_file = pub$url_details,
+        params = list(pub = pub)
+    )
+}    
