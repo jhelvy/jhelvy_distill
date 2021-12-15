@@ -188,18 +188,19 @@ markdown_to_html <- function(text) {
 # optional target argument
 
 icon_link_custom <- function(
-  icon = NULL, text = NULL, url = NULL, class = NULL, target = NULL
+  icon = NULL,
+  text = NULL,
+  url = NULL,
+  style = "default",
+  class = "icon-link",
+  target = "_blank",
 ) {
-  if (is.null(target)) {
-    target <- "_blank"
-  }
-  if (is.null(class)) {
-    class <- "icon-link"
-  }
   if (!is.null(icon)) {
-    text <- make_icon_text(icon, text)
+    text <- make_icon_text(icon, text, style = style)
   }
-  return(a(href = url, text, class = class, target = target, rel = "noopener"))
+  return(htmltools::a(
+    href = url, text, class = class, target = target, rel = "noopener"
+  ))
 }
 
 make_icon_text <- function(icon, text) {
