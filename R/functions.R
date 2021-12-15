@@ -117,42 +117,43 @@ make_haiku <- function(pub, header = FALSE) {
 make_icons <- function(pub, details = TRUE) {
   html <- c()
   if (details) {
-    html <- c(html, as.character(icon_link(
+    html <- c(html, as.character(icon_link_custom(
       icon = "fas fa-external-link-alt",
-      text = "View details",
-      url  = pub$url_details
+      text = "Details",
+      url  = pub$url_details, 
+      class = "icon-link-details"
     )))      
   }
-  # if (!is.na(pub$url_pub)) {
-  #   html <- c(html, as.character(icon_link(
-  #     icon = "fas fa-external-link-alt",
-  #     text = "View in new tab",
-  #     url  = pub$url_pub
-  #   )))
-  # }
+  if (!is.na(pub$url_pub)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fas fa-external-link-alt",
+      text = "View",
+      url  = pub$url_pub
+    )))
+  }
   if (!is.na(pub$url_pdf)) {
-    html <- c(html, as.character(icon_link(
+    html <- c(html, as.character(icon_link_custom(
       icon = "fa fa-file-pdf",
       text = "PDF",
       url  = pub$url_pdf
     )))
   }
   if (!is.na(pub$url_repo)) {
-    html <- c(html, as.character(icon_link(
+    html <- c(html, as.character(icon_link_custom(
       icon = "fab fa-github",
       text = "Code & Data",
       url  = pub$url_repo
     )))
   }
   if (!is.na(pub$url_rg)) {
-    html <- c(html, as.character(icon_link(
+    html <- c(html, as.character(icon_link_custom(
       icon = "ai ai-researchgate",
       text = "Research Gate",
       url  = pub$url_rg
     )))
   }
   if (!is.na(pub$url_other)) {
-    html <- c(html, as.character(icon_link(
+    html <- c(html, as.character(icon_link_custom(
       icon = "fas fa-external-link-alt",
       text = pub$other_label,
       url  = pub$url_other
@@ -182,23 +183,32 @@ markdown_to_html <- function(text) {
   return(HTML(markdown::renderMarkdown(text = text)))
 }
 
-# These are now in {distilltools} 
-#
-# make_icon <- function(icon) {
-#   return(tag("i", list(class = icon)))
-# }
-# 
-# make_icon_text <- function(icon, text) {
-#   return(HTML(paste0(make_icon(icon), " ", text)))
-# }
-# 
-# # Creates the html to make a button to an external link
-# icon_link <- function(icon = NULL, text = NULL, url = NULL) {
-#   if (!is.null(icon)) {
-#     text <- make_icon_text(icon, text)
-#   }
-#   return(a(href = url, text, class = "icon-link"))
-# }
+# These are now in {distilltools}, but I've modified this one to include 
+# a custom class to be able to have more control over the CSS and an
+# optional target argument
+
+icon_link_custom <- function(
+  icon = NULL, text = NULL, url = NULL, class = NULL, target = NULL
+) {
+  if (is.null(target)) {
+    target <- "_blank"
+  }
+  if (is.null(class)) {
+    class <- "icon-link"
+  }
+  if (!is.null(icon)) {
+    text <- make_icon_text(icon, text)
+  }
+  return(a(href = url, text, class = class, target = target, rel = "noopener"))
+}
+
+make_icon_text <- function(icon, text) {
+  return(HTML(paste0(make_icon(icon), " ", text)))
+}
+
+make_icon <- function(icon) {
+  return(tag("i", list(class = icon)))
+}
 
 # Functions for (old) projects page: https://jhelvy.github.io/projects
 # make_posts_page <- function(posts) {
