@@ -191,17 +191,17 @@ icon_link_custom <- function(
   icon = NULL,
   text = NULL,
   url = NULL,
-  style = "default",
   class = "icon-link",
-  target = "_blank",
+  target = "_blank"
 ) {
   if (!is.null(icon)) {
-    text <- make_icon_text(icon, text, style = style)
+    text <- make_icon_text(icon, text)
   }
   return(htmltools::a(
     href = url, text, class = class, target = target, rel = "noopener"
   ))
 }
+
 
 make_icon_text <- function(icon, text) {
   return(HTML(paste0(make_icon(icon), " ", text)))
