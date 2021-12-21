@@ -19,6 +19,7 @@
       <link>https://www.jhelvy.com/posts/2021-10-19-monte-carlo-bridge-game</link>
       <description>A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**</description>
       <category>R</category>
+      <category>monte carlo</category>
       <guid>https://www.jhelvy.com/posts/2021-10-19-monte-carlo-bridge-game</guid>
       <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-10-19-monte-carlo-bridge-game/squid-game.png" medium="image" type="image/png" width="2286" height="1326"/>
