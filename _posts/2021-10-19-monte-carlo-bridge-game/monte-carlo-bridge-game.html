@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Simulating the Squid Game bridge scene in R"]},{"type":"character","attributes":{},"value":["A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["John Paul Helveston"]}]}]},{"type":"character","attributes":{},"value":["2021-10-19"]},{"type":"character","attributes":{},"value":["squid-game.png"]},{"type":"character","attributes":{},"value":["R"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Simulating the Squid Game bridge scene in R"]},{"type":"character","attributes":{},"value":["A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["John Paul Helveston"]}]}]},{"type":"character","attributes":{},"value":["2021-10-19"]},{"type":"character","attributes":{},"value":["squid-game.png"]},{"type":"character","attributes":{},"value":["R","monte carlo"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1472,6 +1472,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
 <div class="dt=tag">R</div>
+<div class="dt=tag">monte carlo</div>
 </div>
 <!--/radix_placeholder_categories-->
 <p><p>A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene <strong>Contains Spoilers</strong></p></p>
@@ -1493,7 +1494,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#estimating-the-expected-number-of-survivors">Estimating the expected number of survivors</a></li>
 <li><a href="#choose-wisely">Choose wisely</a></li>
 <li><a href="#how-many-steps-to-include">How many steps to include?</a></li>
-<li><a href="#revision-1---including-time">Revision 1 - including time</a></li>
+<li><a href="#update-1---including-time">Update 1 - including time</a></li>
+<li><a href="#update-2">Update 2</a></li>
 <li><a href="#appendix">Appendix</a></li>
 </ul>
 </nav>
@@ -1756,7 +1758,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt; 6:    23    0.107</code></pre>
 </div>
 <p>Okay, that’s it! I’m sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.</p>
-<h1 id="revision-1---including-time">Revision 1 - including time</h1>
+<h1 id="update-1---including-time">Update 1 - including time</h1>
 <p><em>Updated October 22, 2021</em></p>
 <p>Many people on <a href="https://twitter.com/JohnHelveston/status/1450830941056815105?s=20">twitter</a> and <a href="https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/">reddit</a> had some great suggestions about this post. In particular, <span class="citation" data-cites="evalparse">@evalparse</span> had a <a href="https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw">brilliant, one-line solution</a> for simulating the number of survivors in one game:</p>
 <center>
@@ -1891,6 +1893,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="figs/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <p>This is of course is not quite what might be expected. Instead, I would expect the probability to be a tiny bit lower for the very last player or two as they could get left behind. But I chose to ignore feature as the lead player delay seemed to be a much bigger factor in determining survival. Plus, if you have an issue with how “realistic” my modeling is, I would encourage you to remember the context of this entire exercise (if you think <em>anything</em> about this is realistic, please see a psychiatrist).</p>
+<h1 id="update-2">Update 2</h1>
+<p><em>Updated December 21, 2021</em></p>
+<p>Lukas Gröninger wrote a <a href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/">similar post</a> on his blog where he also provides the <a href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/#mathematical-solution">mathematical solution</a> to the expected number of survivors - check it out!</p>
 <h1 id="appendix">Appendix</h1>
 <p>Here is the combined code for this entire simulation:</p>
 <div class="layout-chunk" data-layout="l-body">

@@ -7,6 +7,7 @@ date: '2021-10-19'
 preview: "squid-game.png"
 categories:
   - R
+  - monte carlo
 output:
   distill::distill_article:
     self_contained: false
@@ -240,7 +241,7 @@ step_summary[steps %in% seq(18, 23)]
 
 Okay, that's it! I'm sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.
 
-# Revision 1 - including time
+# Update 1 - including time
 
 _Updated October 22, 2021_
 
@@ -371,6 +372,12 @@ ggplot(survival_summary_timed) +
 ```
 
 This is of course is not quite what might be expected. Instead, I would expect the probability to be a tiny bit lower for the very last player or two as they could get left behind. But I chose to ignore feature as the lead player delay seemed to be a much bigger factor in determining survival. Plus, if you have an issue with how "realistic" my modeling is, I would encourage you to remember the context of this entire exercise (if you think _anything_ about this is realistic, please see a psychiatrist).
+
+# Update 2
+
+_Updated December 21, 2021_
+
+Lukas Gröninger wrote a [similar post](https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/) on his blog where he also provides the [mathematical solution](https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/#mathematical-solution) to the expected number of survivors - check it out!
 
 # Appendix
 
