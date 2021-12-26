@@ -30,6 +30,7 @@ This course provides a foundation in programming for analytics using the [R prog
 <aside>
 **Semesters Taught**:
 
+- [Spring 2022](https://p4a.seas.gwu.edu/2022-Spring/)
 - [Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)
 - [Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)
 </aside>
