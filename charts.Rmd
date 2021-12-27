@@ -1,0 +1,58 @@
+---
+title: "Charts"
+output:
+  distill::distill_article:
+    toc: true
+    toc_level: 2
+    css:
+      - css/jhelvy.css
+      - css/small-spacing.css
+twitter:
+  creator: "@JohnHelveston"
+base_url: https://www.jhelvy.com
+preview: https://github.com/jhelvy/charts/raw/master/climateChangeBarcode/plots/nasa_global_preview.png
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.retina = 3,
+  comment = "#>"
+)
+library(dplyr)
+charts <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1Zj1jXqV5XsAXeIkUPzCJkvMrU5ah_y6VHb-san0Baio/edit?usp=sharing') %>% 
+    mutate(
+        url_repo = paste0(
+            "https://github.com/jhelvy/charts/tree/master/", name),
+        url_image = paste0(
+            "https://raw.githubusercontent.com/jhelvy/charts/master/",
+            name, "/plots/", image, ".png")
+    )
+```
+
+A bunch of reproducible charts. All data and source code are available on [this repo](https://github.com/jhelvy/charts).
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+:::float-left
+
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" width="100px">
+
+:::
+
+```{r, echo=FALSE, results='asis'}
+# Download description.Rmd as temp file
+td <- tempdir()
+tf <- tempfile(tmpdir = td, fileext = ".Rmd")
+download.file(
+    'https://raw.githubusercontent.com/jhelvy/charts/master/description.Rmd',
+    tf
+)
+for (i in 1:nrow(charts)) {
+    chart <- charts[i,]
+    cat(knitr::knit_child(tf,quiet = TRUE), sep = '\n')
+}
+```
