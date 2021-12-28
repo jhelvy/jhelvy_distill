@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Charts"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_level","css"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/small-spacing.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["https://github.com/jhelvy/charts/raw/master/climateChangeBarcode/plots/nasa_global_preview.png"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","twitter","base_url","preview"]}},"value":[{"type":"character","attributes":{},"value":["Charts"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_level","md_extensions","css"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"character","attributes":{},"value":["-native_divs"]},{"type":"character","attributes":{},"value":["css/jhelvy.css","css/small-spacing.css"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creator"]}},"value":[{"type":"character","attributes":{},"value":["@JohnHelveston"]}]},{"type":"character","attributes":{},"value":["https://www.jhelvy.com"]},{"type":"character","attributes":{},"value":["https://github.com/jhelvy/charts/raw/master/climateChangeBarcode/plots/nasa_global_preview.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2617,10 +2617,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#challengerorings">challengerOrings</a></li>
+<li><a href="#climatechangebarcode">climateChangeBarcode</a></li>
+<li><a href="#electionmargins">electionMargins</a></li>
+<li><a href="#electricityeia">electricityEIA</a></li>
+<li><a href="#lcetpatenting">lcetPatenting</a></li>
+<li><a href="#newenergyinvestment">newEnergyInvestment</a></li>
+<li><a href="#sciencecommentary2019">scienceCommentary2019</a></li>
+<li><a href="#scotusnominations">scotusNominations</a></li>
+<li><a href="#solarpvproduction">solarPvProduction</a></li>
+<li><a href="#ushighwayfund">usHighwayFund</a></li>
+<li><a href="#uspevsales">usPevSales</a></li>
+<li><a href="#worldnuclearassociation">worldNuclearAssociation</a></li>
+</ul>
+</nav>
+</div>
 <p>A bunch of reproducible charts. All data and source code are available on <a href="https://github.com/jhelvy/charts">this repo</a>.</p>
-<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></p>
+<p>All charts are licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
 <div class="float-left">
-<p><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png" width="100px"></p>
+<p><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="100px"></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <h1 id="challengerorings">challengerOrings</h1>
@@ -2755,32 +2774,20 @@ Figure 11: U.S. Monthly Sales of Plug-in Electric Vehicles, 2014 - 2020.
 </div>
 </div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="ussolarindustry">usSolarIndustry</h1>
-<p><strong>Description</strong>: Summary plots of the US solar industry, including total module deployment and job growth pre- and post- the 2018 Trump administration tariffs.</p>
-<p><strong>Data</strong>: Jobs data from <a href="https://www.bloomberg.com/news/articles/2019-02-12/trump-s-tariffs-took-a-bite-out-of-once-booming-solar-job-market">Solar Foundation</a>; modules data from <a href="https://www.eia.gov/renewable/monthly/solar_photo/">US EIA</a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
-<a href="https://github.com/jhelvy/charts/tree/master/usSolarIndustry" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usSolarIndustry/plots/moduleShipments.png" alt="U.S. Solar Photovoltaic Module Shipments, 2006 - 2018." width="60%" /></a>
-<p class="caption">
-Figure 12: U.S. Solar Photovoltaic Module Shipments, 2006 - 2018.
-</p>
-</div>
-</div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <h1 id="worldnuclearassociation">worldNuclearAssociation</h1>
 <p><strong>Description</strong>: Barplots of nuclear energy capacity by country.</p>
 <p><strong>Data</strong>: Webscraped data from the <a href="http://www.world-nuclear.org/information-library/facts-and-figures/world-nuclear-power-reactors-and-uranium-requireme.aspx">World Nuclear Association</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
 <a href="https://github.com/jhelvy/charts/tree/master/worldNuclearAssociation" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/worldNuclearAssociation/plots/newCapacity.png" alt="New Nuclear Energy Capacity (GW) by Country, 2008 - 2019." width="60%" /></a>
 <p class="caption">
-Figure 13: New Nuclear Energy Capacity (GW) by Country, 2008 - 2019.
+Figure 12: New Nuclear Energy Capacity (GW) by Country, 2008 - 2019.
 </p>
 </div>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 </div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
