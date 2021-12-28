@@ -4,6 +4,7 @@ conjointTools,images/hex/conjointTools.png,https://jhelvy.github.io/conjointTool
 Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,Keyboards,1,0,0,0,1,0
 The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community,1,1,0,0,0,1
 xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",R; Software,1,1,1,0,0,0
+charts,images/nasa_global_preview.png,https://www.jhelvy.com/charts,A bunch of reproducible charts. All data and source code are available at https://github.com/jhelvy/charts,R,,,,,,
 GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,Community,1,0,0,0,0,1
 splitKbCompare,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.,R; Software; Keyboards,1,1,1,0,1,0
 λέξις (lexis),images/lexis.png,https://jhelvy.github.io/lexis/,"A theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, ""Inter"" for body text, and ""SFMono-Regular"" for mono text.",R; Software,1,1,1,0,0,0
