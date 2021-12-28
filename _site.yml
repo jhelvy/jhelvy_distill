@@ -41,16 +41,18 @@ navbar:
       href: projects.html
     - text: "Blog"
       href: blog.html
-    - text: "CV"
-      href: content/docs/Helveston_CV.pdf
-    - icon: fab fa-github
-      href: https://github.com/jhelvy
-    - icon: fab fa-twitter
-      href: https://twitter.com/JohnHelveston
-    - icon: fa fa-linkedin
-      href: https://www.linkedin.com/in/jhelvy
-    - icon: fa fa-rss
-      href: blog.xml
+    - icon: fas fa-bars
+      menu:
+        - text: "CV"
+          href: content/docs/Helveston_CV.pdf
+        - icon: fab fa-github
+          href: https://github.com/jhelvy
+        - icon: fab fa-twitter
+          href: https://twitter.com/JohnHelveston
+        - icon: fa fa-linkedin
+          href: https://www.linkedin.com/in/jhelvy
+        - icon: fa fa-rss
+          href: blog.xml
 
 output:
   distill::distill_article:
