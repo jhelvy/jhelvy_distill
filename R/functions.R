@@ -15,9 +15,7 @@ get_cites <- function(url) {
   html <- xml2::read_html(url)
   node <- rvest::html_nodes(html, xpath='//*[@id="gsc_rsb_st"]')
   cites_df <- rvest::html_table(node)[[1]]
-  names(cites_df)[1] <- "category"
-  cites_df$`Since 2016` <- NULL
-  cites <- tidyr::spread(cites_df, category, All)
+  cites <- data.frame(t(as.data.frame(cites_df)[,2]))
   names(cites) <- c('citations', 'hindex', 'i10index')
   return(cites)
 }
