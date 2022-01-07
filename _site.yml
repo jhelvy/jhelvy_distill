@@ -51,6 +51,12 @@ navbar:
           href: https://twitter.com/JohnHelveston
         - icon: fa fa-linkedin
           href: https://www.linkedin.com/in/jhelvy
+        - icon: ai ai-google-scholar fa-lg
+          href: https://scholar.google.com/citations?user=DY2D56IAAAAJ
+        - icon: ai ai-researchgate fa-lg
+          href: https://www.researchgate.net/profile/John_Helveston
+        - icon: ai ai-orcid fa-lg
+          href: https://orcid.org/0000-0002-2657-9191
         - icon: fa fa-rss
           href: blog.xml
 
@@ -60,3 +66,11 @@ output:
       in_header:
       - _includes/header.html
       - _includes/utterances.html
+rss:
+  full_content: true
+cookie_consent:
+  style: simple
+  type: express
+  palette: light
+  lang: en
+  cookies_policy: url

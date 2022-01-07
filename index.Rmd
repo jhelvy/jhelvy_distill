@@ -8,8 +8,8 @@ links:
     url: "https://twitter.com/JohnHelveston"
   - label: '<i class="fab fa-linkedin"></i> LinkedIn'
     url: "https://www.linkedin.com/in/jhelvy/"
-  - label: '<i class="ai ai-orcid"></i> ORCID'
-    url: "https://orcid.org/0000-0002-2657-9191"
+  - label: '<i class="ai ai-google-scholar"></i> Google Scholar'
+    url: "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
 base_url: https://www.jhelvy.com
 preview: images/helveston.png
 favicon: images/favicon.ico
