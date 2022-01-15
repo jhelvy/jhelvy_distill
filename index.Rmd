@@ -2,14 +2,22 @@
 title: "John Paul Helveston"
 image: "images/helveston.png"
 links:
-  - label: '<i class="fab fa-github"></i> GitHub'
+  - label: 'CV'
+    url: "content/docs/Helveston_CV.pdf"
+  - label: '<i class="fab fa-github fa-lg"></i>'
     url: "https://github.com/jhelvy"
-  - label: '<i class="fab fa-twitter"></i> Twitter'
+  - label: '<i class="fab fa-twitter fa-lg"></i>'
     url: "https://twitter.com/JohnHelveston"
-  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
+  - label: '<i class="fab fa-linkedin fa-lg"></i>'
     url: "https://www.linkedin.com/in/jhelvy/"
-  - label: '<i class="ai ai-google-scholar"></i> Google Scholar'
+  - label: '<i class="ai ai-google-scholar fa-lg"></i>'
     url: "https://scholar.google.com/citations?user=DY2D56IAAAAJ"
+  - label: '<i class="ai ai-researchgate fa-lg"></i>'
+    url: "https://www.researchgate.net/profile/John_Helveston"
+  - label: '<i class="ai ai-orcid fa-lg"></i>'
+    url: "https://orcid.org/0000-0002-2657-9191"
+  - label: '<i class="fa fa-rss"></i>'
+    url: "blog.xml"
 base_url: https://www.jhelvy.com
 preview: images/helveston.png
 favicon: images/favicon.ico
