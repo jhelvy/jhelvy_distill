@@ -6,7 +6,7 @@ name: Render & Deploy Site
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macOS-10.15
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -14,7 +14,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r@master
 
-      - uses: r-lib/actions/setup-pandoc@master
+      - uses: r-lib/actions/setup-pandoc@v1
 
       - name: Query dependencies
         run: |
