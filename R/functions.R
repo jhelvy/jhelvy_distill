@@ -25,7 +25,7 @@ get_pubs <- function() {
     pubs <- make_citations(pubs)
     pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
     pubs$stub <- make_stubs(pubs)
-    pubs$url_details <- file.path('research', paste0(pubs$stub, ".html"))
+    pubs$url_details <- file.path('research', pubs$stub, "index.html")
     return(pubs)
 }
 
@@ -362,7 +362,7 @@ save_raw <- function(text, path) {
     close(fileConn)
 }
 
-# For creating individual pages in the "research" folder 
+# For creating individual pages in the "_research" folder
 make_research_pages <- function() {
     pubs <- get_pubs()
     for (i in seq_len(nrow(pubs))) {
@@ -373,10 +373,15 @@ make_research_pages <- function() {
     }
 }
 
+make_dir <- function(path) {
+  if (!dir.exists(path)) { dir.create(path) }
+}
+
 render_research_page <- function(pub) {
+    make_dir(here::here('_research', pub$stub))
     rmarkdown::render(
-        input = here::here('_research_template.Rmd'),
-        output_file = pub$url_details,
+        input = file.path('_research', 'template.Rmd'),
+        output_file = file.path(pub$stub, 'index.html'),
         params = list(pub = pub)
     )
 }    
