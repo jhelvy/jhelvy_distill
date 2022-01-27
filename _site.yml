@@ -24,6 +24,12 @@ collections:
     authors_metadata: false
     feed_iems_max: 20 # default
     share: [twitter, linkedin]
+  research:
+    categories: false
+    categories_metadata: false
+    authors_metadata: false
+    feed_iems_max: 20 # default
+    share: [twitter, linkedin]
 navbar:
   search: true
   right:
