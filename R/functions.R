@@ -1,6 +1,7 @@
 library(htmltools)
 library(distilltools)
 library(stringr)
+library(dplyr)
 
 gscholar_stats <- function(url) {
   cites <- get_cites(url)
@@ -21,7 +22,8 @@ get_cites <- function(url) {
 }
 
 get_pubs <- function() {
-    pubs <- gsheet::gsheet2tbl('https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
+    pubs <- gsheet::gsheet2tbl(
+        url = 'https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
     pubs <- make_citations(pubs)
     pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
     pubs$stub <- make_stubs(pubs)
@@ -69,7 +71,20 @@ make_stubs <- function(pubs) {
     return(paste0(pubs$year, '-', journal))
 }
 
-# Functions for pubs page: https://jhelvy.com/publications
+# Functions for research page: https://jhelvy.com/research
+
+make_media_list <- function() {
+    media <- gsheet::gsheet2tbl(
+        url = 'https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU/edit#gid=2088158801')
+    temp <- media %>% 
+        mutate(
+            date = format(date, format = "%b %d, %Y"), 
+            outlet = paste0("**", outlet, "**"),
+            post = paste0("- ", date, " - ", outlet, ": ", post)
+        )
+    return(paste(temp$post, collapse = "\n"))
+}
+
 make_pub_list <- function(pubs, category) {
   x <- pubs[which(pubs$category == category),]
   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
