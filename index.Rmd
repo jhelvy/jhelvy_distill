@@ -38,7 +38,7 @@ meta() %>%
   meta_description(
     "The personal website of John Paul Helveston"
   ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_name("github-repo" = "jhelvy/jhelvy_distill") %>%
   meta_viewport() %>%
   meta_social(
     title = "jhelvy.com",
