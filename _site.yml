@@ -51,6 +51,8 @@ navbar:
       menu:
         - text: "CV"
           href: content/helveston-cv.pdf
+        - text: "Resume"
+          href: content/helveston-resume.pdf
         - icon: fab fa-github
           href: https://github.com/jhelvy
         - icon: fab fa-twitter
