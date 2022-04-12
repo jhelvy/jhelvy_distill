@@ -50,7 +50,7 @@ navbar:
     - icon: fas fa-bars
       menu:
         - text: "CV"
-          href: content/docs/Helveston_CV.pdf
+          href: content/helveston-cv.pdf
         - icon: fab fa-github
           href: https://github.com/jhelvy
         - icon: fab fa-twitter
