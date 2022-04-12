@@ -3,7 +3,7 @@ title: "John Paul Helveston"
 image: "images/helveston.png"
 links:
   - label: 'CV'
-    url: "content/docs/Helveston_CV.pdf"
+    url: "content/helveston-cv.pdf"
   - label: '<i class="fab fa-github fa-lg"></i>'
     url: "https://github.com/jhelvy"
   - label: '<i class="fab fa-twitter fa-lg"></i>'
