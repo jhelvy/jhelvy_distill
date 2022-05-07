@@ -1,6 +1,6 @@
 title,src,url,description,tags,All,R,Software,Teaching,Keyboards,Community
 logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",R; Software,1,1,1,0,0,0
-cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,An R package with tools for designing choice based conjoint (cbc) survey experiments and conduction power analyses.,R; Software,1,1,1,0,0,0
+cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,An R package with tools for designing choice based conjoint (cbc) survey experiments and conducting power analyses.,R; Software,1,1,1,0,0,0
 Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,Keyboards,1,0,0,0,1,0
 The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community,1,1,0,0,0,1
 xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",R; Software,1,1,1,0,0,0
