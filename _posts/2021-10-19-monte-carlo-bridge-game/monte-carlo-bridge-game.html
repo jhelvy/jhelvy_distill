@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #20794d; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,14 +77,13 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.sc { color: #20794d; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
-
 
   <!--radix_placeholder_meta_tags-->
   <title>Simulating the Squid Game bridge scene in R</title>
@@ -1263,10 +1263,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refs = $(this).attr('data-cites').split(" ");
-        var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
-        }).join("\n");
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1437,7 +1434,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="monte-carlo-bridge-game_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="monte-carlo-bridge-game_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="monte-carlo-bridge-game_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="monte-carlo-bridge-game_files/popper-2.6.0/popper.min.js"></script>
   <link href="monte-carlo-bridge-game_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1458,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Simulating the Squid Game bridge scene in R","description":"A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-10-19T00:00:00.000-04:00","citationText":"Helveston, 2021"}
+{"title":"Simulating the Squid Game bridge scene in R","description":"A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-10-19T00:00:00.000+00:00","citationText":"Helveston, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1475,7 +1472,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">monte carlo</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene <strong>Contains Spoilers</strong></p></p>
+<p><p>A simple monte carlo simulation of the expected number of
+survivors from the Squid Game bridge scene <strong>Contains
+Spoilers</strong></p></p>
 </div>
 
 <div class="d-byline">
@@ -1491,11 +1490,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#defining-the-simulation">Defining the simulation</a></li>
-<li><a href="#estimating-the-expected-number-of-survivors">Estimating the expected number of survivors</a></li>
+<li><a href="#estimating-the-expected-number-of-survivors">Estimating
+the expected number of survivors</a></li>
 <li><a href="#choose-wisely">Choose wisely</a></li>
-<li><a href="#how-many-steps-to-include">How many steps to include?</a></li>
-<li><a href="#update-1---including-time">Update 1 - including time</a></li>
+<li><a href="#how-many-steps-to-include">How many steps to
+include?</a></li>
+<li><a href="#update-1---including-time">Update 1 - including
+time</a></li>
 <li><a href="#update-2">Update 2</a></li>
+<li><a href="#update-3">Update 3</a></li>
 <li><a href="#appendix">Appendix</a></li>
 </ul>
 </nav>
@@ -1506,16 +1509,53 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <center>
 <img src="squid-game.png" width=600>
 </center>
-<p>If you had a Netflix account in 2021, chances are you’ve at least heard of <a href="https://en.wikipedia.org/wiki/Squid_Game">Squid Game</a> – a South Korean survival drama in which players play a series of children’s games for the chance to win a large sum of money, with the penalty of death if they lose. The show is like a mixture of <a href="https://en.wikipedia.org/wiki/Richard_Connell">Richard Connell</a>’s <a href="https://en.wikipedia.org/wiki/The_Most_Dangerous_Game">The Most Dangerous Game</a>, the <a href="https://en.wikipedia.org/wiki/The_Hunger_Games">Hunger Games</a>, and the horror stories of <a href="https://en.wikipedia.org/wiki/Edgar_Allan_Poe">Edgar Allan Poe</a>. It quickly became the #1 most most-watched show after just one week of being released.</p>
+<p>If you had a Netflix account in 2021, chances are you’ve at least
+heard of <a href="https://en.wikipedia.org/wiki/Squid_Game">Squid
+Game</a> – a South Korean survival drama in which players play a series
+of children’s games for the chance to win a large sum of money, with the
+penalty of death if they lose. The show is like a mixture of <a
+href="https://en.wikipedia.org/wiki/Richard_Connell">Richard
+Connell</a>’s <a
+href="https://en.wikipedia.org/wiki/The_Most_Dangerous_Game">The Most
+Dangerous Game</a>, the <a
+href="https://en.wikipedia.org/wiki/The_Hunger_Games">Hunger Games</a>,
+and the horror stories of <a
+href="https://en.wikipedia.org/wiki/Edgar_Allan_Poe">Edgar Allan
+Poe</a>. It quickly became the #1 most most-watched show after just one
+week of being released.</p>
 <blockquote>
-<p>SPOILER ALERT: I mention a few details in this post that might be spoilers if you haven’t yet watched the show.</p>
+<p>SPOILER ALERT: I mention a few details in this post that might be
+spoilers if you haven’t yet watched the show.</p>
 </blockquote>
-<p>In Episode 7, the remaining 16 players play a game where they must cross a glass bridge with 18 steps. At each step, the lead player must choose between two glass panes – one made of tempered glass strong enough to support two players, and the other of regular glass that will shatter if stepped on, in which case the player will plummet to their death.</p>
-<p>When I watched the episode, I immediately started trying to calculate the expected number of survivors for the game. While seemingly straightforward, the problems is a bit more complex when you realize that each person behind the leader learns information from the leader’s choices. That is, if the lead player chooses the “not safe” pane, that player dies, but every remaining player now knows which glass pane is “safe” at that step.</p>
-<p>Rather than try and work the math, I decided to take a <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> approach – just simulate a bunch of trials of the game, then count up how many players “survived” in each trial.</p>
+<p>In Episode 7, the remaining 16 players play a game where they must
+cross a glass bridge with 18 steps. At each step, the lead player must
+choose between two glass panes – one made of tempered glass strong
+enough to support two players, and the other of regular glass that will
+shatter if stepped on, in which case the player will plummet to their
+death. You can watch the scene <a
+href="https://www.youtube.com/watch?v=19oFNytu0z0">here</a>.</p>
+<p>When I watched the episode, I immediately started trying to calculate
+the expected number of survivors for the game. While seemingly
+straightforward, the problems is a bit more complex when you realize
+that each person behind the leader learns information from the leader’s
+choices. That is, if the lead player chooses the “not safe” pane, that
+player dies, but every remaining player now knows which glass pane is
+“safe” at that step.</p>
+<p>Rather than try and work the math, I decided to take a <a
+href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a>
+approach – just simulate a bunch of trials of the game, then count up
+how many players “survived” in each trial.</p>
 <h1 id="defining-the-simulation">Defining the simulation</h1>
-<p>The first step I took in trying to simulate the game is to simplify the problem. The actual game has two glass panes (one “safe” and one “not safe”) at each step in the bridge. This same situation can be modeled with a series of <em>single</em> steps where the lead player has a 50% chance of surviving at each step. If the lead player steps on a “not safe” pane, we mark that player as dead and replace that pane with a “safe” one, allowing all remaining players to safely cross it.</p>
-<p>To run a simulation, I first had to create the players, which I modeled using a simple data.table of 1s and 0s for “alive” and “dead”. Everyone starts out alive.</p>
+<p>The first step I took in trying to simulate the game is to simplify
+the problem. The actual game has two glass panes (one “safe” and one
+“not safe”) at each step in the bridge. This same situation can be
+modeled with a series of <em>single</em> steps where the lead player has
+a 50% chance of surviving at each step. If the lead player steps on a
+“not safe” pane, we mark that player as dead and replace that pane with
+a “safe” one, allowing all remaining players to safely cross it.</p>
+<p>To run a simulation, I first had to create the players, which I
+modeled using a simple data.table of 1s and 0s for “alive” and “dead”.
+Everyone starts out alive.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create an initial data.table of players</span>
@@ -1544,7 +1584,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt; 15:     15     1
 #&gt; 16:     16     1</code></pre>
 </div>
-<p>To simulate a single game, I created a <code>run_game()</code> function that iterates through a specified number of bridge steps, each with a 50% chance of being “safe”. The function iterates through each step until all “safe” panels are known, at which point the remaining “alive” players are assumed to all be able to safely finish crossing the bridge (I am assuming that all players have sufficient time to cross the bridge).</p>
+<p>To simulate a single game, I created a <code>run_game()</code>
+function that iterates through a specified number of bridge steps, each
+with a 50% chance of being “safe”. The function iterates through each
+step until all “safe” panels are known, at which point the remaining
+“alive” players are assumed to all be able to safely finish crossing the
+bridge (I am assuming that all players have sufficient time to cross the
+bridge).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Define a function for simulating one game</span>
@@ -1569,7 +1615,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>With that, let’s run one game of 18 steps and 16 players (same as in the show):</p>
+<p>With that, let’s run one game of 18 steps and 16 players (same as in
+the show):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Run one iteration of the game</span>
@@ -1579,9 +1626,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>#&gt;  [1] 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1</code></pre>
 </div>
-<p>So after one game, we had 4 survivors. But of course if we want to get an estimate of the <em>expected</em> number of survivors, we need to run lots of trials of the game (a lot of bits are about to die).</p>
-<h1 id="estimating-the-expected-number-of-survivors">Estimating the expected number of survivors</h1>
-<p>I ran my trials inside a data.table, a simulation strategy I picked up from <a href="https://grantmcdermott.com/">Grant McDermott</a> and his wonderful post on <a href="https://grantmcdermott.com/efficient-simulations-in-r/">efficient simulations in R</a>.</p>
+<p>So after one game, we had 4 survivors. But of course if we want to
+get an estimate of the <em>expected</em> number of survivors, we need to
+run lots of trials of the game (a lot of bits are about to die).</p>
+<h1 id="estimating-the-expected-number-of-survivors">Estimating the
+expected number of survivors</h1>
+<p>I ran my trials inside a data.table, a simulation strategy I picked
+up from <a href="https://grantmcdermott.com/">Grant McDermott</a> and
+his wonderful post on <a
+href="https://grantmcdermott.com/efficient-simulations-in-r/">efficient
+simulations in R</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Run the main trials</span>
@@ -1598,8 +1652,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>In addition to being very fast, one really nice thing about running the trials using {data.table} is that you get all of the results back in a nicely-formatted data.table, which you can then use to compute all sorts of statistics.</p>
-<p>For example, if you wanted to see the outcome of an individual trial, just filter for it:</p>
+<p>In addition to being very fast, one really nice thing about running
+the trials using {data.table} is that you get all of the results back in
+a nicely-formatted data.table, which you can then use to compute all
+sorts of statistics.</p>
+<p>For example, if you wanted to see the outcome of an individual trial,
+just filter for it:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># View one trial outcome</span>
@@ -1624,7 +1682,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt; 15:     15     1    42
 #&gt; 16:     16     1    42</code></pre>
 </div>
-<p>Of course, we can also use the trials to compute the expected number of survivors from the game. Since the outcomes are discrete, I take median number of survivors across all trials to reflect the expected number of survivors:</p>
+<p>Of course, we can also use the trials to compute the expected number
+of survivors from the game. Since the outcomes are discrete, I take
+median number of survivors across all trials to reflect the expected
+number of survivors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute the expected number of survivors across all trials</span>
@@ -1635,7 +1696,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>#&gt; [1] 7</code></pre>
 </div>
-<p>The simulation suggests that we should expect 7 players to survive when running a game with 16 players and 18 steps. When we look at the distribution of trial outcomes, we can also see that there is a pretty good chance of having 6 or 8 survivors in any one round of the game:</p>
+<p>The simulation suggests that we should expect 7 players to survive
+when running a game with 16 players and 18 steps. When we look at the
+distribution of trial outcomes, we can also see that there is a pretty
+good chance of having 6 or 8 survivors in any one round of the game:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the distribution of survivors across all trials</span>
@@ -1658,13 +1722,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="figs/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <h1 id="choose-wisely">Choose wisely</h1>
-<p>While the expected number of survivors from these trials is higher than the actual number in the TV series (only 3 survive), keep in mind that these trials reflect ideal conditions in which all the players act strictly rationally. In the show, multiple players die as a result of the selfish or revengeful actions of other players, not strictly because of the breaking glass panes.</p>
-<p>But perhaps the more important question from the perspective of the players is:</p>
+<p>While the expected number of survivors from these trials is higher
+than the actual number in the TV series (only 3 survive), keep in mind
+that these trials reflect ideal conditions in which all the players act
+strictly rationally. In the show, multiple players die as a result of
+the selfish or revengeful actions of other players, not strictly because
+of the breaking glass panes.</p>
+<p>But perhaps the more important question from the perspective of the
+players is:</p>
 <blockquote>
 <p><strong>“Which number should I choose?”</strong></p>
 </blockquote>
-<p>Obviously choosing a larger number closer to the back of the line gives the player a higher probability of survival because the players in front identify all the “safe” glass panes. But how likely would you be to survive if you chose a number near the middle (which most players in the TV series chose first)?</p>
-<p>Since we have all the results of every trial outcome for every player in a convenient data.table, computing the probability of surviving for each player is straightforward:</p>
+<p>Obviously choosing a larger number closer to the back of the line
+gives the player a higher probability of survival because the players in
+front identify all the “safe” glass panes. But how likely would you be
+to survive if you chose a number near the middle (which most players in
+the TV series chose first)?</p>
+<p>Since we have all the results of every trial outcome for every player
+in a convenient data.table, computing the probability of surviving for
+each player is straightforward:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the probability of survival based on the player order number</span>
@@ -1685,10 +1761,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="figs/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<p>So even though the expected number of survivors is 7 out of 16 players, those survivors are overwhelmingly more likely to be the players who chose the highest order numbers.</p>
+<p>So even though the expected number of survivors is 7 out of 16
+players, those survivors are overwhelmingly more likely to be the
+players who chose the highest order numbers.</p>
 <h1 id="how-many-steps-to-include">How many steps to include?</h1>
-<p>One final question I had was what if the game designers chose to include more steps in the bridge? Because this was not supposed to be the last game, the designers needed to make sure at least <strong>two</strong> players survived, otherwise the games would simply end.</p>
-<p>We can see from the previous simulations that with 16 players, the choice of 18 steps already puts a small (but non-zero) probability on having less than two survivors:</p>
+<p>One final question I had was what if the game designers chose to
+include more steps in the bridge? Because this was not supposed to be
+the last game, the designers needed to make sure at least
+<strong>two</strong> players survived, otherwise the games would simply
+end.</p>
+<p>We can see from the previous simulations that with 16 players, the
+choice of 18 steps already puts a small (but non-zero) probability on
+having less than two survivors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Probability of having less than two survivors</span>
@@ -1697,9 +1781,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>#&gt; [1] 0.0036</code></pre>
 </div>
-<p>Of course this is probably an under-estimate of the true probability of having less than two survivors because the players are human beings who tend to make irrational choices when playing a deadly game (as we saw play out in the TV series version of the game).</p>
-<p>Still, what if the game designers were more risk seeking? How many steps could they include if they were willing to live with, for example, a 5% chance of having less than 2 players remaining at the end of the bridge game?</p>
-<p>To answer that, we have to re-run our simulations, but with an increasing number of steps. To keep things simple, I run 1,000 iterations of the game over an increasing number of steps from 10 to 30:</p>
+<p>Of course this is probably an under-estimate of the true probability
+of having less than two survivors because the players are human beings
+who tend to make irrational choices when playing a deadly game (as we
+saw play out in the TV series version of the game).</p>
+<p>Still, what if the game designers were more risk seeking? How many
+steps could they include if they were willing to live with, for example,
+a 5% chance of having less than 2 players remaining at the end of the
+bridge game?</p>
+<p>To answer that, we have to re-run our simulations, but with an
+increasing number of steps. To keep things simple, I run 1,000
+iterations of the game over an increasing number of steps from 10 to
+30:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Re-run the trials using an increasing number of bridge steps (10 to 30)</span>
@@ -1721,7 +1814,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Now I can compute the probability of having less than two survivors for each step size:</p>
+<p>Now I can compute the probability of having less than two survivors
+for each step size:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute probability of having less than two survivors for each step size</span>
@@ -1743,7 +1837,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="figs/unnamed-chunk-11-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<p>I found it interesting that 18 steps seems to be the point at which the probability of having less than two remaining players begins to increase from essentially 0. With just a few more steps, the probability rapidly increases:</p>
+<p>I found it interesting that 18 steps seems to be the point at which
+the probability of having less than two remaining players begins to
+increase from essentially 0. With just a few more steps, the probability
+rapidly increases:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>step_summary</span><span class='op'>[</span><span class='va'>steps</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>18</span>, <span class='fl'>23</span><span class='op'>)</span><span class='op'>]</span>
@@ -1757,18 +1854,50 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #&gt; 5:    22    0.057
 #&gt; 6:    23    0.107</code></pre>
 </div>
-<p>Okay, that’s it! I’m sure I probably made an error somewhere - let me know if you find one, and hopefully this was an interesting example of how to conduct some relatively efficient Monte Carlo simulations in R with the help of the {data.table} package.</p>
+<p>Okay, that’s it! I’m sure I probably made an error somewhere - let me
+know if you find one, and hopefully this was an interesting example of
+how to conduct some relatively efficient Monte Carlo simulations in R
+with the help of the {data.table} package.</p>
 <h1 id="update-1---including-time">Update 1 - including time</h1>
 <p><em>Updated October 22, 2021</em></p>
-<p>Many people on <a href="https://twitter.com/JohnHelveston/status/1450830941056815105?s=20">twitter</a> and <a href="https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/">reddit</a> had some great suggestions about this post. In particular, <span class="citation" data-cites="evalparse">@evalparse</span> had a <a href="https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw">brilliant, one-line solution</a> for simulating the number of survivors in one game:</p>
+<p>Many people on <a
+href="https://twitter.com/JohnHelveston/status/1450830941056815105?s=20">twitter</a>
+and <a
+href="https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/">reddit</a>
+had some great suggestions about this post. In particular, <span
+class="citation" data-cites="evalparse">@evalparse</span> had a <a
+href="https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw">brilliant,
+one-line solution</a> for simulating the number of survivors in one
+game:</p>
 <center>
 <img src="evalparse.png" width=400>
 </center>
-<p>One critique that was mentioned multiple times was that my simulations left out a critical element in the game: <strong>time</strong>. In the show, the players had just 16 minutes to cross the bridge, otherwise all of the glass panes shatter and anyone left behind dies. I originally omitted time for simplicity, but looking back at it now this is a pretty crucial element in the game because it means that the latter order numbers aren’t necessarily so safe after all – the further back in line you are, the higher risk you face of running out of time.</p>
+<p>One critique that was mentioned multiple times was that my
+simulations left out a critical element in the game:
+<strong>time</strong>. In the show, the players had just 16 minutes to
+cross the bridge, otherwise all of the glass panes shatter and anyone
+left behind dies. I originally omitted time for simplicity, but looking
+back at it now this is a pretty crucial element in the game because it
+means that the latter order numbers aren’t necessarily so safe after all
+– the further back in line you are, the higher risk you face of running
+out of time.</p>
 <p>So, here’s one attempt at including time in the simulation.</p>
-<p>My immediate thought was to assume a distribution for the amount of time delay it takes for a player to take a step and then sample from that distribution for each player in each trial of the game. The key question is <strong>what should that distribution look like?</strong></p>
-<p>Obviously time needs to be positive, so I can’t use distributions that could have negative numbers. But time also can’t go on forever – as we saw in the show, the people in the back of the line start to get impatient if the lead player takes too long and might “encourage” them to make a choice.</p>
-<p>Since I didn’t have any real-world data to inform my decision (I sure hope there are no real-world data on this!), I decided to use the data from the show itself. I re-watched the scene and timed how long each lead player took to take a step. Time in the show isn’t quite preserved because the camera cuts to other scenes, there’s slow motion, etc., but many of the steps could be timed, so here’s what I measured:</p>
+<p>My immediate thought was to assume a distribution for the amount of
+time delay it takes for a player to take a step and then sample from
+that distribution for each player in each trial of the game. The key
+question is <strong>what should that distribution look
+like?</strong></p>
+<p>Obviously time needs to be positive, so I can’t use distributions
+that could have negative numbers. But time also can’t go on forever – as
+we saw in the show, the people in the back of the line start to get
+impatient if the lead player takes too long and might “encourage” them
+to make a choice.</p>
+<p>Since I didn’t have any real-world data to inform my decision (I sure
+hope there are no real-world data on this!), I decided to use the data
+from the show itself. I re-watched the scene and timed how long each
+lead player took to take a step. Time in the show isn’t quite preserved
+because the camera cuts to other scenes, there’s slow motion, etc., but
+many of the steps could be timed, so here’s what I measured:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Lead player step times in seconds</span>
@@ -1779,8 +1908,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre><code>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #&gt;   10.00   20.00   28.00   53.65   66.00  184.00</code></pre>
 </div>
-<p>Most lead players moved relatively quickly, with a median of just 28 seconds. But a few players took longer. In the show, player 9 (the bully guy) took quite a long time, and he might have taken longer if he wasn’t forced to move by the woman he scorned.</p>
-<p>Given these considerations, I chose to model the step time with a log-normal distribution because it prevents negative times and it has a long tail for those one or two players who might take a long time to move. Here are the parameters that fit these data, using the lovely <code>fitdistr()</code> function from the {MASS} package:</p>
+<p>Most lead players moved relatively quickly, with a median of just 28
+seconds. But a few players took longer. In the show, player 9 (the bully
+guy) took quite a long time, and he might have taken longer if he wasn’t
+forced to move by the woman he scorned.</p>
+<p>Given these considerations, I chose to model the step time with a
+log-normal distribution because it prevents negative times and it has a
+long tail for those one or two players who might take a long time to
+move. Here are the parameters that fit these data, using the lovely
+<code>fitdistr()</code> function from the {MASS} package:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>MASS</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MASS/man/fitdistr.html'>fitdistr</a></span><span class='op'>(</span><span class='va'>seconds</span>, <span class='st'>"log-normal"</span><span class='op'>)</span>
@@ -1813,7 +1949,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p>Is it a good fit? Eh, sort of?</p>
 <p>Do I have time to do a better job? Not really.</p>
-<p>One issue with the log-normal though is that you can occasionally get a <em>really</em> high number out on that long tail, which I would think is highly unlikely because at some point the next player is just going to push you off the bridge. So I censored my log-normal fit at 200 seconds. So, with this in mind, I created a new <code>run_game_timed()</code> function that includes a time delay for each step, sampling from a censored log-normal distribution.</p>
+<p>One issue with the log-normal though is that you can occasionally get
+a <em>really</em> high number out on that long tail, which I would think
+is highly unlikely because at some point the next player is just going
+to push you off the bridge. So I censored my log-normal fit at 200
+seconds. So, with this in mind, I created a new
+<code>run_game_timed()</code> function that includes a time delay for
+each step, sampling from a censored log-normal distribution.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Modified function for simulating one game with time</span>
@@ -1833,7 +1975,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Now I can re-run all the trials and compute a new expected number of survivors:</p>
+<p>Now I can re-run all the trials and compute a new expected number of
+survivors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Re-run trials</span>
@@ -1851,8 +1994,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <pre><code>#&gt; [1] 5</code></pre>
 </div>
-<p>As would be expected, the expected number of survivors decreased, which is now closer to the actual number of survivors in the show (3).</p>
-<p>But how about the distribution? Well, by introducing time, all we’ve really done is modify the original distribution to be “zero-inflated” (which is <em>super</em> common in data sets you run across in the wild):</p>
+<p>As would be expected, the expected number of survivors decreased,
+which is now closer to the actual number of survivors in the show
+(3).</p>
+<p>But how about the distribution? Well, by introducing time, all we’ve
+really done is modify the original distribution to be “zero-inflated”
+(which is <em>super</em> common in data sets you run across in the
+wild):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the distribution of survivors across all trials</span>
@@ -1871,7 +2019,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="figs/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<p>Of course, this also impacts the likelihood of survival for each individual player. As might be expected, zero-inflating the distribution of survivors simply reduces the probability of survival for <em>all</em> players, with the higher-number players still ranking the most likely to survive:</p>
+<p>Of course, this also impacts the likelihood of survival for each
+individual player. As might be expected, zero-inflating the distribution
+of survivors simply reduces the probability of survival for <em>all</em>
+players, with the higher-number players still ranking the most likely to
+survive:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the probability of survival based on the player order number</span>
@@ -1892,10 +2044,33 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="figs/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<p>This is of course is not quite what might be expected. Instead, I would expect the probability to be a tiny bit lower for the very last player or two as they could get left behind. But I chose to ignore feature as the lead player delay seemed to be a much bigger factor in determining survival. Plus, if you have an issue with how “realistic” my modeling is, I would encourage you to remember the context of this entire exercise (if you think <em>anything</em> about this is realistic, please see a psychiatrist).</p>
+<p>This is of course is not quite what might be expected. Instead, I
+would expect the probability to be a tiny bit lower for the very last
+player or two as they could get left behind. But I chose to ignore
+feature as the lead player delay seemed to be a much bigger factor in
+determining survival. Plus, if you have an issue with how “realistic” my
+modeling is, I would encourage you to remember the context of this
+entire exercise (if you think <em>anything</em> about this is realistic,
+please see a psychiatrist).</p>
 <h1 id="update-2">Update 2</h1>
 <p><em>Updated December 21, 2021</em></p>
-<p>Lukas Gröninger wrote a <a href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/">similar post</a> on his blog where he also provides the <a href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/#mathematical-solution">mathematical solution</a> to the expected number of survivors - check it out!</p>
+<p>Lukas Gröninger wrote a <a
+href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/">similar
+post</a> on his blog where he also provides the <a
+href="https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/#mathematical-solution">mathematical
+solution</a> to the expected number of survivors - check it out!</p>
+<h1 id="update-3">Update 3</h1>
+<p><em>Updated May 9, 2022</em></p>
+<p><a href="https://personal.vu.nl/h.c.tijms/">Henk Tijms</a>, Professor
+Emeritus at VU University Amsterdam, wrote a <a
+href="https://kraket.genkgoweb.com/en/sector/article/2021-12-20-markov-changed-the-world/">fantastic
+article</a> introducing the concept of Markov Chains. In the article, he
+uses the Squid Game bridge scene as an example (along with several other
+classic probability problems, like Egg Russian Roulette) to demonstrate
+the power of Markov Chains. In his analysis he computes the expected
+number of survivors, the probability of survival for each player, and
+the probability distribution of the number of survivors. The Squid Game
+example starts on page 7.</p>
 <h1 id="appendix">Appendix</h1>
 <p>Here is the combined code for this entire simulation:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2090,7 +2265,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

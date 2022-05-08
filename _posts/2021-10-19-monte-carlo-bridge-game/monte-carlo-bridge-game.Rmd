@@ -35,7 +35,7 @@ If you had a Netflix account in 2021, chances are you've at least heard of [Squi
 
 > SPOILER ALERT: I mention a few details in this post that might be spoilers if you haven't yet watched the show.
 
-In Episode 7, the remaining 16 players play a game where they must cross a glass bridge with 18 steps. At each step, the lead player must choose between two glass panes -- one made of tempered glass strong enough to support two players, and the other of regular glass that will shatter if stepped on, in which case the player will plummet to their death. 
+In Episode 7, the remaining 16 players play a game where they must cross a glass bridge with 18 steps. At each step, the lead player must choose between two glass panes -- one made of tempered glass strong enough to support two players, and the other of regular glass that will shatter if stepped on, in which case the player will plummet to their death. You can watch the scene [here](https://www.youtube.com/watch?v=19oFNytu0z0).
 
 When I watched the episode, I immediately started trying to calculate the expected number of survivors for the game. While seemingly straightforward, the problems is a bit more complex when you realize that each person behind the leader learns information from the leader's choices. That is, if the lead player chooses the "not safe" pane, that player dies, but every remaining player now knows which glass pane is "safe" at that step.
 
@@ -378,6 +378,12 @@ This is of course is not quite what might be expected. Instead, I would expect t
 _Updated December 21, 2021_
 
 Lukas Gröninger wrote a [similar post](https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/) on his blog where he also provides the [mathematical solution](https://lukas-r.blog/posts/2021-12-05-looping-over-the-bridge/#mathematical-solution) to the expected number of survivors - check it out!
+
+# Update 3
+
+_Updated May 9, 2022_
+
+[Henk Tijms](https://personal.vu.nl/h.c.tijms/), Professor Emeritus at VU University Amsterdam, wrote a [fantastic article](https://kraket.genkgoweb.com/en/sector/article/2021-12-20-markov-changed-the-world/) introducing the concept of Markov Chains. In the article, he uses the Squid Game bridge scene as an example (along with several other classic probability problems, like Egg Russian Roulette) to demonstrate the power of Markov Chains. In his analysis he computes the expected number of survivors, the probability of survival for each player, and the probability distribution of the number of survivors. The Squid Game example starts on page 7.
 
 # Appendix
 
