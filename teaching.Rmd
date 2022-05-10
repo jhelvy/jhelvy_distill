@@ -28,14 +28,16 @@ This course provides a foundation in programming for analytics using the [R prog
 :::
 
 <aside>
+
 **Semesters Taught**:
 
 - [Spring 2022](https://p4a.seas.gwu.edu/2022-Spring/)
 - [Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)
 - [Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)
+
 </aside>
 
-`r htmltools::br()`
+<br>
 
 :::float-left
 
@@ -45,17 +47,18 @@ This course provides a foundation in programming for analytics using the [R prog
 
 This course provides students with a foundation in exploring data using the [R programming language](https://www.r-project.org/). Students will learn how to source, manage, transform, and explore a wide variety of data types. Students will also master the fundamental concepts for visualizing and communicating information contained in raw data, including the human psychology of visual information processing. All analyses will be conducted to support reproducibility from raw data to results using [RMarkdown](https://bookdown.org/yihui/rmarkdown/). Teaching will involve interactive lectures with plenty of class time spent working on examples and coding. Students will be assessed through in-class quizzes, reading reflections, and exploratory projects. Throughout the semester, students will work on a research project of their own design to demonstrate mastery of the course's topics. At the end of the semester, students will submit a final, reproducible report of their project along with a 10-minute video presentation of their findings.
 
-
 :::
 
 <aside>
+
 **Semesters Taught**:
 
 - [Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)
 - [Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)
+
 </aside>
 
-`r htmltools::br()`
+<br>
 
 :::float-left
 
@@ -68,8 +71,22 @@ This course provides students with data analysis techniques to inform design dec
 :::
 
 <aside>
+
 **Semesters Taught**:
 
 - [Fall 2021](https://madd.seas.gwu.edu/2021-Fall/)
 - Spring 2019
+
 </aside>
+
+<br>
+
+:::float-left
+
+<img src="images/r4a.png" width="200px">
+
+### [R for Analytics Primer](https://jhelvy.github.io/r4aPrimer/)
+
+A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the [Tidyverse](https://www.tidyverse.org/).
+
+:::

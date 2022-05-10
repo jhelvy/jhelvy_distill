@@ -14,7 +14,9 @@ preview: images/helveston.png
 ---
 
 <!-- Remove margin under images -->
+
 <style>
+
 d-article img {
   margin-bottom: 0px;
 }
@@ -32,6 +34,7 @@ d-article img {
     background-color: #8a74a0;
     color: #FFFFFF;
 }
+
 </style>
 
 ```{r setup, echo=FALSE}
@@ -39,12 +42,11 @@ knitr::opts_chunk$set(echo = FALSE)
 source(file.path("R", "functions.R"))
 library(distilltools)
 library(tidyverse)
-
-# Read in projects csv file 
-projects <- readr::read_csv(here::here("content", "projects.csv"))
 ```
 
 ```{r projects, echo=FALSE, layout="l-body-outset"}
+projects <- readr::read_csv(here::here("content", "projects.csv"))
+
 projects %>% 
   bs4cards::cards(
     title = title,
