@@ -3,6 +3,7 @@ logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R packa
 cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,An R package with tools for designing choice based conjoint (cbc) survey experiments and conducting power analyses.,R; Software
 Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,Keyboards
 The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community
+oica,images/hex/oica.png,https://jhelvy.github.io/oica/,"A data package that contains some tidy formatted data on vehicle production and sales from the Organisation Internationale des Constructeurs d’Automobiles (OICA, English Name: “International Organization of Motor Vehicle Manufacturers”). The data sets are also merged with standard country / area codes come from the United Nations Statistics Division.",R; Software
 renderthis,images/hex/renderthis.png,https://jhelvy.github.io/renderthis/,"An R package for rendering slides and other media into different formats, including html, pdf, png, gif, pptx, and mp4.",R; Software
 charts,images/nasa_global_preview.png,https://www.jhelvy.com/charts,A bunch of reproducible charts. All data and source code are available at https://github.com/jhelvy/charts,R
 GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,Community
