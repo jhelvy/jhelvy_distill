@@ -1,8 +1,8 @@
 title,src,url,description,tags
-logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",R; Software
+logitr,images/hex/logitr.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",R; Software
 cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,An R package with tools for designing choice based conjoint (cbc) survey experiments and conducting power analyses.,R; Software
 Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,Keyboards
-The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community
+The Distillery,images/hex/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community
 oica,images/hex/oica.png,https://jhelvy.github.io/oica/,"A data package that contains some tidy formatted data on vehicle production and sales from the Organisation Internationale des Constructeurs d’Automobiles (OICA, English Name: “International Organization of Motor Vehicle Manufacturers”). The data sets are also merged with standard country / area codes come from the United Nations Statistics Division.",R; Software
 renderthis,images/hex/renderthis.png,https://jhelvy.github.io/renderthis/,"An R package for rendering slides and other media into different formats, including html, pdf, png, gif, pptx, and mp4.",R; Software
 charts,images/nasa_global_preview.png,https://www.jhelvy.com/charts,A bunch of reproducible charts. All data and source code are available at https://github.com/jhelvy/charts,R
