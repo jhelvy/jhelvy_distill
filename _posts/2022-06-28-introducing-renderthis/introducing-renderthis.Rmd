@@ -6,7 +6,7 @@ description: |
   {xaringanBuilder})
 author: John Paul Helveston
 date: '2022-06-28'
-preview: "https://github.com/jhelvy/renderthis/raw/main/man/figures/logo.png"
+preview: "images/logo.png"
 categories:
   - R
   - package
@@ -26,11 +26,11 @@ library(ggplot2)
 library(cowplot)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 logo1 <- "https://github.com/jhelvy/renderthis/raw/0551f6ecfcadb64b4db042f59bfc16c33351b5ce/images/hex_sticker.png"
 logo2 <- "https://github.com/jhelvy/renderthis/raw/f829b6be3992e7d8041709f56396f3ac448703e0/images/hex_sticker.png"
 logo3 <- "https://github.com/jhelvy/renderthis/raw/main/man/figures/logo.png"
-arrow <- ggdraw() + draw_image("images/arrow.png") 
+arrow <- ggdraw() + draw_image("images/arrow.png")
 one <- ggdraw() + draw_image(logo1)
 two <- ggdraw() + draw_image(logo2)
 three <- ggdraw() + draw_image(logo3)
