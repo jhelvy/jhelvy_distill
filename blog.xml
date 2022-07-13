@@ -12,7 +12,21 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 19 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Introducing the {renderthis} package</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/posts/2022-06-28-introducing-renderthis</link>
+      <description>A brief introduction to the {renderthis} package for rendering
+{xaringan} slides to different output types (previously called
+{xaringanBuilder})</description>
+      <category>R</category>
+      <category>package</category>
+      <category>software</category>
+      <guid>https://www.jhelvy.com/posts/2022-06-28-introducing-renderthis</guid>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/posts/2022-06-28-introducing-renderthis/images/logo.png" medium="image" type="image/png" width="637" height="345"/>
+    </item>
     <item>
       <title>Simulating the Squid Game bridge scene in R</title>
       <dc:creator>John Paul Helveston</dc:creator>
