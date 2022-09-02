@@ -61,7 +61,7 @@ The links in this table let you compare the .Rmd file with the corresponding Goo
 
 # Defining the choice questions
 
-The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [conjointTools](https://jhelvy.github.io/conjointTools/) package (which I developed `r emo::ji('smile')`) to create these questions. The code to create the choice questions for this demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo. 
+The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the [cbcTools](https://jhelvy.github.io/cbcTools/) package (which I developed `r emo::ji('smile')`) to create these questions. The code to create the choice questions for this demo survey is in the [`make_choice_questions.R`](https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R) file in the repo.
 
 The data frame of randomized choice questions is saved as the [`choice_questions.csv`](https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv) file. Once created, you'll need to host it somewhere on the web so that you can read it into your Google Sheet. For this demo, the file is hosted on the [GitHub repo](https://github.com/jhelvy/formr4conjoint), but you can also upload your `choice_questions.csv` file inside your Run (see the "Upload Files" button on the left side menu), which will generate a unique url to the file.
 
@@ -145,7 +145,7 @@ kable(t(alts), escape = FALSE) %>%
 
 You'll need to upload each Google Sheet survey into formr to convert them into surveys. Go to your admin page, click on "Create Survey", then import one of the Google Sheets. This creates one survey. On the left panel you can click "Test Survey" to preview it.
 
-Once you have all three surveys loaded into formr, you can then assemble them into a "Run" by clicking on "Runs -> Create New Run". Give the run a name, then add your survey to the run by clicking on the `r fa("pen-square")` icon. You'll want to add all three surveys, and then at the end add a stopping point by clicking the `r fa("stop")` icon. You can use other logic to control how the user navigates through the survey, such as a "Skip Forward" (`r fa("forward")` icon) to screen respondents out before letting them get to a later part of the survey. 
+Once you have all three surveys loaded into formr, you can then assemble them into a "Run" by clicking on "Runs -> Create New Run". Give the run a name, then add your survey to the run by clicking on the `r fa("pen-to-square")` icon. You'll want to add all three surveys, and then at the end add a stopping point by clicking the `r fa("stop")` icon. You can use other logic to control how the user navigates through the survey, such as a "Skip Forward" (`r fa("forward")` icon) to screen respondents out before letting them get to a later part of the survey. 
 
 The specific logic used in this demo is as follows:
 
@@ -185,10 +185,9 @@ Since your entire survey is designed in `r fa("r-project")`, why not take advant
 
 # Preview and check
 
-The link to the survey will be `https://your_run_name.formr.org`. You can control whether your survey is "live" or not by modifying the "volume" icons. For collecting data, I recommend setting it to the `r fa("volume-down")` icon, which means people who have the link can access the survey.
+The link to the survey will be `https://your_run_name.formr.org`. You can control whether your survey is "live" or not by modifying the "volume" icons. For collecting data, I recommend setting it to the `r fa("volume-low")` icon, which means people who have the link can access the survey.
 
 But before you go live, it's a good idea to do some quick testing. You can test each survey separately from their respective survey admin pages, and you can also test the entire run from the run admin page (check the left side menu). When testing, you may get an error - don't panic! The error pages look a little different from the errors you're used to in R, but if you click through the errors you can usually find the root cause of the error (the R error message will be buried somewhere on the page). Many times the errors are small typos, which is another reason why I like to initially build my surveys in .Rmd files - when I knit them to html pages, any typos or other small errors are much more easily identified.
-
 
 # Getting the data
 
