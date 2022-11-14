@@ -6,6 +6,8 @@ links:
     url: "content/helveston-cv.pdf"
   - label: '<i class="fab fa-github fa-lg"></i>'
     url: "https://github.com/jhelvy"
+  - label: '<i class="fab fa-mastodon fa-lg"></i>'
+    url: "https://fediscience.org/@jhelvy"
   - label: '<i class="fab fa-twitter fa-lg"></i>'
     url: "https://twitter.com/JohnHelveston"
   - label: '<i class="fab fa-linkedin fa-lg"></i>'
