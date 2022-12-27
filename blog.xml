@@ -12,7 +12,17 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 28 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Why chess is a better game than golf</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/posts/2022-12-26-why-chess-is-better-than-golf</link>
+      <description>I asked ChatGPT to write this blog post. Here's what it came up with.</description>
+      <category>software</category>
+      <guid>https://www.jhelvy.com/posts/2022-12-26-why-chess-is-better-than-golf</guid>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/posts/2022-12-26-why-chess-is-better-than-golf/chess-golf.png" medium="image" type="image/png" width="640" height="599"/>
+    </item>
     <item>
       <title>Introducing the {renderthis} package</title>
       <dc:creator>John Paul Helveston</dc:creator>
