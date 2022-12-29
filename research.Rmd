@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: I study how consumers, firms, markets, and policy affect technological change, with a goal of facilitating transitions to sustainable, low-carbon technologies. I have expertise in choice modeling, programming in R, and qualitative research methods, as well as the global electric vehicle industry.
+description: I study how consumers, firms, markets, and policy affect technological change, with a focus on accelerating the transition to low-carbon technologies like electric vehicles and renewable energy technologies. I have expertise in choice modeling, programming in R, and the global electric vehicle industry.
 output:
   distill::distill_article:
     toc: true
