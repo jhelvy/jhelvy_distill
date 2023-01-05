@@ -37,3 +37,19 @@ While mass is an important factor, _size_ is perhaps more significant for the au
 
 When I first made this calculation, I was quite surprised. I've always known that batteries are far less dense than most liquid fossil fuels, but I never realized how similar they were by _volume_. While Li-ion EV batteries are ~50x less dense than gasoline by mass, they are only about _half_ the energy density of gasoline by volume. This means that in the same amount of space in a vehicle gas tank, you could only store about half the amount of energy in a similarly sized Li-ion battery (not 1 / 50th, as is sometimes believed). But that battery would weigh a whole lot more than the gasoline --- 30x more to be precise.
 
+
+
+
+
+
+Plug-in electric vehicles (PEVs) are a cornerstone of the global effort to decarbonize the world's energy systems. They're also far more performant in nearly every metric compared to internal combustion engine vehicles (ICEVs)...except for one: range.
+
+Today's PEV batteries are remarkably performant compared to decades ago, but they still have several limitations. Most important is they're not dense, which necessitates that they be integrated into the frame.
+
+By integrating the battery, the vehicle and energy storage system are fundamentally tied together, making it much harder to recycle and repair.
+
+High energy density batteries provide the opportunity to decouple these two things. We go from the cell phone model to the TV remote model.
+
+[fig: energy density of batteries (y axis) over time]
+
+[diagram: cans of soda required to achieve 100 miles of driving range for PEV and 30 mpg sedan]
