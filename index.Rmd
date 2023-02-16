@@ -1,6 +1,6 @@
 ---
 title: "John Paul Helveston"
-image: "images/helveston.png"
+image: "images/lab/john_helveston_circle.png"
 links:
   - label: 'CV'
     url: "content/helveston-cv.pdf"

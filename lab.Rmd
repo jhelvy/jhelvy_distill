@@ -11,7 +11,7 @@ output:
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
-preview: images/helveston.png
+preview: images/lab/john_helveston.png
 ---
 
 ```{r setup, echo=FALSE}
@@ -48,7 +48,7 @@ library(distilltools)
 
 :::float-left
 
-<img src="images/helveston.jpg" width="150px">
+<img src="images/lab/john_helveston_square.png" width="150px">
 
 ### John Paul Helveston, Ph.D.
 

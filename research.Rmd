@@ -10,7 +10,7 @@ output:
 twitter:
   creator: "@JohnHelveston"
 base_url: https://www.jhelvy.com
-preview: images/helveston.png
+preview: images/lab/john_helveston.png
 ---
 
 <!-- Remove margin under list items -->

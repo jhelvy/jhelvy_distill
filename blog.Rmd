@@ -2,7 +2,7 @@
 title: "Blog"
 twitter:
   creator: "@JohnHelveston"
-preview: images/helveston.jpg
+preview: images/lab/john_helveston.png
 listing: posts
 ---
 

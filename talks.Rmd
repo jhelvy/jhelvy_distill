@@ -4,7 +4,7 @@ description: |
   Some of my talks and workshops I've given
 twitter:
   creator: "@JohnHelveston"
-preview: images/helveston.jpg
+preview: images/lab/john_helveston.png
 listing: talks
 ---
 
