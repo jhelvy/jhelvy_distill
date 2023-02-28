@@ -1,0 +1,23 @@
+---
+title: "Quarto "
+description: |
+  Description
+author: John Paul Helveston
+date: '2023-02-28'
+preview: "quarto.png"
+categories:
+  - quarto
+  - productivity
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: false
+draft: true
+---
+
+<center>
+<img src="quarto.png" width=450>
+</center>
+
+placeholder
