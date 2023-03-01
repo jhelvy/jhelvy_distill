@@ -1,7 +1,7 @@
 ---
-title: "Quarto "
+title: "Render parameterized reports with Quarto"
 description: |
-  Description
+  A quick how-to guide for making reports in Quarto with custom parameters, and a couple fixes for some current limitations.
 author: John Paul Helveston
 date: '2023-02-28'
 preview: "quarto.png"
@@ -12,18 +12,18 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
-    toc: false
-draft: true
+    toc: true
 ---
 
 <center>
-<img src="quarto.png" width=450>
+<img src="quarto.png" width=300>
 </center>
 
-
-[Quarto]() is a ___
+[Quarto](https://quarto.org/) is an open-source scientific and technical publishing system built on Pandoc. Many view it as the "next generation" of [RMarkdown](https://rmarkdown.rstudio.com/), though it is more general in that is supports mutliple languages and is not R-specific.
 
 One of the most common use cases for me is creating **parameterized** reports. A parameterized report is one that uses a .qmd file with parameters that can be passed to it while rendering, enabling the ability to create different versions of the output report based on the parameters.
+
+> BTW, [Meghan Hall](https://meghan.rbind.io/) has a great [post](https://meghan.rbind.io/blog/quarto-pdfs/) on this topic and goes into much more detail on how to customize outputs---take a look!
 
 As a professor, one way I use parameterized reports is in providing my student's unique feedback for their assignments. Using parameters like `student_name`, `grade`, and `feedback`, I am able to use a single .qmd file and then render a unique report for each student where those parameters are replaced with the appropriate information for each student.
 
@@ -108,7 +108,7 @@ for (i in 1:nrow(df)) {
     student <- df[i, ] # Each row is a unique student
     quarto::quarto_render(
         input = "template.qmd",
-        output_file = paste("feedback-", student$name, ".pdf"),
+        output_file = paste0("feedback-", student$name, ".pdf"),
         execute_params = list(
             name = student$name,
             grade = student$grade
@@ -133,8 +133,8 @@ In each example, I have a "template.qmd" file that defines the content of the pa
 
 In the [demo](https://github.com/jhelvy/quarto-pdf-demo) repo, I have included a third example called "data-frames" that demonstrates some fixes for two challenges I have run into when rendering parameterized reports in Quarto. Those are:
 
-1. Passing a data frame object as a parameter
-2. Rendering the output to a different directory
+1. Passing a data frame object as a parameter.
+2. Rendering the output to a different directory.
 
 It is worth mentioning that neither of these are issues when using RMarkdown. They may be addressed more elegantly in the future, but for now here are my workaround solutions. 
 
@@ -174,5 +174,35 @@ In this specific example, an easier approach would be to simply pass the "month"
 
 ## Rendering to a different directory
 
+Unfortunately, at least at the moment it appears that `quarto::quarto_render()` is not capable of rendering an output file to any location other than the current directory. I noted this in the quarto-cli discussion forums [here](https://github.com/quarto-dev/quarto-cli/discussions/2171#discussioncomment-4863374). The best solution for now seems to be to simply render the output and then copy it over to a desired output directory. 
 
+In practice, this is a bit cumbersome as there are a number of different conditions to consider that make the copy-pasting not so simple, so my solution was to write my own custom function that works as a wrapper around `quarto::quarto_render()` and allows the user to provide an optional `output_dir` for where the output file will be moved post-rendering.
 
+I have put this function inside my person R package [{jph}](https://github.com/jhelvy/jph), which you can install if you wish to use it yourself. I named the function `quarto_render_move()`, which renders and then optionally moves the file to a desired location. The function source is available [here](https://github.com/jhelvy/jph/blob/master/R/quarto_render_move.R). 
+
+In practice, it works as a drop-in replacement for `quarto::quarto_render()`. Here is an example:
+
+```{r}
+#| eval: false
+
+jph::quarto_render_move(
+    input = "template.qmd",
+    output_file = "feedback-student.pdf",
+    output_dir = "output_folder",
+    execute_params = list(
+        name = "Paul",
+        grade = "98%"
+    )
+)
+```
+
+Using this code, the output file would be placed inside a folder called "output_folder".
+
+# Wrap up
+
+Quarto is still quite new, and the user base is still growing. Without a doubt, I expect that most current Quarto users are coming from RMarkdown, which has for years just seemed like total [wizardry](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/main/rstats-artwork/rmarkdown_wizards.png) with how seamlessly it works.
+
+Coming from RMarkdown myself, Quarto has a lot of very nice features that definitely build on the best of what RMarkdown has had to offer. But it's not perfect, and the fact that it is totally separate from R (i.e. it's not an R package) has meant giving up some of the conveniences I have enjoyed, like passing data frames around with wreckless abandon. Hopefully the tricks posted here will work for you too if you try to use them. However your Quarto journey goes, let me know with a comment!
+
+Cheers,
+JP
