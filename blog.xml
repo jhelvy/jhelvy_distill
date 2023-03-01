@@ -12,7 +12,19 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 26 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Render parameterized reports with Quarto</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto</link>
+      <description>A quick how-to guide for making reports in Quarto with custom parameters, and a couple fixes for some current limitations.</description>
+      <category>quarto</category>
+      <category>productivity</category>
+      <category>R</category>
+      <guid>https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto</guid>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/quarto.png" medium="image" type="image/png" width="200" height="200"/>
+    </item>
     <item>
       <title>Why chess is a better game than golf</title>
       <dc:creator>John Paul Helveston</dc:creator>
