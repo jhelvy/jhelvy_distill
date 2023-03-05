@@ -40,12 +40,15 @@ pubs <- get_pubs()
 
 <br>
 
-## Publications in Peer Reviewed Journals 
+## Featured Peer-Reviewed Publications
 
 <aside>*indicates student advised by Helveston</aside>
 
-`r make_pub_list(pubs, "peer_reviewed")`
+`r make_pub_list(pubs, "featured")`
 
+## Other Peer-Reviewed Publications
+
+`r make_pub_list(pubs, "peer_reviewed")`
 
 ## Working Papers & Papers Under Review
 

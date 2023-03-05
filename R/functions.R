@@ -96,7 +96,7 @@ make_pub <- function(pub) {
   header <- FALSE
   if (index == 1) { header <- TRUE }
   altmetric <- NULL
-  if (pub$category == 'peer_reviewed') {
+  if (pub$category %in% c('peer_reviewed', 'featured')) {
       altmetric <- make_altmetric(pub)
   }
   return(paste0(
