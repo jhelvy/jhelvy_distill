@@ -4,7 +4,7 @@ description: |
   Let's build this, who's with me?
 author: John Paul Helveston
 date: '2023-04-06'
-preview: "simple-survey.png"
+preview: "logo.png"
 categories:
   - R
   - markdown
