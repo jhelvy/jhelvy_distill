@@ -12,7 +12,20 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>{surveydown}: An open source, markdown-based survey framework (that doesn't exist yet)</title>
+      <dc:creator>John Paul Helveston</dc:creator>
+      <link>https://www.jhelvy.com/posts/2023-04-06-markdown-surveys</link>
+      <description>Let's build this, who's with me?</description>
+      <category>R</category>
+      <category>markdown</category>
+      <category>productivity</category>
+      <category>package</category>
+      <guid>https://www.jhelvy.com/posts/2023-04-06-markdown-surveys</guid>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
+      <media:content url="https://www.jhelvy.com/posts/2023-04-06-markdown-surveys/simple-survey.png" medium="image" type="image/png" width="697" height="817"/>
+    </item>
     <item>
       <title>Render parameterized reports with Quarto</title>
       <dc:creator>John Paul Helveston</dc:creator>
