@@ -6,7 +6,7 @@ name: Render & Deploy Site
 
 jobs:
   build:
-    runs-on: macOS-10.15
+    runs-on: macOS-11
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
