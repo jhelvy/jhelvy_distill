@@ -76,9 +76,3 @@ output:
       - _includes/utterances.html
 rss:
   full_content: true
-cookie_consent:
-  style: simple
-  type: express
-  palette: light
-  lang: en
-  cookies_policy: url
