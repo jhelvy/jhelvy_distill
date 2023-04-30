@@ -12,7 +12,7 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 06 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2022-05-06</lastBuildDate>
     <item>
       <title>The cbcTools Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R</title>
       <dc:creator>John Paul Helveston</dc:creator>
@@ -22,7 +22,7 @@
       <category>surveys</category>
       <category>conjoint</category>
       <guid>https://www.jhelvy.com/talks/2022-05-06-sawtooth-conf-cbctools</guid>
-      <pubDate>Fri, 06 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-05-06</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2022-05-06-sawtooth-conf-cbctools/title.png" medium="image" type="image/png" width="1261" height="710"/>
     </item>
     <item>
@@ -33,7 +33,7 @@
       <category>China</category>
       <category>Technology</category>
       <guid>https://www.jhelvy.com/talks/2022-04-30-cgtn-full-frame-interview</guid>
-      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-04-30</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2022-04-30-cgtn-full-frame-interview/helveston-cgtn-interview.png" medium="image" type="image/png" width="2560" height="1600"/>
     </item>
     <item>
@@ -44,7 +44,7 @@
       <category>China</category>
       <category>Technology</category>
       <guid>https://www.jhelvy.com/talks/2021-12-01-isa-battery-webinar</guid>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-12-01</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2021-12-01-isa-battery-webinar/isa.png" medium="image" type="image/png" width="1920" height="1080"/>
     </item>
     <item>
@@ -56,7 +56,7 @@
       <category>keyboards</category>
       <category>R</category>
       <guid>https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands</guid>
-      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-07-06</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands/title-slide.png" medium="image" type="image/png" width="1261" height="710"/>
     </item>
     <item>
@@ -68,7 +68,7 @@
       <category>surveys</category>
       <category>conjoint</category>
       <guid>https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr</guid>
-      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-04-20</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/sawtooth-conf-logitr.png" medium="image" type="image/png" width="1261" height="710"/>
     </item>
     <item>
@@ -80,7 +80,7 @@
       <category>surveys</category>
       <category>formr</category>
       <guid>https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr</guid>
-      <pubDate>Thu, 21 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-01-21</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/surveys-with-formr.png" medium="image" type="image/png" width="1261" height="710"/>
     </item>
     <item>
@@ -91,7 +91,7 @@
       <category>China</category>
       <category>Technology</category>
       <guid>https://www.jhelvy.com/talks/2020-10-09-confucius-institute-fall-seminar</guid>
-      <pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-10-09</pubDate>
       <media:content url="https://www.jhelvy.com/talks/2020-10-09-confucius-institute-fall-seminar/title_slide.png" medium="image" type="image/png" width="794" height="614"/>
     </item>
   </channel>
