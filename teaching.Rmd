@@ -17,6 +17,8 @@ preview: images/lab/john_helveston.png
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+Content for workshops I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
+
 :::float-left
 
 <img src="images/hex/p4a.png" width="200px">
