@@ -73,13 +73,13 @@ I implement the choice questions in part two of my survey (the  [appleConjoint_p
 2. Create a new `df` data frame that includes only the rows for the specific `respondentID`.
 3. Create a `df_json` object that converts the `df` data frame to JSON.
 
-That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new `r fa("r-project")` session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the `name` column), so we have to "serialize" the `df` object into one long JSON object so that we can access it later in other pages.
+That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new `r fa("r-project")` session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the `name` column), so we have to serialize the `df` object into one long JSON object so that we can access it later in other pages.
 
 Once we have everything set up, we can then start defining choice questions. In each choice question row, the first thing I do is define the questions label and then write a code chunk to create multiple data frames to store the values to display for each alternative. For example, on row 10 of the [appleConjoint_p2](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919) Google Sheet, you can see the following code chunk under the question label:
 
 ```{r, eval=FALSE}
 library(dplyr)
-alts <- jsonlite::fromJSON(df_json) %>% 
+alts <- jsonlite::unserializeJSON(df_json) %>% 
   filter(qID == 1)
 alt1 <- alts %>% filter(altID == 1)
 alt2 <- alts %>% filter(altID == 2)
@@ -115,7 +115,7 @@ An alternative is to use a tabular layout where each column represents an altern
 ```{r, eval=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(kableExtra)
-alts <- jsonlite::fromJSON(df_json) %>%
+alts <- jsonlite::unserializeJSON(df_json) %>%
   filter(qID == 1) %>% 
   mutate(
     price = paste(scales::dollar(price), "/ lb"),

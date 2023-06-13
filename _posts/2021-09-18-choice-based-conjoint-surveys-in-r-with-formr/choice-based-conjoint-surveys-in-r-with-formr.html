@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["choice-based-conjoint-surveys-in-r-with-formr_files/anchor-4.2.2/anchor.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/bowser-1.9.3/bowser.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/distill-2.2.21/template.v2.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11.2/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-1.11.3/jquery.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.map","choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-bundle.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-light-border.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/webcomponents-2.0.0/webcomponents.js","images/cbc_table.png","images/example.png","images/run.png"]}
+  {"type":"character","attributes":{},"value":["choice-based-conjoint-surveys-in-r-with-formr_files/anchor-4.2.2/anchor.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/bowser-1.9.3/bowser.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/distill-2.2.21/template.v2.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11.2/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.11/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.16/header-attrs.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-1.11.3/jquery.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.map","choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-bundle.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy-light-border.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css","choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.umd.min.js","choice-based-conjoint-surveys-in-r-with-formr_files/webcomponents-2.0.0/webcomponents.js","images/cbc_table.png","images/example.png","images/run.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -189,6 +189,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1261,15 +1262,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1468,7 +1475,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.16/header-attrs.js"></script>
+  <script src="choice-based-conjoint-surveys-in-r-with-formr_files/header-attrs-2.20/header-attrs.js"></script>
   <script src="choice-based-conjoint-surveys-in-r-with-formr_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="choice-based-conjoint-surveys-in-r-with-formr_files/popper-2.6.0/popper.min.js"></script>
   <link href="choice-based-conjoint-surveys-in-r-with-formr_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1489,7 +1496,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Choice-based conjoint surveys in R with formr","description":"A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-18T00:00:00.000-07:00","citationText":"Helveston, 2021"}
+{"title":"Choice-based conjoint surveys in R with formr","description":"A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org","authors":[{"author":"John Paul Helveston","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-09-18T00:00:00.000-04:00","citationText":"Helveston, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1507,8 +1514,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt-tag">conjoint</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>A how-to guide for using R to design and implement choice-based
-conjoint surveys using formr.org</p></p>
+<p><p>A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org</p></p>
 </div>
 
 <div class="d-byline">
@@ -1524,88 +1530,38 @@ conjoint surveys using formr.org</p></p>
 <h3>Contents</h3>
 <ul>
 <li><a href="#overview" id="toc-overview">Overview</a></li>
-<li><a href="#creating-the-surveys"
-id="toc-creating-the-surveys">Creating the surveys</a></li>
-<li><a href="#defining-the-choice-questions"
-id="toc-defining-the-choice-questions">Defining the choice
-questions</a></li>
-<li><a href="#implementing-the-choice-questions"
-id="toc-implementing-the-choice-questions">Implementing the choice
-questions</a></li>
-<li><a href="#buttons-versus-tables"
-id="toc-buttons-versus-tables">Buttons versus tables</a></li>
-<li><a href="#implementing-the-surveys-in-formr"
-id="toc-implementing-the-surveys-in-formr">Implementing the surveys in
-formr</a></li>
-<li><a href="#time-stamps" id="toc-time-stamps">Time stamps
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512zM232 256C232 264 236 271.5 242.7 275.1L338.7 339.1C349.7 347.3 364.6 344.3 371.1 333.3C379.3 322.3 376.3 307.4 365.3 300L280 243.2V120C280 106.7 269.3 96 255.1 96C242.7 96 231.1 106.7 231.1 120L232 256z"/></svg></a></li>
-<li><a href="#preview-and-check" id="toc-preview-and-check">Preview and
-check</a></li>
-<li><a href="#getting-the-data" id="toc-getting-the-data">Getting the
-data</a></li>
+<li><a href="#creating-the-surveys" id="toc-creating-the-surveys">Creating the surveys</a></li>
+<li><a href="#defining-the-choice-questions" id="toc-defining-the-choice-questions">Defining the choice questions</a></li>
+<li><a href="#implementing-the-choice-questions" id="toc-implementing-the-choice-questions">Implementing the choice questions</a></li>
+<li><a href="#buttons-versus-tables" id="toc-buttons-versus-tables">Buttons versus tables</a></li>
+<li><a href="#implementing-the-surveys-in-formr" id="toc-implementing-the-surveys-in-formr">Implementing the surveys in formr</a></li>
+<li><a href="#time-stamps" id="toc-time-stamps">Time stamps <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg></a></li>
+<li><a href="#preview-and-check" id="toc-preview-and-check">Preview and check</a></li>
+<li><a href="#getting-the-data" id="toc-getting-the-data">Getting the data</a></li>
 </ul>
 </nav>
 </div>
-<p><a href="https://formr.org/">formr.org</a> is a flexible platform for
-making surveys using
-<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>.
-In this post, I’m going to show you one approach for using formr to
-create a choice-based conjoint survey (I’m going to assume that you know
-what conjoint surveys are, but if not take a look at this <a
-href="https://sawtoothsoftware.com/conjoint-analysis/cbc">quick
-introduction</a>).</p>
-<p>Throughout this post, I will use a demo survey about people’s
-preferences for apples with three attributes: <code>type</code>,
-<code>price</code>, and <code>freshness</code>.<a href="#fn1"
-class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>You can view the live demo survey <a
-href="https://appleconjoint.formr.org/">here</a>, and all files used to
-create the survey are on <a
-href="https://github.com/jhelvy/formr4conjoint">this GitHub
-repo</a>.</p>
+<p><a href="https://formr.org/">formr.org</a> is a flexible platform for making surveys using <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>. In this post, I’m going to show you one approach for using formr to create a choice-based conjoint survey (I’m going to assume that you know what conjoint surveys are, but if not take a look at this <a href="https://sawtoothsoftware.com/conjoint-analysis/cbc">quick introduction</a>).</p>
+<p>Throughout this post, I will use a demo survey about people’s preferences for apples with three attributes: <code>type</code>, <code>price</code>, and <code>freshness</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>You can view the live demo survey <a href="https://appleconjoint.formr.org/">here</a>, and all files used to create the survey are on <a href="https://github.com/jhelvy/formr4conjoint">this GitHub repo</a>.</p>
 <h1 id="overview">Overview</h1>
-<p>If you’ve never used formr.org before, the video on <a
-href="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/">this
-page</a> offers a 5 minute conceptual overview followed by ~40 minute
-demo covering the basics.</p>
-<p>Every formr survey is implemented in a spreadsheet. I highly
-recommend using Google Sheets for this because</p>
+<p>If you’ve never used formr.org before, the video on <a href="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/">this page</a> offers a 5 minute conceptual overview followed by ~40 minute demo covering the basics.</p>
+<p>Every formr survey is implemented in a spreadsheet. I highly recommend using Google Sheets for this because</p>
 <ol type="1">
-<li>formr has a button on the admin page to quickly re-load your Google
-Sheet (otherwise you have to upload a new .xlsx file any time you make
-changes), and</li>
+<li>formr has a button on the admin page to quickly re-load your Google Sheet (otherwise you have to upload a new .xlsx file any time you make changes), and</li>
 <li>It’s easier for collaborating and managing different versions.</li>
 </ol>
-<p>Each “survey” (each Google Sheet) must be loaded into a “Run” to make
-the survey live. Most runs include multiple surveys chained together to
-control complex logic, like filtering out a respondent based on their
-response to a question.</p>
-<p>For this demo, I have designed the run as a combination of three
-surveys (links below go to each respective Google Sheet):</p>
+<p>Each “survey” (each Google Sheet) must be loaded into a “Run” to make the survey live. Most runs include multiple surveys chained together to control complex logic, like filtering out a respondent based on their response to a question.</p>
+<p>For this demo, I have designed the run as a combination of three surveys (links below go to each respective Google Sheet):</p>
 <ul>
-<li><a
-href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">Part
-1</a>: Intro and target population screen out</li>
-<li><a
-href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">Part
-2</a>: Conjoint choice questions</li>
-<li><a
-href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">Part
-3</a>: Demographic and other questions</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">Part 1</a>: Intro and target population screen out</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">Part 2</a>: Conjoint choice questions</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">Part 3</a>: Demographic and other questions</li>
 </ul>
-<p>Don’t worry about what’s in each sheet just yet - we’ll get to
-that.</p>
+<p>Don’t worry about what’s in each sheet just yet - we’ll get to that.</p>
 <h1 id="creating-the-surveys">Creating the surveys</h1>
-<p>I find it much easier to design my surveys using .Rmd files (one .Rmd
-file per survey). I can knit each .Rmd file to a html page to preview
-the look and feel of my survey without having to use formr at all. This
-also provides a way to easily print out the whole survey content as a
-PDF (e.g. open the survey in your browser, then print the page to a
-PDF). When I’m happy with how things look, I then carefully copy-paste
-the content over into separate rows in a Google Sheet.</p>
-<p>For this demo, I designed the questions in each part using the
-following three .Rmd files in the “survey” folder of the <a
-href="https://github.com/jhelvy/formr4conjoint">GitHub repo</a>:</p>
+<p>I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel of my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF (e.g. open the survey in your browser, then print the page to a PDF). When I’m happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet.</p>
+<p>For this demo, I designed the questions in each part using the following three .Rmd files in the “survey” folder of the <a href="https://github.com/jhelvy/formr4conjoint">GitHub repo</a>:</p>
 <table>
 <colgroup>
 <col style="width: 38%" />
@@ -1619,108 +1575,43 @@ href="https://github.com/jhelvy/formr4conjoint">GitHub repo</a>:</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a
-href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p1-intro.Rmd">p1-intro.Rmd</a></td>
-<td><a
-href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">appleConjoint_p1</a></td>
+<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p1-intro.Rmd">p1-intro.Rmd</a></td>
+<td><a href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">appleConjoint_p1</a></td>
 </tr>
 <tr class="even">
-<td><a
-href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p2-choice-questions.Rmd">p2-choice-questions.Rmd</a></td>
-<td><a
-href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a></td>
+<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p2-choice-questions.Rmd">p2-choice-questions.Rmd</a></td>
+<td><a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a></td>
 </tr>
 <tr class="odd">
-<td><a
-href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p3-demos.Rmd">p3-demos.Rmd</a></td>
-<td><a
-href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">appleConjoint_p3</a></td>
+<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p3-demos.Rmd">p3-demos.Rmd</a></td>
+<td><a href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">appleConjoint_p3</a></td>
 </tr>
 </tbody>
 </table>
-<p>The links in this table let you compare the .Rmd file with the
-corresponding Google Sheet. Most general content that I want to display
-to the respondent goes in the <code>label</code> column of the Google
-Sheet, and response options to questions go in the <code>choice</code>
-columns (for part 3, I put the choice options on a separate
-<code>choices</code> tab). Pay careful attention to the
-<code>type</code> column - this determines the nature of the row
-(e.g. <code>note</code> just shows the <code>label</code> column
-content, <code>mc</code> is a multiple choice question, etc.). The
-<code>calculate</code> type rows allow me to run
-<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
-code to generate and store objects that can be used across different
-pages in the survey (these values will also be available in the
-resulting survey data).</p>
-<h1 id="defining-the-choice-questions">Defining the choice
-questions</h1>
-<p>The central component of every conjoint survey is the set of
-randomized choice questions. To implement these in formr, you first need
-to define the set of choice questions you want to ask each respondent. I
-use the <a href="https://jhelvy.github.io/cbcTools/">cbcTools</a>
-package (which I developed 😄) to create these questions. The code to
-create the choice questions for this demo survey is in the <a
-href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R"><code>make_choice_questions.R</code></a>
-file in the repo.</p>
-<p>The data frame of randomized choice questions is saved as the <a
-href="https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv"><code>choice_questions.csv</code></a>
-file. Once created, you’ll need to host it somewhere on the web so that
-you can read it into your Google Sheet. For this demo, the file is
-hosted on the <a href="https://github.com/jhelvy/formr4conjoint">GitHub
-repo</a>, but you can also upload your <code>choice_questions.csv</code>
-file inside your Run (see the “Upload Files” button on the left side
-menu), which will generate a unique url to the file.</p>
-<h1 id="implementing-the-choice-questions">Implementing the choice
-questions</h1>
-<p>I implement the choice questions in part two of my survey (the <a
-href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a>
-Google Sheet). To do this, I use the first few rows of the sheet to read
-in the <code>choice_questions.csv</code> file and make the following
-calculations:</p>
+<p>The links in this table let you compare the .Rmd file with the corresponding Google Sheet. Most general content that I want to display to the respondent goes in the <code>label</code> column of the Google Sheet, and response options to questions go in the <code>choice</code> columns (for part 3, I put the choice options on a separate <code>choices</code> tab). Pay careful attention to the <code>type</code> column - this determines the nature of the row (e.g. <code>note</code> just shows the <code>label</code> column content, <code>mc</code> is a multiple choice question, etc.). The <code>calculate</code> type rows allow me to run <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> code to generate and store objects that can be used across different pages in the survey (these values will also be available in the resulting survey data).</p>
+<h1 id="defining-the-choice-questions">Defining the choice questions</h1>
+<p>The central component of every conjoint survey is the set of randomized choice questions. To implement these in formr, you first need to define the set of choice questions you want to ask each respondent. I use the <a href="https://jhelvy.github.io/cbcTools/">cbcTools</a> package (which I developed 😄) to create these questions. The code to create the choice questions for this demo survey is in the <a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/make_choice_questions.R"><code>make_choice_questions.R</code></a> file in the repo.</p>
+<p>The data frame of randomized choice questions is saved as the <a href="https://raw.githubusercontent.com/jhelvy/formr4conjoint/master/survey/choice_questions.csv"><code>choice_questions.csv</code></a> file. Once created, you’ll need to host it somewhere on the web so that you can read it into your Google Sheet. For this demo, the file is hosted on the <a href="https://github.com/jhelvy/formr4conjoint">GitHub repo</a>, but you can also upload your <code>choice_questions.csv</code> file inside your Run (see the “Upload Files” button on the left side menu), which will generate a unique url to the file.</p>
+<h1 id="implementing-the-choice-questions">Implementing the choice questions</h1>
+<p>I implement the choice questions in part two of my survey (the <a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a> Google Sheet). To do this, I use the first few rows of the sheet to read in the <code>choice_questions.csv</code> file and make the following calculations:</p>
 <ol type="1">
-<li>Randomly generate a <code>respondentID</code> by sampling from all
-possible <code>respID</code> values in the choice questions.</li>
-<li>Create a new <code>df</code> data frame that includes only the rows
-for the specific <code>respondentID</code>.</li>
-<li>Create a <code>df_json</code> object that converts the
-<code>df</code> data frame to JSON.</li>
+<li>Randomly generate a <code>respondentID</code> by sampling from all possible <code>respID</code> values in the choice questions.</li>
+<li>Create a new <code>df</code> data frame that includes only the rows for the specific <code>respondentID</code>.</li>
+<li>Create a <code>df_json</code> object that converts the <code>df</code> data frame to JSON.</li>
 </ol>
-<p>That last step is a bit of a hack, but the reason this is necessary
-is because each new page on formr is essentially a new
-<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
-session, so every time you start a new page all your previous objects
-are no longer there and all your libraries need to be re-loaded. The
-only objects you have access to on separate pages are items that are
-stored in the resulting survey data (using the names assigned in the
-<code>name</code> column), so we have to “serialize” the <code>df</code>
-object into one long JSON object so that we can access it later in other
-pages.</p>
-<p>Once we have everything set up, we can then start defining choice
-questions. In each choice question row, the first thing I do is define
-the questions label and then write a code chunk to create multiple data
-frames to store the values to display for each alternative. For example,
-on row 10 of the <a
-href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a>
-Google Sheet, you can see the following code chunk under the question
-label:</p>
+<p>That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the <code>name</code> column), so we have to serialize the <code>df</code> object into one long JSON object so that we can access it later in other pages.</p>
+<p>Once we have everything set up, we can then start defining choice questions. In each choice question row, the first thing I do is define the questions label and then write a code chunk to create multiple data frames to store the values to display for each alternative. For example, on row 10 of the <a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a> Google Sheet, you can see the following code chunk under the question label:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
-<span><span class='va'>alts</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='va'>df_json</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span><span class='va'>alts</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/serializeJSON.html'>unserializeJSON</a></span><span class='op'>(</span><span class='va'>df_json</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>qID</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span></span>
 <span><span class='va'>alt1</span> <span class='op'>&lt;-</span> <span class='va'>alts</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>altID</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span></span>
 <span><span class='va'>alt2</span> <span class='op'>&lt;-</span> <span class='va'>alts</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>altID</span> <span class='op'>==</span> <span class='fl'>2</span><span class='op'>)</span></span>
 <span><span class='va'>alt3</span> <span class='op'>&lt;-</span> <span class='va'>alts</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>altID</span> <span class='op'>==</span> <span class='fl'>3</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<p>In this chunk, the <code>alts</code> data frame is created by
-converting the <code>df_json</code> object into a data frame and
-filtering for all alternatives for the first question. Then the
-<code>alts</code> data frame is broken into three more data frames
-(<code>alt1</code>, <code>alt2</code>, and <code>alt3</code>) which
-contain the information about each alternative. These data frames are
-then used to display information about each alternative. For example,
-the first alternative is defined using this code:</p>
+<p>In this chunk, the <code>alts</code> data frame is created by converting the <code>df_json</code> object into a data frame and filtering for all alternatives for the first question. Then the <code>alts</code> data frame is broken into three more data frames (<code>alt1</code>, <code>alt2</code>, and <code>alt3</code>) which contain the information about each alternative. These data frames are then used to display information about each alternative. For example, the first alternative is defined using this code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Option <span class="dv">1</span><span class="sc">**</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1730,38 +1621,19 @@ the first alternative is defined using this code:</p>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Price<span class="sc">**</span><span class="er">:</span> <span class="er">$</span> <span class="st">`</span><span class="at">r alt1$price</span><span class="st">`</span> <span class="sc">/</span> lb</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Freshness<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$freshness</span><span class="st">`</span></span></code></pre></div>
 </div>
-<p>I copy this code over to each alternative, adjusting the numbers for
-alternative 2 and 3. When rendered in formr, the three options looks
-like this:</p>
+<p>I copy this code over to each alternative, adjusting the numbers for alternative 2 and 3. When rendered in formr, the three options looks like this:</p>
 <center>
 <img src="images/example.png" width=500>
 </center>
-<p>And that’s it! The nice thing about this approach is that the only
-thing I need to modify in these code chunks for the remaining choice
-questions is the question number used to define the <code>alts</code>
-data frame. Other than that, the code for the question label and the
-alternatives can be reused on the rest of the choice questions.</p>
+<p>And that’s it! The nice thing about this approach is that the only thing I need to modify in these code chunks for the remaining choice questions is the question number used to define the <code>alts</code> data frame. Other than that, the code for the question label and the alternatives can be reused on the rest of the choice questions.</p>
 <h1 id="buttons-versus-tables">Buttons versus tables</h1>
-<p>In the example above, the conjoint choice questions are displayed as
-“buttons” where all the information for each alternative is shown as a
-button. This works particularly well for mobile phone applications where
-the user may need to scroll vertically to see each option.</p>
-<p>An alternative is to use a tabular layout where each column
-represents an alternative and the row names explain the attribute. This
-takes a little manipulation to get it right, but the key concept is to
-use <code>kable()</code> to display the transpose of the
-<code>alts</code> data frame. I also use the wonderful <a
-href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a>
-package to modify some of the table stying. If you want to see this
-version in practice, the survey link is <a
-href="https://appleconjointtable.formr.org/">here</a>, and the Google
-Sheet with the configurtions for this is <a
-href="https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbWaXkwIOGLU">here</a>.</p>
+<p>In the example above, the conjoint choice questions are displayed as “buttons” where all the information for each alternative is shown as a button. This works particularly well for mobile phone applications where the user may need to scroll vertically to see each option.</p>
+<p>An alternative is to use a tabular layout where each column represents an alternative and the row names explain the attribute. This takes a little manipulation to get it right, but the key concept is to use <code>kable()</code> to display the transpose of the <code>alts</code> data frame. I also use the wonderful <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a> package to modify some of the table stying. If you want to see this version in practice, the survey link is <a href="https://appleconjointtable.formr.org/">here</a>, and the Google Sheet with the configurtions for this is <a href="https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbWaXkwIOGLU">here</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span></span>
-<span><span class='va'>alts</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>fromJSON</a></span><span class='op'>(</span><span class='va'>df_json</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span><span class='va'>alts</span> <span class='op'>&lt;-</span> <span class='fu'>jsonlite</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/jsonlite/man/serializeJSON.html'>unserializeJSON</a></span><span class='op'>(</span><span class='va'>df_json</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>qID</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
 <span>    price <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/dollar_format.html'>dollar</a></span><span class='op'>(</span><span class='va'>price</span><span class='op'>)</span>, <span class='st'>"/ lb"</span><span class='op'>)</span>,</span>
@@ -1786,24 +1658,9 @@ href="https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbW
 <center>
 <img src="images/cbc_table.png" width=500>
 </center>
-<h1 id="implementing-the-surveys-in-formr">Implementing the surveys in
-formr</h1>
-<p>You’ll need to upload each Google Sheet survey into formr to convert
-them into surveys. Go to your admin page, click on “Create Survey”, then
-import one of the Google Sheets. This creates one survey. On the left
-panel you can click “Test Survey” to preview it.</p>
-<p>Once you have all three surveys loaded into formr, you can then
-assemble them into a “Run” by clicking on “Runs -&gt; Create New Run”.
-Give the run a name, then add your survey to the run by clicking on the
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M490.3 40.4C512.2 62.27 512.2 97.73 490.3 119.6L460.3 149.7L362.3 51.72L392.4 21.66C414.3-.2135 449.7-.2135 471.6 21.66L490.3 40.4zM172.4 241.7L339.7 74.34L437.7 172.3L270.3 339.6C264.2 345.8 256.7 350.4 248.4 353.2L159.6 382.8C150.1 385.6 141.5 383.4 135 376.1C128.6 370.5 126.4 361 129.2 352.4L158.8 263.6C161.6 255.3 166.2 247.8 172.4 241.7V241.7zM192 63.1C209.7 63.1 224 78.33 224 95.1C224 113.7 209.7 127.1 192 127.1H96C78.33 127.1 64 142.3 64 159.1V416C64 433.7 78.33 448 96 448H352C369.7 448 384 433.7 384 416V319.1C384 302.3 398.3 287.1 416 287.1C433.7 287.1 448 302.3 448 319.1V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V159.1C0 106.1 42.98 63.1 96 63.1H192z"/></svg>
-icon. You’ll want to add all three surveys, and then at the end add a
-stopping point by clicking the
-<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M384 128v255.1c0 35.35-28.65 64-64 64H64c-35.35 0-64-28.65-64-64V128c0-35.35 28.65-64 64-64H320C355.3 64 384 92.65 384 128z"/></svg>
-icon. You can use other logic to control how the user navigates through
-the survey, such as a “Skip Forward”
-(<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M52.51 440.6l171.5-142.9V214.3L52.51 71.41C31.88 54.28 0 68.66 0 96.03v319.9C0 443.3 31.88 457.7 52.51 440.6zM308.5 440.6l192-159.1c15.25-12.87 15.25-36.37 0-49.24l-192-159.1c-20.63-17.12-52.51-2.749-52.51 24.62v319.9C256 443.3 287.9 457.7 308.5 440.6z"/></svg>
-icon) to screen respondents out before letting them get to a later part
-of the survey.</p>
+<h1 id="implementing-the-surveys-in-formr">Implementing the surveys in formr</h1>
+<p>You’ll need to upload each Google Sheet survey into formr to convert them into surveys. Go to your admin page, click on “Create Survey”, then import one of the Google Sheets. This creates one survey. On the left panel you can click “Test Survey” to preview it.</p>
+<p>Once you have all three surveys loaded into formr, you can then assemble them into a “Run” by clicking on “Runs -&gt; Create New Run”. Give the run a name, then add your survey to the run by clicking on the <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M373.1 24.97C401.2-3.147 446.8-3.147 474.9 24.97L487 37.09C515.1 65.21 515.1 110.8 487 138.9L289.8 336.2C281.1 344.8 270.4 351.1 258.6 354.5L158.6 383.1C150.2 385.5 141.2 383.1 135 376.1C128.9 370.8 126.5 361.8 128.9 353.4L157.5 253.4C160.9 241.6 167.2 230.9 175.8 222.2L373.1 24.97zM440.1 58.91C431.6 49.54 416.4 49.54 407 58.91L377.9 88L424 134.1L453.1 104.1C462.5 95.6 462.5 80.4 453.1 71.03L440.1 58.91zM203.7 266.6L186.9 325.1L245.4 308.3C249.4 307.2 252.9 305.1 255.8 302.2L390.1 168L344 121.9L209.8 256.2C206.9 259.1 204.8 262.6 203.7 266.6zM200 64C213.3 64 224 74.75 224 88C224 101.3 213.3 112 200 112H88C65.91 112 48 129.9 48 152V424C48 446.1 65.91 464 88 464H360C382.1 464 400 446.1 400 424V312C400 298.7 410.7 288 424 288C437.3 288 448 298.7 448 312V424C448 472.6 408.6 512 360 512H88C39.4 512 0 472.6 0 424V152C0 103.4 39.4 64 88 64H200z"/></svg> icon. You’ll want to add all three surveys, and then at the end add a stopping point by clicking the <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> icon. You can use other logic to control how the user navigates through the survey, such as a “Skip Forward” (<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416V96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4L224 214.3V256v41.7L52.5 440.6zM256 352V256 128 96c0-12.4 7.2-23.7 18.4-29s24.5-3.6 34.1 4.4l192 160c7.3 6.1 11.5 15.1 11.5 24.6s-4.2 18.5-11.5 24.6l-192 160c-9.5 7.9-22.8 9.7-34.1 4.4s-18.4-16.6-18.4-29V352z"/></svg> icon) to screen respondents out before letting them get to a later part of the survey.</p>
 <p>The specific logic used in this demo is as follows:</p>
 <pre><code>Start (part 1)
   |
@@ -1821,79 +1678,28 @@ Final demographic and other questions (part 3)
   |
   V
 Finish</code></pre>
-<p>Notice that there are two points where respondents can be screened
-out of the survey:</p>
+<p>Notice that there are two points where respondents can be screened out of the survey:</p>
 <ol type="1">
-<li>At the end of part 1, I ask a question to identify if the respondent
-is part of the target population I am interested in. This allows me to
-screen people out of the survey eary on before they get too far in if
-they’re not who I’m looking for. In this demo, I ask if they prefer the
-color Red or Blue and screen out people who chose Blue.</li>
-<li>At the end of part 2, I compute whether or not the respondent chose
-the same response for every choice question or not, which is a good
-indicator that they were probably just clicking through the survey. I
-don’t want these respondents in my sample, so I screen them out
-here.</li>
+<li>At the end of part 1, I ask a question to identify if the respondent is part of the target population I am interested in. This allows me to screen people out of the survey eary on before they get too far in if they’re not who I’m looking for. In this demo, I ask if they prefer the color Red or Blue and screen out people who chose Blue.</li>
+<li>At the end of part 2, I compute whether or not the respondent chose the same response for every choice question or not, which is a good indicator that they were probably just clicking through the survey. I don’t want these respondents in my sample, so I screen them out here.</li>
 </ol>
 <p>Here is a screenshot of the specific run settings:</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="images/run.png" width="554" /></p>
 </div>
-<h1 id="time-stamps">Time stamps
-<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512zM232 256C232 264 236 271.5 242.7 275.1L338.7 339.1C349.7 347.3 364.6 344.3 371.1 333.3C379.3 322.3 376.3 307.4 365.3 300L280 243.2V120C280 106.7 269.3 96 255.1 96C242.7 96 231.1 106.7 231.1 120L232 256z"/></svg></h1>
-<p>Since your entire survey is designed in
-<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>,
-why not take advantage of that fact to collect more about your
-respondents? One thing I always do on my formr surveys is grab the time
-each respondent spends on every page. This is implemented by running
-<code>Sys.time()</code> at the top of every new page, which I then use
-to compute the <em>difference</em> between each time stamp to get the
-time spent on every page. This is useful in general just to be more
-informed about how your respondents are going through your survey, and
-particularly useful for examining behavior on the conjoint choice
-questions.</p>
+<h1 id="time-stamps">Time stamps <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg></h1>
+<p>Since your entire survey is designed in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>, why not take advantage of that fact to collect more about your respondents? One thing I always do on my formr surveys is grab the time each respondent spends on every page. This is implemented by running <code>Sys.time()</code> at the top of every new page, which I then use to compute the <em>difference</em> between each time stamp to get the time spent on every page. This is useful in general just to be more informed about how your respondents are going through your survey, and particularly useful for examining behavior on the conjoint choice questions.</p>
 <h1 id="preview-and-check">Preview and check</h1>
-<p>The link to the survey will be
-<code>https://your_run_name.formr.org</code>. You can control whether
-your survey is “live” or not by modifying the “volume” icons. For
-collecting data, I recommend setting it to the
-<svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M412.6 181.9c-10.28-8.344-25.41-6.875-33.75 3.406c-8.406 10.25-6.906 25.37 3.375 33.78C393.5 228.4 400 241.8 400 256c0 14.19-6.5 27.62-17.81 36.87c-10.28 8.406-11.78 23.53-3.375 33.78c4.719 5.812 11.62 8.812 18.56 8.812c5.344 0 10.75-1.781 15.19-5.406C435.1 311.6 448 284.7 448 256S435.1 200.4 412.6 181.9zM301.2 34.84c-11.5-5.187-25.01-3.116-34.43 5.259L131.8 160H48c-26.51 0-48 21.49-48 47.1v95.1c0 26.51 21.49 47.1 48 47.1h83.84l134.9 119.9C272.7 477.2 280.3 480 288 480c4.438 0 8.959-.9313 13.16-2.837C312.7 472 320 460.6 320 448V64C320 51.41 312.7 39.1 301.2 34.84z"/></svg>
-icon, which means people who have the link can access the survey.</p>
-<p>But before you go live, it’s a good idea to do some quick testing.
-You can test each survey separately from their respective survey admin
-pages, and you can also test the entire run from the run admin page
-(check the left side menu). When testing, you may get an error - don’t
-panic! The error pages look a little different from the errors you’re
-used to in R, but if you click through the errors you can usually find
-the root cause of the error (the R error message will be buried
-somewhere on the page). Many times the errors are small typos, which is
-another reason why I like to initially build my surveys in .Rmd files -
-when I knit them to html pages, any typos or other small errors are much
-more easily identified.</p>
+<p>The link to the survey will be <code>https://your_run_name.formr.org</code>. You can control whether your survey is “live” or not by modifying the “volume” icons. For collecting data, I recommend setting it to the <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM412.6 181.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5z"/></svg> icon, which means people who have the link can access the survey.</p>
+<p>But before you go live, it’s a good idea to do some quick testing. You can test each survey separately from their respective survey admin pages, and you can also test the entire run from the run admin page (check the left side menu). When testing, you may get an error - don’t panic! The error pages look a little different from the errors you’re used to in R, but if you click through the errors you can usually find the root cause of the error (the R error message will be buried somewhere on the page). Many times the errors are small typos, which is another reason why I like to initially build my surveys in .Rmd files - when I knit them to html pages, any typos or other small errors are much more easily identified.</p>
 <h1 id="getting-the-data">Getting the data</h1>
-<p>Once your survey is live and you start collecting responses, your
-response data will not be available in the “Run”. Instead, they will be
-available in each of the three survey pages. You can use the <a
-href="https://github.com/rubenarslan/formr">{formr} package</a> to
-import the data directly in
-<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>,
-or just go to the admin page for each survey and download the data as
-.csv files. The key piece to remember is that each respondent will be
-given a unique <code>session</code> variable that you can use to join
-all of the three separate data files together.</p>
-<p>With that in mind, keep an eye out for a follow on post on how to
-join and clean the resulting data from this conjoint demo coming
-soon!</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<section class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
+<p>Once your survey is live and you start collecting responses, your response data will not be available in the “Run”. Instead, they will be available in each of the three survey pages. You can use the <a href="https://github.com/rubenarslan/formr">{formr} package</a> to import the data directly in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>, or just go to the admin page for each survey and download the data as .csv files. The key piece to remember is that each respondent will be given a unique <code>session</code> variable that you can use to join all of the three separate data files together.</p>
+<p>With that in mind, keep an eye out for a follow on post on how to join and clean the resulting data from this conjoint demo coming soon!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>Yes, people have <a
-href="https://www.emerald.com/insight/content/doi/10.1108/00070709610150879/full/html">actually
-done conjoint surveys on fruit</a> before.<a href="#fnref1"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Yes, people have <a href="https://www.emerald.com/insight/content/doi/10.1108/00070709610150879/full/html">actually done conjoint surveys on fruit</a> before.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
