@@ -116,9 +116,9 @@ Here the `---` symbol would indicate a page break in the survey, similar to how 
 For example, a double curly bracket could be used to insert the `age` and `gender` questions, like this:
 
 ```{md}
-{{ age }}
+{{ question age }}
 
-{{ gender }}
+{{ question gender }}
 ```
 
 This allows the survey designer the ability to separately handle the survey _questions_ from all other content. That way they don't have to dig through their Rmd files to edit the question labels or response options - they can just edit the `_questions.yml` file and everything else in the survey remains unchanged.
@@ -260,3 +260,57 @@ I include my basic Shiny example in the [`shiny-example`](https://github.com/jhe
 If you have any thoughts on this, please do leave comments here or open an [issue](https://github.com/jhelvy/surveydown/issues). I would love to see this framework built, and I think it could really improve and simplify the survey design process for many researchers.
 
 Thanks for reading, and hopefully we'll get this built one day!
+
+# Update 1 (2023-06-15)
+
+After playing around with different versions of a UI, I've converged on a rather different approach to defining survey content. When using the UI originally described in this post, everything just felt too disaggregated. It lacked the cohesiveness that I love when, for example, making a presenting using {xaringan}. I missed having everything in a single RMarkdown file where the UI was much closer to literate programming. 
+
+So I've come up with a simpler UI. In this UI, you have a single `survey.Rmd` file (might also consider a .qmd Quarto file) where the survey theme and control logic is defined in a YAML at the top and all of the survey content is defined in the body. An example YAML might look like this:
+
+```
+---
+name: "surveydown demo"
+author: "John Paul Helveston"
+output:
+  surveydown::survey:
+    css:
+      - default
+    lib_dir: libs
+    control:
+      skip:
+        condition: color == "Blue"
+        destination: end_screenout
+      stop: end
+      stop: end_screenout
+---
+```
+
+Here the `surveydown::survey:` section is where we could define all global options to the survey. I've added a `control` section to define flow logic. I could also imagine including a link to a database, etc.
+
+Then the body of the survey would feel just like a normal RMarkdown file. You could add any general markdown you want and insert questions using a code chunk with a `question()` function, something like this:
+
+    `r ''````{r}
+    question(
+      name     = 'color',
+      type     = 'mc',
+      required = TRUE,
+      label    = "Do you want to take the red pill or the blue pill?",
+      option   = c('Red', 'Blue')
+    )
+    ```
+
+The survey could be rendered into a view only mode with a simple function, like `surveydown::render_survey(file = 'survey.Rmd')`. Then to make the survey go live, it could be hosted on shinyapps.io (or a different server) with another function, maybe:
+
+```{r}
+#| eval: false
+
+surveydown::host_survey(
+  folder = 'survey',
+  data_url = 'path_to_googlesheet',
+  api_key = 'api_key'
+)
+```
+
+This UI overall is much more simplified and allows for more complexity in how questions are defined. For example, you can write R code to define the options in a question, or you could read in a set of options from an external file. 
+
+Obviously a lot of work needs to be done to make something like this a reality, but it at least provides a goal.

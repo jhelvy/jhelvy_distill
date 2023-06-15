@@ -1534,6 +1534,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#a-quick-prototype" id="toc-a-quick-prototype">A quick prototype</a></li>
 <li><a href="#platforms" id="toc-platforms">Platforms</a></li>
 <li><a href="#please-help" id="toc-please-help">Please help!🙏</a></li>
+<li><a href="#update-1-2023-06-15" id="toc-update-1-2023-06-15">Update 1 (2023-06-15)</a></li>
 </ul>
 </nav>
 </div>
@@ -1602,9 +1603,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3 id="survey-questions-are-inserted-with-a-simple-interface-e.g.">4. Survey questions are inserted with a simple interface, e.g. {{ }}</h3>
 <p>For example, a double curly bracket could be used to insert the <code>age</code> and <code>gender</code> questions, like this:</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode" id="cb4"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{{ age }}</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{{ question age }}</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>{{ gender }}</span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>{{ question gender }}</span></code></pre></div>
 </div>
 <p>This allows the survey designer the ability to separately handle the survey <em>questions</em> from all other content. That way they don’t have to dig through their Rmd files to edit the question labels or response options - they can just edit the <code>_questions.yml</code> file and everything else in the survey remains unchanged.</p>
 <h3 id="survey-control-logic-is-defined-in-a-_survey.yml-file">5. Survey control logic is defined in a <code>_survey.yml</code> file</h3>
@@ -1708,7 +1709,48 @@ Gif from <a href="https://vsgif.com/gif/2859497" class="uri">https://vsgif.com/g
 <p>I include my basic Shiny example in the <a href="https://github.com/jhelvy/surveydown/tree/main/shiny-example"><code>shiny-example</code></a> folder. I’m not committed to using Shiny as the underlying platform, though I can at least envision how it might work.</p>
 <p>If you have any thoughts on this, please do leave comments here or open an <a href="https://github.com/jhelvy/surveydown/issues">issue</a>. I would love to see this framework built, and I think it could really improve and simplify the survey design process for many researchers.</p>
 <p>Thanks for reading, and hopefully we’ll get this built one day!</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="update-1-2023-06-15">Update 1 (2023-06-15)</h1>
+<p>After playing around with different versions of a UI, I’ve converged on a rather different approach to defining survey content. When using the UI originally described in this post, everything just felt too disaggregated. It lacked the cohesiveness that I love when, for example, making a presenting using {xaringan}. I missed having everything in a single RMarkdown file where the UI was much closer to literate programming.</p>
+<p>So I’ve come up with a simpler UI. In this UI, you have a single <code>survey.Rmd</code> file (might also consider a .qmd Quarto file) where the survey theme and control logic is defined in a YAML at the top and all of the survey content is defined in the body. An example YAML might look like this:</p>
+<pre><code>---
+name: &quot;surveydown demo&quot;
+author: &quot;John Paul Helveston&quot;
+output:
+  surveydown::survey:
+    css:
+      - default
+    lib_dir: libs
+    control:
+      skip:
+        condition: color == &quot;Blue&quot;
+        destination: end_screenout
+      stop: end
+      stop: end_screenout
+---</code></pre>
+<p>Here the <code>surveydown::survey:</code> section is where we could define all global options to the survey. I’ve added a <code>control</code> section to define flow logic. I could also imagine including a link to a database, etc.</p>
+<p>Then the body of the survey would feel just like a normal RMarkdown file. You could add any general markdown you want and insert questions using a code chunk with a <code>question()</code> function, something like this:</p>
+<pre><code>```{r}
+question(
+  name     = &#39;color&#39;,
+  type     = &#39;mc&#39;,
+  required = TRUE,
+  label    = &quot;Do you want to take the red pill or the blue pill?&quot;,
+  option   = c(&#39;Red&#39;, &#39;Blue&#39;)
+)
+```</code></pre>
+<p>The survey could be rendered into a view only mode with a simple function, like <code>surveydown::render_survey(file = 'survey.Rmd')</code>. Then to make the survey go live, it could be hosted on shinyapps.io (or a different server) with another function, maybe:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>surveydown</span><span class='fu'>::</span><span class='fu'>host_survey</span><span class='op'>(</span></span>
+<span>  folder <span class='op'>=</span> <span class='st'>'survey'</span>,</span>
+<span>  data_url <span class='op'>=</span> <span class='st'>'path_to_googlesheet'</span>,</span>
+<span>  api_key <span class='op'>=</span> <span class='st'>'api_key'</span></span>
+<span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>This UI overall is much more simplified and allows for more complexity in how questions are defined. For example, you can write R code to define the options in a question, or you could read in a set of options from an external file.</p>
+<p>Obviously a lot of work needs to be done to make something like this a reality, but it at least provides a goal.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
