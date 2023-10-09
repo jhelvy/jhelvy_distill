@@ -12,7 +12,7 @@
       <link>https://www.jhelvy.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>2023-04-06</lastBuildDate>
+    <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate>
     <item>
       <title>{surveydown}: An open source, markdown-based survey framework (that doesn't exist yet)</title>
       <dc:creator>John Paul Helveston</dc:creator>
@@ -23,7 +23,7 @@
       <category>productivity</category>
       <category>package</category>
       <guid>https://www.jhelvy.com/posts/2023-04-06-markdown-surveys</guid>
-      <pubDate>2023-04-06</pubDate>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2023-04-06-markdown-surveys/logo.png" medium="image" type="image/png" width="2998" height="1979"/>
     </item>
     <item>
@@ -35,7 +35,7 @@
       <category>productivity</category>
       <category>R</category>
       <guid>https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto</guid>
-      <pubDate>2023-02-28</pubDate>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2023-02-28-parameterized-pdfs-with-quarto/quarto.png" medium="image" type="image/png" width="308" height="182"/>
     </item>
     <item>
@@ -45,7 +45,7 @@
       <description>I asked ChatGPT to write this blog post. Here's what it came up with.</description>
       <category>software</category>
       <guid>https://www.jhelvy.com/posts/2022-12-26-why-chess-is-better-than-golf</guid>
-      <pubDate>2022-12-26</pubDate>
+      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2022-12-26-why-chess-is-better-than-golf/chess-golf.png" medium="image" type="image/png" width="640" height="599"/>
     </item>
     <item>
@@ -59,7 +59,7 @@
       <category>package</category>
       <category>software</category>
       <guid>https://www.jhelvy.com/posts/2022-06-28-introducing-renderthis</guid>
-      <pubDate>2022-06-28</pubDate>
+      <pubDate>Tue, 28 Jun 2022 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2022-06-28-introducing-renderthis/images/logo.png" medium="image" type="image/png" width="637" height="345"/>
     </item>
     <item>
@@ -70,7 +70,7 @@
       <category>R</category>
       <category>monte carlo</category>
       <guid>https://www.jhelvy.com/posts/2021-10-19-monte-carlo-bridge-game</guid>
-      <pubDate>2021-10-19</pubDate>
+      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-10-19-monte-carlo-bridge-game/squid-game.png" medium="image" type="image/png" width="2286" height="1326"/>
     </item>
     <item>
@@ -82,7 +82,7 @@
       <category>tutorial</category>
       <category>conjoint</category>
       <guid>https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr</guid>
-      <pubDate>2021-09-18</pubDate>
+      <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/images/example.png" medium="image" type="image/png" width="640" height="367"/>
     </item>
     <item>
@@ -94,7 +94,7 @@
       <category>keyboards</category>
       <category>R</category>
       <guid>https://www.jhelvy.com/posts/2021-07-03-in-search-of-keyboard-nirvana</guid>
-      <pubDate>2021-07-03</pubDate>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-07-03-in-search-of-keyboard-nirvana/images/red_pill.gif" medium="image" type="image/gif"/>
     </item>
     <item>
@@ -105,7 +105,7 @@
       <category>productivity</category>
       <category>R</category>
       <guid>https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso</guid>
-      <pubDate>2021-05-04</pubDate>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-05-04-expand-your-productivity-with-espanso/images/date.gif" medium="image" type="image/gif"/>
     </item>
     <item>
@@ -117,7 +117,7 @@
       <category>distill</category>
       <category>R</category>
       <guid>https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css</guid>
-      <pubDate>2021-03-25</pubDate>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
       <media:content url="https://www.jhelvy.com/posts/2021-03-25-customizing-distill-with-htmltools-and-css/images/css_html.png" medium="image" type="image/png" width="4780" height="1575"/>
     </item>
   </channel>

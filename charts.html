@@ -830,9 +830,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     display: none !important;
   }
 
+  hr.section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+
+
+  d-byline {
+    border-top: none;
+  }
+
   d-article {
     padding-top: 2.5rem;
     padding-bottom: 30px;
+    border-top: none;
   }
 
   d-appendix {
@@ -927,6 +939,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article div.sourceCode pre {
     padding-left: 18px;
     font-size: 14px;
+  }
+
+  /* tweak for Pandoc numbered line within distill */
+  d-article pre.numberSource code > span {
+      left: -2em;
   }
 
   d-article pre {
@@ -1688,6 +1705,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // create d-title
     $('.d-title').changeElementType('d-title');
 
+    // separator
+    var separator = '<hr class="section-separator" style="clear: both"/>';
+    // prepend separator above appendix
+    $('.d-byline').before(separator);
+    $('.d-article').before(separator);
+
     // create d-byline
     var byline = $('<d-byline></d-byline>');
     $('.d-byline').replaceWith(byline);
@@ -1765,8 +1788,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     $('.distill-force-highlighting-css').parent().remove();
 
     // remove empty line numbers inserted by pandoc when using a
-    // custom syntax highlighting theme
-    $('code.sourceCode a:empty').remove();
+    // custom syntax highlighting theme, except when numbering line
+    // in code chunk
+    $('pre:not(.numberLines) code.sourceCode a:empty').remove();
 
     // load distill framework
     load_distill_framework();
@@ -1792,12 +1816,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // add orcid ids
       $('.authors-affiliations').find('.author').each(function(i, el) {
         var orcid_id = front_matter.authors[i].orcidID;
+        var author_name = front_matter.authors[i].author
         if (orcid_id) {
           var a = $('<a></a>');
           a.attr('href', 'https://orcid.org/' + orcid_id);
           var img = $('<img></img>');
           img.addClass('orcid-id');
-          img.attr('alt', 'ORCID ID');
+          img.attr('alt', author_name ? 'ORCID ID for ' + author_name : 'ORCID ID');
           img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
           a.append(img);
           $(this).append(a);
@@ -2546,7 +2571,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.24.2/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.25.1/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2669,6 +2694,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-title">
 <h1>Charts</h1>
+
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2689,6 +2715,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#sciencecommentary2019" id="toc-sciencecommentary2019">scienceCommentary2019</a></li>
 <li><a href="#scotusnominations" id="toc-scotusnominations">scotusNominations</a></li>
 <li><a href="#solarpvproduction" id="toc-solarpvproduction">solarPvProduction</a></li>
+<li><a href="#usghgs" id="toc-usghgs">usGHGs</a></li>
 <li><a href="#ushighwayfund" id="toc-ushighwayfund">usHighwayFund</a></li>
 <li><a href="#uspevsales" id="toc-uspevsales">usPevSales</a></li>
 <li><a href="#worldnuclearassociation" id="toc-worldnuclearassociation">worldNuclearAssociation</a></li>
@@ -2810,44 +2837,56 @@ Figure 9: Annual Solar Voltaic Cell Production (GW), 2000 - 2018.
 </div>
 </div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="ushighwayfund">usHighwayFund</h1>
-<p><strong>Description</strong>: The chart in my 2017 article: <a href="http://issues.org/34-1/perspective-navigating-an-uncertain-future-for-us-roads/">“Perspective: Navigating an Uncertain Future for US Roads,” Issues in Science and Technology 34, no. 1 (Fall 2017)”</a>. The chart shows federal highway fund revenues and expenditures in real dollars from 1980 to 2015.</p>
-<p><strong>Data</strong>: <a href="https://www.fhwa.dot.gov/policyinformation/statistics/2015/fe210.cfm">Status of the Highway Trust Fund, Fiscal Years 1957-2015</a>.</p>
+<h1 id="usghgs">usGHGs</h1>
+<p><strong>Description</strong>: Line chart of US greenhouse gas emissions by sector. Data are from the US EPA.</p>
+<p><strong>Data</strong>: <a href="https://cfpub.epa.gov/ghgdata/inventoryexplorer/#allsectors/allsectors/allgas/econsect/all">U.S. EPA Greenhouse Gas Inventory Data Explorer</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
-<a href="https://github.com/jhelvy/charts/tree/master/usHighwayFund" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usHighwayFund/plots/usHighwayFund2015.png" alt="Federal highway fund revenues and expenditures in real dollars, 1980 - 2015." width="60%" /></a>
+<a href="https://github.com/jhelvy/charts/tree/master/usGHGs" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usGHGs/plots/ghg_emissions.png" alt="US Greenhouse Gas Emissions by Sector, 1990 - 2021." width="60%" /></a>
 <p class="caption">
-Figure 10: Federal highway fund revenues and expenditures in real dollars, 1980 - 2015.
+Figure 10: US Greenhouse Gas Emissions by Sector, 1990 - 2021.
 </p>
 </div>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="uspevsales">usPevSales</h1>
-<p><strong>Description</strong>: The chart in my 2021 article in <em>Issues in Science and Technology</em> titled, <a href="https://issues.org/china-norway-ev-tesla/">“Why the US Trails the World in Electric Vehicles”</a>. The chart shows monthly sales of plug-in electric vehicles in the US from 2014 to 2020.</p>
-<p><strong>Data</strong>: <a href="https://www.hybridcars.com/june-2018-hybrid-cars-sales-dashboard/">hybridcars.com (’14-’17)</a> and <a href="https://insideevs.com/news/343998/monthly-plug-in-ev-sales-scorecard/">insideEVs.com (’18-’19)</a>.</p>
+<h1 id="ushighwayfund">usHighwayFund</h1>
+<p><strong>Description</strong>: The chart in my 2017 article: <a href="http://issues.org/34-1/perspective-navigating-an-uncertain-future-for-us-roads/">“Perspective: Navigating an Uncertain Future for US Roads,” Issues in Science and Technology 34, no. 1 (Fall 2017)”</a>. The chart shows federal highway fund revenues and expenditures in real dollars from 1980 to 2015.</p>
+<p><strong>Data</strong>: <a href="https://www.fhwa.dot.gov/policyinformation/statistics/2015/fe210.cfm">Status of the Highway Trust Fund, Fiscal Years 1957-2015</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-13"></span>
-<a href="https://github.com/jhelvy/charts/tree/master/usPevSales" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usPevSales/plots/pevMonthlySales.png" alt="U.S. Monthly Sales of Plug-in Electric Vehicles, 2014 - 2020." width="90%" /></a>
+<a href="https://github.com/jhelvy/charts/tree/master/usHighwayFund" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usHighwayFund/plots/usHighwayFund2015.png" alt="Federal highway fund revenues and expenditures in real dollars, 1980 - 2015." width="60%" /></a>
 <p class="caption">
-Figure 11: U.S. Monthly Sales of Plug-in Electric Vehicles, 2014 - 2020.
+Figure 11: Federal highway fund revenues and expenditures in real dollars, 1980 - 2015.
 </p>
 </div>
 </div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<h1 id="worldnuclearassociation">worldNuclearAssociation</h1>
-<p><strong>Description</strong>: Barplots of nuclear energy capacity by country.</p>
-<p><strong>Data</strong>: Webscraped data from the <a href="http://www.world-nuclear.org/information-library/facts-and-figures/world-nuclear-power-reactors-and-uranium-requireme.aspx">World Nuclear Association</a>.</p>
+<h1 id="uspevsales">usPevSales</h1>
+<p><strong>Description</strong>: The chart in my 2021 article in <em>Issues in Science and Technology</em> titled, <a href="https://issues.org/china-norway-ev-tesla/">“Why the US Trails the World in Electric Vehicles”</a>. The chart shows monthly sales of plug-in electric vehicles in the US from 2014 to 2020.</p>
+<p><strong>Data</strong>: <a href="https://www.hybridcars.com/june-2018-hybrid-cars-sales-dashboard/">hybridcars.com (’14-’17)</a> and <a href="https://insideevs.com/news/343998/monthly-plug-in-ev-sales-scorecard/">insideEVs.com (’18-’19)</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
-<a href="https://github.com/jhelvy/charts/tree/master/worldNuclearAssociation" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/worldNuclearAssociation/plots/newCapacity.png" alt="New Nuclear Energy Capacity (GW) by Country, 2008 - 2019." width="60%" /></a>
+<a href="https://github.com/jhelvy/charts/tree/master/usPevSales" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/usPevSales/plots/pevMonthlySales.png" alt="U.S. Monthly Sales of Plug-in Electric Vehicles, 2014 - 2020." width="90%" /></a>
 <p class="caption">
-Figure 12: New Nuclear Energy Capacity (GW) by Country, 2008 - 2019.
+Figure 12: U.S. Monthly Sales of Plug-in Electric Vehicles, 2014 - 2020.
 </p>
 </div>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="worldnuclearassociation">worldNuclearAssociation</h1>
+<p><strong>Description</strong>: Barplots of nuclear energy capacity by country.</p>
+<p><strong>Data</strong>: Webscraped data from the <a href="http://www.world-nuclear.org/information-library/facts-and-figures/world-nuclear-power-reactors-and-uranium-requireme.aspx">World Nuclear Association</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
+<a href="https://github.com/jhelvy/charts/tree/master/worldNuclearAssociation" target="_blank"><img src="https://raw.githubusercontent.com/jhelvy/charts/master/worldNuclearAssociation/plots/newCapacity.png" alt="New Nuclear Energy Capacity (GW) by Country, 2008 - 2019." width="60%" /></a>
+<p class="caption">
+Figure 13: New Nuclear Energy Capacity (GW) by Country, 2008 - 2019.
+</p>
+</div>
 </div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2878,7 +2917,7 @@ href="https://github.com/jhelvy"><svg aria-hidden="true" role="img" viewBox="0 0
 and the <a
 href="https://cran.r-project.org/"><svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:14px;width:15.89px;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#ededeb;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg></a>
 <a href="https://github.com/rstudio/distill">distill</a> package
-<br/><span style="font-size:0.8rem;">Last updated on September 03,
+<br/><span style="font-size:0.8rem;">Last updated on October 09,
 2023</span></p>
 <!-- Add function to open links to external links in new tab, from: -->
 <!-- https://yihui.name/en/2018/09/target-blank/ -->
