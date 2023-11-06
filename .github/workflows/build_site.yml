@@ -2,7 +2,7 @@ on:
   push:
     branches: [main, master]
   schedule:
-    Runs daily at midnight (EST)
+    # Runs daily at midnight (EST)
     - cron: '0 5 * * *'
 
 name: Render & Deploy Site
