@@ -92,9 +92,9 @@ Pingfan received a M.P.E. degree in Mechanical Engineering from Sydney Universit
 
 <br>
 
-<img src="images/lab/michael_rossetti.png.jpg" width="150px">
+<img src="images/lab/michael_rossetti.png" width="150px">
 
-### Pingfan Hu (胡平凡)
+### Michael Rossetti
 
 Michael Rossetti is a data scientist and software engineer. He has worked as a data analyst for a winning US Presidential campaign, an analytics director for a Silicon Valley startup, and a technology consultant for the US Government. He teaches courses in data science, computer science, and software development, and conducts research in applied machine learning.
 
