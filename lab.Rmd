@@ -104,11 +104,11 @@ Michael Rossetti is a data scientist and software engineer. He has worked as a d
 
 :::float-left
 
-<img src="images/lab/lola_nurullaeva.png" width="150px">
+<img src="images/lab/lola_nurullaeva.jpg" width="150px">
 
 ### Lola Nurullaeva
 
-Lola is an undergraduate student in Systems Engineering at The George Washington University. In Dr. Helveston's lab, she supported a project led by Ph.D. student Leah Kaplan modeling the cost to operate an autonomous vehicle taxi service.
+Lola is an undergraduate student in Systems Engineering at The George Washington University (class of 2025). In Dr. Helveston's lab, she supported a project led by Ph.D. student Leah Kaplan modeling the cost to operate an autonomous vehicle taxi service.
 
 :::
 
