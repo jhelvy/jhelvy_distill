@@ -64,7 +64,7 @@ John Paul Helveston is an Assistant Professor in the [Department of Engineering 
 
 ### Laura Roberson
 
-Laura is a PhD student focusing on consumer acceptance and interaction with innovative technologies, especially in the transportation industry. Her research interests include electric vehicle adoption, innovation developments and policies that promote innovations. She also has 8+ years working for a global automotive manufacturer, giving her a balance of academic and industry knowledge and experience. Laura received her BS in Industrial and Systems Engineering from Virginia Tech and her MS in Systems Engineering from the great GWU EMSE department.
+Laura is focusing her dissertation research on consumer acceptance and interaction with innovative technologies, especially in the transportation industry. Her research interests include electric vehicle adoption, innovation developments and policies that promote innovations. She also has 9+ years working for a global automotive manufacturer, giving her a balance of academic and industry knowledge and experience. Laura received her BS in Industrial and Systems Engineering from Virginia Tech and her MS in Systems Engineering from the great GWU EMSE department.
 
 <br>
 
@@ -72,7 +72,7 @@ Laura is a PhD student focusing on consumer acceptance and interaction with inno
 
 ### Leah Kaplan
 
-Leah is a Ph.D. student in the Systems Engineering Program at the George Washington University and a National Science Foundation Graduate Research Fellow. Leah graduated summa cum laude with her Bachelor’s in chemical engineering from the University of Arizona before moving to DC to pursue an interest in science policy. Leah interned with the House Committee on Science, Space, and Technology and worked for the Arizona State University Consortium for Science, Policy & Outcomes. Leah’s primary research interest is decision-making under uncertainty related to emerging technologies, with a focus on transportation. She aims to understand how we can leverage technologies for the benefit of, rather than detriment to, society.
+Leah is a National Science Foundation Graduate Research Fellow. Leah graduated summa cum laude with her Bachelor’s in chemical engineering from the University of Arizona before moving to DC to pursue an interest in science policy. Leah interned with the House Committee on Science, Space, and Technology and worked for the Arizona State University Consortium for Science, Policy & Outcomes. Leah’s primary research interest is decision-making under uncertainty related to emerging technologies, with a focus on transportation. She aims to understand how we can leverage technologies for the benefit of, rather than detriment to, society.
 
 <br>
 
@@ -80,7 +80,7 @@ Leah is a Ph.D. student in the Systems Engineering Program at the George Washing
 
 ### Lujin Zhao (赵鲁晋)
 
-Lujin is a Ph.D. student in the Systems Engineering Program at the George Washington University. Lujin received a B.S. in Agricultural and Resources Economics from University of Maryland, a M.S. degree in Economics from Tufts University, and a M.S. degree in Data Analytics from the George Washington University. His interests are China’s EV subsidy policies, environmental impacts from the EV industry, and energy policy. For the past several years, he has been living in the DC area and he really enjoys the summertime here except for during June, July and August.
+Lujin received a B.S. in Agricultural and Resources Economics from University of Maryland, a M.S. degree in Economics from Tufts University, and a M.S. degree in Data Analytics from the George Washington University. His interests are China’s EV subsidy policies, environmental impacts from the EV industry, and energy policy. For the past several years, he has been living in the DC area and he really enjoys the summertime here except for during June, July and August.
 
 <br>
 
@@ -88,7 +88,15 @@ Lujin is a Ph.D. student in the Systems Engineering Program at the George Washin
 
 ### Pingfan Hu (胡平凡)
 
-Pingfan is a Ph.D. student in the Systems Engineering Program at the George Washington University. Pingfan received a M.P.E. degree in Mechanical Engineering from Sydney University, and a B.S. degree in Industrial Engineering from Penn State University. Prior to joining GW, Pingfan had 4 years of work experience in supply chain and engineering management. His primary research interest is the adoption of PEV smart charging, with an expansion to V2G charging. He is currently working on a study using conjoint analysis to assess people's willingness to participate in such programs.
+Pingfan received a M.P.E. degree in Mechanical Engineering from Sydney University, and a B.S. degree in Industrial Engineering from Penn State University. Prior to joining GW, Pingfan had 4 years of work experience in supply chain and engineering management. His primary research interest is the adoption of PEV smart charging, with an expansion to V2G charging. He is currently working on a study using conjoint analysis to assess people's willingness to participate in such programs.
+
+<br>
+
+<img src="images/lab/michael_rossetti.png.jpg" width="150px">
+
+### Pingfan Hu (胡平凡)
+
+Michael Rossetti is a data scientist and software engineer. He has worked as a data analyst for a winning US Presidential campaign, an analytics director for a Silicon Valley startup, and a technology consultant for the US Government. He teaches courses in data science, computer science, and software development, and conducts research in applied machine learning.
 
 :::
 
