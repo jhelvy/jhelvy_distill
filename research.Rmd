@@ -70,7 +70,11 @@ pubs <- get_pubs()
 
 `r make_pub_list(pubs, "theses")`
 
-## Reports, Articles for Non-Academic Audiences, and Other Publications
+## Opinion Editorials
+
+`r make_pub_list(pubs, "oped")`
+
+## Other Publications
 
 `r make_pub_list(pubs, "other")`
 
