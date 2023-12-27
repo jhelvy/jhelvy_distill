@@ -50,7 +50,7 @@ navbar:
     - icon: fas fa-bars
       menu:
         - text: "CV"
-          href: content/helveston-cv.pdf
+          href: https://github.com/jhelvy/cv/blob/main/cv-jph.pdf
         - text: "Resume"
           href: content/helveston-resume.pdf
         - icon: fab fa-github
