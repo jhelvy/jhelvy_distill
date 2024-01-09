@@ -85,12 +85,26 @@ You must take at least **3** courses in the track you have selected – two are 
  
 ### Can I take course X which is not listed in the degree requirements?
 
-Yes, it can be one of your 2 unrestricted electives. Contact your advisor for approval first.
+If it is a 6000 level course, then generally yes it can be one of your two unrestricted electives. You should contact your advisor for approval first.
 
-### I want to take a course from the CS department, but when I register it shows "Field of Study Restriction - Major", can I still join?
-
-Yes, but you will need to fill out the CS Department’s Registration help form. Contact your advisor or cs@gwu.edu for more information.
+Yes, but you will need to fill out the [CS Department’s Registration help form](go.gwu.edu/csregs). Contact your advisor or cs@gwu.edu for more information.
 
 ### Can the SEAS 6402 DA Capstone course only be taken in Spring semesters?
 
-The course is only offered in the spring. You should not take 6402 until you have completed the other four required courses. If you start the program in Spring, then we recommend taking it in your 3rd semester (i.e., your second spring, a semester before graduation). If you are not able to take the course at the normal time, you should consult with your advisor **before** your last semester about completing the capstone as an independent project.
+The course is typically only offered in the spring, though some years we also offer a smaller fall section. You should not take 6402 until you have completed the other four required courses. If you start the program in Spring, then we recommend taking it in your 3rd semester (i.e., your second spring, a semester before graduation). If you are not able to take the course at the normal time, you should consult with your advisor **before** your last semester about completing the capstone as an independent project.
+
+### I want to register for a 6000 level course, but I'm restricted, how do I register?
+
+Some courses have restrictions on who can register for a variety of reasons. Often times the restriction is due to missing prerequisite courses or the course is only offered to majors in that field (e.g. most courses in DATS are restricted to DATS majors). In these cases, you typically need to fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) form. Here are some details:
+
+- For EMSE courses: Fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) and send it to [Professor Helveston](mailto:jph@gwu.edu) for approval.
+- For CSCI courses: Go to the [CS Department’s Registration help form](go.gwu.edu/csregs) and fill out the request form. Dr. Tim Wood will take care of processing the request.
+- For any other course: Fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) and send it to the course instructor for approval. In these cases (especially if it's a course outside of SEAS), also include a message as to why you want to enroll in the course. 
+
+In general, if there are prerequisite issues preventing you from registering, also explain in your email why you should be exempt from the prerequisite (e.g. you have prior experience or have taken a similar course, etc.).
+
+### I'm interested in becoming a Teaching Assistant or Research Assistant, how can I apply for one of these positions? 
+
+GTA (teaching assistantship) positions are limited and typically offered to students later in the program (e.g. year 2) to GTA for a course they've already taken in their first year. There are not many of these available, and many are prioritized for PhD students over MS students since PhDs have longer tenures in SEAS (4-5 years) and because many will be in academic settings in their careers and therefore need more teaching experience. The best advice for these positions is to do an excellent job in the classroom and discuss with each faculty member you take a course with that has a GTA to see if you could take on a GTA position in the future. Directly expressing your interest to the faculty is the best thing you can do.  
+
+GRA (research assistantship) positions are typically arranged on a faculty-by-faculty basis and usually supported by external research funding. The best way to find opportunities is to reach out to individual faculty and ask if there are potential GRA positions in their lab. It is also best to read up on the faculty member you are reaching out to to make sure their lab focuses on a topic that you are interested in and have something to offer. This isn't limited to SEAS - you could be a GRA for a professor in a different school, and it is not strange for a DA student to use their skills in other domains, such as public health, the Elliott School, etc. Again, directly reaching out to faculty members is the best advise for obtaining one of these positions.
