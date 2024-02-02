@@ -85,13 +85,19 @@ make_media_list <- function() {
     return(paste(temp$post, collapse = "\n"))
 }
 
-make_pub_list <- function(pubs, category, featured = FALSE) {
+# make_pub_list <- function(pubs, category, featured = FALSE) {
+#   x <- pubs[which(pubs$category == category),]
+#   if (featured) {
+#     x <- x[which(x$featured),]
+#   } else {
+#     x <- x[which(!x$featured),]
+#   }
+#   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
+#   return(paste(unlist(pub_list), collapse = ""))
+# }
+
+make_pub_list <- function(pubs, category) {
   x <- pubs[which(pubs$category == category),]
-  if (featured) {
-    x <- x[which(x$featured),]
-  } else {
-    x <- x[which(!x$featured),]
-  }
   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
   return(paste(unlist(pub_list), collapse = ""))
 }
