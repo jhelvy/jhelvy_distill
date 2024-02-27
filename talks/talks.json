@@ -17,7 +17,7 @@
     ],
     "contents": "\nI gave a talk at the Sawtooth\nSoftware Conference in Orlando, FL, on May 06, 2022. The talk is\ntitled, “The {cbcTools} Package: Tools for Designing and Testing\nChoice-Based Conjoint Surveys in R”.\nLearn more about the {cbcTools} package here: https://jhelvy.github.io/cbcTools/\nTalk\n\n\nSlides\nMy slides were built using the {xaringan} R package. You\ncan see the source code for the slides here.\n\n Full screen slides Slides as PDF\n\nKeyboard Shortcuts for Slides:\nUse ← and → to navigate through the\nslides.\nUse f to toggle full screen.\nUse o to view an overview of all slides.\nUse h to see a list of other shortcuts.\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2022-05-06-sawtooth-conf-cbctools/title.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 1261,
     "preview_height": 710
@@ -39,7 +39,7 @@
     ],
     "contents": "\n\n\nI was featured in a long-form interview on an episode of CGTN’s “Full Frame”. In\nthe interview,\nI discuss some of the challenges and opportunities China faces in the\nrace to decarbonize it’s energy systems. I also discuss the critical\nrole China is playing in scaling up the mass production of low carbon\nenergy technologies like solar panels, wind turbines, lithium-ion\nbatteries, and electric vehicles. My interview starts at minute 30:45 in\nthe show, which you can watch here.\n\n\n\n",
     "preview": "talks/2022-04-30-cgtn-full-frame-interview/helveston-cgtn-interview.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 2560,
     "preview_height": 1600
@@ -61,7 +61,7 @@
     ],
     "contents": "\nOn December 1, 2021, I had the honor of moderating the Industry Studies Association (ISA) webinar on the future of batteries for electric vehicles, as part of its ongoing webinar series on industrial policy. You can watch the recording below.\nAbout the webinar:\nThe auto industry is on the cusp of its greatest transformation in more than a century, shifting from internal combustion engines to electric motors powered by lithium-ion batteries. China, which already plays an important role in global auto supply chains, has been the first mover in this transformation, sparking concerns in the United States and elsewhere. This session will explore the United States’ proposed response to this challenge and its profound links to both long-run economic prosperity and the future of the planet.\nModerator: John Paul Helveston, Assistant Professor, Engineering Management & Systems Engineering, George Washington University\nAdministration Presenter: Susan Helper, Senior Economist, White House Council of Economic Advisers\nDiscussants:\nGeorge W. Crabtree, Director, Joint Center for Energy Storage Research, Argonne National Laboratory\nKristin Dziczek, Senior Vice President – Research, Center for Automotive Research\nJohn Paul MacDuffie, President, Industry Studies Association, and Professor of Management, University of Pennsylvania\n\n\n\n\n\n",
     "preview": "talks/2021-12-01-isa-battery-webinar/isa.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 1920,
     "preview_height": 1080
@@ -84,7 +84,7 @@
     ],
     "contents": "\nI prepared an “Elevator Pitch” (aka lightning talk) for the 2021 useR! Conference where I discussed a quick overview of software and hardware solutions for more ergonomic typing. The recording and slides are below.\nSee also my related blog post for more details on the topics covered in the talk.\nTalk\n\n\nSlides\nMy slides were built using the {xaringan} R package. You can see the source code for the slides here.\n\n Full screen slides Slides as PDF\n\nKeyboard Shortcuts for Slides:\nUse ← and → to navigate through the slides.\nUse f to toggle full screen.\nUse o to view an overview of all slides.\nUse h to see a list of other shortcuts.\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-07-06-useR-healthy-hands/title-slide.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 1261,
     "preview_height": 710
@@ -107,7 +107,7 @@
     ],
     "contents": "\nI gave a talk at the Sawtooth Software Conference Turbo Choice Modeling Seminar in San Antonio, Texas, April 19-23, 2021 (I pre-recorded my talk as I did not attend in-person). The talk is titled, “The {logitr} R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models”.\nLearn more about the {logitr} package here.\nTalk\n\n\nSlides\nMy slides were built using the {xaringan} R package. You can see the source code for the slides here.\n\n Full screen slides Slides as PDF\n\nKeyboard Shortcuts for Slides:\nUse ← and → to navigate through the slides.\nUse f to toggle full screen.\nUse o to view an overview of all slides.\nUse h to see a list of other shortcuts.\n\n\n\n\n\n\n\n\n",
     "preview": "talks/2021-04-20-sawtooth-conf-logitr/sawtooth-conf-logitr.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 1261,
     "preview_height": 710
@@ -130,7 +130,7 @@
     ],
     "contents": "\n\nContents\nWatch the talk\nSlides\nSurveys with {formr}\n\nWatch the talk\nI gave a lightning talk at the 2021 rstudio conference on using {formr} to create R-powered surveys.\n\n Watch the lightning talk\n\nI also gave an extended version of the talk at the GW Coders Meetup on Feb. 19, 2021. You can see that below (the first 5 minutes is the same as my rstudio::conf lightning talk):\n\n\nSlides\nHere are my slides for my rstudio::conf lightning talk built using the {xaringan} R package. You can also see the source code for the slides here.\n\n Full screen slides Slides as PDF\n\nKeyboard Shortcuts for Slides:\nUse ← and → to navigate through the slides.\nUse f to toggle full screen.\nUse o to view an overview of all slides.\nUse h to see a list of other shortcuts.\n\n\n\n\n\nSurveys with {formr}\nIn my presentation, I showed several examples of how to use the {formr} package to create different types of surveys. The surveys are all generated from Google sheets, which can be found here:\nRandom images demonstrates how to randomly display different images.\nConjoint surveys demonstrates how to create a conjoint survey with formr (go to the formr4conjoint repo for a more detailed description)\nTimed quizzes demonstrates how to create a timed quiz with randomly generated questions.\nTo use any of these surveys yourself, go to formr.org, create an account. Once you log in, go to the admin page and create a new survey. You can then paste in the link to the Google sheet there. If you want to edit it, just create copy of the Google sheet into your own Google Drive account and use the shared link to that Google sheet.\nOnce you have a survey uploaded, you can make it live by creating a “Run” and inserting the survey you created by clicking on the icon as well as a “Stop” point to end the survey by clicking on the icon. The link to the survey will be https://your_run_name.formr.org.\nYou can control the “publicness” of the survey by modifying the “volume” icons:\nmeans only you can access the survey\nmeans you and people who have an access code can access (no new users can enroll).\nmeans people who have the link can access.\nmeans the link is public, everyone can access.\n\n\n\n",
     "preview": "talks/2021-01-21-surveys-with-formr/surveys-with-formr.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 1261,
     "preview_height": 710
@@ -152,7 +152,7 @@
     ],
     "contents": "\nBarry Naughton (Sokwanlok Chair of Chinese International Affairs at the School of Global Policy and Strategy, UCSD) and I kicked off the U. of Albany Confucius Institute Fall 2020 Seminar Series on “US-China Relations in the 21st Century” with a discussion about industrial policy and low-carbon energy technologies in China. In his presentation titled, “China’s Industrial Policy: New Technological Revolution or Old-fashioned Protectionism?”, Professor Naughton highlighted some of the recent major technology and industrial policy changes under President Xi and the implications for the U.S. In my talk titled, “China’s key role in scaling low carbon energy technologies,” I discussed the critical role China has played in scaling up the mass production of low-carbon energy technologies, such as solar photovoltaic cells and lithium-ion batteries, highlighting key points from my related paper in Science with Jonas Nahm.\n\n Slides as PDF Science Paper\n\n\n\n\n\n\n",
     "preview": "talks/2020-10-09-confucius-institute-fall-seminar/title_slide.png",
-    "last_modified": "2024-02-26T05:12:08+00:00",
+    "last_modified": "2024-02-27T05:11:50+00:00",
     "input_file": {},
     "preview_width": 794,
     "preview_height": 614
